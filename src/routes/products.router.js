@@ -3,15 +3,28 @@ import ProductManager from "../manager/ProductManager.js"
 
 const routerProducts = Router()
 
-routerProducts.get('/', (req, res) => {
-  const getProducts = 
-  res.json()
-})
+const producstManager = new ProductManager('./src/db/products.json')
 
-routerProducts.get('/:pid', (req, res) => {
+async function controllerProducts(req, res) {
+  const limit = parseInt(req.query.limit)
+  const showProducts = await producstManager.getProducts()
+  
+  if (limit) {
+    const limitedProducts = showProducts.splice(0, limit)
+    res.json(limitedProducts)
+  } else {
+    res.json(showProducts)
+  }
+}
+routerProducts.get('/', controllerProducts)
+
+async function controllerProductById(req, res) {
   const idProduct = req.params.pid
-  // here we going to show a product by id through params
-})
+  const showProductByID = await
+  producstManager.getProductById(idProduct)
+  res.json(showProductByID)
+}
+routerProducts.get('/:pid', controllerProductById)
 
 routerProducts.post('/', (req, res) => {
   const productToAdd = req.body

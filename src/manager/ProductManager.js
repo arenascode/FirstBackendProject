@@ -108,20 +108,50 @@ const producstManager = new ProductManager('./Products.json');
     category: "Luxury",
     thumbnails: [""],
   });
-  // console.log(await instanceTest.getProducts())
-  await producstManager.updateProduct("c1d7cca3-f507-4c55-b3ed-286044f22015", {
-    title: "Rolls Royce",
-    description: "Phantom",
-    code: "002",
-    price: 350000,
-    stock: 10,
+  await producstManager.addProduct({
+    title: "Maseratti",
+    description: "Ghibli",
+    code: "003",
+    price: 85000,
+    stock: 12,
     category: "Luxury",
     thumbnails: [""],
   });
-  console.log(await producstManager.getProducts());
+  await producstManager.addProduct({
+    title: "Lamborghini",
+    description: "Huracan",
+    code: "004",
+    price: 210000,
+    stock: 6,
+    category: "Sport",
+    thumbnails: [""],
+  });
+  await producstManager.addProduct({
+    title: "Ferrari",
+    description: "Enzo",
+    code: "005",
+    price: 2300000,
+    stock: 3,
+    category: "Luxury",
+    thumbnails: [""],
+  });
+  // console.log(await instanceTest.getProducts())
+  // await producstManager.updateProduct("c1d7cca3-f507-4c55-b3ed-286044f22015", {
+  //   title: "Rolls Royce",
+  //   description: "Phantom",
+  //   code: "002",
+  //   price: 350000,
+  //   stock: 10,
+  //   category: "Luxury",
+  //   thumbnails: [""],
+  // });
 
-  await producstManager.deleteProduct("c1d7cca3-f507-4c55-b3ed-286044f22015");
+  // console.log(await producstManager.getProducts());
 
-  console.log(await producstManager.getProducts());
+  // await producstManager.deleteProduct("c1d7cca3-f507-4c55-b3ed-286044f22015");
+
+  // console.log(await producstManager.getProducts());
 }
 )()
+
+export default ProductManager
