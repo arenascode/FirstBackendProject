@@ -75,6 +75,14 @@ class ProductManager {
     }
 
   }
+
+  async deleteProduct(id) {
+    const products = JSON.parse(await fs.promises.readFile(this.path, "utf-8"));
+
+    const newArray = products.filter(e => e.id !== id)
+    await fs.promises.writeFile(this.path, JSON.stringify(newArray))
+    return console.log(`the product with id: ${id} was deleted`);
+  }
 }
     
 
@@ -101,11 +109,19 @@ const producstManager = new ProductManager('./Products.json');
     thumbnails: [""],
   });
   // console.log(await instanceTest.getProducts())
-  await producstManager.updateProduct(
-    "c1d7cca3-f507-4c55-b3ed-286044f22015",
-    {
-      
-    }
-  );
+  await producstManager.updateProduct("c1d7cca3-f507-4c55-b3ed-286044f22015", {
+    title: "Rolls Royce",
+    description: "Phantom",
+    code: "002",
+    price: 350000,
+    stock: 10,
+    category: "Luxury",
+    thumbnails: [""],
+  });
+  console.log(await producstManager.getProducts());
+
+  await producstManager.deleteProduct("c1d7cca3-f507-4c55-b3ed-286044f22015");
+
+  console.log(await producstManager.getProducts());
 }
 )()
