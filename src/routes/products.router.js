@@ -1,9 +1,11 @@
 import { Router } from "express";
+import ProductManager from "../manager/ProductManager.js"
 
 const routerProducts = Router()
 
 routerProducts.get('/', (req, res) => {
-  // Logic to list all of products. Use the limit too with querys to show a limit of products
+  const getProducts = 
+  res.json()
 })
 
 routerProducts.get('/:pid', (req, res) => {
