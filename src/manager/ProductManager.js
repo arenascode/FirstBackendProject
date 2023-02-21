@@ -30,7 +30,7 @@ class ProductManager {
     const isTheProductAdd = Boolean(products.find(e => e.code == code))
 
     if (isTheProductAdd) {
-        console.log('this product already exist');
+        throw new Error('This Product Already Exist');
     } else {
       product.id = uuidv4()
 
@@ -72,69 +72,74 @@ class ProductManager {
       const newArray = products.filter(e => e.id !== id)
       const updateProducts = [...newArray, { id, ...dataToUpdate }]
       await fs.promises.writeFile(this.path, JSON.stringify(updateProducts))
+      return productById ;
     }
 
   }
 
   async deleteProduct(id) {
     const products = JSON.parse(await fs.promises.readFile(this.path, "utf-8"));
+    const productToDelete = products.find(e => e.id === id)
+    const productExist = Boolean(productToDelete)
 
-    const newArray = products.filter(e => e.id !== id)
-    await fs.promises.writeFile(this.path, JSON.stringify(newArray))
-    return console.log(`the product with id: ${id} was deleted`);
+    if (productExist) {
+      const newArray = products.filter(e => e.id !== id)
+      await fs.promises.writeFile(this.path, JSON.stringify(newArray))
+    return productToDelete
+    } else {
+      throw new Error('the id product does not exist')
+    }
   }
 }
-    
 
-
-const producstManager = new ProductManager('./Products.json');
+// const producstManager = new ProductManager('./Products.json');
     
-(async () => {
-  await producstManager.addProduct({
-  title: 'Bugatti',
-  description: 'Veyron',
-  code: '001',
-  price: 1900000,
-  stock: 5,
-  category: 'hyper-sports',
-  thumbnails: ['']
-  })
-  await producstManager.addProduct({
-    title: "Rolls Royce",
-    description: "Phantom",
-    code: "002",
-    price: 400000,
-    stock: 10,
-    category: "Luxury",
-    thumbnails: [""],
-  });
-  await producstManager.addProduct({
-    title: "Maseratti",
-    description: "Ghibli",
-    code: "003",
-    price: 85000,
-    stock: 12,
-    category: "Luxury",
-    thumbnails: [""],
-  });
-  await producstManager.addProduct({
-    title: "Lamborghini",
-    description: "Huracan",
-    code: "004",
-    price: 210000,
-    stock: 6,
-    category: "Sport",
-    thumbnails: [""],
-  });
-  await producstManager.addProduct({
-    title: "Ferrari",
-    description: "Enzo",
-    code: "005",
-    price: 2300000,
-    stock: 3,
-    category: "Luxury",
-    thumbnails: [""],
-  });
+// (async () => {
+//   await producstManager.addProduct({
+//   title: 'Bugatti',
+//   description: 'Veyron',
+//   code: '001',
+//   price: 1900000,
+//   stock: 5,
+//   category: 'hyper-sports',
+//   thumbnails: ['']
+//   })
+//   await producstManager.addProduct({
+//     title: "Rolls Royce",
+//     description: "Phantom",
+//     code: "002",
+//     price: 400000,
+//     stock: 10,
+//     category: "Luxury",
+//     thumbnails: [""],
+//   });
+//   await producstManager.addProduct({
+//     title: "Maseratti",
+//     description: "Ghibli",
+//     code: "003",
+//     price: 85000,
+//     stock: 12,
+//     category: "Luxury",
+//     thumbnails: [""],
+//   });
+//   await producstManager.addProduct({
+//     title: "Lamborghini",
+//     description: "Huracan",
+//     code: "004",
+//     price: 210000,
+//     stock: 6,
+//     category: "Sport",
+//     thumbnails: [""],
+//   });
+//   await producstManager.addProduct({
+//     title: "Ferrari",
+//     description: "Enzo",
+//     code: "005",
+//     price: 2300000,
+//     stock: 3,
+//     category: "Luxury",
+//     thumbnails: [""],
+//   });
   // console.log(await instanceTest.getProducts())
   // await producstManager.updateProduct("c1d7cca3-f507-4c55-b3ed-286044f22015", {
   //   title: "Rolls Royce",
@@ -151,7 +156,7 @@ const producstManager = new ProductManager('./Products.json');
   // await producstManager.deleteProduct("c1d7cca3-f507-4c55-b3ed-286044f22015");
 
   // console.log(await producstManager.getProducts());
-}
-)()
+// }
+// )()
 
 export default ProductManager

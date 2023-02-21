@@ -11,8 +11,9 @@ class Product {
     if (code === ' ') console.log('Ingresa el Código del producto');
     this.code = code
 
-    isNaN(price) && console.log('Ingresa el precio del producto');
-    this.price = price
+    if (isNaN(price) || price === ' ' || price== null){ throw new Error('Ingresa el precio del producto') } else {
+      this.price = price
+    }
 
     this.status = status
 
