@@ -8,6 +8,7 @@ routerCart.get('/', (req, res) => {
   // develop logic to show all products of ca
 });
 
+
 // routerCart.post('/', async (req, res) => {
 //   const cartToAdd = req.body
 //   await cartsManager.addCart(cartToAdd)
