@@ -5,14 +5,17 @@ const routerCart = Router()
 const cartsManager = new CartManager('./src/db/carts.json')
 
 routerCart.get('/:cid', async (req, res) => {
-  const idProduct = req.params.cid
-
-  if (!idProduct) {
-    console.log('This Cart doesnt exists');
-  } 
-  const showCart = await cartsManager.showCart()
+  const idCart = req.params.cid
+  const cartById = await cartsManager.showCartById(idCart)
   // develop logic to show all products of cart
-  res.json(showCart)
+  res.json(cartById)
+});
+
+routerCart.get("/", async (req, res) => {
+
+  const carts = await cartsManager.showCart();
+
+  res.json(carts);
 });
 
 
@@ -24,12 +27,12 @@ routerCart.post('/', async (req, res) => {
 // develop logic to create a new cart
 })
 
-// routerCart.get('/:cid', (req, res) => {
-//   // Develop logic to show products of the cart id in the argument
-// })
 
-routerCart.post('/:cid/product/:pid', (req, res) => {
-  // Develop logic to add a product in a object to array with only id and quantity
+routerCart.post('/:cid/product/:pid', async (req, res) => {
+  const idCart = req.params.cid
+  const idProduct = req.params.pid
+  await cartsManager.addProductToCart(idCart,idProduct)
+  res.json(`The product was added succesfull`)
 })
 
 export default routerCart
