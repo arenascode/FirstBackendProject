@@ -7,7 +7,6 @@ const cartsManager = new CartManager('./src/db/carts.json')
 routerCart.get('/:cid', async (req, res) => {
   const idCart = req.params.cid
   const cartById = await cartsManager.showCartById(idCart)
-  // develop logic to show all products of cart
   res.json(cartById)
 });
 
@@ -24,7 +23,6 @@ routerCart.post('/', async (req, res) => {
   console.log(`Line 21 OF Cart.Router ${productToCart}`);
   await cartsManager.addCart(productToCart)
   res.json(`the ${JSON.stringify(productToCart)} was added succesfull`)
-// develop logic to create a new cart
 })
 
 
