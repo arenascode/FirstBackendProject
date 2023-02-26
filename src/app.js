@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // Router for Products
-app.use('/api/productos', routerProducts)
+app.use('/api/products', routerProducts)
 
 // Router for Cart
 app.use('/api/carts', routerCart)

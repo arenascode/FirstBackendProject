@@ -8,25 +8,39 @@ const routerProducts = Router()
 const producstManager = new ProductManager('./src/db/products.json')
 
 async function controllerProducts(req, res) {
-  const limit = parseInt(req.query.limit)
+  try {
+    const limit = parseInt(req.query.limit)
   const showProducts = await producstManager.getProducts()
-
   if (limit) {
     const limitedProducts = showProducts.splice(0, limit)
     res.json(limitedProducts)
   } else {
     res.json(showProducts)
   }
+  } catch (error) {
+    res.status(400).json({
+      msj: error.message,
+    });
+  }
+  
 }
 routerProducts.get('/', controllerProducts)
 
 async function controllerProductById(req, res) {
-  const idProduct = req.params.pid
+  try {
+    const idProduct = req.params.pid
   const showProductByID = await
   producstManager.getProductById(idProduct)
   res.json(showProductByID)
+  } catch (error) {
+    res.status(400).json({
+      msg: error.message,
+    });
+  }
+  
 }
 routerProducts.get('/:pid', controllerProductById)
+
 
 routerProducts.post('/', async (req, res) => {
   try {
@@ -35,16 +49,21 @@ routerProducts.post('/', async (req, res) => {
     res.status(201).json(newProduct)
   } catch (error) {
     res.status(400).json({
-      msj: error.message
+      msg: error.message
     })
   }
 })
 
 routerProducts.put("/:pid", async (req, res) => {
-  const productToUpdate = req.params.pid;
+  try {
+    const productToUpdate = req.params.pid;
   const dataToUpdate = req.body
   const updateProduct = await producstManager.updateProduct(productToUpdate, dataToUpdate)
   res.json(`The update of ${JSON.stringify(updateProduct.title)} was succesfull`)
+  } catch (error) {
+    res.status(400).json({msg: error.message})
+  }
+  
 });
 
 routerProducts.delete("/:pid", async (req, res) => {
@@ -54,7 +73,7 @@ routerProducts.delete("/:pid", async (req, res) => {
   res.send(`the ${JSON.stringify(deletedProduct.title)} was deleted succesfull`)
   } catch (error) {
     res.status(400).json({
-      msj: error.message
+      msg: error.message
     })
   } });
 
