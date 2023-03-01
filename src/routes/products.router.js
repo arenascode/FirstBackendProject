@@ -15,7 +15,7 @@ async function controllerProducts(req, res) {
     const limitedProducts = showProducts.splice(0, limit)
     res.json(limitedProducts)
   } else {
-    res.json(showProducts)
+    res.render("home", {products: showProducts});
   }
   } catch (error) {
     res.status(400).json({
