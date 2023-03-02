@@ -5,7 +5,7 @@ import ProductManager from "../manager/ProductManager.js"
 
 const routerProducts = Router()
 
-const producstManager = new ProductManager('./src/db/products.json')
+// const producstManager = new ProductManager('./src/db/products.json')
 
 async function controllerProducts(req, res) {
   try {
@@ -13,7 +13,7 @@ async function controllerProducts(req, res) {
   const showProducts = await producstManager.getProducts()
   if (limit) {
     const limitedProducts = showProducts.splice(0, limit)
-    res.json(limitedProducts)
+    res.render("home", {products: limitedProducts})
   } else {
     res.render("home", {products: showProducts});
   }

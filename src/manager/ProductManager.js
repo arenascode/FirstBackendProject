@@ -92,8 +92,9 @@ class ProductManager {
   }
 }
 
-// const producstManager = new ProductManager('./Products.json');
-    
+const productsManager = new ProductManager('./Products.json');
+
+export default productsManager
 // (async () => {
 //   await producstManager.addProduct({
 //   title: 'Bugatti',
@@ -158,5 +159,3 @@ class ProductManager {
   // console.log(await producstManager.getProducts());
 // }
 // )()
-
-export default ProductManager

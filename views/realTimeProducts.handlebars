@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+  <h1>Add a new product:</h1>
+  <div id="container">
+  <form id="form">
+    <label for="nameProduct">Product Name:</label>
+    <input type="text" id="nameProduct" name="nameProduct">
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description">
+    <label for="code">Code:</label>
+    <input type="text" id="code" name="code">
+    <label for="price">Price:</label>
+    <input type="text" id="price" name="price">
+    <label for="stock">stock:</label>
+    <input type="text" id="stock" name="stock">
+    <label for="category">Category:</label>
+    <input type="text" id="category" name="category">
+    <label for="imgPath">Ruta Imagen:</label>
+    <input type="text" id="imgPath" name="imgPath">
+    <button type="submit" id="addBtn">Add Product</button>
+  </form>
+    <button type="button" id="deleteBtn">Delete Product</button>
+  <div id="showData"></div>
+  </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/static/js/index.js"></script>
+</body>
+</html>

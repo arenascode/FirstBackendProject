@@ -1,0 +1,17 @@
+#container {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#form {
+    width: 100px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(137, 133, 127);
+}
+
+#addBtn {
+  margin:5px
+}
