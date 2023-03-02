@@ -90,9 +90,24 @@ class ProductManager {
       throw new Error('the id product does not exist')
     }
   }
+
+  async deletProductByCode(code) {
+    const products = JSON.parse(await fs.promises.readFile(this.path, "utf-8"));
+    const productToDelete = products.find((e) => e.code === code);
+    const productExist = Boolean(productToDelete);
+
+    if (productExist) {
+      const newArray = products.filter((e) => e.code !== code);
+      await fs.promises.writeFile(this.path, JSON.stringify(newArray));
+      return productToDelete;
+    } else {
+      throw new Error("the id product does not exist");
+    }
+
+  }
 }
 
-const productsManager = new ProductManager('./Products.json');
+const productsManager = new ProductManager('./src/db/products.json');
 
 export default productsManager
 // (async () => {

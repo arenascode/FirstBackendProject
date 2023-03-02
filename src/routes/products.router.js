@@ -1,16 +1,15 @@
 import {
   Router
 } from "express";
-import ProductManager from "../manager/ProductManager.js"
+import productsManager from "../manager/ProductManager.js"
 
 const routerProducts = Router()
 
-// const producstManager = new ProductManager('./src/db/products.json')
 
 async function controllerProducts(req, res) {
   try {
     const limit = parseInt(req.query.limit)
-  const showProducts = await producstManager.getProducts()
+  const showProducts = await productsManager.getProducts()
   if (limit) {
     const limitedProducts = showProducts.splice(0, limit)
     res.render("home", {products: limitedProducts})
@@ -30,7 +29,7 @@ async function controllerProductById(req, res) {
   try {
     const idProduct = req.params.pid
   const showProductByID = await
-  producstManager.getProductById(idProduct)
+  productsManager.getProductById(idProduct)
   res.json(showProductByID)
   } catch (error) {
     res.status(400).json({
@@ -45,7 +44,7 @@ routerProducts.get('/:pid', controllerProductById)
 routerProducts.post('/', async (req, res) => {
   try {
     const productToAdd = req.body
-    const newProduct = await producstManager.addProduct(productToAdd)
+    const newProduct = await productsManager.addProduct(productToAdd)
     res.status(201).json(newProduct)
   } catch (error) {
     res.status(400).json({
@@ -58,7 +57,7 @@ routerProducts.put("/:pid", async (req, res) => {
   try {
     const productToUpdate = req.params.pid;
   const dataToUpdate = req.body
-  const updateProduct = await producstManager.updateProduct(productToUpdate, dataToUpdate)
+  const updateProduct = await productsManager.updateProduct(productToUpdate, dataToUpdate)
   res.json(`The update of ${JSON.stringify(updateProduct.title)} was succesfull`)
   } catch (error) {
     res.status(400).json({msg: error.message})
@@ -69,7 +68,7 @@ routerProducts.put("/:pid", async (req, res) => {
 routerProducts.delete("/:pid", async (req, res) => {
   try {
     const productToDelete = req.params.pid;
-  const deletedProduct = await producstManager.deleteProduct(productToDelete)
+  const deletedProduct = await productsManager.deleteProduct(productToDelete)
   res.send(`the ${JSON.stringify(deletedProduct.title)} was deleted succesfull`)
   } catch (error) {
     res.status(400).json({

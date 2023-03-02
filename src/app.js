@@ -33,13 +33,25 @@ io.on('connection', socket => {
   console.log('New client Connecteed');
 
   socket.on('addProduct', async prod => {
-    await productsManager.addProduct(prod)
-    
-    socket.emit('showProducts', await productsManager.getProducts())
+    try {
+      await productsManager.addProduct(prod)
+      
+      socket.emit('showProducts', await productsManager.getProducts())
+    } catch (error) {
+      console.log({msgError: error});
+    }
   })
   
-  socket.on('deleteProduct', productToDelete => {
-    console.log(JSON.stringify(productToDelete));
+  socket.on('deleteProduct', async productToDelete => {
+    console.log(JSON.stringify(productToDelete.code));
+    try {
+      await productsManager.deletProductByCode(productToDelete.code)
+
+      socket.emit('showProducts',await productsManager.getProducts())
+    } catch (error) {
+      console.log({errorMessage: error});
+    }
+    
   })
 }
 )
