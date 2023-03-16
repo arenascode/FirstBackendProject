@@ -1,17 +1,37 @@
-#container {
-  width: max-content;
+#container1 {
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-wrap: nowrap;
+  column-gap: 50px;
+  align-items:center;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 #form {
-    width: 100px;
-    padding: 15px;
+    width: 250px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     background-color: rgb(137, 133, 127);
+    align-self: normal;
 }
 
+#showData {
+  margin-top: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 6px;
+  width: 600px;
+  overflow-x: auto;
+
+}
+.card {
+  width: 150px;
+}
+.card-body {
+  width: 120px;
+}
 #addBtn {
   margin:5px
 }

@@ -26,10 +26,27 @@ console.log(deleteBtn);
       category: productCategory,
       thumbnails: productImgPath
     };
-    console.log(newProduct);
-    socket.emit('addProduct', newProduct)
+    socket.emit('addProduct', newProduct),
     alert('the Product was added')
   })
+
+  socket.on("showInitialProducts", (data) => {
+    const divData = document.getElementById("showData");
+    data.forEach(p => {
+      divData.innerHTML += `
+      <div class="col">
+        <div class="card" width=50px>
+          <div class="card-body">
+            <h4 class="card-title">${p.title}</h4>
+            <h5 class="card-text">${p.description}</h5>>
+            <h5 class="card-text font-bold">Precio: ${p.price}</h5>>
+            <a href="#" class="btn btn-secondary">Delete</a>
+          </div>
+        </div>
+      </div>`;
+    })
+    console.log(data);
+  });
 
 socket.on('showProducts', data => {
   const divData = document.getElementById('showData')
@@ -48,5 +65,3 @@ deleteBtn.addEventListener('click', (e) => {
   const divData = document.getElementById("showData");
   alert('the Product Was Deleted')
 });
-
-

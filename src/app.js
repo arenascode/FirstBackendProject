@@ -29,9 +29,11 @@ const conectedServer = app.listen(port, () => console.log(`Connected to ${port} 
 
 const io = new SocketIoServer(conectedServer)
 
-io.on('connection', socket => {
+io.on('connection', async socket => {
   console.log('New client Connecteed');
-
+  
+  socket.emit('showInitialProducts', await productsManager.getProducts())
+  
   socket.on('addProduct', async prod => {
     try {
       await productsManager.addProduct(prod)
@@ -51,7 +53,6 @@ io.on('connection', socket => {
     } catch (error) {
       console.log({errorMessage: error});
     }
-    
   })
 }
 )
