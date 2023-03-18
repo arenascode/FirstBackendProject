@@ -4,8 +4,7 @@ const socket = io()
 const form = document.querySelector('#form')
 console.log(form);
 const formInputs = form.elements
-const deleteBtn = document.getElementById('deleteBtn')
-console.log(deleteBtn);
+
 
   form.addEventListener('submit', (ev) => {
   ev.preventDefault()
@@ -30,38 +29,38 @@ console.log(deleteBtn);
     alert('the Product was added')
   })
 
-  socket.on("showInitialProducts", (data) => {
-    const divData = document.getElementById("showData");
-    data.forEach(p => {
-      divData.innerHTML += `
-      <div class="col">
-        <div class="card" width=50px>
-          <div class="card-body">
-            <h4 class="card-title">${p.title}</h4>
-            <h5 class="card-text">${p.description}</h5>>
-            <h5 class="card-text font-bold">Precio: ${p.price}</h5>>
-            <a href="#" class="btn btn-secondary">Delete</a>
-          </div>
-        </div>
-      </div>`;
-    })
-    console.log(data);
-  });
-
-socket.on('showProducts', data => {
-  const divData = document.getElementById('showData')
-  divData.innerHTML = JSON.stringify(data);
-  console.log(JSON.stringify(data));
-})
-
-deleteBtn.addEventListener('click', (e) => {
-  e.preventDefault()
-
-  const productToDelete = {
-    title: formInputs["nameProduct"].value,
-    code: formInputs["code"].value,
-  };
-  socket.emit("deleteProduct", productToDelete)
+socket.on("showProducts", async (data) => {
   const divData = document.getElementById("showData");
-  alert('the Product Was Deleted')
+  divData.innerHTML = ``;
+
+  await data.forEach((p) => {
+    const card = document.createElement("div");
+    card.className = "col";
+    card.innerHTML = `
+      <div class="card" width=50px>
+        <div class="card-body">
+          <h4 class="card-title">${p.title}</h4>
+          <h5 class="card-text">${p.description}</h5>>
+          <h5 class="card-text font-bold">Precio: ${p.price}</h5>>
+          <button id="deleteBtn-${p.id}" href="#" class="btn btn-secondary" data-idProduct=${p.id}>Delete</button>
+        </div>
+      </div>
+    `;
+    divData.appendChild(card);
+
+    // Agregar el listener de eventos en el botón
+    const deleteBtn = card.querySelector(`#deleteBtn-${p.id}`);
+    deleteBtn.addEventListener("click", (e) => {
+      // Lógica para eliminar el producto
+      e.preventDefault();
+      const productToDelete = e.target.dataset.idproduct;
+      console.log(productToDelete);
+  
+      socket.emit("deleteProduct", productToDelete);
+      const divData = document.getElementById("showData");
+
+      alert("the Product Was Deleted");
+      console.log(`Id Product Deleted ${p.id}`);
+    });
+  });
 });

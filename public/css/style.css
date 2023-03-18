@@ -16,7 +16,9 @@
     background-color: rgb(137, 133, 127);
     align-self: normal;
 }
-
+#addBtn {
+  margin-top: 40px;
+}
 #showData {
   margin-top: 80px;
   display: flex;
@@ -31,7 +33,4 @@
 }
 .card-body {
   width: 120px;
-}
-#addBtn {
-  margin:5px
 }

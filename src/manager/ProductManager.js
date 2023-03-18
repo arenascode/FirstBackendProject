@@ -45,7 +45,7 @@ class ProductManager {
       )
     }
   }
-  
+
   async getProducts() {
     const products = JSON.parse(await fs.promises.readFile(this.path, 'utf-8'))
     return products
@@ -74,7 +74,6 @@ class ProductManager {
       await fs.promises.writeFile(this.path, JSON.stringify(updateProducts))
       return productById ;
     }
-
   }
 
   async deleteProduct(id) {
@@ -90,87 +89,9 @@ class ProductManager {
       throw new Error('the id product does not exist')
     }
   }
-
-  async deletProductByCode(code) {
-    const products = JSON.parse(await fs.promises.readFile(this.path, "utf-8"));
-    const productToDelete = products.find((e) => e.code === code);
-    const productExist = Boolean(productToDelete);
-
-    if (productExist) {
-      const newArray = products.filter((e) => e.code !== code);
-      await fs.promises.writeFile(this.path, JSON.stringify(newArray));
-      return productToDelete;
-    } else {
-      throw new Error("the id product does not exist");
-    }
-
-  }
 }
 
 const productsManager = new ProductManager('./src/db/products.json');
 
 export default productsManager
-// (async () => {
-//   await producstManager.addProduct({
-//   title: 'Bugatti',
-//   description: 'Veyron',
-//   code: '001',
-//   price: 1900000,
-//   stock: 5,
-//   category: 'hyper-sports',
-//   thumbnails: ['']
-//   })
-//   await producstManager.addProduct({
-//     title: "Rolls Royce",
-//     description: "Phantom",
-//     code: "002",
-//     price: 400000,
-//     stock: 10,
-//     category: "Luxury",
-//     thumbnails: [""],
-//   });
-//   await producstManager.addProduct({
-//     title: "Maseratti",
-//     description: "Ghibli",
-//     code: "003",
-//     price: 85000,
-//     stock: 12,
-//     category: "Luxury",
-//     thumbnails: [""],
-//   });
-//   await producstManager.addProduct({
-//     title: "Lamborghini",
-//     description: "Huracan",
-//     code: "004",
-//     price: 210000,
-//     stock: 6,
-//     category: "Sport",
-//     thumbnails: [""],
-//   });
-//   await producstManager.addProduct({
-//     title: "Ferrari",
-//     description: "Enzo",
-//     code: "005",
-//     price: 2300000,
-//     stock: 3,
-//     category: "Luxury",
-//     thumbnails: [""],
-//   });
-  // console.log(await instanceTest.getProducts())
-  // await producstManager.updateProduct("c1d7cca3-f507-4c55-b3ed-286044f22015", {
-  //   title: "Rolls Royce",
-  //   description: "Phantom",
-  //   code: "002",
-  //   price: 350000,
-  //   stock: 10,
-  //   category: "Luxury",
-  //   thumbnails: [""],
-  // });
 
-  // console.log(await producstManager.getProducts());
-
-  // await producstManager.deleteProduct("c1d7cca3-f507-4c55-b3ed-286044f22015");
-
-  // console.log(await producstManager.getProducts());
-// }
-// )()
