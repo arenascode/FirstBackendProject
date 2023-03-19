@@ -5,6 +5,8 @@ import { Server as SocketIoServer } from "socket.io";
 import handlebars from "express-handlebars";
 import routerRealTimeProducts from "./routes/realTimeProducts.router.js";
 import productsManager from "./manager/ProductManager.js";
+import mongoose from "mongoose";
+import { MONGODB_CNX_STR } from "./config/mongodbCnxStr.js";
 
 const app = express()
 app.use('/static', express.static('public'))
@@ -24,8 +26,12 @@ app.use('/api/carts', routerCart)
 // Router for Sockets
 app.use('/realtimeproducts', routerRealTimeProducts)
 
+//Conectamos con ATLAS 
+await mongoose.connect(MONGODB_CNX_STR)
+
 const port = 8080
 const conectedServer = app.listen(port, () => console.log(`Connected to ${port} Port`))
+
 
 const io = new SocketIoServer(conectedServer)
 
