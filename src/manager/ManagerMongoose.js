@@ -26,6 +26,9 @@ export class ManagerMongoose {
     return await this.collection.find({}).lean()
   }
   
+  async getById(id) {
+    return await this.collection.findById(id)
+  }
   async updateById(id, dataToUpdate) {
     return await this.collection.updateOne({_id: id}, dataToUpdate)
   }

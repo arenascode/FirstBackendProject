@@ -9,6 +9,10 @@ class ProductsService {
     const productsDB = await productsManagerDB.getAll()
     return productsDB
   }
+  async getProductById(id) {
+    const productById = await productsManagerDB.getById(id)
+    return productById
+  }
   async updateById(id, dataToUpdate) {
     return await productsManagerDB.updateById(id, dataToUpdate)
   }
