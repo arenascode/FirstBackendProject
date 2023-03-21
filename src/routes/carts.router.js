@@ -25,7 +25,7 @@ routerCart.get("/", async (req, res) => {
   }
 });
 
-
+// To add a new cart
 routerCart.post('/', async (req, res) => {
   try {
     const productToCart = req.body

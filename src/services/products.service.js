@@ -2,7 +2,7 @@ import productsManagerDB from "../manager/ProductsManager.js";
 
 class ProductsService {
   async addNewProduct(dataNewProduct) {
-    const productAdded = await productsManagerDB.guardar(dataNewProduct)
+    const productAdded = await productsManagerDB.saveItem(dataNewProduct)
     return productAdded
   }
   async getProducts() {
