@@ -4,10 +4,10 @@ import cartsManagerDB from "../manager/CartsManager.js";
 class CartsService {
   async addNewCart(newCart) {
     // const idProduct = await cartsManagerDB.getById(newItemCart._id)
-    console.log(`vengo de CartsService ${JSON.stringify(newCart)}`);
+    //console.log(`vengo de CartsService ${JSON.stringify(newCart)}`);
     const cartAdded = await cartsManagerDB.saveNewCart(newCart)
     // const createdCart = await cartsManagerDB.saveCart(newItemCart)
-    // return createdCart
+    return (`Soy el return de saveNewCart en CartService ${cartAdded}`)
   }
 }
 const cartsService = new CartsService()
