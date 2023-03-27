@@ -66,31 +66,39 @@ await mongoose.connect(MONGODB_CNX_STR)
 //     user: "usuario123"
 //   });
 
-const addNewCart3 = await cartsService.addNewCart(
-  {
-    _id: "641788b132b54c0973da011a",
-    title: "Ford",
-    description: "Mustang",
-    price: 370000,
-    code: "007",
-    stock: 13,
-    category: "Sport",
-    thumbnails: "Ruta1",
-    user: "usuario456",
-  }
-);
+// const addNewCart3 = await cartsService.addNewCart(
+//   {
+//     _id: "641788b132b54c0973da011a",
+//     title: "Ford",
+//     description: "Mustang",
+//     price: 370000,
+//     code: "007",
+//     stock: 13,
+//     category: "Sport",
+//     thumbnails: "Ruta1",
+//     user: "usuario123",
+//   }
+// );
 
-const addNewCart5 = await cartsService.addNewCart(
-  {
-  _id: "64204908ed06faa2cfcc204a",
-  title: 'Maseratti',
-  description: 'Gold',
-  price: 200,
-  code: '000',
-  stock: 8,
-  category: 'Ruta',
-  thumbnails: ["sin ruta", "ruta2"],
+// const addNewCart5 = await cartsService.addNewCart(
+//   {
+//   _id: "64204908ed06faa2cfcc204a",
+//   title: 'Maseratti',
+//   description: 'Gold',
+//   price: 200,
+//   code: '000',
+//   stock: 8,
+//   category: 'Ruta',
+//   thumbnails: ["sin ruta", "ruta2"],
+//   user: "usuario456",
+// }
+// );
+
+// TEST FOR ADD PRODUCT IN EXISTING CART
+
+const addProductToCart = await cartsService.addProductToCart({
+  pid: "6417786cb305822db4bb7fa1",
   user: "usuario456",
-}
-);
+});
+
 mongoose.connection.close()

@@ -4,6 +4,7 @@ import CartManager from "../manager/CartManager.js";
 const routerCart = Router()
 const cartsManager = new CartManager('./src/db/carts.json')
 
+// to get a especific cart
 routerCart.get('/:cid', async (req, res) => {
   try {
     const idCart = req.params.cid
@@ -15,7 +16,7 @@ routerCart.get('/:cid', async (req, res) => {
     });
   }
 });
-
+// to get all carts
 routerCart.get("/", async (req, res) => {
   try {
     const carts = await cartsManager.showCart();
@@ -39,7 +40,6 @@ routerCart.post('/', async (req, res) => {
   }
 
 })
-
 
 routerCart.post('/:cid/product/:pid', async (req, res) => {
   try {

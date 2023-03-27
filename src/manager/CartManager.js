@@ -100,15 +100,4 @@ class CartManager {
   }
 }
 
-// const instanceTest = new CartManager('./Carts.json');
-
-// (async () => {
-//   await instanceTest.addCart({productCode: "001"})
-//   await instanceTest.addCart({productCode: "002"});
-//   await instanceTest.addCart({productCode: "003"})
-//   // await instanceTest.addCart({productCode: "003"});
-
-//   console.log(await instanceTest.showCart())
-// })()
-
 export default CartManager

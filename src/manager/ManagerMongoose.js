@@ -29,16 +29,12 @@ export class ManagerMongoose {
   }
   // To add New Cart
   async saveNewCart(productToAdd) {
-    console.log(`Soy el productToAdd ${JSON.stringify(productToAdd)}`);
-    console.log(`Soy el id del PTAdd ${productToAdd._id}`);
-
     const product = {}
     const cart = new Cart()
     //Nos aseguramos de saber si el carrito existe previamente para saber si creamos uno nuevo o lo actualizamos simplemente.
     const cartExist = await this.collection.findOne({
       user: productToAdd.user,
-    }, );
-    console.log(`Soy cartExist ${typeof cartExist}`);
+    },);
 
     if (cartExist) {
       const productInCartExist = await this.collection.findOne({
@@ -49,7 +45,6 @@ export class ManagerMongoose {
           }
         },
       });
-      console.log(` Soy ProductInCartExist ${productInCartExist}`);
 
       if (productInCartExist) {
         await productInCartExist.products.forEach((element) => {
@@ -60,8 +55,6 @@ export class ManagerMongoose {
           }
         });
         await productInCartExist.save()
-        console.log(
-          `el producto en el cart ya existe, se actualizará la cantidad. Producto actualizado: `);
         return cartExist
       } else {
         product._id = productToAdd._id;
@@ -79,27 +72,39 @@ export class ManagerMongoose {
       console.log(`El cart ${JSON.stringify(cart)} fue agregado a la coleccion`);
       return newCart
     }
-    // if (!productInCartExist) {
-    //   product._id = productToAdd._id
-    //   product.quantity = 1
-    //   cart.user = productToAdd.user
-    //   cart.products.push(product)
-    //   const newCart = await this.collection.create(cart)
-    // } else {
-    //   cart.products[0].quantity += 1
-    // }
   }
-  async addProductToCart(cid, pid) {
-    const productToAddCart = pid // continue here
-    console.log(`Vengo de addProductToCart ${productToAddCart}`);
-    const cartExist = this.collection.findById(cid)
-    console.log(`Soy cartExist ${cartExist}`);
 
-    const productExist = await this.collection.findOne(productToAddCart)
-    console.log(`productExist in saveCart  ${productExist}`);
+  async addProductToCart(productToCart) {
+    const idProduct = productToCart.pid
+    console.log(idProduct);
+    const productInCartExist = await this.collection.findOne({
+      user: productToCart.user,
+      products: {
+        $elemMatch: {
+          _id: idProduct,
+        },
+      },
+    });
+    console.log(productInCartExist);
 
-    // console.log(`I came from saveCart in ManagerMongoose ${productToAddCart}`);
+    if (productInCartExist) {
+      const productToUpdateCart = productInCartExist.products.find(e => e._id == idProduct)
+      productToUpdateCart.quantity += 1
+      console.log(productToUpdateCart);
+      await productInCartExist.save()
+    } else {
+      const newProductAdd = {
+        _id: idProduct,
+        quantity: 1
+      }
+      const newProductAdded = await this.collection.findOneAndUpdate(
+        { user: productToCart.user },
+        { $push: { products: { _id: idProduct, quantity: 1 } } },
+        { new: true }
+      );
+    }
   }
+
   async getAll() {
     return await this.collection.find({}).lean()
   }
