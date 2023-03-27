@@ -97,7 +97,7 @@ await mongoose.connect(MONGODB_CNX_STR)
 // TEST FOR ADD PRODUCT IN EXISTING CART
 
 const addProductToCart = await cartsService.addProductToCart({
-  pid: "6417786cb305822db4bb7fa1",
+  _id: "6417786cb305822db4bb7fa1",
   user: "usuario456",
 });
 

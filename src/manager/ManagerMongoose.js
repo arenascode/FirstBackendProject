@@ -31,7 +31,7 @@ export class ManagerMongoose {
   async saveNewCart(productToAdd) {
     const product = {}
     const cart = new Cart()
-    //Nos aseguramos de saber si el carrito existe previamente para saber si creamos uno nuevo o lo actualizamos simplemente.
+    //Nos aseguramos de saber si el carrito existe previamente para saber si creamos uno nuevo o lo actualizamos simplemente
     const cartExist = await this.collection.findOne({
       user: productToAdd.user,
     },);
@@ -75,7 +75,7 @@ export class ManagerMongoose {
   }
 
   async addProductToCart(productToCart) {
-    const idProduct = productToCart.pid
+    const idProduct = productToCart._id
     console.log(idProduct);
     const productInCartExist = await this.collection.findOne({
       user: productToCart.user,
@@ -99,7 +99,7 @@ export class ManagerMongoose {
       }
       const newProductAdded = await this.collection.findOneAndUpdate(
         { user: productToCart.user },
-        { $push: { products: { _id: idProduct, quantity: 1 } } },
+        { $push: { products: newProductAdd } },
         { new: true }
       );
     }
