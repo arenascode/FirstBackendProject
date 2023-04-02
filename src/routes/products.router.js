@@ -8,29 +8,32 @@ const routerProducts = Router()
 
 // To show all products
 async function controllerProducts(req, res) {
-  try {
-    const limit = parseInt(req.query.limit)
-  const showProducts = await productsService.getProducts()
-  if (limit) {
-    const limitedProducts = showProducts.splice(0, limit)
-    res.json(limitedProducts)
-    // res.render("home", {products: limitedProducts})
-  } else {
-    // res.render("home", {products: showProducts});
-    res.json(showProducts)
-  }
-  } catch (error) {
-    res.status(400).json({
-      msj: error.message,
-    });
-  }
-  
+  const limite = parseInt(req.query.limit)
+  console.log(limite);
+  const pagina = parseInt(req.query.page)
+  console.log(pagina);
+  const category = req.query.category
+  console.log(category);
+  const order = req.query.sort
+  console.log(`soy order en router ${order}`);
+      try {
+        const showProducts = await productsService.getProducts(category, limite, pagina, order)
+        // const limitedProducts = showProducts.splice(0, limite)
+        res.json(showProducts)
+        // res.render("home", {products: limitedProducts})
+        
+      } catch (error) {
+        res.status(400).json({
+          msg: error.message
+        });
+      }
 }
+
 routerProducts.get('/', controllerProducts)
 
 async function controllerProductById(req, res) {
   try {
-    const idProduct = req.params.pid
+  const idProduct = req.params.pid
   const showProductByID = await
   productsService.getProductById(idProduct)
   res.json(showProductByID)
@@ -41,6 +44,7 @@ async function controllerProductById(req, res) {
   }
   
 }
+// to get one product by ID
 routerProducts.get('/:pid', controllerProductById)
 
 // To add a new product
@@ -55,7 +59,7 @@ routerProducts.post('/', async (req, res) => {
     })
   }
 })
-
+// To update a product
 routerProducts.put("/:pid", async (req, res) => {
   try {
     const productToUpdate = req.params.pid;
@@ -69,7 +73,7 @@ routerProducts.put("/:pid", async (req, res) => {
   }
   
 });
-
+// To Delete a product
 routerProducts.delete("/:pid", async (req, res) => {
   try {
     const productToDelete = req.params.pid;

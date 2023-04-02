@@ -1,3 +1,4 @@
+
 function validateTitle(valor) {
   if (typeof valor !== 'string') throw new Error('el nombre del producto es una cadena de caracteres')
   if (!valor) throw new Error('el nombre no puede estar vacio')
@@ -50,4 +51,5 @@ export class DataNewProduct {
     this.thumbnails = thumbnails
   }
 }
+
 

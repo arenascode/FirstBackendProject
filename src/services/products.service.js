@@ -5,9 +5,17 @@ class ProductsService {
     const productAdded = await productsManagerDB.saveItem(dataNewProduct)
     return productAdded
   }
-  async getProducts() {
-    const productsDB = await productsManagerDB.getAll()
-    return productsDB
+  async getProducts(category, limite, pagina, order) {
+    const orden = order
+    console.log(`Category en ProductService ${typeof category}`);
+    // console.log(`paginationOptions en ProductService ${JSON.stringify(paginationOptions.limit)}`);
+    console.log(`Soy order en product.service ${orden}`);
+      return await productsManagerDB.getAll(
+      category,
+      limite,
+      pagina,
+      order
+    );
   }
   async getProductById(id) {
     const productById = await productsManagerDB.getById(id)
@@ -18,6 +26,9 @@ class ProductsService {
   }
   async deleteById(id) {
     return await productsManagerDB.deleteProduct(id)
+  }
+  async deleteAll() {
+    return await productsManagerDB.deleteAll()
   }
 } 
 
