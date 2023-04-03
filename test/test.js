@@ -64,19 +64,8 @@ const dataNewProduct3 = new DataNewProduct({
 
 // TEST CART SERVICE 
 
-// const addNewCart = await cartsService.addNewCart({
-//     products: [
-//         {
-//           _id: '641788b132b54c0973da011a',
-//           quantity: 6
-//         },
-//         {
-//           _id: "6417786cb305822db4bb7fa1",
-//           quantity: 1
-//         }
-//     ]
-// })
-
+// const getCarts = await cartsService.showCartById('64204a6a580cd792f818a661')
+// console.log(getCarts);
 // const addNewCart2 = await cartsService.addNewCart(
 //   {
 //     _id: "6417786cb305822db4bb7fa1",
@@ -91,17 +80,17 @@ const dataNewProduct3 = new DataNewProduct({
 //   });
 
 // const addNewCart3 = await cartsService.addNewCart(
-//   {
-//     _id: "641788b132b54c0973da011a",
-//     title: "Ford",
-//     description: "Mustang",
-//     price: 370000,
-//     code: "007",
-//     stock: 13,
-//     category: "Sport",
-//     thumbnails: "Ruta1",
-//     user: "usuario123",
-//   }
+  // {
+  //   _id: "641788b132b54c0973da011a",
+  //   title: "Ford",
+  //   description: "Mustang",
+  //   price: 370000,
+  //   code: "007",
+  //   stock: 13,
+  //   category: "Sport",
+  //   thumbnails: "Ruta1",
+  //   user: "usuario123",
+  // }
 // );
 
 // const addNewCart5 = await cartsService.addNewCart(
@@ -125,5 +114,9 @@ const dataNewProduct3 = new DataNewProduct({
 //   user: "usuario456",
 // });
 
-// await productsService.deleteAll()
+// TEST FOR DELET PRODUCT IN EXISTING CART
+const deleteProductInCart = await cartsService.deleteProductInCart({
+  cid: "64204a6a580cd792f818a661",
+  pid: "6417786cb305822db4bb7fa1",
+});
 mongoose.connection.close()

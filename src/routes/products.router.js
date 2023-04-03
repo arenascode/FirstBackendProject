@@ -31,6 +31,7 @@ async function controllerProducts(req, res) {
 
 routerProducts.get('/', controllerProducts)
 
+// to get one product by ID
 async function controllerProductById(req, res) {
   try {
   const idProduct = req.params.pid
@@ -44,7 +45,6 @@ async function controllerProductById(req, res) {
   }
   
 }
-// to get one product by ID
 routerProducts.get('/:pid', controllerProductById)
 
 // To add a new product
@@ -76,7 +76,7 @@ routerProducts.put("/:pid", async (req, res) => {
 // To Delete a product
 routerProducts.delete("/:pid", async (req, res) => {
   try {
-    const productToDelete = req.params.pid;
+  const productToDelete = req.params.pid;
   const deletedProduct = await productsService.deleteById(productToDelete)
   res.send(
     `the product with ID: ${productToDelete} was deleted succesfull`

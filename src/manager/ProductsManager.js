@@ -1,5 +1,5 @@
 import {
-  ManagerMongoose
+  productsManagerMongoose
 } from "./ManagerMongoose.js";
 import mongoosePaginate from "mongoose-paginate-v2"
 import { Schema } from "mongoose";
@@ -38,6 +38,6 @@ const productsSchema = new Schema({
   }
 })
 productsSchema.plugin(mongoosePaginate)
-const productsManagerDB = new ManagerMongoose(productsCollection, productsSchema);
+const productsManagerDB = new productsManagerMongoose(productsCollection, productsSchema);
 
 export default productsManagerDB

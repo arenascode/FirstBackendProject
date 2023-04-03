@@ -55,5 +55,22 @@ routerCart.post('/:cid/product/:pid', async (req, res) => {
   }
 
 })
+// to delete product in existing cart
+routerCart.delete("/:cid/product/:pid", async (req, res) => {
+  const cartId = req.params.cid
+  console.log(cartId);
+  const productId = req.params.pid
+  console.log(productId);
+  try {
+    if (cartId && productId) {
+      return await cartsService.deleteProductInCart(cartId, productId)
+    } else {
+      console.log(`missing data`);
+    }
+  } catch (error) {
+    
+  }
+  res.status(204).json({cartID: cartId, productId: productId})
+});
 
 export default routerCart

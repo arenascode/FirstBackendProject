@@ -13,12 +13,19 @@ class CartsService {
     return productAdded
   }
   async showCarts() {
-    return await cartsManagerDB.getAll()
+    return await cartsManagerDB.getAllCarts()
   }
   async showCartById(id) {
-    return await cartsManagerDB.getById(id)
+    return await cartsManagerDB.getCartById(id)
+  }
+
+  async deleteProductInCart(identifiers) {
+    const cid = identifiers.cid
+    const pid = identifiers.pid
+    return await cartsManagerDB.deleteItemInCart(cid, pid)
   }
 }
+
 const cartsService = new CartsService()
 
 export default cartsService
