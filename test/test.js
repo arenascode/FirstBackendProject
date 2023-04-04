@@ -64,7 +64,9 @@ const dataNewProduct3 = new DataNewProduct({
 
 // TEST CART SERVICE 
 
-// const getCarts = await cartsService.showCartById('64204a6a580cd792f818a661')
+const getCarts = await cartsService.showCartById('64204a6a580cd792f818a661')
+console.log(getCarts)
+
 // console.log(getCarts);
 // const addNewCart2 = await cartsService.addNewCart(
 //   {
@@ -115,8 +117,9 @@ const dataNewProduct3 = new DataNewProduct({
 // });
 
 // TEST FOR DELET PRODUCT IN EXISTING CART
-const deleteProductInCart = await cartsService.deleteProductInCart({
-  cid: "64204a6a580cd792f818a661",
-  pid: "6417786cb305822db4bb7fa1",
-});
+// const deleteProductInCart = await cartsService.deleteProductInCart({
+//   cid: "64204a6a580cd792f818a661",
+//   pid: "6417786cb305822db4bb7fa1",
+// });
+
 mongoose.connection.close()

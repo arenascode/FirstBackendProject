@@ -19,10 +19,28 @@ class CartsService {
     return await cartsManagerDB.getCartById(id)
   }
 
-  async deleteProductInCart(identifiers) {
-    const cid = identifiers.cid
-    const pid = identifiers.pid
-    return await cartsManagerDB.deleteItemInCart(cid, pid)
+  async deleteProductInCart(cartId, productId) {
+    const cid = cartId
+    const pid = productId
+    console.log(`Line 25: cid ${cid}`);
+    console.log(`Line 26: pid ${pid}`);
+    const productEliminated = await cartsManagerDB.deleteItemInCart(cid, pid)
+    return productEliminated
+  }
+
+  async updateCart(cid, productToUpdate, quantityToUpdate) {
+    const newQuantity = quantityToUpdate
+    const itemToUpdate = productToUpdate
+    const idCartToUpdate = cid;
+    const cartUpdated = await cartsManagerDB.update(idCartToUpdate, itemToUpdate, newQuantity)
+    return cartUpdated
+  }
+
+  async deleteAllProductsInCart(cid) {
+    const cartId = cid
+    console.log(`LINE 40 of cartsService IDCart ${cartId}`);
+    const emptyCart = await cartsManagerDB.deleteAllProductsInCart(cartId)
+    return emptyCart
   }
 }
 

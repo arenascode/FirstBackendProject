@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Cart from "./Cart.js"
+import productsManagerDB from "./ProductsManager.js";
 class cartManagerMongoose {
   constructor(CartCollection, schema) {
     this.collection = mongoose.model(
@@ -94,7 +95,7 @@ class cartManagerMongoose {
   }
 
   async getCartById(id) {
-    return await this.collection.findById(id)
+    return await this.collection.findById(id).populate('products.product')
   }
 
   async deleteItemInCart(cartId, productId) {
@@ -113,7 +114,7 @@ class cartManagerMongoose {
     console.log(`Line 113: Cart ${cartExist}`);
 
     if (cartExist) {
-      const productInCart = cartExist.products.find((e) => e._id == pidToDelete)
+      const productInCart = await cartExist.products.find((e) => e._id == pidToDelete)
       console.log(productInCart);
 
       if (productInCart.quantity > 1) {
@@ -121,18 +122,69 @@ class cartManagerMongoose {
         console.log(`Line 121 ${productInCart}`);
         await cartExist.save()
       } else {
-        return await this.collection.findByIdAndDelete(pidToDelete)
+        const newArray = cartExist.products.filter(p => p._id != pidToDelete)
+        cartExist.products = newArray
+        await cartExist.save()
+        console.log(`new cartExist ${cartExist}`);
       }
-      // const newArray = productInCartExist.products.filter( p => p._id == pidToDelete)
-      // console.log(`Line 120 ${newArray}`);
-      // productToDeleteInCart.products.
+      return await cartExist
+    } else {
+      console.log(`the product In cart Doesn't exist`);
     }
+  }
+
+  async update(cid, pid, dataToUpdate) {
+    const cartId = cid
+    const idProduct = pid;
+    const quantityToUpdate = dataToUpdate.quantity
+    console.log(`LINE 138 CartsManager ${idProduct}`);
+    console.log(`LINE 140 CartsManager ${quantityToUpdate}`);
+    console.log(`LINE 141 CartsManager ${JSON.stringify(quantityToUpdate)}`);
+
+    const cartExist = await this.collection.findOne({
+      _id: cartId,
+      products: {
+        $elemMatch: {
+          _id: idProduct,
+        },
+      },
+    });
+    console.log(cartExist);
+
+    if (cartExist) {
+      const productToUpdateCart = cartExist.products.find(
+        (e) => e._id == idProduct
+      );
+      console.log(`LINE 156 Carts Manager Product to update ${productToUpdateCart}`);
+      const filtro = {_id: cartId, "products._id": idProduct}
+      const result = await this.collection.updateOne(filtro, {
+        $set: { "products.$.quantity": quantityToUpdate },
+      });
+      console.log(`Line 158 ${JSON.stringify(result)}`);
+    } else {
+      console.log(`Line 161: The cart doesn't exist`);
+    }
+  }
+
+  async deleteAllProductsInCart(cid) {
+    const cartExist = await this.collection.findOne({ _id: cid })
+    console.log(`Line 170 CartsManag ${cartExist}`);
+
+    const productsInCart = cartExist.products
+    console.log(productsInCart);
+    const emptyCart = this.collection.updateOne({ _id: cid }, { $set: { "products": [] } })
+    return await emptyCart
   }
 }
 
 const cartsManagerDB = new cartManagerMongoose("carts", {
   user: { type: String },
-  products: [{ pid: {type: String}, quantity: {type: Number, required: true}}],
+  products: [
+      {
+        pid: { type: String, ref: 'products'},
+        quantity: { type: Number, required: true }
+      }
+  ]
 })
 
 export default cartsManagerDB

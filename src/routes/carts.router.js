@@ -40,8 +40,8 @@ routerCart.post('/', async (req, res) => {
   }
 
 })
-// To add new product an existing cart
-routerCart.post('/:cid/product/:pid', async (req, res) => {
+// To update new product an existing cart
+routerCart.put('/:cid/', async (req, res) => {
   try {
     // const idCart = req.params.cid
     // const idProduct = req.params.pid
@@ -56,21 +56,52 @@ routerCart.post('/:cid/product/:pid', async (req, res) => {
 
 })
 // to delete product in existing cart
-routerCart.delete("/:cid/product/:pid", async (req, res) => {
-  const cartId = req.params.cid
-  console.log(cartId);
-  const productId = req.params.pid
-  console.log(productId);
+routerCart.delete('/:cid/product/:pid', async (req, res) => {
   try {
+    const cartId = req.params.cid
+    console.log(cartId);
+    const productId = req.params.pid
+    console.log(productId);
+
     if (cartId && productId) {
-      return await cartsService.deleteProductInCart(cartId, productId)
+      await cartsService.deleteProductInCart(cartId, productId)
+      res.status(200).json({ msg: 'product delete successfull'})
     } else {
       console.log(`missing data`);
     }
   } catch (error) {
-    
+    res.status(400).json({
+      msg: error.message
+    })
   }
-  res.status(204).json({cartID: cartId, productId: productId})
+  // res.json(`the product with ID ${productId} in Cart with ID ${cartId} was deleted.`)
 });
+// to update a cart 
+routerCart.put('/:cid/product/:pid', async (req, res) => {
+  try {
+    const cid = req.params.cid
+    const productToUpdate = req.params.pid
+    const quantityToUpdate = req.body
+    await cartsService.updateCart(cid, productToUpdate, quantityToUpdate)
+    res.json(`the cart was update successfull`)
+  } catch (error) {
+    res.status(400).json({
+      msg: error.message
+    })
+  }
+
+})
+// to delete all products in the cart
+routerCart.delete('/:cid', async (req, res) => {
+  const cartID = req.params.cid
+  try {
+    await cartsService.deleteAllProductsInCart(cartID)
+    res.status(200).json({msg: `the Cart is empty`})
+  } catch (error) {
+    res.status(400).json({
+      msg: error.message
+    })
+  }
+})
 
 export default routerCart
