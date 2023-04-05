@@ -5,8 +5,8 @@ import mongoosePaginate from "mongoose-paginate-v2"
 import { Schema } from "mongoose";
 
 const productsCollection = 'products'
-const productsSchema = new Schema({
-    title: {
+export const productsSchema = new Schema({
+  title: {
     type: String,
     required: true
   },

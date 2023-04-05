@@ -64,8 +64,8 @@ const dataNewProduct3 = new DataNewProduct({
 
 // TEST CART SERVICE 
 
-const getCarts = await cartsService.showCartById('64204a6a580cd792f818a661')
-console.log(getCarts)
+// const getCart = await cartsService.showCartById('64204a6a580cd792f818a661')
+// console.log(getCart)
 
 // console.log(getCarts);
 // const addNewCart2 = await cartsService.addNewCart(

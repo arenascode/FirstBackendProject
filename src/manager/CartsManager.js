@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import { Schema } from "mongoose";
 import Cart from "./Cart.js"
-import productsManagerDB from "./ProductsManager.js";
+import { productsSchema } from "./ProductsManager.js";
 class cartManagerMongoose {
   constructor(CartCollection, schema) {
     this.collection = mongoose.model(
@@ -91,11 +92,11 @@ class cartManagerMongoose {
   }
 
   async getAllCarts (){
-  return await this.collection.find()
+  return await this.collection.find().populate('products._id')
   }
 
   async getCartById(id) {
-    return await this.collection.findById(id).populate('products.product')
+    return await this.collection.findById(id).populate('products._id')
   }
 
   async deleteItemInCart(cartId, productId) {
@@ -179,12 +180,18 @@ class cartManagerMongoose {
 
 const cartsManagerDB = new cartManagerMongoose("carts", {
   user: { type: String },
-  products: [
+  products: {
+    type: [
       {
-        pid: { type: String, ref: 'products'},
-        quantity: { type: Number, required: true }
-      }
-  ]
-})
+        _id: {
+          type: Schema.Types.ObjectId,
+          ref: "products"
+        },
+        quantity: {type: Number, required: true}
+      },
+    ],
+    default: []
+  },
+});
 
 export default cartsManagerDB
