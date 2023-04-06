@@ -1,7 +1,6 @@
 import {
   Router
 } from "express";
-import productsManager from "../manager/ProductManager.js"
 import { productsService } from "../services/products.service.js";
 
 const routerProducts = Router()
@@ -18,17 +17,19 @@ async function controllerProducts(req, res) {
   console.log(`soy order en router ${order}`);
       try {
         const showProducts = await productsService.getProducts(category, limite, pagina, order)
+        console.log(`line 20 products.router Showproducts ${showProducts.docs}`);
         // const limitedProducts = showProducts.splice(0, limite)
-        res.json(showProducts)
-        // res.render("home", {products: limitedProducts})
-        
+        res.render('products', {
+          pageTitle: 'Products',
+          productsExist: showProducts.docs.length > 0,
+          products: showProducts.docs,
+        })
       } catch (error) {
         res.status(400).json({
           msg: error.message
         });
       }
 }
-
 routerProducts.get('/', controllerProducts)
 
 // to get one product by ID

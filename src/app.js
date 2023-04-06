@@ -7,6 +7,9 @@ import routerRealTimeProducts from "./routes/realTimeProducts.router.js";
 import productsManager from "./manager/ProductManager.js";
 import mongoose from "mongoose";
 import { MONGODB_CNX_STR } from "./config/mongodbCnxStr.js";
+import productsManagerDB from "./manager/ProductsManager.js";
+import { productsService } from "./services/products.service.js";
+import cartsService from "./services/carts.service.js";
 
 const app = express()
 app.use('/static', express.static('public'))
@@ -38,8 +41,11 @@ const io = new SocketIoServer(conectedServer)
 io.on('connection', async socket => {
   console.log('New client Connecteed');
   
-  socket.emit('showProducts', await productsManager.getProducts())
+  //This socket use fileSystemManager
+  // socket.emit('showProducts', await productsManager.getProducts())
   
+  socket.emit('productsList', await productsService.getProducts())
+
   socket.on('addProduct', async prod => {
     try {
       await productsManager.addProduct(prod)
@@ -57,6 +63,12 @@ io.on('connection', async socket => {
     } catch (error) {
       console.log({errorMessage: error});
     }
+  })
+
+  socket.on('addProductToCart', async productToAdd => {
+    console.log(`Line 68 app.js ${JSON.stringify(productToAdd)}`);
+    await cartsService.addNewCart(productToAdd)
+    
   })
 }
 )

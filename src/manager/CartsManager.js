@@ -11,6 +11,7 @@ class cartManagerMongoose {
   }
 
   async saveNewCart(productToAdd) {
+    console.log(`cartsmanager Line 14 ${JSON.stringify(productToAdd)}`);
     const product = {};
     const cart = new Cart();
     //Nos aseguramos de saber si el carrito existe previamente para saber si creamos uno nuevo o lo actualizamos simplemente

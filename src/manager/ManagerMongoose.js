@@ -66,8 +66,8 @@ export class productsManagerMongoose {
           return await this.collection.find().sort({price: orden})
         }
       } else {
-        console.log(`entre en el else de la linea 142`);
-        return await this.collection.paginate({}, {limit: 10, page: 1})
+        console.log(`entre en el else en ManagerMongoose de la linea 142`);
+        return await this.collection.paginate({}, {limit: 10, page: 1, lean: true})
       }
     }
   }

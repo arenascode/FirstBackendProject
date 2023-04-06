@@ -3,7 +3,7 @@ import cartsManagerDB from "../manager/CartsManager.js";
 
 class CartsService {
   async addNewCart(newCart) {
-  
+    console.log(`LINE 6 cartsService ${JSON.stringify(newCart)}`);
     const cartAdded = await cartsManagerDB.saveNewCart(newCart)
     return cartAdded
   }
