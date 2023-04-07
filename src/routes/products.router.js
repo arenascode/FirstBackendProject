@@ -8,16 +8,16 @@ const routerProducts = Router()
 // To show all products
 async function controllerProducts(req, res) {
   const limite = parseInt(req.query.limit)
-  console.log(limite);
+  // console.log(limite);
   const pagina = parseInt(req.query.page)
-  console.log(pagina);
+  //console.log(pagina);
   const category = req.query.category
-  console.log(category);
+  //console.log(category);
   const order = req.query.sort
-  console.log(`soy order en router ${order}`);
+  //console.log(`soy order en router ${order}`);
       try {
         const showProducts = await productsService.getProducts(category, limite, pagina, order)
-        console.log(`line 20 products.router Showproducts ${showProducts.docs}`);
+        //console.log(`line 20 products.router Showproducts ${showProducts.docs}`);
         // const limitedProducts = showProducts.splice(0, limite)
         res.render('products', {
           pageTitle: 'Products',

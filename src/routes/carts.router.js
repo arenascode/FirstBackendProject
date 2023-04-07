@@ -10,7 +10,22 @@ routerCart.get('/:cid', async (req, res) => {
   try {
     const idCart = req.params.cid
     const cartById = await cartsService.showCartById(idCart)
-    res.json(cartById)
+    const arrayOfProducts = []
+    const productsOfCart = cartById.products.forEach(e => {
+      const product = {
+        name: e._id.title,
+        description: e._id.description,
+        price: e._id.price,
+        category: e._id.category,
+        quantity: e.quantity
+      }
+      arrayOfProducts.push(product)
+    });
+    res.render('carts', {
+          pageTitle: 'Your Cart',
+          cartExist: Boolean(cartById),
+          cart: arrayOfProducts
+        })
   } catch (error) {
     res.status(400).json({
       msg: error.message

@@ -12,7 +12,7 @@ export class productsManagerMongoose {
   }
   // To manage Products
   async saveItem(registro) {
-    console.log(`vengo de ManagerMongoose ${JSON.stringify(registro)}`);
+    //console.log(`vengo de ManagerMongoose ${JSON.stringify(registro)}`);
 
     const codeProduct = registro.code;
     console.log(codeProduct);
@@ -38,7 +38,7 @@ export class productsManagerMongoose {
     const page = pagina
 
     if (categoria || limit) {
-      console.log(`soy orden en getAll de ManagMongoo ${orden}`);
+      //console.log(`soy orden en getAll de ManagMongoo ${orden}`);
       
       if (!limit) {
         if (orden) {
@@ -59,14 +59,14 @@ export class productsManagerMongoose {
       }
     } else {
       if (orden) {
-        console.log(`entré al if de la linea 140`);
+        //console.log(`entré al if de la linea 140`);
         if (categoria) {
           return await this.collection.find({category: categoria}).sort({price: orden})
         } else {
           return await this.collection.find().sort({price: orden})
         }
       } else {
-        console.log(`entre en el else en ManagerMongoose de la linea 142`);
+       // console.log(`entre en el else en ManagerMongoose de la linea 142`);
         return await this.collection.paginate({}, {limit: 10, page: 1, lean: true})
       }
     }

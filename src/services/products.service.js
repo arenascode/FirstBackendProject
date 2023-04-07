@@ -7,9 +7,9 @@ class ProductsService {
   }
   async getProducts(category, limite, pagina, order) {
     const orden = order
-    console.log(`Category en ProductService ${typeof category}`);
+    //console.log(`Category en ProductService ${typeof category}`);
     // console.log(`paginationOptions en ProductService ${JSON.stringify(paginationOptions.limit)}`);
-    console.log(`Soy order en product.service ${orden}`);
+    //console.log(`Soy order en product.service ${orden}`);
       return await productsManagerDB.getAll(
       category,
       limite,

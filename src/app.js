@@ -66,10 +66,12 @@ io.on('connection', async socket => {
   })
 
   socket.on('addProductToCart', async productToAdd => {
-    console.log(`Line 68 app.js ${JSON.stringify(productToAdd)}`);
+    //console.log(`Line 68 app.js ${JSON.stringify(productToAdd)}`);
     await cartsService.addNewCart(productToAdd)
     
   })
+  // socket.emit('cartById', await cartsService.showCartById()
+  // )
 }
 )
 
