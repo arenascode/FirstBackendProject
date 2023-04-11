@@ -10,6 +10,7 @@ import { MONGODB_CNX_STR } from "./config/mongodbCnxStr.js";
 import productsManagerDB from "./manager/ProductsManager.js";
 import { productsService } from "./services/products.service.js";
 import cartsService from "./services/carts.service.js";
+import routerSessions from "./routes/sessions.router.js";
 
 const app = express()
 app.use('/static', express.static('public'))
@@ -28,6 +29,9 @@ app.use('/api/carts', routerCart)
 
 // Router for Sockets
 app.use('/realtimeproducts', routerRealTimeProducts)
+
+// Router for User Sessions
+app.use('/sessions', routerSessions)
 
 //Conectamos con ATLAS 
 await mongoose.connect(MONGODB_CNX_STR)

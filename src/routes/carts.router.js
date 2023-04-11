@@ -1,9 +1,7 @@
 import {Router} from "express";
-import CartManager from "../manager/CartManager.js";
 import cartsService from "../services/carts.service.js";
 
 const routerCart = Router()
-const cartsManager = new CartManager('./src/db/carts.json')
 
 // to get a especific cart
 routerCart.get('/:cid', async (req, res) => {
