@@ -1,5 +1,4 @@
 const loginForm = document.getElementById('loginForm')
-console.log(loginForm);
 
 if (loginForm instanceof HTMLFormElement) {
   loginForm.addEventListener('submit', (e) => {

@@ -23,8 +23,9 @@ routerSessionsViews.get("/login", (req, res) => {
 
 // Profile View
 routerSessionsViews.get('/profile', (req, res) => {
+  console.log(req.session.user);
   res.render('userProfile', {
-    user: req.session
+    user: req.session.user
   })
 })
 

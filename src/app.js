@@ -16,6 +16,10 @@ import routerSessionsViews from "./routes/views.router.js";
 
 
 const app = express()
+
+//Conectamos con ATLAS 
+await mongoose.connect(MONGODB_CNX_STR)
+
 app.use('/static', express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -23,6 +27,22 @@ app.use(express.urlencoded({ extended: true }))
 app.engine('handlebars', handlebars.engine())
 app.set('views', './views')
 app.set('view engine', 'handlebars')
+app.use(
+  session({
+
+    store: MongoStore.create({
+      mongoUrl: MONGODB_CNX_STR,
+      ttl: 10,
+    }),
+
+    secret: "secretKey",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 3600
+    },
+  })
+);
 
 // Router for Products
 app.use('/api/products', routerProducts)
@@ -39,29 +59,6 @@ app.use('/sessions', routerSessions)
 app.use('/', routerSessionsViews)
 // here I going to use mongo for save user sessions
 
-app.use(
-  session({
-    /* ----------------------------------------------------- */
-    /*           Persistencia por redis database             */
-    /* ----------------------------------------------------- */
-    store: MongoStore.create({
-      mongoUrl: `mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/?retryWrites=true&w=majority`,
-      ttl: 10,
-    }),
-    /* ----------------------------------------------------- */
-
-    secret: "shhhhhhhhhhhhhhhhhhhhh",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: 40000
-    },
-  })
-);
-
-
-//Conectamos con ATLAS 
-await mongoose.connect(MONGODB_CNX_STR)
 
 const port = 8080
 const conectedServer = app.listen(port, () => console.log(`Connected to ${port} Port`))
