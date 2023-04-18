@@ -17,7 +17,7 @@ import routerSessionsViews from "./routes/views.router.js";
 
 const app = express()
 
-//Conectamos con ATLAS 
+//Conecting with ATLASDB 
 await mongoose.connect(MONGODB_CNX_STR)
 
 app.use('/static', express.static('public'))
@@ -59,7 +59,6 @@ app.use('/sessions', routerSessions)
 app.use('/', routerSessionsViews)
 // here I going to use mongo for save user sessions
 
-
 const port = 8080
 const conectedServer = app.listen(port, () => console.log(`Connected to ${port} Port`))
 
@@ -93,7 +92,6 @@ io.on('connection', async socket => {
   })
 
   socket.on('addProductToCart', async productToAdd => {
-    //console.log(`Line 68 app.js ${JSON.stringify(productToAdd)}`);
     await cartsService.addNewCart(productToAdd)
     
   })

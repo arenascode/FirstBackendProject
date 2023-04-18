@@ -19,6 +19,8 @@ if (loginForm instanceof HTMLFormElement) {
       console.log(result.status);
       if (result.status === 200) {
         window.location.replace("/profile");
+      } else {
+        alert('invalid credentials. Try Again')
       }
     });
   })

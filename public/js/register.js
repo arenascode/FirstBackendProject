@@ -1,5 +1,4 @@
 const formRegister = document.getElementById('formRegister')
-console.log(formRegister);
 
 if (formRegister instanceof HTMLFormElement) {
   formRegister.addEventListener('submit', (e) => {
@@ -24,8 +23,13 @@ if (formRegister instanceof HTMLFormElement) {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((response) => response.text())
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error));
+    }).then((response) => {
+      if (response.ok) {
+        alert('We are glad that you are part')
+        window.location.href='/login'
+      }
+    })
+      .catch((error) => console.log(error.message));
+    formRegister.reset()
   })
 }

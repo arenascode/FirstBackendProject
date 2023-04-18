@@ -1,18 +1,16 @@
 import { Router } from "express";
 import userManagerDB from "../models/users.model.js";
-import session from "express-session";
 
 const routerSessions = Router()
-
+// User Register
 routerSessions.post('/register', async (req, res) => {
   const dataUser = req.body
   console.log(dataUser);
   if (dataUser) {
     const userExist = await userManagerDB.findOne({ email: dataUser.email })
-    console.log(`I'am userExist ${userExist}`);
 
     if (userExist) {
-      return res.status(422).json({ status: 'error', error: 'User Already Exist' })
+      return res.status(422).json({ status: 'error', message: 'User Already Exist' })
     } else {
       const userCreated = {
         name: dataUser.name,
@@ -33,13 +31,28 @@ routerSessions.post('/register', async (req, res) => {
     res.json(response);
   }
 })
-
+// User Login 
 routerSessions.post('/login', async (req, res) => {
   const { userMail, userPass } = req.body
-  const userExist = await userManagerDB.findOne({
-    $and: [{ email: userMail }, { password: userPass }]
-  });
-  if (!userExist) return res.status(401).send({
+  // We going to verify if the login data is user or admin 
+  const isAdmin = (userMail === 'adminCoder@coder.com' && userPass === 'adminCod3r123')
+  console.log(`soy IsAdmin ${isAdmin}`)
+  
+  if (isAdmin) {
+    req.session.user = {
+      email: userMail,
+      role: "Admin"
+    }
+    res.render('userProfile', {
+      user: req.session.user
+    })
+    
+  } else {
+    // If the user doesn't a Admin, will searche in the DB
+    const userExist = await userManagerDB.findOne({
+      $and: [{ email: userMail }, { password: userPass }]
+    })
+    if (!userExist) return res.status(401).send({
     status: "error",
     error: "Invalid credentials"
   })
@@ -47,15 +60,20 @@ routerSessions.post('/login', async (req, res) => {
       id: userExist._id,
       name: userExist.name,
       email: userExist.email,
-      age: userExist.age
-  }
-    res.send({
+      age: userExist.age,
+      role: "User"
+  };
+    res.render("userProfile", {
+      user: req.session.user
+    });
+  res.send({
       status: "success",
       payload: req.session,
       message: "¡login succesfull! :)",
-    });
+    });  
+  }
 })
-
+// User Logout 
 routerSessions.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err)
@@ -69,4 +87,5 @@ routerSessions.get("/logout", (req, res) => {
     });
     res.redirect("/login");
 });
+
 export default routerSessions
