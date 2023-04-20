@@ -13,7 +13,9 @@ import routerSessions from "./routes/sessions.router.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import routerSessionsViews from "./routes/views.router.js";
-
+import { port } from "./config/PortServer.config.js";
+import passport from "passport";
+import { passportInitialize, passportSession } from "./middlewares/passport.js";
 
 const app = express()
 
@@ -27,6 +29,7 @@ app.use(express.urlencoded({ extended: true }))
 app.engine('handlebars', handlebars.engine())
 app.set('views', './views')
 app.set('view engine', 'handlebars')
+
 app.use(
   session({
 
@@ -44,6 +47,9 @@ app.use(
   })
 );
 
+//Here I tell to express that he uses passport
+app.use(passportInitialize, passportSession)
+
 // Router for Products
 app.use('/api/products', routerProducts)
 
@@ -59,7 +65,6 @@ app.use('/sessions', routerSessions)
 app.use('/', routerSessionsViews)
 // here I going to use mongo for save user sessions
 
-const port = 8080
 const conectedServer = app.listen(port, () => console.log(`Connected to ${port} Port`))
 
 const io = new SocketIoServer(conectedServer)

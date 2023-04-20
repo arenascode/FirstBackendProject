@@ -19,9 +19,13 @@ if (loginForm instanceof HTMLFormElement) {
       console.log(result.status);
       if (result.status === 200) {
         window.location.replace("/profile");
-      } else {
+      } else if (result.status === 401) { 
+        alert("invalid password. Try Again")
+      } else if (result.status === 404) {
         alert('invalid credentials. Try Again')
       }
+        
+      
     });
   })
 }

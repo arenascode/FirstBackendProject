@@ -1,36 +1,14 @@
 import { Router } from "express";
 import userManagerDB from "../models/users.model.js";
+import { createHash, isValidPassword } from "../utils/cryptography.js";
+import { registerAuthentication } from "../middlewares/passport.js";
+import { registerSessionsController } from "../controllers/sessions.controller.js";
 
 const routerSessions = Router()
 // User Register
-routerSessions.post('/register', async (req, res) => {
-  const dataUser = req.body
-  console.log(dataUser);
-  if (dataUser) {
-    const userExist = await userManagerDB.findOne({ email: dataUser.email })
 
-    if (userExist) {
-      return res.status(422).json({ status: 'error', message: 'User Already Exist' })
-    } else {
-      const userCreated = {
-        name: dataUser.name,
-        lastName: dataUser.lastName,
-        email: dataUser.email,
-        age: dataUser.age,
-        password: dataUser.password,
-      };
-      console.log(`I'm userCreated to save en Atlas ${JSON.stringify(userCreated)}`);
-      await userManagerDB.create(userCreated)
-      res.json({ status: "success", message: "User registered" })
-      }
-    } else {
-    const response = {
-      success: false,
-      message: "Invalid request",
-    };
-    res.json(response);
-  }
-})
+routerSessions.post('/register', registerAuthentication, registerSessionsController)
+
 // User Login 
 routerSessions.post('/login', async (req, res) => {
   const { userMail, userPass } = req.body
@@ -50,13 +28,16 @@ routerSessions.post('/login', async (req, res) => {
   } else {
     // If the user doesn't a Admin, will searche in the DB
     const userExist = await userManagerDB.findOne({
-      $and: [{ email: userMail }, { password: userPass }]
+      $and: [{ email: userMail }, /*{ password: userPass }*/]
     })
-    if (!userExist) return res.status(401).send({
+    console.log(`I'm userExist Line 55 ${userExist}`);
+    if (!userExist) return res.status(404).send({
     status: "error",
     error: "Invalid credentials"
-  })
-  req.session.user = {
+    })
+    if (!isValidPassword(userPass, userExist.password)) return res.status(401).send({ status: "error", error: "Incorrect Password" })
+    delete userExist.password
+    req.session.user = {
       id: userExist._id,
       name: userExist.name,
       email: userExist.email,
