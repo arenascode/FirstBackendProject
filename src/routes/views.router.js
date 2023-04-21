@@ -22,10 +22,10 @@ routerSessionsViews.get("/login", (req, res) => {
 
 // Profile View
 routerSessionsViews.get('/profile', (req, res) => {
-  console.log(req.session.user);
+  console.log(`req.user en RouterView ${JSON.stringify(req.user)}`);
   res.render('userProfile', {
-    pageTitle: "Profile",
-    user: req.session.user
+    pageTitle: "Your Profile",
+    user: req.user
   })
 })
 

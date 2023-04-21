@@ -8,7 +8,9 @@ const userSchema = new Schema({
   email: { type: String},
   age: { type: String },
   password: { type: String },
-}); 
+  role: {type: String}
+},
+  { versionKey: false}); 
 const userManagerDB = new mongoose.model(usersCollection, userSchema)
 
 export default userManagerDB
