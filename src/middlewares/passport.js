@@ -1,8 +1,12 @@
 import passport from "passport";
 import { Strategy as RegisterStrategy } from "passport-local";
 import { Strategy as LoginStrategy } from "passport-local";
+import { Strategy as GithubStrategy } from "passport-github2";
 import { createHash, isValidPassword } from "../utils/cryptography.js";
 import userManagerDB from "../models/users.model.js";
+import { githubCallbackUrl, githubClientSecret, githubClienteId } from "../config/auth.config.js";
+import { User } from "../entities/User.js";
+
 
 passport.use('register', new RegisterStrategy(
   {passReqToCallback: true, usernameField: 'email' }, async (req, username, password, done) => {
@@ -66,6 +70,35 @@ passport.use('login', new LoginStrategy({ usernameField: 'email' }, async (usern
 }
 ))
 
+// Login with Github Strategy
+passport.use('github', new GithubStrategy({
+  clientID: githubClienteId,
+  clientSecret: githubClientSecret,
+  callbackURL: githubCallbackUrl
+}, async (accessToken, refreshToken, profile, done) => {
+  console.log(profile._json.name) // its advisable to do this to see all the information that comes from the Github profile.
+  let user
+  try {
+    user = await userManagerDB.findOne({ email: profile._json.login })
+    console.log(user);
+    if (!user) {
+      user = new User({
+        name: profile._json.name,
+        email: profile._json.login,
+        password: '',
+      })
+      let result = await userManagerDB.create(user)
+      done(null,result)
+    } else {
+      done(null, user)
+    }
+  } catch (error) {
+    return done(error)
+    }
+  }
+))
+
+
 // I must add this for passport works.
 passport.serializeUser((user, next) => { next(null, user) })
 passport.deserializeUser((user, next) => { next(null, user) })
@@ -76,3 +109,7 @@ export const passportSession = passport.session()
 
 export const registerAuthentication = passport.authenticate('register', { failWithError: true })
 export const loginAuthentication = passport.authenticate('login', {failWithError: true})
+export const githubAuthentication = passport.authenticate("github", {
+  scope: ["user:email"],
+});
+export const githubAuthentication_CB = passport.authenticate('github', {failWithError: true})

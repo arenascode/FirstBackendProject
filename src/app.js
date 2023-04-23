@@ -16,6 +16,7 @@ import routerSessionsViews from "./routes/views.router.js";
 import { port } from "./config/PortServer.config.js";
 import passport from "passport";
 import { passportInitialize, passportSession } from "./middlewares/passport.js";
+import { apiRouter } from "./routes/api/api.router.js";
 
 const app = express()
 
@@ -60,7 +61,7 @@ app.use('/api/carts', routerCart)
 app.use('/realtimeproducts', routerRealTimeProducts)
 
 // Router for User Sessions
-app.use('/sessions', routerSessions)
+app.use('/api', apiRouter)
 // Router for User Sessions Views
 app.use('/', routerSessionsViews)
 // here I going to use mongo for save user sessions
