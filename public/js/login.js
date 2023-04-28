@@ -11,7 +11,7 @@ if (loginForm instanceof HTMLFormElement) {
     objLogin.email = userMail,
     objLogin.password = userPass
 
-    fetch("/sessions/login", {
+    fetch("api/sessions/login", {
       method: "POST",
       body: JSON.stringify(objLogin),
       headers: { "content-type": "application/json" },

@@ -40,7 +40,7 @@ app.use(
     }),
 
     secret: "secretKey",
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     cookie: {
         maxAge: 3600

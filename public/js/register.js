@@ -32,7 +32,7 @@ if (formRegister instanceof HTMLFormElement) {
     const userAge = dataUser.get("age");
     const userPass = dataUser.get("loginPassword");
     const repeatUserPass = dataUser.get("repeatPassword");
-    
+    console.log(userPass);
     if (userPass === repeatUserPass) {
       
       const objDataUser = {}
@@ -42,7 +42,7 @@ if (formRegister instanceof HTMLFormElement) {
       objDataUser.age= userAge
       objDataUser.password = userPass;
       
-      fetch("/sessions/register", {
+      fetch("/api/sessions/register", {
           method: "POST",
           body: JSON.stringify(objDataUser),
           headers: {
@@ -55,8 +55,8 @@ if (formRegister instanceof HTMLFormElement) {
                 }
               })
                 .catch((error) => console.log(error.message));
-            } else {
-              alert(`The passwords doesn't match`);
+      } else {
+            alert(`The passwords doesn't match`);
             } 
     formRegister.reset()
   })
