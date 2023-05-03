@@ -1,7 +1,7 @@
 import { Router } from "express";
 import userManagerDB from "../models/users.model.js";
 import { createHash, isValidPassword } from "../utils/cryptography.js";
-import { githubAuthentication, githubAuthentication_CB, loginAuthentication, registerAuthentication } from "../middlewares/passport.js";
+import { authenticationJwtApi, githubAuthentication, githubAuthentication_CB, loginAuthentication, registerAuthentication } from "../middlewares/passport.js";
 import { loginSessionController, logoutSessionController, registerSessionsController } from "../controllers/sessions.controller.js";
 
 const routerSessions = Router()
@@ -22,15 +22,12 @@ routerSessions.get(
   }
 );
 
-// to send the user
-// routerSessions.get("/profile", function (req, res) {
-//   // Obtener los datos del usuario
-//   let user = req.user
-//   delete user.password
-//   console.log(`request line 23 sessionsRouter ${JSON.stringify(user)}`);
-//   // Devolver los datos del usuario en formato JSON
-//   res.send(user);
-// });
+// Current
+
+routerSessions.get('/current', authenticationJwtApi, (req, res, next) => {
+  const getUser = req.user
+  res.send(getUser)
+})
 
 // User Logout 
 routerSessions.get("/logout", logoutSessionController);

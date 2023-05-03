@@ -110,7 +110,7 @@ passport.use('login', new LoginStrategy({ usernameField: 'email' }, async (usern
 passport.use('github', new GithubStrategy({
   clientID: githubClienteId,
   clientSecret: githubClientSecret,
-  callbackURL: githubCallbackUrl
+  callbackURL:githubCallbackUrl
 }, async (accessToken, refreshToken, profile, done) => {
   console.log(profile._json.name) // its advisable to do this to see all the information that comes from the Github profile.
   let user
