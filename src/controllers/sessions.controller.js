@@ -18,6 +18,10 @@ export function loginSessionController(req, res, next) {
   res.status(201).json(req.user)
 }
 
+export function getCurrentSessionController(req, res, next) {
+  res.json(req.user);
+}
+
 export function logoutSessionController(req, res, next) {
   res.clearCookie('jwt_authorization', {
     signed: true,
