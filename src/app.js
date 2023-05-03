@@ -9,14 +9,13 @@ import mongoose from "mongoose";
 import { MONGODB_CNX_STR } from "./config/mongodbCnxStr.js";
 import { productsService } from "./services/products.service.js";
 import cartsService from "./services/carts.service.js";
-import routerSessions from "./routes/sessions.router.js";
-import session from "express-session";
-import MongoStore from "connect-mongo";
 import routerSessionsViews from "./routes/views.router.js";
 import { port } from "./config/PortServer.config.js";
 import passport from "passport";
-import { passportInitialize, passportSession } from "./middlewares/passport.js";
+import { passportInitialize } from "./middlewares/passport.js";
 import { apiRouter } from "./routes/api/api.router.js";
+import cookieParser from "cookie-parser";
+import { COOKIE_SECRET } from "./config/cookies.config.js";
 
 const app = express()
 
@@ -30,26 +29,28 @@ app.use(express.urlencoded({ extended: true }))
 app.engine('handlebars', handlebars.engine())
 app.set('views', './views')
 app.set('view engine', 'handlebars')
+app.use(cookieParser(COOKIE_SECRET))
+// app.use(
+//   session({
 
-app.use(
-  session({
+//     store: MongoStore.create({
+//       mongoUrl: MONGODB_CNX_STR,
+//       ttl: 10,
+//     }),
 
-    store: MongoStore.create({
-      mongoUrl: MONGODB_CNX_STR,
-      ttl: 10,
-    }),
+//     secret: "secretKey",
+//     resave: true,
+//     saveUninitialized: true,
+//     cookie: {
+//         maxAge: 3600
+//     },
+//   })
+// );
 
-    secret: "secretKey",
-    resave: true,
-    saveUninitialized: true,
-    cookie: {
-        maxAge: 3600
-    },
-  })
-);
 
 //Here I tell to express that he uses passport
-app.use(passportInitialize, passportSession)
+
+app.use(passportInitialize, /*passportSession*/)
 
 // Router for Products
 app.use('/api/products', routerProducts)

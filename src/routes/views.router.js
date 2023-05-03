@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { authenticationJwtView } from "../middlewares/passport.js";
 
 const routerSessionsViews = Router();
 
@@ -21,7 +22,7 @@ routerSessionsViews.get("/login", (req, res) => {
 });
 
 // Profile View
-routerSessionsViews.get('/profile', (req, res) => {
+routerSessionsViews.get('/profile',authenticationJwtView, (req, res) => {
   console.log(`req.user en RouterView ${JSON.stringify(req.user)}`);
   res.render('userProfile', {
     pageTitle: "Your Profile",
@@ -31,16 +32,10 @@ routerSessionsViews.get('/profile', (req, res) => {
 
 // Logout View
 routerSessionsViews.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-    if (err)
-      return res.status(500).send({
-        status: "error",
-        error: "Couldn't logout",
-      })
-    else {
-      console.log(`see you later`);
-    }
-    }),
+  res.clearCookie('jwt_authorization', {
+    signed: true,
+    httpOnly: true
+    })
     res.redirect("/login")
 })
 

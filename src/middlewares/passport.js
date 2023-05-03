@@ -6,11 +6,47 @@ import { createHash, isValidPassword } from "../utils/cryptography.js";
 import userManagerDB from "../models/users.model.js";
 import { githubCallbackUrl, githubClientSecret, githubClienteId } from "../config/auth.config.js";
 import { User } from "../entities/User.js";
+import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt";
+import { JWT_SECRET_KEY } from "../config/auth.config.js";
+import { AuthenticationError } from "../errors/AuthenticationError.js";
 
+// JWT Stragegy //
+
+passport.use('jwt', new JwtStrategy({
+  jwtFromRequest: ExtractJwt.fromExtractors([function (req) {
+    let token = null
+    if (req && req.signedCookies) {
+      token = req.signedCookies['jwt_authorization']
+    }
+    return token
+  }]), secretOrKey: JWT_SECRET_KEY,
+}, async (jwt_payload, done) => {
+  try {
+    done(null,jwt_payload) //payload have token
+  } catch (error) {
+    done(error)
+  }
+}))
+
+export function authenticationJwtApi(req, res, next) {
+  passport.authenticate('jwt', (error, user, info) => {
+    if (error || !user) return next(new AuthenticationError())
+    req.user = user
+    next()
+  }) (req, res, next)
+} 
+
+export function authenticationJwtView(req, res, next) {
+  passport.authenticate('jwt', (error, user) => {
+    if (error || !user) return res.redirect('/login')
+    req.user = user
+    next()
+  })(req, res, next)
+}
 
 passport.use('register', new RegisterStrategy(
   {passReqToCallback: true, usernameField: 'email' }, async (req, username, password, done) => {
-    // I Bring here the code I used in the login controller 
+    // I Bring here the code I used in the register controller 
     const dataUser = req.body;
     console.log(dataUser);
     try {
@@ -21,14 +57,14 @@ passport.use('register', new RegisterStrategy(
           console.log('User Already Exist');
           return done(null, false)
         } else {
-          const userCreated = {
+          const userCreated = new User ({
             name: dataUser.name,
             lastName: dataUser.lastName,
             email: dataUser.email,
             age: dataUser.age,
             password: createHash(password),
             role: "User"
-          };
+          });
           console.log(
             `I'm userCreated to save en Atlas ${JSON.stringify(userCreated)}`
           );
@@ -99,17 +135,17 @@ passport.use('github', new GithubStrategy({
 ))
 
 
-// I must add this for passport works.
-passport.serializeUser((user, next) => { next(null, user) })
-passport.deserializeUser((user, next) => { next(null, user) })
+// I must add this for passport works. I dont need to use because with the jwt strategy doesn't necessary 
+// passport.serializeUser((user, next) => { next(null, user) })
+// passport.deserializeUser((user, next) => { next(null, user) })
 
 // With this Express can use passport like a middlewares in the app
 export const passportInitialize = passport.initialize()
-export const passportSession = passport.session()
+// export const passportSession = passport.session()
 
-export const registerAuthentication = passport.authenticate('register', { failWithError: true })
-export const loginAuthentication = passport.authenticate('login', {failWithError: true})
+export const registerAuthentication = passport.authenticate('register', {session: false, failWithError: true })
+export const loginAuthentication = passport.authenticate('login', {session: false,failWithError: true})
 export const githubAuthentication = passport.authenticate("github", {
-  scope: ["user:email"],
+  session: false,scope: ["user:email"],
 });
-export const githubAuthentication_CB = passport.authenticate('github', {failWithError: true})
+export const githubAuthentication_CB = passport.authenticate('github', {session: false,failWithError: true})

@@ -14,19 +14,24 @@ routerSessions.post('/login', loginAuthentication, loginSessionController)
 
 // User Login Github Strategy
 routerSessions.get('/github', githubAuthentication)
-routerSessions.get('/githubcallback', githubAuthentication_CB, (req, res, next) => {
-  res.redirect('/profile')
-})
+routerSessions.get(
+  "/githubcallback",
+  githubAuthentication_CB,
+  (req, res, next) => {
+    res.redirect("/profile");
+  }
+);
 
 // to send the user
-routerSessions.get("/profile", function (req, res) {
-  // Obtener los datos del usuario
-  let user = req.user
-  delete user.password
-  console.log(`request line 23 sessionsRouter ${JSON.stringify(user)}`);
-  // Devolver los datos del usuario en formato JSON
-  res.send(user);
-});
+// routerSessions.get("/profile", function (req, res) {
+//   // Obtener los datos del usuario
+//   let user = req.user
+//   delete user.password
+//   console.log(`request line 23 sessionsRouter ${JSON.stringify(user)}`);
+//   // Devolver los datos del usuario en formato JSON
+//   res.send(user);
+// });
+
 // User Logout 
 routerSessions.get("/logout", logoutSessionController);
 
