@@ -15,7 +15,6 @@ export function isValidPassword(receivedPass, savedPass) {
 //Here we going to use JWT. This is a standard to define a compact and secure format for transmit information between two parts. Used in authentication and autorization methods
 
 export function generateAToken(payload) {
-  console.log(` Cryptography ${payload}`);
   const token = jwt.sign(JSON.parse(JSON.stringify(payload)), JWT_SECRET_KEY, { expiresIn: '1h' })
   return token
 }

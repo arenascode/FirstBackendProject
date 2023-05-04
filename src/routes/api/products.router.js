@@ -1,7 +1,7 @@
 import {
   Router
 } from "express";
-import { productsService } from "../services/products.service.js";
+import { productsService } from "../../services/products.service.js";
 
 const routerProducts = Router()
 
