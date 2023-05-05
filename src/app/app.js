@@ -1,21 +1,21 @@
 import express from "express";
-import routerProducts from "./routes/api/products.router.js";
-import routerCart from "./routes/api/carts.router.js";
+import routerProducts from "../routes/api/products.router.js";
+import routerCart from "../routes/api/carts.router.js";
 import { Server as SocketIoServer } from "socket.io";
 import handlebars from "express-handlebars";
-import routerRealTimeProducts from "./routes/api/realTimeProducts.router.js";
-import productsManager from "./manager/ProductManager.js";
+import routerRealTimeProducts from "../routes/api/realTimeProducts.router.js";
+import productsManager from "../manager/ProductManager.js";
 import mongoose from "mongoose";
-import { MONGODB_CNX_STR } from "./config/mongodbCnxStr.js";
-import { productsService } from "./services/products.service.js";
-import cartsService from "./services/carts.service.js";
-import routerSessionsViews from "./routes/web/views.router.js";
-import { port } from "./config/PortServer.config.js";
-import passport from "passport";
-import { passportInitialize } from "./middlewares/passport.js";
-import { apiRouter } from "./routes/api/api.router.js";
+import { MONGODB_CNX_STR } from "../config/mongodbCnxStr.js";
+import { productsService } from "../services/products.service.js";
+import cartsService from "../services/carts.service.js";
+import routerSessionsViews from "../routes/web/views.router.js";
+import { PORT } from "../config/PortServer.config.js";
+import { passportInitialize } from "../middlewares/passport.js";
+import { apiRouter } from "../routes/api/api.router.js";
 import cookieParser from "cookie-parser";
-import { COOKIE_SECRET } from "./config/cookies.config.js";
+import { COOKIE_SECRET } from "../config/cookies.config.js";
+import config from "../config/config.js";
 
 const app = express()
 
@@ -53,7 +53,7 @@ app.use('/', routerSessionsViews)
 
 // here I going to use mongo for save user sessions
 
-const conectedServer = app.listen(port, () => console.log(`Connected to ${port} Port`))
+const conectedServer = app.listen(PORT, () => console.log(`Connected to ${PORT} Port`))
 
 const io = new SocketIoServer(conectedServer)
 
@@ -92,5 +92,4 @@ io.on('connection', async socket => {
   // )
 }
 )
-
-
+console.log(config);
