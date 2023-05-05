@@ -30,27 +30,11 @@ app.engine('handlebars', handlebars.engine())
 app.set('views', './views')
 app.set('view engine', 'handlebars')
 app.use(cookieParser(COOKIE_SECRET))
-// app.use(
-//   session({
-
-//     store: MongoStore.create({
-//       mongoUrl: MONGODB_CNX_STR,
-//       ttl: 10,
-//     }),
-
-//     secret: "secretKey",
-//     resave: true,
-//     saveUninitialized: true,
-//     cookie: {
-//         maxAge: 3600
-//     },
-//   })
-// );
 
 
 //Here I tell to express that he uses passport
 
-app.use(passportInitialize, /*passportSession*/)
+app.use(passportInitialize)
 
 // Router for Products
 app.use('/api/products', routerProducts)
@@ -63,8 +47,10 @@ app.use('/realtimeproducts', routerRealTimeProducts)
 
 // Router for User Sessions
 app.use('/api', apiRouter)
+
 // Router for User Sessions Views
 app.use('/', routerSessionsViews)
+
 // here I going to use mongo for save user sessions
 
 const conectedServer = app.listen(port, () => console.log(`Connected to ${port} Port`))

@@ -134,18 +134,16 @@ passport.use('github', new GithubStrategy({
   }
 ))
 
-
-// I must add this for passport works. I dont need to use because with the jwt strategy doesn't necessary 
-// passport.serializeUser((user, next) => { next(null, user) })
-// passport.deserializeUser((user, next) => { next(null, user) })
-
 // With this Express can use passport like a middlewares in the app
 export const passportInitialize = passport.initialize()
-// export const passportSession = passport.session()
 
-export const registerAuthentication = passport.authenticate('register', {session: false, failWithError: true })
-export const loginAuthentication = passport.authenticate('login', {session: false,failWithError: true})
+
+export const registerAuthentication = passport.authenticate('register', { session: false, failWithError: true })
+
+export const loginAuthentication = passport.authenticate('login', { session: false, failWithError: true })
+
 export const githubAuthentication = passport.authenticate("github", {
   session: false,scope: ["user:email"],
 });
+
 export const githubAuthentication_CB = passport.authenticate('github', {session: false,failWithError: true})
