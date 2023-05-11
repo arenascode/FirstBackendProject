@@ -1,8 +1,8 @@
 import fs, { read } from 'fs'
-import Product from './Product.js'
+import Product from '../entities/Product.js'
 import { v4 as uuidv4 } from 'uuid'
 
-class ProductManager {
+class ProductsDaoMemory {
 
   constructor(path) {
 
@@ -91,7 +91,7 @@ class ProductManager {
   }
 }
 
-const productsManager = new ProductManager('./src/db/products.json');
+const productsManager = new ProductsDaoMemory('./src/db/products.json');
 
 export default productsManager
 

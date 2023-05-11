@@ -3,38 +3,40 @@ import { DataNewProduct } from "../src/models/products.model.js";
 import mongoose from "mongoose";
 import { MONGODB_CNX_STR } from "../src/config/mongodbCnxStr.js";
 import cartsService from "../src/services/carts.service.js";
-
+import motos from "../src/dao/products.json" assert {type: 'json'};
 await mongoose.connect(MONGODB_CNX_STR)
 
-const dataNewProduct1 = new DataNewProduct({
-  title: 'Maseratti',
-  description: 'Gold',
-  price: 200,
-  code: '000',
-  stock: 8,
-  category: 'luxury',
-  thumbnails: ["sin ruta", "ruta2"]
-})
 
-const dataNewProduct2 = new DataNewProduct({
-  title: 'ferrari',
-  description: 'Enzo',
-  price: 200,
-  code: '001',
-  stock: 8,
-  category: 'luxury',
-  thumbnails: ["sin ruta", "ruta2"]
-})
+// const insertAllProducts = await productsService.insertMany(motos)
+// const dataNewProduct1 = new DataNewProduct({
+//   title: 'Maseratti',
+//   description: 'Gold',
+//   price: 200,
+//   code: '000',
+//   stock: 8,
+//   category: 'luxury',
+//   thumbnails: ["sin ruta", "ruta2"]
+// })
 
-const dataNewProduct3 = new DataNewProduct({
-  title: 'Bugatti',
-  description: 'Enzo',
-  price: 200,
-  code: '002',
-  stock: 8,
-  category: 'Sport',
-  thumbnails: ["sin ruta", "ruta2"]
-})
+// const dataNewProduct2 = new DataNewProduct({
+//   title: 'ferrari',
+//   description: 'Enzo',
+//   price: 200,
+//   code: '001',
+//   stock: 8,
+//   category: 'luxury',
+//   thumbnails: ["sin ruta", "ruta2"]
+// })
+
+// const dataNewProduct3 = new DataNewProduct({
+//   title: 'Bugatti',
+//   description: 'Enzo',
+//   price: 200,
+//   code: '002',
+//   stock: 8,
+//   category: 'Sport',
+//   thumbnails: ["sin ruta", "ruta2"]
+// })
 
 // const productAdded1 = await productsService.addNewProduct(dataNewProduct1)
 

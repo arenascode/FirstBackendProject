@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
-import Cart from "./Cart.js"
-import { productsSchema } from "./ProductsManager.js";
+import Cart from "../entities/Cart.js";
+
 class cartManagerMongoose {
   constructor(CartCollection, schema) {
     this.collection = mongoose.model(
@@ -92,18 +92,18 @@ class cartManagerMongoose {
     }
   }
 
-  async getAllCarts (){
-  return await this.collection.find().populate('products._id')
+  async getAllCarts() {
+    return await this.collection.find().populate("products._id");
   }
 
   async getCartById(id) {
-    return await this.collection.findById(id).populate('products._id')
+    return await this.collection.findById(id).populate("products._id");
   }
 
   async deleteItemInCart(cartId, productId) {
-    const cid = cartId
-    const pidToDelete = productId
-    
+    const cid = cartId;
+    const pidToDelete = productId;
+
     const cartExist = await this.collection.findOne({
       _id: cid,
       products: {
@@ -112,33 +112,35 @@ class cartManagerMongoose {
         },
       },
     });
-    
+
     console.log(`Line 113: Cart ${cartExist}`);
 
     if (cartExist) {
-      const productInCart = await cartExist.products.find((e) => e._id == pidToDelete)
+      const productInCart = await cartExist.products.find(
+        (e) => e._id == pidToDelete
+      );
       console.log(productInCart);
 
       if (productInCart.quantity > 1) {
-        productInCart.quantity -= 1
+        productInCart.quantity -= 1;
         console.log(`Line 121 ${productInCart}`);
-        await cartExist.save()
+        await cartExist.save();
       } else {
-        const newArray = cartExist.products.filter(p => p._id != pidToDelete)
-        cartExist.products = newArray
-        await cartExist.save()
+        const newArray = cartExist.products.filter((p) => p._id != pidToDelete);
+        cartExist.products = newArray;
+        await cartExist.save();
         console.log(`new cartExist ${cartExist}`);
       }
-      return await cartExist
+      return await cartExist;
     } else {
       console.log(`the product In cart Doesn't exist`);
     }
   }
 
   async update(cid, pid, dataToUpdate) {
-    const cartId = cid
+    const cartId = cid;
     const idProduct = pid;
-    const quantityToUpdate = dataToUpdate.quantity
+    const quantityToUpdate = dataToUpdate.quantity;
     console.log(`LINE 138 CartsManager ${idProduct}`);
     console.log(`LINE 140 CartsManager ${quantityToUpdate}`);
     console.log(`LINE 141 CartsManager ${JSON.stringify(quantityToUpdate)}`);
@@ -157,8 +159,10 @@ class cartManagerMongoose {
       const productToUpdateCart = cartExist.products.find(
         (e) => e._id == idProduct
       );
-      console.log(`LINE 156 Carts Manager Product to update ${productToUpdateCart}`);
-      const filtro = {_id: cartId, "products._id": idProduct}
+      console.log(
+        `LINE 156 Carts Manager Product to update ${productToUpdateCart}`
+      );
+      const filtro = { _id: cartId, "products._id": idProduct };
       const result = await this.collection.updateOne(filtro, {
         $set: { "products.$.quantity": quantityToUpdate },
       });
@@ -169,13 +173,16 @@ class cartManagerMongoose {
   }
 
   async deleteAllProductsInCart(cid) {
-    const cartExist = await this.collection.findOne({ _id: cid })
+    const cartExist = await this.collection.findOne({ _id: cid });
     console.log(`Line 170 CartsManag ${cartExist}`);
 
-    const productsInCart = cartExist.products
+    const productsInCart = cartExist.products;
     console.log(productsInCart);
-    const emptyCart = this.collection.updateOne({ _id: cid }, { $set: { "products": [] } })
-    return await emptyCart
+    const emptyCart = this.collection.updateOne(
+      { _id: cid },
+      { $set: { products: [] } }
+    );
+    return await emptyCart;
   }
 }
 
@@ -186,13 +193,13 @@ const cartsManagerDB = new cartManagerMongoose("carts", {
       {
         _id: {
           type: Schema.Types.ObjectId,
-          ref: "products"
+          ref: "products",
         },
-        quantity: {type: Number, required: true}
+        quantity: { type: Number, required: true },
       },
     ],
-    default: []
+    default: [],
   },
 });
 
-export default cartsManagerDB
+export default cartsManagerDB;

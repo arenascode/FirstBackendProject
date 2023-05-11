@@ -4,7 +4,6 @@ import routerCart from "../routes/api/carts.router.js";
 import { Server as SocketIoServer } from "socket.io";
 import handlebars from "express-handlebars";
 import routerRealTimeProducts from "../routes/api/realTimeProducts.router.js";
-import productsManager from "../manager/ProductManager.js";
 import mongoose from "mongoose";
 import { MONGODB_CNX_STR } from "../config/mongodbCnxStr.js";
 import { productsService } from "../services/products.service.js";
@@ -63,12 +62,12 @@ io.on('connection', async socket => {
   //This socket use fileSystemManager
   // socket.emit('showProducts', await productsManager.getProducts())
   
-  socket.emit('productsList', await productsService.getProducts())
+  // socket.emit('productsList', await productsService.getProducts())
 
   socket.on('addProduct', async prod => {
     try {
-      await productsManager.addProduct(prod)
-      socket.emit('showProducts', await productsManager.getProducts())
+      await productsService.addNewProduct(prod)
+      socket.emit('showProducts', await productsService.getProducts())
     } catch (error) {
       console.log({msgError: error});
     }
@@ -77,8 +76,8 @@ io.on('connection', async socket => {
   socket.on('deleteProduct', async idProductToDelete => {
     console.log(idProductToDelete);
     try {
-      await productsManager.deleteProduct(idProductToDelete)
-      socket.emit('showProducts',await productsManager.getProducts())
+      await productsService.deleteById(idProductToDelete)
+      socket.emit('showProducts',await productsService.getProducts())
     } catch (error) {
       console.log({errorMessage: error});
     }
@@ -92,4 +91,4 @@ io.on('connection', async socket => {
   // )
 }
 )
-console.log(config);
+

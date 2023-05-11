@@ -17,8 +17,8 @@ a {
   margin-top: 20px;
 }
 body {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  place-content: center;
   flex-direction: column;
 }
 #form {
@@ -33,14 +33,15 @@ body {
   margin-top: 40px;
 }
 #showData {
-  margin-top: 80px;
-  display: flex;
+  margin-top: 30px;
+  /* margin-left: 20px; */
+  display: grid;
+  place-content: center;
   flex-wrap: wrap;
-  column-gap: 6px;
+  column-gap: 10px;
   /* width: 600px; */
-  overflow-x: auto;
-
-}
+  overflow-y: hidden;
+ }
 .card {
   width: 150px;
 }

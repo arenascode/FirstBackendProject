@@ -7,7 +7,7 @@ export async function controllerGetProducts(req, res) {
   const pagina = parseInt(req.query.page);
   //console.log(pagina);
   const category = req.query.category;
-  //console.log(category);
+  console.log(`Category Line 10 Controller ${category}`);
   const order = req.query.sort;
   //console.log(`soy order en router ${order}`);
   try {
@@ -17,11 +17,11 @@ export async function controllerGetProducts(req, res) {
       pagina,
       order
     );
-    //console.log(`line 20 products.router Showproducts ${showProducts.docs}`);
+    console.log(`line 20 products.router Showproducts ${JSON.stringify(showProducts)}`);
     // const limitedProducts = showProducts.splice(0, limite)
     res.render("products", {
       pageTitle: "Products",
-      productsExist: showProducts.docs.length > 0,
+      productsExist: showProducts,
       products: showProducts.docs,
     });
   } catch (error) {
