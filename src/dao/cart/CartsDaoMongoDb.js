@@ -1,13 +1,36 @@
-import mongoose from "mongoose";
-import { Schema } from "mongoose";
-import Cart from "../entities/Cart.js";
+import mongoose, { Schema } from "mongoose";
+import Cart from "../../entities/Cart.js";
 
-class cartManagerMongoose {
-  constructor(CartCollection, schema) {
-    this.collection = mongoose.model(
-      CartCollection,
-      new mongoose.Schema(schema, { versionKey: false })
-    );
+const cartsCollection = "carts";
+const cartsSchema = mongoose.Schema(
+  {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "users",
+    },
+    products: {
+      type: [
+        {
+          _id: {
+            type: Schema.Types.ObjectId,
+            ref: "products",
+          },
+          quantity: { type: Number, required: true },
+        },
+      ],
+      default: [],
+    },
+  },
+  { versionKey: false }
+);
+
+const cartsModel = mongoose.model(cartsCollection, cartsSchema);
+
+// -----*--------*---------*-----------*---------*
+
+class CartsDaoMongoDb {
+  constructor() {
+    this.collection = cartsModel;
   }
 
   async saveNewCart(productToAdd) {
@@ -186,20 +209,5 @@ class cartManagerMongoose {
   }
 }
 
-const cartsManagerDB = new cartManagerMongoose("carts", {
-  user: { type: String },
-  products: {
-    type: [
-      {
-        _id: {
-          type: Schema.Types.ObjectId,
-          ref: "products",
-        },
-        quantity: { type: Number, required: true },
-      },
-    ],
-    default: [],
-  },
-});
-
-export default cartsManagerDB;
+const cartsDaoMongoDb = new CartsDaoMongoDb();
+export default cartsDaoMongoDb;

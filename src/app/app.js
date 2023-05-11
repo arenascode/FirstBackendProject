@@ -30,13 +30,9 @@ app.set('views', './views')
 app.set('view engine', 'handlebars')
 app.use(cookieParser(COOKIE_SECRET))
 
-
 //Here I tell to express that he uses passport
 
 app.use(passportInitialize)
-
-// Router for Products
-app.use('/api/products', routerProducts)
 
 // Router for Cart
 app.use('/api/carts', routerCart)
@@ -44,7 +40,7 @@ app.use('/api/carts', routerCart)
 // Router for Sockets
 app.use('/realtimeproducts', routerRealTimeProducts)
 
-// Router for User Sessions
+// Router for Apu
 app.use('/api', apiRouter)
 
 // Router for User Sessions Views

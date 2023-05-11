@@ -4,7 +4,7 @@ import {
   v4 as uuidv4
 } from 'uuid'
 
-class CartManager {
+class CartDaoMemory {
 
   constructor(path) {
 
@@ -100,4 +100,5 @@ class CartManager {
   }
 }
 
-export default CartManager
+const cartDaoMemory = new CartDaoMemory()
+export default cartDaoMemory

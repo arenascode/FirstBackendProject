@@ -3,7 +3,7 @@ import {
 } from "express";
 import { controllerAddNewProduct, controllerDeletProductById, controllerGetProductById, controllerGetProducts, controllerUpdateProductById } from "../../controllers/api/products.controller.js";
 
-const routerProducts = Router()
+export const routerProducts = Router()
 
 // To show all products
 routerProducts.get('/', controllerGetProducts)

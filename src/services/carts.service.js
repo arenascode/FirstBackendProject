@@ -1,21 +1,21 @@
 import Cart from "../entities/Cart.js";
-import cartsManagerDB from "../manager/CartsManager.js";
+import cartsDaoMongoDb from "../dao/cart/CartsDaoMongoDb.js";
 
 class CartsService {
   async addNewCart(newCart) {
     console.log(`LINE 6 cartsService ${JSON.stringify(newCart)}`);
-    const cartAdded = await cartsManagerDB.saveNewCart(newCart);
+    const cartAdded = await cartsDaoMongoDb.saveNewCart(newCart);
     return cartAdded;
   }
   async addProductToCart(newProduct) {
-    const productAdded = await cartsManagerDB.addProductToCart(newProduct);
+    const productAdded = await cartsDaoMongoDb.addProductToCart(newProduct);
     return productAdded;
   }
   async showCarts() {
-    return await cartsManagerDB.getAllCarts();
+    return await cartsDaoMongoDb.getAllCarts();
   }
   async showCartById(id) {
-    return await cartsManagerDB.getCartById(id);
+    return await cartsDaoMongoDb.getCartById(id);
   }
 
   async deleteProductInCart(cartId, productId) {
@@ -23,7 +23,7 @@ class CartsService {
     const pid = productId;
     console.log(`Line 25: cid ${cid}`);
     console.log(`Line 26: pid ${pid}`);
-    const productEliminated = await cartsManagerDB.deleteItemInCart(cid, pid);
+    const productEliminated = await cartsDaoMongoDb.deleteItemInCart(cid, pid);
     return productEliminated;
   }
 
@@ -31,7 +31,7 @@ class CartsService {
     const newQuantity = quantityToUpdate;
     const itemToUpdate = productToUpdate;
     const idCartToUpdate = cid;
-    const cartUpdated = await cartsManagerDB.update(
+    const cartUpdated = await cartsDaoMongoDb.update(
       idCartToUpdate,
       itemToUpdate,
       newQuantity
@@ -42,7 +42,7 @@ class CartsService {
   async deleteAllProductsInCart(cid) {
     const cartId = cid;
     console.log(`LINE 40 of cartsService IDCart ${cartId}`);
-    const emptyCart = await cartsManagerDB.deleteAllProductsInCart(cartId);
+    const emptyCart = await cartsDaoMongoDb.deleteAllProductsInCart(cartId);
     return emptyCart;
   }
 }

@@ -4,15 +4,16 @@ import { productsService } from "../../services/products.service.js";
 export async function controllerGetProducts(req, res) {
   let limit = Number(req.query.limit);
   //console.log(`LINE 6 controller ${typeof limit}`);
-  const page = parseInt(req.query.page);
+  let page = parseInt(req.query.page);
   //console.log(page);
   const category = req.query.category;
   //console.log(`Category Line 10 Controller ${category}`);
   let order = req.query.sort;
-  if (order === 'undefined') {order = 1 }
+  if (order === 'undefined' || order == undefined) {order = 1 }
 
   if (isNaN(limit) || limit === 'undefined') {limit = 10}
-
+  
+  if (isNaN(page)) {page = 1}
   try {
     const showProducts = await productsService.getProducts(
       category,

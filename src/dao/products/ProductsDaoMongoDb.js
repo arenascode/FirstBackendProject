@@ -79,8 +79,8 @@ export class ProductsDaoMongodb {
     console.log(`page recibida en MongoDao ${page}`);
     
     const queryFilter = { category: categoria }
-    console.log(`soy queryFilter ${Boolean(queryFilter)}`);
-    const paginatinOptions = {
+    
+    const paginationOptions = {
       page: page,
       limit: limit,
       sort: { price: orden },
@@ -89,11 +89,11 @@ export class ProductsDaoMongodb {
     }
     if (categoria) {
       console.log(`if linea 90 MONGO`);
-      const result = await this.collection.paginate(queryFilter, paginatinOptions)
+      const result = await this.collection.paginate(queryFilter, paginationOptions)
       return result
     } else {
       console.log(`else Linea 94 Mongo`);
-      const result = await this.collection.paginate({}, paginatinOptions)
+      const result = await this.collection.paginate({}, paginationOptions)
       return result
     }
   }
@@ -127,7 +127,6 @@ export class ProductsDaoMongodb {
   //   return await this.collection.insertMany(modifyProducts);
   // }
 }
-const productsDaoMongoDb = new ProductsDaoMongodb();
 
+const productsDaoMongoDb = new ProductsDaoMongodb();
 export default productsDaoMongoDb;
-// ostras

@@ -1,4 +1,4 @@
-import productsDaoMongoDb from "../dao/ProductsDaoMongoDb.js";
+import productsDaoMongoDb from "../dao/products/ProductsDaoMongoDb.js";
 
 class ProductsService {
   async addNewProduct(dataNewProduct) {

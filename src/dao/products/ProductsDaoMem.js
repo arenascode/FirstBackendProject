@@ -1,5 +1,5 @@
 import fs, { read } from 'fs'
-import Product from '../entities/Product.js'
+import Product from '../../entities/Product.js'
 import { v4 as uuidv4 } from 'uuid'
 
 class ProductsDaoMemory {
@@ -91,7 +91,7 @@ class ProductsDaoMemory {
   }
 }
 
-const productsManager = new ProductsDaoMemory('./src/db/products.json');
+const productsDaoMemory = new ProductsDaoMemory('./src/db/products.json');
 
-export default productsManager
+export default productsDaoMemory
 
