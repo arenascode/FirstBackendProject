@@ -3,7 +3,7 @@ li {
   list-style: none;
 }
 a {
-  text-decoration: none;
+  text-decoration:underline;
   color: inherit;
 }
 #container1 {
@@ -16,22 +16,27 @@ a {
   justify-content: space-around;
   margin-top: 20px;
 }
+
 body {
   display: grid;
   place-content: center;
   flex-direction: column;
 }
 #form {
-    width: 250px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(137, 133, 127);
-    align-self: normal;
+  width: 250px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(137, 133, 127);
+  align-self: normal;
 }
 #addBtn {
   margin-top: 40px;
 }
+/* Products */
+#paginateOptions a {
+  color: blueviolet;
+} 
 #showData {
   margin-top: 30px;
   /* margin-left: 20px; */

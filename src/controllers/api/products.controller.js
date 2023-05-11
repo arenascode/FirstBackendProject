@@ -2,27 +2,44 @@ import { productsService } from "../../services/products.service.js";
 
 //To show all products
 export async function controllerGetProducts(req, res) {
-  const limite = parseInt(req.query.limit);
-  // console.log(limite);
-  const pagina = parseInt(req.query.page);
-  //console.log(pagina);
+  let limit = Number(req.query.limit);
+  //console.log(`LINE 6 controller ${typeof limit}`);
+  const page = parseInt(req.query.page);
+  //console.log(page);
   const category = req.query.category;
-  console.log(`Category Line 10 Controller ${category}`);
-  const order = req.query.sort;
-  //console.log(`soy order en router ${order}`);
+  //console.log(`Category Line 10 Controller ${category}`);
+  let order = req.query.sort;
+  if (order === 'undefined') {order = 1 }
+
+  if (isNaN(limit) || limit === 'undefined') {limit = 10}
+
   try {
     const showProducts = await productsService.getProducts(
       category,
-      limite,
-      pagina,
+      limit,
+      page,
       order
     );
-    console.log(`line 20 products.router Showproducts ${JSON.stringify(showProducts)}`);
-    // const limitedProducts = showProducts.splice(0, limite)
+
+    const prevPage = `http://localhost:8080/api/products?page=${showProducts.prevPage}&limit=${limit}&query=${category}&sort=${order}`
+    
+    const nextPage = `http://localhost:8080/api/products?page=${showProducts.nextPage}&limit=${limit}&query=${category}&sort=${order}`
+
+    const paginationOptions = {
+      hasNextPage: showProducts.hasNextPage,
+      hasPrevPage: showProducts.hasPrevPage,
+      prevLink: prevPage,
+      nextLink:nextPage,
+      page: page,
+      category: category,
+      limit: limit
+    }
+
     res.render("products", {
       pageTitle: "Products",
-      productsExist: showProducts,
+      productsExist: showProducts.docs.length > 0,
       products: showProducts.docs,
+      pagination: paginationOptions
     });
   } catch (error) {
     res.status(400).json({

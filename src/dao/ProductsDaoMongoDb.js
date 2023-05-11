@@ -68,59 +68,33 @@ export class ProductsDaoMongodb {
     }
   }
 
-  async getAll(category, limite, pagina, order) {
-    const categoria = category;
-    const orden = order;
-    const limit = limite;
-    const page = pagina;
-
-    if (categoria || limit) {
-      console.log(`soy categoria en getAll de ManagMongoo LINE 78 ${categoria}`);
-
-      if (!limit) {
-        if (orden) {
-          return await this.collection.find().sort({ price: orden }).limit(10);
-        } else {
-          console.log(`else Line 84 ${categoria}`);
-          const query = { category: categoria };
-          const options = { limit: 10, page: 1, lean: true };
-          const result = await this.collection.paginate( query, options)
-          //console.log(`resultado consulta 86 ${result}`);
-          return result;
-        }
-      } else {
-        if (categoria) {
-          console.log(`entré al if de la linea 135`);
-          return await this.collection
-            .find({ category: categoria })
-            .sort({ price: orden })
-            .limit(limit);
-        } else {
-          console.log(`entre en el else de la linea 141`);
-          return await this.collection.paginate(
-            {},
-            { limit: limit, page: page }
-          );
-        }
-      }
+  async getAll(category, limitRestricted, pageNumber, order) {
+    let categoria = category;
+    console.log(`Query recibido en MongoDao ${ Boolean(categoria)}`);
+    let orden = order;
+    console.log(`Sort recibido en MongoDao ${orden}`);
+    let limit = limitRestricted;
+    console.log(`Limite recibido en MongoDao ${limit}`);
+    let page = pageNumber;
+    console.log(`page recibida en MongoDao ${page}`);
+    
+    const queryFilter = { category: categoria }
+    console.log(`soy queryFilter ${Boolean(queryFilter)}`);
+    const paginatinOptions = {
+      page: page,
+      limit: limit,
+      sort: { price: orden },
+      lean: true
+      //populate: { path: 'campo3', model: 'ModeloDeDestino' }
+    }
+    if (categoria) {
+      console.log(`if linea 90 MONGO`);
+      const result = await this.collection.paginate(queryFilter, paginatinOptions)
+      return result
     } else {
-      if (orden) {
-        console.log(`entré al if de la linea 140`);
-        if (categoria) {
-          return await this.collection
-            .find({ category: categoria })
-            .sort({ price: orden });
-        } else {
-          console.log(`else linea 109`);
-          return await this.collection.find().sort({ price: orden });
-        }
-      } else {
-        console.log(`entre en el else en ManagerMongoose de la linea 112`);
-        return await this.collection.paginate(
-          {},
-          { limit: 10, page: 1, lean: true }
-        );
-      }
+      console.log(`else Linea 94 Mongo`);
+      const result = await this.collection.paginate({}, paginatinOptions)
+      return result
     }
   }
 
