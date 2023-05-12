@@ -37,7 +37,7 @@ function validateCategory(valor) {
     return valor
 }
 
-export class DataNewProduct {
+export default class DataNewProduct {
 
   constructor({ title, description, price, code, stock, status = true, category, thumbnails }) {
     
@@ -51,5 +51,7 @@ export class DataNewProduct {
     this.thumbnails = thumbnails
   }
 }
+
+
 
 

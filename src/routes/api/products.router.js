@@ -1,7 +1,7 @@
 import {
   Router
 } from "express";
-import { controllerAddNewProduct, controllerDeletProductById, controllerGetProductById, controllerGetProducts, controllerUpdateProductById } from "../../controllers/api/products.controller.js";
+import { controllerAddNewProduct, controllerDeleteProductById, controllerGetProductById, controllerGetProducts, controllerUpdateProductById } from "../../controllers/api/products.controller.js";
 
 export const routerProducts = Router()
 
@@ -18,6 +18,6 @@ routerProducts.post('/', controllerAddNewProduct)
 routerProducts.put("/:pid", controllerUpdateProductById);
 
 // To Delete a product
-routerProducts.delete("/:pid", controllerDeletProductById);
+routerProducts.delete("/:pid", controllerDeleteProductById);
 
 export default routerProducts
