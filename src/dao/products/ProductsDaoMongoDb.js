@@ -119,7 +119,10 @@ export class ProductsDaoMongodb {
   async deleteAll() {
     await this.collection.deleteMany({});
   }
-
+  
+  async findByCode(code) {
+    return await this.collection.findOne(code)
+  }
   // async insertMany(motos) {
   //   const products = motos
   //   const modifyProducts = products.map((p) => { p.status = true; return p })

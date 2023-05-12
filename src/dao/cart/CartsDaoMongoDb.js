@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import Cart from "../../entities/Cart.js";
+import productsDaoMongoDb from "../products/ProductsDaoMongoDb.js";
 
 const cartsCollection = "carts";
 const cartsSchema = mongoose.Schema(
@@ -13,7 +14,7 @@ const cartsSchema = mongoose.Schema(
         {
           _id: {
             type: Schema.Types.ObjectId,
-            ref: "products",
+            ref: "products"
           },
           quantity: { type: Number, required: true },
         },
@@ -23,6 +24,11 @@ const cartsSchema = mongoose.Schema(
   },
   { versionKey: false }
 );
+
+// cartsSchema.pre(/^find/, function (next) {
+//   this.populate('products._id')
+//   next()
+// })
 
 const cartsModel = mongoose.model(cartsCollection, cartsSchema);
 
@@ -41,20 +47,21 @@ class CartsDaoMongoDb {
     const cartExist = await this.collection.findOne({
       user: productToAdd.user,
     });
-
+    const searchedProduct = await productsDaoMongoDb.findByCode({ code: productToAdd.code })
+    console.log(`producto encontrado por código ${searchedProduct}`);
     if (cartExist) {
       const productInCartExist = await this.collection.findOne({
         user: productToAdd.user,
         products: {
           $elemMatch: {
-            _id: productToAdd._id,
+            _id: searchedProduct._id,
           },
         },
       });
 
       if (productInCartExist) {
         await productInCartExist.products.forEach((element) => {
-          if (element._id.equals(productToAdd._id)) {
+          if (element._id.equals(searchedProduct._id)) {
             element.quantity += 1;
           } else {
             console.log(`element didn't found. Will be create`);
@@ -63,14 +70,14 @@ class CartsDaoMongoDb {
         await productInCartExist.save();
         return cartExist;
       } else {
-        product._id = productToAdd._id;
+        product._id = searchedProduct._id;
         product.quantity = 1;
         cartExist.products.push(product);
         await cartExist.save();
       }
     } else {
       // Si el producto no existe, lo agrega como nuevo objeto
-      product._id = productToAdd._id;
+      product._id = searchedProduct._id;
       product.quantity = 1;
       cart.user = productToAdd.user;
       cart.products.push(product);
@@ -116,11 +123,13 @@ class CartsDaoMongoDb {
   }
 
   async getAllCarts() {
-    return await this.collection.find().populate("products._id");
+    return await this.collection.find().populate("products");
   }
 
   async getCartById(id) {
-    return await this.collection.findById(id).populate("products._id");
+    const cartById = await this.collection.findById(id).populate("products._id").lean();
+    console.log(`cartbyId mongo 124 ${JSON.stringify(cartById)}`);
+    return cartById
   }
 
   async deleteItemInCart(cartId, productId) {

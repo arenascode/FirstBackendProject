@@ -5,21 +5,26 @@ export async function controllerGetCartById (req, res) {
   try {
     const idCart = req.params.cid
     const cartById = await cartsService.showCartById(idCart)
+    console.log(`cartById Controller 8 ${JSON.stringify(cartById)}`);
+
     const arrayOfProducts = []
     const productsOfCart = cartById.products.forEach(e => {
       const product = {
-        name: e._id.title,
-        description: e._id.description,
-        price: e._id.price,
-        category: e._id.category,
+        user: e.user,
+        id: e._id,
+        // description: e.description,
+        // price: e.price,
+        // category: e.category,
         quantity: e.quantity
       }
       arrayOfProducts.push(product)
     });
+    console.log(`arrayOfProducs Controller 21 ${JSON.stringify(arrayOfProducts)}`);
     res.render('carts', {
           pageTitle: 'Your Cart',
           cartExist: Boolean(cartById),
-          cart: arrayOfProducts
+          dataUser: cartById,
+          productsInCart: arrayOfProducts
         })
   } catch (error) {
     res.status(400).json({

@@ -1,5 +1,5 @@
-const motos = [
- {
+[
+{
 "title": "Ducati",
 "description": "Panigale V4 R",
 "price": 44000,
