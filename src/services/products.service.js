@@ -1,6 +1,7 @@
 import productsDaoMongoDb from "../dao/products/ProductsDaoMongoDb.js";
 
 class ProductsService {
+  
   async addNewProduct(dataNewProduct) {
     const productAdded = await productsDaoMongoDb.saveItem(dataNewProduct);
     return productAdded;

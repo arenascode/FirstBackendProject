@@ -3,7 +3,7 @@ import { Strategy as RegisterStrategy } from "passport-local";
 import { Strategy as LoginStrategy } from "passport-local";
 import { Strategy as GithubStrategy } from "passport-github2";
 import { createHash, isValidPassword } from "../utils/cryptography.js";
-import userManagerDB from "../models/users.model.js";
+import usersDaoMongodb from "../dao/usersDaoMongoDb.js";
 import { githubCallbackUrl, githubClientSecret, githubClienteId } from "../config/auth.config.js";
 import { User } from "../entities/User.js";
 import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt";
@@ -51,7 +51,7 @@ passport.use('register', new RegisterStrategy(
     console.log(dataUser);
     try {
       if (dataUser) {
-        const userExist = await userManagerDB.findOne({ email: username });
+        const userExist = await usersDaoMongoDb.findOne({ email: username }); // en el service tengo que enviar el criterio como así como un objeto
   
         if (userExist) {
           console.log('User Already Exist');
