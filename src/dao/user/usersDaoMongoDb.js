@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2"
-import { User } from "../entities/User.js";
+import { User } from "../../entities/User.js";
+import { json } from "express";
 
 //function to transform the DBO to DTO
 
@@ -33,20 +34,22 @@ class UsersDaoMongodb {
   }
 
   async createNewUser(userToSave) {
-    const newUser = new User(userToSave)
-    const userSaved = await this.collection.create(newUser)
+    const newUser = toPoJo(new User(userToSave))
+    console.log(`new user daoMongo ${newUser}`);
+    const userSaved = await this.#collection.create(newUser)
     return toPoJo(userSaved)
   }
 
   async findUserById(id) {
     const idUser = id
-    const userById = await this.collection.findById(idUser)
+    const userById = await this.#collection.findById(idUser)
     return toPoJo(userById)
   }
   
-  async readOne(criteria) {
-    const searchedUser = await this.#collection.readOne(criteria)
-    if (!searchedUser) throw new Error("NOT FOUND");
+  async findOne(criteria) {
+    console.log(`criteria userMongodb ${JSON.stringify(criteria)}`);
+    const searchedUser = await this.#collection.findOne(criteria)
+    // if (!searchedUser) throw new Error("NOT FOUND");
     return searchedUser
   }
 
@@ -60,14 +63,14 @@ class UsersDaoMongodb {
   async updateUser(userId, dataToUpdate) {
     const userIdSearched = userId
     const newData = dataToUpdate
-    const userUpdated = this.collection.findByIdAndUpdate(userIdSearched, newData)
+    const userUpdated = this.#collection.findByIdAndUpdate(userIdSearched, newData)
 
-    return toPoJo(userUpdated)
+    return userUpdated
   }
 
   async deleteUserById(userId) {
-    const userDeleted = await this.#collection.deleteOne(userId)
-    return toPoJo(userDeleted)
+    const userDeleted = await this.#collection.findOneAndDelete(userId)
+    return userDeleted
   }
 
   async deleteAllUsers(criteria) {

@@ -2,8 +2,8 @@ import passport from "passport";
 import { Strategy as RegisterStrategy } from "passport-local";
 import { Strategy as LoginStrategy } from "passport-local";
 import { Strategy as GithubStrategy } from "passport-github2";
-import { createHash, isValidPassword } from "../utils/cryptography.js";
-import usersDaoMongodb from "../dao/usersDaoMongoDb.js";
+import { isValidPassword } from "../utils/cryptography.js";
+import userService from "../services/users.service.js"
 import { githubCallbackUrl, githubClientSecret, githubClienteId } from "../config/auth.config.js";
 import { User } from "../entities/User.js";
 import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt";
@@ -51,24 +51,12 @@ passport.use('register', new RegisterStrategy(
     console.log(dataUser);
     try {
       if (dataUser) {
-        const userExist = await usersDaoMongoDb.findOne({ email: username }); // en el service tengo que enviar el criterio como así como un objeto
-  
+        const userExist = await userService.findUserByCriteria({ email: username });
         if (userExist) {
           console.log('User Already Exist');
           return done(null, false)
         } else {
-          const userCreated = new User ({
-            name: dataUser.name,
-            lastName: dataUser.lastName,
-            email: dataUser.email,
-            age: dataUser.age,
-            password: createHash(password),
-            role: "User"
-          });
-          console.log(
-            `I'm userCreated to save en Atlas ${JSON.stringify(userCreated)}`
-          );
-          let result = await userManagerDB.create(userCreated);
+          const result = await userService.registerUser(dataUser);
           return done(null, result)
         }
       }
@@ -92,7 +80,7 @@ passport.use('login', new LoginStrategy({ usernameField: 'email' }, async (usern
     }
     return done(null, adminData)
   } else {
-    const userSearched = await userManagerDB.findOne({ email: username })
+    const userSearched = await userService.findUserByCriteria({ email: username })
     console.log(userSearched);
     if (!userSearched) {
       console.log(`user doesn't exist`);

@@ -4,7 +4,8 @@ class UserService {
   
   async registerUser(newUserData) {
     const dataNewUser = newUserData
-    const registeredUser = await usersRepository.create(newUserData)
+    console.log(`dataNewUser Service ${dataNewUser}`);
+    const registeredUser = await usersRepository.create(dataNewUser)
   // await emailService.sendMail({to: newUserData})
     return registeredUser
   }
@@ -34,10 +35,25 @@ class UserService {
     return usersList
   }
   
-  async findUser(criteria) {
-    const searchedUser = await usersRepository.readOne(criteria)
+  async findUser(userId) {
+    const searchedUser = await usersRepository.findById(userId)
     return searchedUser
+  }
+  async findUserByCriteria(criteria) {
+    const searchedUser = await usersRepository.findOne(criteria)
+    return searchedUser
+  }
+  
+  async updateUserById(userID, newData) {
+    const updatedUser = await usersRepository.updateOneById(userID, newData)
+    return updatedUser
+  }
+
+  async deleteUserById(userId) {
+    const deletedUser = await usersRepository.deleteOne(userId)
+    return deletedUser
   }
 }
 
-export const userService = new UserService()
+const userService = new UserService()
+export default userService

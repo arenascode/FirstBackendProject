@@ -1,4 +1,4 @@
-import usersDaoMongodb from "../dao/usersDaoMongoDb.js";
+import usersDaoMongodb from "../dao/user/usersDaoMongoDb.js";
 
 class UserRepository {
   constructor(daoSelected) {
@@ -6,6 +6,7 @@ class UserRepository {
   }
 
   async create(userToSave, options) {
+    console.log(`createUser Repo ${userToSave}`);
     return await this.dao.createNewUser(userToSave);
   }
 
@@ -13,8 +14,8 @@ class UserRepository {
     return await this.dao.findUserById(userId)
   }
   
-  async readOne(criteria, options) {
-    return await this.dao.readOne(criteria);
+  async findOne(criteria, options) {
+    return await this.dao.findOne(criteria);
   }
 
   async readMany(queryFilter, paginationOptions) {

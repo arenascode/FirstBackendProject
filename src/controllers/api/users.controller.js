@@ -1,4 +1,4 @@
-import { userService } from "../../services/users.service.js";
+import userService  from "../../services/users.service.js";
 
 export async function getUsersController(req, res, next) {
   let limit = Number(req.query.limit);
@@ -42,4 +42,25 @@ export async function getUsersController(req, res, next) {
       msg: error.message,
     });
   }
+}
+
+export async function getUserByIdController(req, res, next) {
+  const userID = req.params.uid
+  console.log(userID);
+  const searchedUser = await userService.findUser(userID)
+  res.json(searchedUser) 
+}
+
+export async function updateUserController(req, res, next) {
+  const userID = req.params.uid;
+  const newData = req.body
+  console.log(userID);
+  const updatedUser = await userService.updateUserById(userID, newData);
+  res.json(updatedUser); 
+}
+
+export async function deleteUserController(req, res, next) {
+  const userId = req.params.id
+  const deletedUser = await userService.deleteUserById(userId)
+  res.json(deletedUser)
 }
