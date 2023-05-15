@@ -1,11 +1,14 @@
 import Cart from "../entities/Cart.js";
 import cartsDaoMongoDb from "../dao/cart/CartsDaoMongoDb.js";
 import { cartsRepository } from "../repositories/carts.repository.js";
+import { usersRepository } from "../repositories/users.repository.js";
 
 class CartsService {
   async addNewCart(productToCart, userId) {
     console.log(`LINE 6 cartsService ${JSON.stringify(productToCart)}`);
     const cartAdded = await cartsRepository.saveNewCart(productToCart, userId);
+    console.log(`I'm cartAdded in C.Service ${cartAdded}`);
+    await usersRepository.updateOneById(userId, {cart: cartAdded._id})
     return cartAdded;
   }
   async addProductToCart(newProduct, userId, cartId) {
@@ -37,7 +40,9 @@ class CartsService {
   }
 
   async showCartById(id) {
-    return await cartsRepository.showCartById(id);
+    const cartById = await cartsRepository.showCartById(id);
+    console.log(`I'm cartById ${cartById}`);
+    return cartById
   }
 
   async deleteProductInCart(cartId, productId) {

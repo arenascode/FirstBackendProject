@@ -37,6 +37,7 @@ class UserService {
   
   async findUser(userId) {
     const searchedUser = await usersRepository.findById(userId)
+    console.log(searchedUser);
     return searchedUser
   }
   async findUserByCriteria(criteria) {

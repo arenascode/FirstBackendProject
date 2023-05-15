@@ -20,11 +20,25 @@ const userSchema = mongoose.Schema({
   password: { type: String },
   role: { type: String },
   cart: {
-      _id: { type: Schema.Types.ObjectId, ref: "carts" }
+    type: Schema.Types.ObjectId,
+    ref: "carts"
       }
 },
   { versionKey: false }); 
 userSchema.plugin(mongoosePaginate)
+
+userSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "cart",
+    select: "products", // Selecciona el campo 'products' completo
+    options: { lean: true }, // Opcional: usar lean() para obtener objetos JavaScript planos en lugar de documentos de Mongoose
+  })
+    .populate({
+    path: "cart.products._id",
+    select: "title description price", // Especifica las propiedades que deseas seleccionar en cada objeto del array
+  });
+  next();
+});
 
 const usersModel = mongoose.model(usersCollection, userSchema)
 
@@ -46,7 +60,7 @@ class UsersDaoMongodb {
   async findUserById(id) {
     const idUser = id
     const userById = await this.#collection.findById(idUser)
-    return toPoJo(userById)
+    return userById
   }
   
   async findOne(criteria) {
@@ -66,7 +80,11 @@ class UsersDaoMongodb {
   async updateUser(userId, dataToUpdate) {
     const userIdSearched = userId
     const newData = dataToUpdate
-    const userUpdated = this.#collection.findByIdAndUpdate(userIdSearched, newData)
+    const userUpdated = this.#collection.findByIdAndUpdate(
+      userIdSearched,
+      newData,
+      { new: true, upsert: true }
+    );
 
     return userUpdated
   }
