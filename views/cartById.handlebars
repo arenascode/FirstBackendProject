@@ -13,15 +13,17 @@
   <h1>Your Cart</h1>
   <div id="container" class="container">
   <div id="showData" class="col row-cols-lg-auto g-3 align-items-center">
-{{#if cartsExist}}
-<h3 class="card-title">List Of Carts</h3>
-{{#each carts}}
+{{#if cartExist}}
+<h3 class="card-title">User Of Cart: {{dataUser.user}}</h3>
+{{#each productsInCart}}
 <div class="card m-5 col-lg-9" style="width: 18rem">
         <div class="card-body" style="width: inherit">
           
-          <h5 class="card-text">Cart Id: {{this._id}}</h5>
-          <h5 class="card-text">Products: {{this.products._id}}</h5>
-          <h5 class="card-text">Quantity:{{this.products.quantity}}</h5>          
+          <h5 class="card-text">Product Name: {{id.title}}</h5>
+          <h5 class="card-text">Model: {{id.description}}</h5>
+          <h5 class="card-text">Price: ${{id.price}}</h5>
+          <h6 class="card-text font-bold">quantity: {{this.quantity}}</h6>
+          
           <button id="addBtn-${p._id}" href="#" class="btn btn-secondary" data-idProduct=${{this._id}}>Delete</button>
         </div>
       </div>

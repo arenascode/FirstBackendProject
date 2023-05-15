@@ -19,9 +19,10 @@ passport.use('jwt', new JwtStrategy({
       token = req.signedCookies['jwt_authorization']
     }
     return token
-  }]), secretOrKey: JWT_SECRET_KEY,
+  }]), secretOrKey: JWT_SECRET_KEY
 }, async (jwt_payload, done) => {
   try {
+    console.log(`i'm jwt_payload ${JSON.stringify(jwt_payload)}`);
     done(null,jwt_payload) //payload have token
   } catch (error) {
     done(error)
@@ -29,11 +30,18 @@ passport.use('jwt', new JwtStrategy({
 }))
 
 export function authenticationJwtApi(req, res, next) {
-  passport.authenticate('jwt', (error, user, info) => {
-    if (error || !user) return next(new AuthenticationError())
-    req.user = user
-    next()
-  }) (req, res, next)
+  passport.authenticate("jwt", (error, user, info) => {
+    if (error) {
+      return res.status(401).json({ error: "Unauthorized Error" });
+    }
+    if (!user) {
+      console.log(`info ${info}`);
+      return res.status(401).json({ error: "Token doesn't exist" });
+    }
+    // El usuario está autenticado correctamente
+    req.user = user;
+    next();
+  })(req, res, next);
 } 
 
 export function authenticationJwtView(req, res, next) {

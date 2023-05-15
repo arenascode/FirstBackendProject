@@ -45,6 +45,7 @@ export class User {
     this.name = validateName(name);
     this.lastName = validateLastName(lastName);
     this.age = validateAge(age);
-    this.role = role
+    this.role = role,
+    this.cart = {}
   }
 }

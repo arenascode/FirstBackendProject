@@ -1,5 +1,7 @@
 const socket = io()
 
+const btnToAdd = document.getE
+
 // socket.on("productsList", async (data) => {
 //   const divData = document.getElementById("showData");
 //   divData.innerHTML = ``;

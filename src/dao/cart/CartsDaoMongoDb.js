@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2"
 import Cart from "../../entities/Cart.js";
 import productsDaoMongoDb from "../products/ProductsDaoMongoDb.js";
 
@@ -25,6 +26,8 @@ const cartsSchema = mongoose.Schema(
   { versionKey: false }
 );
 
+cartsSchema.plugin(mongoosePaginate)
+
 // cartsSchema.pre(/^find/, function (next) {
 //   this.populate('products._id')
 //   next()
@@ -39,19 +42,20 @@ class CartsDaoMongoDb {
     this.collection = cartsModel;
   }
 
-  async saveNewCart(productToAdd) {
-    console.log(`cartsmanager Line 14 ${JSON.stringify(productToAdd)}`);
+  async saveNewCart(productToAdd, userId) {
+    console.log(`cartsmanager Line 14 ${JSON.stringify(productToAdd.user)}`);
     const product = {};
-    const cart = new Cart();
+    const cart = new Cart(userId);
     //Nos aseguramos de saber si el carrito existe previamente para saber si creamos uno nuevo o lo actualizamos simplemente
     const cartExist = await this.collection.findOne({
-      user: productToAdd.user,
+      user: userId,
     });
-    const searchedProduct = await productsDaoMongoDb.findByCode({ code: productToAdd.code })
+    console.log(`I'm cartExist ${cartExist}`);
+    const searchedProduct = await productsDaoMongoDb.findByCode({ code: productToAdd.code }) // when I'll do a FE change this for search by ID
     console.log(`producto encontrado por código ${searchedProduct}`);
     if (cartExist) {
       const productInCartExist = await this.collection.findOne({
-        user: productToAdd.user,
+        user: userId,
         products: {
           $elemMatch: {
             _id: searchedProduct._id,
@@ -76,10 +80,10 @@ class CartsDaoMongoDb {
         await cartExist.save();
       }
     } else {
-      // Si el producto no existe, lo agrega como nuevo objeto
+      // Si el carrito, producto no existe, lo agrega como nuevo objeto
       product._id = searchedProduct._id;
       product.quantity = 1;
-      cart.user = productToAdd.user;
+      const cart = new Cart(userId);
       cart.products.push(product);
       const newCart = await this.collection.create(cart);
       console.log(
@@ -89,11 +93,11 @@ class CartsDaoMongoDb {
     }
   }
 
-  async addProductToCart(productToCart) {
+  async addProductToCart(productToCart, userId, cartId) {
     const idProduct = productToCart._id;
     console.log(idProduct);
     const productInCartExist = await this.collection.findOne({
-      user: productToCart.user,
+      _id: cartId,
       products: {
         $elemMatch: {
           _id: idProduct,
@@ -115,15 +119,28 @@ class CartsDaoMongoDb {
         quantity: 1,
       };
       const newProductAdded = await this.collection.findOneAndUpdate(
-        { user: productToCart.user },
+        { _id: cartId },
         { $push: { products: newProductAdd } },
         { new: true }
       );
     }
   }
 
-  async getAllCarts() {
-    return await this.collection.find().populate("products");
+  async getAllCarts(queryFilter, paginationOptions) {
+
+    if (queryFilter) {
+      console.log(`if linea 131 MONGO`);
+      const result = await this.collection.paginate(
+        queryFilter,
+        paginationOptions
+      );
+      return result;
+    } else {
+      console.log(`else Linea 138 Mongo`);
+      const result = await this.collection.paginate({}, paginationOptions);
+      console.log(result);
+      return result;
+    }
   }
 
   async getCartById(id) {
@@ -169,7 +186,7 @@ class CartsDaoMongoDb {
     }
   }
 
-  async update(cid, pid, dataToUpdate) {
+  async updateCart(cid, pid, dataToUpdate) {
     const cartId = cid;
     const idProduct = pid;
     const quantityToUpdate = dataToUpdate.quantity;

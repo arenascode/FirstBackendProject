@@ -1,7 +1,7 @@
 export default class Cart {
   
-  constructor() {
-
+  constructor(userId) {
+    this.user = userId
     this.products = []
 
   }

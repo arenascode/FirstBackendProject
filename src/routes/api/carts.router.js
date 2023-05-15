@@ -1,5 +1,6 @@
 import {Router} from "express";
-import { controllerAddANewCart, controllerDeleteAllProductsInCart, controllerDeleteProductInCart, controllerGetCartById, controllerGetCarts, controllerUpdateCartById, controllerUpdateProductInCart } from "../../controllers/api/carts.controller.js";
+import { controllerAddANewCart, controllerAddProductInCart, controllerDeleteAllProductsInCart, controllerDeleteProductInCart, controllerGetCartById, controllerGetCarts, controllerUpdateProductInCart } from "../../controllers/api/carts.controller.js";
+import { authenticationJwtApi, authenticationJwtView } from "../../middlewares/passport.js";
 
 const routerCart = Router()
 
@@ -10,15 +11,15 @@ routerCart.get('/:cid', controllerGetCartById);
 routerCart.get("/", controllerGetCarts);
 
 // To add a new cart
-routerCart.post('/', controllerAddANewCart)
+routerCart.post('/', authenticationJwtApi, controllerAddANewCart)
 
 // To update new product an existing cart
-routerCart.put('/:cid/', controllerUpdateCartById)
+routerCart.post('/:cid',authenticationJwtApi, controllerAddProductInCart)
 
 // to delete product in existing cart
 routerCart.delete('/:cid/product/:pid', controllerDeleteProductInCart);
 
-// to update a cart 
+// to update product in cart 
 routerCart.put('/:cid/product/:pid', controllerUpdateProductInCart);
 
 // to delete all products in the cart

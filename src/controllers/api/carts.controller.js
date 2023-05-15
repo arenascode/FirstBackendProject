@@ -20,7 +20,7 @@ export async function controllerGetCartById (req, res) {
       arrayOfProducts.push(product)
     });
     console.log(`arrayOfProducs Controller 21 ${JSON.stringify(arrayOfProducts)}`);
-    res.render('carts', {
+    res.render('cartById', {
           pageTitle: 'Your Cart',
           cartExist: Boolean(cartById),
           dataUser: cartById,
@@ -34,20 +34,54 @@ export async function controllerGetCartById (req, res) {
 }
 
 //To get all carts
-export async function controllerGetCarts (req, res){
+export async function controllerGetCarts(req, res) {
+  let limit = Number(req.query.limit);
+  //console.log(`LINE 5 controllerCart ${typeof limit}`);
+  let page = parseInt(req.query.page);
+  //console.log(page);
+  const category = req.query.category;
+  //console.log(`Category Line 10 Controller ${category}`);
+  let order = req.query.sort;
   try {
-    const carts = await cartsService.showCarts();
-  res.json(carts);
+    const showCarts = await cartsService.showCarts(category, limit, page, order);
+
+    const prevPage = `http://localhost:8080/api/carts?page=${showCarts.prevPage}&limit=${limit}&query=${category}&sort=${order}`;
+
+    const nextPage = `http://localhost:8080/api/carts?page=${showCarts.nextPage}&limit=${limit}&query=${category}&sort=${order}`;
+
+    const paginationOptions = {
+      hasNextPage: showCarts.hasNextPage,
+      hasPrevPage: showCarts.hasPrevPage,
+      prevLink: prevPage,
+      nextLink: nextPage,
+      page: page,
+      category: category,
+      limit: limit,
+    };
+    console.log(showCarts.docs);
+    res.render("carts", {
+      pageTitle: "Carts",
+      cartsExist: showCarts.docs.length > 0,
+      carts: showCarts.docs,
+      pagination: paginationOptions,
+    });
+    //res.json(carts);
   } catch (error) {
-    res.status(400).json({msg: error.message})
+    res.status(400).json({
+      msg: error.message,
+    });
   }
+  
+
 }
 
 //To add new cart
-export async function controllerAddANewCart (req, res) {
+export async function controllerAddANewCart(req, res) {
+  console.log(`I'm req.user.Id in AddPInCart ${JSON.stringify(req.user._id)}`);
   try {
     const productToCart = req.body
-    await cartsService.addNewCart(productToCart)
+    const userId = req.user._id
+    await cartsService.addNewCart(productToCart, userId)
     res.json(`the ${JSON.stringify(productToCart)} was added succesfull`)
   } catch (error) {
     res.status(400).json({
@@ -58,10 +92,13 @@ export async function controllerAddANewCart (req, res) {
 }
 
 // To update new product an existing cart
-export async function controllerUpdateCartById (req, res) {
+export async function controllerAddProductInCart (req, res) {
+  console.log(`I'm req.user in AddPInCart ${req.user}`);
   try {
+    const cartId = req.params.cid
     const productToAdd = req.body
-    await cartsService.addProductToCart(productToAdd)
+    const userId = req.user._id
+    await cartsService.addProductToCart(productToAdd, userId, cartId)
     res.json(`The product was added succesfull`)
   } catch (error) {
     res.status(400).json({

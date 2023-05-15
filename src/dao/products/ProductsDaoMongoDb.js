@@ -70,26 +70,9 @@ export class ProductsDaoMongodb {
     }
   }
 
-  async getAll(category, limitRestricted, pageNumber, order) {
-    let categoria = category;
-    console.log(`Query recibido en MongoDao ${ Boolean(categoria)}`);
-    let orden = order;
-    console.log(`Sort recibido en MongoDao ${orden}`);
-    let limit = limitRestricted;
-    console.log(`Limite recibido en MongoDao ${limit}`);
-    let page = pageNumber;
-    console.log(`page recibida en MongoDao ${page}`);
+  async getAll(queryFilter, paginationOptions) {
     
-    const queryFilter = { category: categoria }
-    
-    const paginationOptions = {
-      page: page,
-      limit: limit,
-      sort: { price: orden },
-      lean: true
-      //populate: { path: 'campo3', model: 'ModeloDeDestino' }
-    }
-    if (categoria) {
+    if (queryFilter) {
       console.log(`if linea 90 MONGO`);
       const result = await this.collection.paginate(queryFilter, paginationOptions)
       return result
@@ -125,12 +108,13 @@ export class ProductsDaoMongodb {
   async findByCode(code) {
     return await this.collection.findOne(code)
   }
-  // async insertMany(motos) {
-  //   const products = motos
-  //   const modifyProducts = products.map((p) => { p.status = true; return p })
-  //   console.log(modifyProducts);
-  //   return await this.collection.insertMany(modifyProducts);
-  // }
+
+  async insertMany(arrayOfProducts) {
+    const products = arrayOfProducts
+    const modifyProducts = products.map((p) => { p.status = true; return p })
+    console.log(modifyProducts);
+    return await this.collection.insertMany(modifyProducts);
+  }
 }
 
 const productsDaoMongoDb = new ProductsDaoMongodb();

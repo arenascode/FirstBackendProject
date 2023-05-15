@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2"
 import { User } from "../../entities/User.js";
 import { json } from "express";
@@ -18,7 +18,10 @@ const userSchema = mongoose.Schema({
   email: { type: String},
   age: { type: String },
   password: { type: String },
-  role: {type: String}
+  role: { type: String },
+  cart: {
+      _id: { type: Schema.Types.ObjectId, ref: "carts" }
+      }
 },
   { versionKey: false }); 
 userSchema.plugin(mongoosePaginate)
