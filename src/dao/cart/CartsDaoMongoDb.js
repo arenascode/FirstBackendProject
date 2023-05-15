@@ -28,10 +28,10 @@ const cartsSchema = mongoose.Schema(
 
 cartsSchema.plugin(mongoosePaginate)
 
-// cartsSchema.pre(/^find/, function (next) {
-//   this.populate('products._id')
-//   next()
-// })
+cartsSchema.pre(/^find/, function (next) {
+this.populate('products._id')
+next()
+})
 
 const cartsModel = mongoose.model(cartsCollection, cartsSchema);
 

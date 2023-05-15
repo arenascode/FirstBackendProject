@@ -10,24 +10,35 @@
 </head>
 <body>
   <div>
-  <h1>Your Cart</h1>
+  <h1>List Of Carts</h1>
   <div id="container" class="container">
   <div id="showData" class="col row-cols-lg-auto g-3 align-items-center">
 {{#if cartsExist}}
-<h3 class="card-title">List Of Carts</h3>
 {{#each carts}}
 <div class="card m-5 col-lg-9" style="width: 18rem">
         <div class="card-body" style="width: inherit">
           
           <h5 class="card-text">Cart Id: {{this._id}}</h5>
-          <h5 class="card-text">Products: {{this.products._id}}</h5>
-          <h5 class="card-text">Quantity:{{this.products.quantity}}</h5>          
+          <h5 class="card-text">Cart User: {{this.user}}</h5>
+          <hr>
+          {{#each this.products}}
+          <div class="card-text">
+          <h5 class="card-text">Product:</h5>
+          {{!-- {{#each this.products._id}} --}}
+          <p><b>Name:</b> {{this._id.title}}</p>
+          <p><b>Description:</b> {{this._id.description}}</p>
+          <p><b>Price:</b> {{this._id.price}}</p>
+          {{!-- {{/each}} --}}
+          </div>
+          <h5 class="card-text">Quantity: {{this.quantity}}</h5>
+          <hr>
+          {{/each}}
           <button id="addBtn-${p._id}" href="#" class="btn btn-secondary" data-idProduct=${{this._id}}>Delete</button>
         </div>
       </div>
 {{/each}}
 {{else}}
-Products Doesn't exist...
+Carts Doesn't exist...
 {{/if}}
   </div>
   </div>
