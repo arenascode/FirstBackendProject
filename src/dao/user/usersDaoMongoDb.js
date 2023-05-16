@@ -83,7 +83,6 @@ class UsersDaoMongodb {
     const userUpdated = this.#collection.findByIdAndUpdate(
       userIdSearched,
       newData,
-      { new: true, upsert: true }
     );
 
     return userUpdated

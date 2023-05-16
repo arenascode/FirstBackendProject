@@ -15,6 +15,7 @@ import { apiRouter } from "../routes/api/api.router.js";
 import cookieParser from "cookie-parser";
 import { COOKIE_SECRET } from "../config/cookies.config.js";
 import config from "../config/config.js";
+import { responseMethods } from "../middlewares/responseMethods.js";
 
 const app = express()
 
@@ -29,7 +30,7 @@ app.engine('handlebars', handlebars.engine())
 app.set('views', './views')
 app.set('view engine', 'handlebars')
 app.use(cookieParser(COOKIE_SECRET))
-
+app.use(responseMethods)
 //Here I tell to express that he uses passport
 
 app.use(passportInitialize)
@@ -46,7 +47,10 @@ app.use('/api', apiRouter)
 // Router for User Sessions Views
 app.use('/', routerSessionsViews)
 
-// here I going to use mongo for save user sessions
+// If the user put a unknow route 
+app.get("*", (req, res, next) => {
+  res["sendClientError"]("Unknown Route: " + req.url);
+});
 
 const conectedServer = app.listen(PORT, () => console.log(`Connected to ${PORT} Port`))
 

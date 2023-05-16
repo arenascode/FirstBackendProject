@@ -39,13 +39,13 @@ function validateAge(age) {
 }
 
 export class User {
-  constructor({ email, password, name, lastName, age, role= "user"}) {
+  constructor({ email, password, name, lastName, age, role= "user", cart= null}) {
     this.email = validateEmail(email);
     this.password = validatePassword(password);
     this.name = validateName(name);
     this.lastName = validateLastName(lastName);
     this.age = validateAge(age);
     this.role = role,
-    this.cart = {}
+    this.cart = cart
   }
 }

@@ -2,6 +2,8 @@ import {
   Router
 } from "express";
 import { controllerAddNewProduct, controllerDeleteProductById, controllerGetProductById, controllerGetProducts, controllerUpdateProductById } from "../../controllers/api/products.controller.js";
+import { authenticationJwtApi } from "../../middlewares/passport.js";
+import  { checkItIsAdmin } from "../../middlewares/handlePolicies.js";
 
 export const routerProducts = Router()
 
@@ -12,12 +14,12 @@ routerProducts.get('/', controllerGetProducts)
 routerProducts.get('/:pid', controllerGetProductById)
 
 // To add a new product
-routerProducts.post('/', controllerAddNewProduct)
+routerProducts.post('/', authenticationJwtApi, checkItIsAdmin, controllerAddNewProduct) // Only Admin
 
 // To update a product
-routerProducts.put("/:pid", controllerUpdateProductById);
+routerProducts.put("/:pid", controllerUpdateProductById); // Only Admin
 
 // To Delete a product
-routerProducts.delete("/:pid", controllerDeleteProductById);
+routerProducts.delete("/:pid", authenticationJwtApi, checkItIsAdmin, controllerDeleteProductById); //Only Admin
 
 export default routerProducts

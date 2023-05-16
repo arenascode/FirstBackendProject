@@ -77,7 +77,7 @@ export async function controllerGetCarts(req, res) {
 
 //To add new cart
 export async function controllerAddANewCart(req, res) {
-  console.log(`I'm req.user.Id in AddPInCart ${JSON.stringify(req.user._id)}`);
+  console.log(`I'm req.user in Controller ANC ${JSON.stringify(req.user)}`);
   try {
     const productToCart = req.body
     const userId = req.user._id

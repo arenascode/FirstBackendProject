@@ -1,7 +1,14 @@
 import { Router } from "express";
 import { deleteUserController, getUserByIdController, getUsersController, updateUserController } from "../../controllers/api/users.controller.js";
+import { validateParam } from "../../utils/validations.js";
 
 export const routerUsers = Router()
+
+routerUsers.param('uid', (req, res, next, userId) => {
+  console.log(`we received user ID: ${userId}`);
+  if (!validateParam(userId)) throw new Error(`the user ID doesn't have a valid format`)
+  next()
+}) 
 
 routerUsers.get('/', getUsersController)
 

@@ -84,7 +84,7 @@ passport.use('login', new LoginStrategy({ usernameField: 'email' }, async (usern
   if (isAdmin) {
     const adminData = {
       email: username,
-      role: "Admin"
+      role: "admin"
     }
     return done(null, adminData)
   } else {

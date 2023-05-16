@@ -6,7 +6,10 @@ import { usersRepository } from "../repositories/users.repository.js";
 class CartsService {
   async addNewCart(productToCart, userId) {
     console.log(`LINE 6 cartsService ${JSON.stringify(productToCart)}`);
-    const cartAdded = await cartsRepository.saveNewCart(productToCart, userId);
+    const user = await usersRepository.findById(userId)
+    const userHasCart = user.cart? user.cart._id : null
+    console.log(`I'm userHasCart CartsService ${JSON.stringify(userHasCart)}`);
+    const cartAdded = await cartsRepository.saveNewCart(productToCart, userId, userHasCart);
     console.log(`I'm cartAdded in C.Service ${cartAdded}`);
     await usersRepository.updateOneById(userId, {cart: cartAdded._id})
     return cartAdded;

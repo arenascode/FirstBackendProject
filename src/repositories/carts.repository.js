@@ -6,8 +6,8 @@ class CartsRepository {
     this.dao = daoSelected
   }
 
-  async saveNewCart(dataNewCart, userId) {
-    const savedCart = this.dao.saveNewCart(dataNewCart, userId)
+  async saveNewCart(dataNewCart, userId, userHasCart) {
+    const savedCart = this.dao.saveNewCart(dataNewCart, userId, userHasCart)
     return savedCart
   }
 
