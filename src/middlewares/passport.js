@@ -111,7 +111,7 @@ passport.use('github', new GithubStrategy({
   console.log(profile._json.name) // its advisable to do this to see all the information that comes from the Github profile.
   let user
   try {
-    user = await userManagerDB.findOne({ email: profile._json.login })
+    user = await userService.findUserByCriteria({ email: profile._json.login })
     console.log(user);
     if (!user) {
       user = new User({
@@ -119,7 +119,7 @@ passport.use('github', new GithubStrategy({
         email: profile._json.login,
         password: '',
       })
-      let result = await userManagerDB.create(user)
+      let result = await userService.registerUser(user)
       done(null,result)
     } else {
       done(null, user)

@@ -1,3 +1,4 @@
+import UserDTO from "../../repositories/users.dto.js";
 import { generateAToken } from "../../utils/cryptography.js";
 
 // Register
@@ -25,7 +26,10 @@ export function loginSessionController(req, res, next) {
 
 // Current Session
 export function getCurrentSessionController(req, res, next) {
-  res.json(req.user);
+  console.log(Boolean(req.user));
+  const userDTO = new UserDTO(req.user)
+  if (!req.user) res.redirect('/login')
+  res.json(userDTO);
 }
 
 //Logout
