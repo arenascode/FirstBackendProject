@@ -1,13 +1,9 @@
 import express from "express";
-import routerProducts from "../routes/api/products.router.js";
 import routerCart from "../routes/api/carts.router.js";
-import { Server as SocketIoServer } from "socket.io";
 import handlebars from "express-handlebars";
 import routerRealTimeProducts from "../routes/api/realTimeProducts.router.js";
 import mongoose from "mongoose";
 import { MONGODB_CNX_STR } from "../config/mongodbCnxStr.js";
-import { productsService } from "../services/products.service.js";
-import cartsService from "../services/carts.service.js";
 import routerSessionsViews from "../routes/web/views.router.js";
 import { PORT } from "../config/PortServer.config.js";
 import { passportInitialize } from "../middlewares/passport.js";
@@ -16,6 +12,7 @@ import cookieParser from "cookie-parser";
 import { COOKIE_SECRET } from "../config/cookies.config.js";
 import config from "../config/config.js";
 import { responseMethods } from "../middlewares/responseMethods.js";
+import { routerChat } from "../routes/api/chat.router.js";
 
 const app = express()
 
@@ -47,48 +44,12 @@ app.use('/api', apiRouter)
 // Router for User Sessions Views
 app.use('/', routerSessionsViews)
 
+// Router for chat
+app.use('/', routerChat)
+
 // If the user put a unknow route 
 app.get("*", (req, res, next) => {
   res["sendClientError"]("Unknown Route: " + req.url);
 });
 
-const conectedServer = app.listen(PORT, () => console.log(`Connected to ${PORT} Port`))
-
-const io = new SocketIoServer(conectedServer)
-
-io.on('connection', async socket => {
-  console.log('New client Connecteed');
-  
-  //This socket use fileSystemManager
-  // socket.emit('showProducts', await productsManager.getProducts())
-  
-  // socket.emit('productsList', await productsService.getProducts())
-
-  socket.on('addProduct', async prod => {
-    try {
-      await productsService.addNewProduct(prod)
-      socket.emit('showProducts', await productsService.getProducts())
-    } catch (error) {
-      console.log({msgError: error});
-    }
-  })
-  
-  socket.on('deleteProduct', async idProductToDelete => {
-    console.log(idProductToDelete);
-    try {
-      await productsService.deleteById(idProductToDelete)
-      socket.emit('showProducts',await productsService.getProducts())
-    } catch (error) {
-      console.log({errorMessage: error});
-    }
-  })
-
-  socket.on('addProductToCart', async productToAdd => {
-    await cartsService.addNewCart(productToAdd)
-    
-  })
-  // socket.emit('cartById', await cartsService.showCartById()
-  // )
-}
-)
-
+export const conectedServer = app.listen(PORT, () => console.log(`Connected to ${PORT} Port`))
