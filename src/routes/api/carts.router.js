@@ -18,15 +18,15 @@ routerCart.post('/', authenticationJwtApi, checkItIsUser, controllerAddANewCart)
 routerCart.post('/:cid',authenticationJwtApi, checkItIsUser, controllerAddProductInCart) // Only User
 
 // to delete product in existing cart
-routerCart.delete('/:cid/product/:pid', checkItIsUser, controllerDeleteProductInCart); // Only User
+routerCart.delete("/:cid/product/:pid",authenticationJwtApi,checkItIsUser,controllerDeleteProductInCart); // Only User
 
 // to update product in cart 
-routerCart.put('/:cid/product/:pid', checkItIsUser, controllerUpdateProductInCart); // Only User
+routerCart.put("/:cid/product/:pid",authenticationJwtApi,checkItIsUser,controllerUpdateProductInCart); // Only User
 
 // to delete all products in the cart
-routerCart.delete('/:cid', checkItIsUser, controllerDeleteAllProductsInCart) // Only User
+routerCart.delete("/:cid",authenticationJwtApi,checkItIsUser,controllerDeleteAllProductsInCart); // Only User
 
 // To purchase a cart
-routerCart.get("/:cid/purchase", purcharsePostController);
+routerCart.get("/:cid/purchase",authenticationJwtApi,checkItIsUser,purcharsePostController);
 
 export default routerCart

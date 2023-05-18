@@ -8,10 +8,7 @@ class TicketService {
 
   async createNewTicket(purchasedCartId) {
     const purchasedCart = await cartsRepository.showCartById(purchasedCartId)
-    //console.log(`PurchasedCart ${JSON.stringify(purchasedCart)}`);
     const productsDetail = purchasedCart.products
-    //console.log(productsDetail);
-    
 
     //check if there is stock
     const productsInStock = productsDetail.filter((p) => {
@@ -20,10 +17,6 @@ class TicketService {
     const productsNotInStock = productsDetail.filter((p) => {
       return p.quantity > p._id.stock
     })
-    
-
-    console.log(productsInStock);
-    console.log(productsNotInStock);
     
     // ready to generate a Ticket
     const searchedPurchaser = await userService.findUser(purchasedCart.user)
@@ -34,17 +27,13 @@ class TicketService {
     //update a stock of products 
     productsInStock.forEach(async (p) => {
       const updateStock = p._id.stock -= p.quantity
-      console.log(updateStock);
       await productsRepository.updateProduct(p._id._id,{stock:updateStock})
     });
 
     // return products that haven't enough stock to cart 
-    await cartsRepository.updateCart(
-      purchasedCartId,
-      {products: productsNotInStock},
-    );
+    await cartsRepository.updateCart(purchasedCartId, { products: productsNotInStock },);
+    
     const newTicket = new Ticket(amount, purchaser)
-    console.log(newTicket);
     return await ticketRepository.createNewTicket(newTicket)
   }
 }
