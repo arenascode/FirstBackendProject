@@ -1,4 +1,5 @@
 import cartsService from "../../services/carts.service.js";
+import ticketService from "../../services/ticket.service.js";
 
 // To get a cart By Id
 export async function controllerGetCartById (req, res) {
@@ -156,4 +157,11 @@ export async function controllerDeleteAllProductsInCart (req, res) {
       msg: error.message
     })
   }
+}
+
+//To buy a cart
+export async function purcharsePostController(req, res, next) {
+  const purchasedCart = req.params.cid
+  const createdTicket =await ticketService.createNewTicket(purchasedCart)
+  res.json(createdTicket)
 }

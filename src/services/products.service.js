@@ -43,7 +43,7 @@ class ProductsService {
   }
 
   async updateProductById(id, dataToUpdate) {
-    return await productsDaoMongoDb.updateById(id, dataToUpdate);
+    return await productsRepository.updateProduct(id, dataToUpdate);
   }
 
   async deleteProductById(id) {

@@ -28,8 +28,8 @@ class CartsRepository {
     return await this.dao.deleteItemInCart(cartId, productId)
   }
 
-  async updateCart(cid, productToUpdate, quantityToUpdate) {
-    return await this.dao.updateCart(cid, productToUpdate, quantityToUpdate )
+  async updateCart(cid, dataToUpdate) {
+    return await this.dao.updateCart(cid, dataToUpdate)
   }
 
   async deleteAllProductsInCart(cid) {

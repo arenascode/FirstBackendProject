@@ -146,7 +146,7 @@ class CartsDaoMongoDb {
 
   async getCartById(id) {
     const cartById = await this.collection.findById(id).populate("products._id").lean();
-    console.log(`cartbyId mongo 124 ${JSON.stringify(cartById)}`);
+    // console.log(`cartbyId mongo 124 ${JSON.stringify(cartById)}`);
     return cartById
   }
 
@@ -187,39 +187,40 @@ class CartsDaoMongoDb {
     }
   }
 
-  async updateCart(cid, pid, dataToUpdate) {
-    const cartId = cid;
-    const idProduct = pid;
-    const quantityToUpdate = dataToUpdate.quantity;
-    console.log(`LINE 138 CartsManager ${idProduct}`);
-    console.log(`LINE 140 CartsManager ${quantityToUpdate}`);
-    console.log(`LINE 141 CartsManager ${JSON.stringify(quantityToUpdate)}`);
+  async updateCart(cid, dataToUpdate) {
+    console.log(`LINE 140 CartsManager ${dataToUpdate}`);
 
-    const cartExist = await this.collection.findOne({
-      _id: cartId,
-      products: {
-        $elemMatch: {
-          _id: idProduct,
-        },
-      },
-    });
-    console.log(cartExist);
+    const updatedCart = await this.collection.findByIdAndUpdate(
+      cid,
+      { $set: dataToUpdate },
+      { new: true },
+    );
+    return updatedCart
+    // const cartExist = await this.collection.findOne({
+    //   _id: cartId,
+    //   products: {
+    //     $elemMatch: {
+    //       _id: idProduct,
+    //     },
+    //   },
+    // });
+    //console.log(cartExist);
 
-    if (cartExist) {
-      const productToUpdateCart = cartExist.products.find(
-        (e) => e._id == idProduct
-      );
-      console.log(
-        `LINE 156 Carts Manager Product to update ${productToUpdateCart}`
-      );
-      const filtro = { _id: cartId, "products._id": idProduct };
-      const result = await this.collection.updateOne(filtro, {
-        $set: { "products.$.quantity": quantityToUpdate },
-      });
-      console.log(`Line 158 ${JSON.stringify(result)}`);
-    } else {
-      console.log(`Line 161: The cart doesn't exist`);
-    }
+    // if (cartExist) {
+    //   const productToUpdateCart = cartExist.products.find(
+    //     (e) => e._id == idProduct
+    //   );
+    //   console.log(
+    //     `LINE 156 Carts Manager Product to update ${productToUpdateCart}`
+    //   );
+    //   const filtro = { _id: cartId, "products._id": idProduct };
+    //   const result = await this.collection.updateOne(filtro, {
+    //     $set: { "products.$.quantity": quantityToUpdate },
+    //   });
+    //   console.log(`Line 158 ${JSON.stringify(result)}`);
+    // } else {
+    //   console.log(`Line 161: The cart doesn't exist`);
+    // }
   }
 
   async deleteAllProductsInCart(cid) {

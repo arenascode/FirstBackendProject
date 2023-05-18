@@ -1,5 +1,5 @@
 import {Router} from "express";
-import { controllerAddANewCart, controllerAddProductInCart, controllerDeleteAllProductsInCart, controllerDeleteProductInCart, controllerGetCartById, controllerGetCarts, controllerUpdateProductInCart } from "../../controllers/api/carts.controller.js";
+import { controllerAddANewCart, controllerAddProductInCart, controllerDeleteAllProductsInCart, controllerDeleteProductInCart, controllerGetCartById, controllerGetCarts, controllerUpdateProductInCart, purcharsePostController } from "../../controllers/api/carts.controller.js";
 import { authenticationJwtApi, authenticationJwtView } from "../../middlewares/passport.js";
 import { checkItIsUser } from "../../middlewares/handlePolicies.js";
 
@@ -25,5 +25,8 @@ routerCart.put('/:cid/product/:pid', checkItIsUser, controllerUpdateProductInCar
 
 // to delete all products in the cart
 routerCart.delete('/:cid', checkItIsUser, controllerDeleteAllProductsInCart) // Only User
+
+// To purchase a cart
+routerCart.get("/:cid/purchase", purcharsePostController);
 
 export default routerCart

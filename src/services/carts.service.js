@@ -57,14 +57,10 @@ class CartsService {
     return productEliminated;
   }
 
-  async updateCart(cid, productToUpdate, quantityToUpdate) {
-    const newQuantity = quantityToUpdate;
-    const itemToUpdate = productToUpdate;
-    const idCartToUpdate = cid;
+  async updateCart(cid, dataToUpdate) {
     const cartUpdated = await cartsRepository.update(
-      idCartToUpdate,
-      itemToUpdate,
-      newQuantity
+      cid,
+      dataToUpdate
     );
     return cartUpdated;
   }

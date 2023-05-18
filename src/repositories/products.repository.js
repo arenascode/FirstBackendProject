@@ -20,8 +20,8 @@ class ProductsRepository {
     return productById
   }
 
-  async updateProduct(productId) {
-    const updatedProduct = await this.dao.updateByID(productId)
+  async updateProduct(productId, dataToUpdate) {
+    const updatedProduct = await this.dao.updateById(productId, dataToUpdate)
     return updatedProduct
   }
 

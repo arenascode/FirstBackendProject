@@ -1,6 +1,6 @@
 import mongoosePaginate from "mongoose-paginate-v2";
 import mongoose from "mongoose";
-import DataNewProduct from "../../models/products.model.js";
+import Product from "../../entities/Product.js";
 
 const productsCollection = "products";
 const productsSchema = mongoose.Schema(
@@ -44,7 +44,7 @@ const productsModel = mongoose.model(productsCollection, productsSchema);
 
 //*-------*-------*-------*-------*-------*
 
-export class ProductsDaoMongodb {
+class ProductsDaoMongodb {
   constructor() {
     this.collection = productsModel;
   }
@@ -65,7 +65,7 @@ export class ProductsDaoMongodb {
       // throw new Error('This product Already Exist')
     } else {
       console.log("the Product was created successfull");
-      const validatedProduct = new DataNewProduct(productToSave)
+      const validatedProduct = new Product(productToSave)
       return await this.collection.create(validatedProduct);
     }
   }
@@ -87,12 +87,7 @@ export class ProductsDaoMongodb {
     return await this.collection.findById(id);
   }
   async updateById(id, dataToUpdate) {
-    return await this.collection.updateOne(
-      {
-        _id: id,
-      },
-      dataToUpdate
-    );
+    return await this.collection.findByIdAndUpdate(id, {$set: dataToUpdate,});
   }
 
   async deleteProduct(id) {
