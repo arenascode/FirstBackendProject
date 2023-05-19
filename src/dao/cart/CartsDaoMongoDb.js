@@ -44,14 +44,14 @@ class CartsDaoMongoDb {
   }
 
   async saveNewCart(productToAdd, userId, userHasCart) {
-    console.log(`cartsmanager Line 14 ${JSON.stringify(productToAdd)}`);
+    //console.log(`cartsmanager Line 14 ${JSON.stringify(productToAdd)}`);
     const product = {};
     const cart = new Cart(userId);
     //Nos aseguramos de saber si el carrito existe previamente para saber si creamos uno nuevo o lo actualizamos simplemente
     const cartExist = await this.collection.findOne({
       _id: userHasCart,
     });
-    console.log(`I'm cartExist ${cartExist}`);
+    //console.log(`I'm cartExist ${cartExist}`);
     const searchedProduct = await productsDaoMongoDb.findByCode({ code: productToAdd.code }) // when I'll do a FE change this for search by ID
     console.log(`producto encontrado por código ${searchedProduct}`);
     if (cartExist) {
@@ -87,9 +87,7 @@ class CartsDaoMongoDb {
       const cart = new Cart(userId);
       cart.products.push(product);
       const newCart = await this.collection.create(cart);
-      console.log(
-        `El cart ${JSON.stringify(cart)} fue agregado a la coleccion`
-      );
+      //console.log(`El cart ${JSON.stringify(cart)} fue agregado a la coleccion`);
       return newCart;
     }
   }
@@ -105,13 +103,13 @@ class CartsDaoMongoDb {
         },
       },
     });
-    console.log(`I'm productInCartExist ${JSON.stringify(productInCartExist)}`);
+    //console.log(`I'm productInCartExist ${JSON.stringify(productInCartExist)}`);
 
     if (productInCartExist) {
       const productToUpdateCart = productInCartExist.products.find(
         (e) => e._id._id == idProduct
       );
-      console.log(`I'm productToUpdateCart ${productToUpdateCart}`);
+      //console.log(`I'm productToUpdateCart ${productToUpdateCart}`);
       productToUpdateCart.quantity += 1;
       await productInCartExist.save();
     } else {
@@ -163,7 +161,7 @@ class CartsDaoMongoDb {
       },
     });
 
-    console.log(`Line 113: Cart ${cartExist}`);
+    //console.log(`Line 113: Cart ${cartExist}`);
 
     if (cartExist) {
       const productInCart = await cartExist.products.find(
@@ -173,13 +171,13 @@ class CartsDaoMongoDb {
 
       if (productInCart.quantity > 1) {
         productInCart.quantity -= 1;
-        console.log(`Line 121 ${productInCart}`);
+        //console.log(`Line 121 ${productInCart}`);
         await cartExist.save();
       } else {
         const newArray = cartExist.products.filter((p) => p._id != pidToDelete);
         cartExist.products = newArray;
         await cartExist.save();
-        console.log(`new cartExist ${cartExist}`);
+        //console.log(`new cartExist ${cartExist}`);
       }
       return await cartExist;
     } else {
@@ -188,39 +186,13 @@ class CartsDaoMongoDb {
   }
 
   async updateCart(cid, dataToUpdate) {
-    console.log(`LINE 140 CartsManager ${dataToUpdate}`);
-
+    //console.log(`LINE 140 CartsManager ${dataToUpdate}`);
     const updatedCart = await this.collection.findByIdAndUpdate(
       cid,
       { $set: dataToUpdate },
       { new: true },
     );
     return updatedCart
-    // const cartExist = await this.collection.findOne({
-    //   _id: cartId,
-    //   products: {
-    //     $elemMatch: {
-    //       _id: idProduct,
-    //     },
-    //   },
-    // });
-    //console.log(cartExist);
-
-    // if (cartExist) {
-    //   const productToUpdateCart = cartExist.products.find(
-    //     (e) => e._id == idProduct
-    //   );
-    //   console.log(
-    //     `LINE 156 Carts Manager Product to update ${productToUpdateCart}`
-    //   );
-    //   const filtro = { _id: cartId, "products._id": idProduct };
-    //   const result = await this.collection.updateOne(filtro, {
-    //     $set: { "products.$.quantity": quantityToUpdate },
-    //   });
-    //   console.log(`Line 158 ${JSON.stringify(result)}`);
-    // } else {
-    //   console.log(`Line 161: The cart doesn't exist`);
-    // }
   }
 
   async deleteAllProductsInCart(cid) {

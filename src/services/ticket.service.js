@@ -2,8 +2,9 @@ import  Ticket from "../entities/Ticket.js";
 import { cartsRepository } from "../repositories/carts.repository.js";
 import { productsRepository } from "../repositories/products.repository.js";
 import ticketRepository from "../repositories/ticket.repository.js";
+import mailService from "./mail.service.js";
 import userService from "./users.service.js";
-
+import nodemailer from "nodemailer"
 class TicketService {
 
   async createNewTicket(purchasedCartId) {
@@ -34,6 +35,7 @@ class TicketService {
     await cartsRepository.updateCart(purchasedCartId, { products: productsNotInStock },);
     
     const newTicket = new Ticket(amount, purchaser)
+    const sendMailToUser = await mailService.sendConfirmPurchaseMail(purchaser)
     return await ticketRepository.createNewTicket(newTicket)
   }
 }

@@ -7,5 +7,7 @@ export default {
   mongoUrl: process.env.MONGODB_CNX_STR,
   jwtKey: process.env.JWT_SECRET_KEY,
   CookieSign: process.env.COOKIE_SECRET,
-  githubClientSecret: process.env.GITHUB_CLIENT_SECRET
+  githubClientSecret: process.env.GITHUB_CLIENT_SECRET,
+  userNodeMailer: process.env.USER_SEND_NODEMAILER,
+  passNodeMailer: process.env.PASS_SEND_NODEMAILER
 }

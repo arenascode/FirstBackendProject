@@ -22,7 +22,6 @@ passport.use('jwt', new JwtStrategy({
   }]), secretOrKey: JWT_SECRET_KEY
 }, async (jwt_payload, done) => {
   try {
-    console.log(`i'm jwt_payload ${JSON.stringify(jwt_payload)}`);
     done(null,jwt_payload) //payload have token
   } catch (error) {
     done(error)
