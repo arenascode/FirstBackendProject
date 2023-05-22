@@ -13,11 +13,12 @@ import { COOKIE_SECRET } from "../config/cookies.config.js";
 import config from "../config/config.js";
 import { responseMethods } from "../middlewares/responseMethods.js";
 import { routerChat } from "../routes/api/chat.router.js";
+import { mockingProductsRouter } from "../routes/api/mockingproducts.router.js";
 
 const app = express()
 
 //Conecting with ATLASDB 
-await mongoose.connect(MONGODB_CNX_STR)
+// await mongoose.connect(MONGODB_CNX_STR)
 
 app.use('/static', express.static('public'))
 app.use(express.json())
@@ -46,6 +47,9 @@ app.use('/', routerSessionsViews)
 
 // Router for chat
 app.use('/', routerChat)
+
+//Router for Mocks
+app.use('/', mockingProductsRouter)
 
 // If the user put a unknow route 
 app.get("*", (req, res, next) => {

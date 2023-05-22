@@ -12,19 +12,19 @@ function validateDescription(valor) {
   return valor;
 }
 
-function validatePrice(valor) {
-  if (typeof valor !== "number") throw new Error("The price must be a number");
+function validatePrice(price) {
+  if (typeof price !== "number") throw new Error("The price must be a number");
   // if (!Number.isInteger(Number(valor))) throw new Error('la  es un numero entero')
 
-  if (stock == undefined)
+  if (price == undefined)
     throw new Error("Ingresa el Stock del producto");
   
   if (isNaN(price)) throw new Error(`The price must be a numeric value`)
 
-  if (Number(valor) <= 0)
+  if (Number(price) <= 0)
     throw new Error("the price must be a positive number");
   
-  return Number(valor);
+  return Number(price);
 }
 
 function validateCode(valor) {

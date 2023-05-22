@@ -20,3 +20,4 @@ export function responseMethods(req, res, next) {
   }
   next()
 }
+

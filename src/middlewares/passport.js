@@ -8,7 +8,7 @@ import { githubCallbackUrl, githubClientSecret, githubClienteId } from "../confi
 import { User } from "../entities/User.js";
 import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt";
 import { JWT_SECRET_KEY } from "../config/auth.config.js";
-import { AuthenticationError } from "../errors/AuthenticationError.js";
+import { AuthenticationError } from "../models/errors/AuthenticationError.js";
 
 // JWT Stragegy //
 
