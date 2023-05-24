@@ -10,15 +10,19 @@ import { passportInitialize } from "../middlewares/passport.js";
 import { apiRouter } from "../routes/api/api.router.js";
 import cookieParser from "cookie-parser";
 import { COOKIE_SECRET } from "../config/cookies.config.js";
-import config from "../config/config.js";
+//import config from "../config/env.config.js";
 import { responseMethods } from "../middlewares/responseMethods.js";
 import { routerChat } from "../routes/api/chat.router.js";
 import { mockingProductsRouter } from "../routes/api/mockingproducts.router.js";
+import { winstonLogger } from "../utils/logger.js";
+import { logger } from "../middlewares/logger.js";
+import { ENV_DB } from "../config/env.config.js";
 
 const app = express()
 
 //Conecting with ATLASDB 
-// await mongoose.connect(MONGODB_CNX_STR)
+await mongoose.connect(ENV_DB)
+winstonLogger.info(`connected to mongodb in ${ENV_DB}`)
 
 app.use('/static', express.static('public'))
 app.use(express.json())
@@ -29,8 +33,9 @@ app.set('views', './views')
 app.set('view engine', 'handlebars')
 app.use(cookieParser(COOKIE_SECRET))
 app.use(responseMethods)
-//Here I tell to express that he uses passport
+app.use(logger)
 
+//Here I tell to express that he uses passport
 app.use(passportInitialize)
 
 // Router for Cart
@@ -56,4 +61,4 @@ app.get("*", (req, res, next) => {
   res["sendClientError"]("Unknown Route: " + req.url);
 });
 
-export const conectedServer = app.listen(PORT, () => console.log(`Connected to ${PORT} Port`))
+export const conectedServer = app.listen(PORT, () => winstonLogger.info(`Connected to Port ${PORT} `))
