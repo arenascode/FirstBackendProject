@@ -17,6 +17,7 @@ import { winstonLogger } from "../utils/logger.js";
 import { logger } from "../middlewares/logger.js";
 import { ENV_DB, envConfig } from "../config/env.config.js";
 import { config } from "dotenv";
+import { loggerTestRouter } from "../routes/api/loggerTest.router.js";
 
 const app = express()
 
@@ -55,6 +56,9 @@ app.use('/', routerChat)
 
 //Router for Mocks
 app.use('/', mockingProductsRouter)
+
+//Router for loggerTest 
+app.use('/', loggerTestRouter)
 
 // If the user put a unknow route 
 app.get("*", (req, res, next) => {

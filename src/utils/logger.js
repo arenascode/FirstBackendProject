@@ -1,4 +1,4 @@
-import winston from "winston";
+import winston, { addColors } from "winston";
 import { NODE_ENV } from "../config/env.config.js";
 
 
@@ -9,19 +9,19 @@ const customLevelsOptions = {
     warning: 2,
     info: 3,
     http: 4,
-    debug: 5
+    debug: 5,
   },
   colors: {
-    fatal: 'red',
-    error: 'orange',
-    warning: 'yellow',
-    info: 'blue',
-    http: 'white',
-    debug: 'green'
-  }
-}
+    fatal: "red",
+    error: "orange",
+    warning: "yellow",
+    info: "blue",
+    http: "white",
+    debug: "green",
+  },
+};
 
-let transports = []
+let transports
 
 if (NODE_ENV === 'production') {
   transports = [
@@ -36,7 +36,9 @@ if (NODE_ENV === 'production') {
     new winston.transports.Console({
       level: 'debug',
       format: winston.format.combine(
-        winston.format.colorize({ colors: customLevelsOptions.colors }),
+        winston.format.colorize({
+          colors:customLevelsOptions.colors
+        }),
         winston.format.simple()
       )
     })
@@ -45,5 +47,5 @@ if (NODE_ENV === 'production') {
 
 export const winstonLogger = winston.createLogger({
   levels: customLevelsOptions.levels,
-  transports
+  transports: transports
 })
