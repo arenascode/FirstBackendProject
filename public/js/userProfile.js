@@ -1,5 +1,3 @@
-console.log(`Hello world!!`);
-
 // fetch("api/sessions/profile")
 //   .then((response) => response.json())
 //   .then((user) => {
@@ -8,7 +6,7 @@ console.log(`Hello world!!`);
 //   .catch((error) => console.error(error));
 
 // localStorage.getItem('user')
-  
+
 // const savedUser = sessionStorage.getItem("user");
 
 // if (savedUser) {
@@ -22,6 +20,6 @@ console.log(`Hello world!!`);
 //     <a href="/logout"><button>Salir</button></a>
 //     <h4><a href="/api/products">View Our Products</a> </h4>`
 // } else {
-//   console.log("No hay datos del usuario guardados en sessionStorage");
+//   winstonLogger("No hay datos del usuario guardados en sessionStorage");
 //   // hacer algo si no se encuentran datos del usuario en sessionStorage
 // }

@@ -1,9 +1,11 @@
+import { winstonLogger } from "../../src/utils/logger.js";
+
 const socket = io()
 
 socket.on('cartById', async (data) => {
   // const divData = document.getElementById("showData");
   // divData.innerHTML = ``;
-  console.log(`I'm data from Line 6 of carts.js ${JSON.stringify(data)}`);
+  winstonLogger.info(`I'm data from Line 6 of carts.js ${JSON.stringify(data)}`);
   // await data.docs.forEach((p) => {
   //   const card = document.createElement("div");
   //   card.className = "col";

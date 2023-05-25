@@ -5,12 +5,12 @@ import { usersRepository } from "../repositories/users.repository.js";
 
 class CartsService {
   async addNewCart(productToCart, userId) {
-    console.log(`LINE 6 cartsService ${JSON.stringify(productToCart)}`);
+    winstonLogger.debug(`LINE 6 cartsService ${JSON.stringify(productToCart)}`);
     const user = await usersRepository.findById(userId)
     const userHasCart = user.cart? user.cart._id : null
-    console.log(`I'm userHasCart CartsService ${JSON.stringify(userHasCart)}`);
+    winstonLogger.debug(`I'm userHasCart CartsService ${JSON.stringify(userHasCart)}`);
     const cartAdded = await cartsRepository.saveNewCart(productToCart, userId, userHasCart);
-    console.log(`I'm cartAdded in C.Service ${cartAdded}`);
+    winstonLogger.debug(`I'm cartAdded in C.Service ${cartAdded}`);
     await usersRepository.updateOneById(userId, {cart: cartAdded._id})
     return cartAdded;
   }
@@ -44,15 +44,15 @@ class CartsService {
 
   async showCartById(id) {
     const cartById = await cartsRepository.showCartById(id);
-    console.log(`I'm cartById ${cartById}`);
+    winstonLogger.debug(`I'm cartById ${cartById}`);
     return cartById
   }
 
   async deleteProductInCart(cartId, productId) {
     const cid = cartId;
     const pid = productId;
-    console.log(`Line 25: cid ${cid}`);
-    console.log(`Line 26: pid ${pid}`);
+    winstonLogger.debug(`Line 25: cid ${cid}`);
+    winstonLogger.debug(`Line 26: pid ${pid}`);
     const productEliminated = await cartsRepository.deleteProductInCart(cid, pid);
     return productEliminated;
   }
@@ -67,7 +67,7 @@ class CartsService {
 
   async deleteAllProductsInCart(cid) {
     const cartId = cid;
-    console.log(`LINE 40 of cartsService IDCart ${cartId}`);
+    winstonLogger.debug(`LINE 40 of cartsService IDCart ${cartId}`);
     const emptyCart = await cartsRepository.deleteAllProductsInCart(cartId);
     return emptyCart;
   }

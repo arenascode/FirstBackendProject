@@ -2,6 +2,7 @@ import mongoose, { Schema } from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2"
 import { User } from "../../entities/User.js";
 import { json } from "express";
+import { winstonLogger } from "../../utils/logger.js";
 
 //function to transform the DBO to DTO
 
@@ -52,7 +53,7 @@ class UsersDaoMongodb {
 
   async createNewUser(userToSave) {
     const newUser = toPoJo(new User(userToSave))
-    console.log(`new user daoMongo ${newUser}`);
+    winstonLogger.info(`new user daoMongo ${newUser}`);
     const userSaved = await this.#collection.create(newUser)
     return toPoJo(userSaved)
   }
@@ -64,15 +65,15 @@ class UsersDaoMongodb {
   }
   
   async findOne(criteria) {
-    console.log(`criteria userMongodb ${JSON.stringify(criteria)}`);
+    winstonLogger.info(`criteria userMongodb ${JSON.stringify(criteria)}`);
     const searchedUser = await this.#collection.findOne(criteria)
     // if (!searchedUser) throw new Error("NOT FOUND");
     return searchedUser
   }
 
   async findAllUsers(criteria, paginationOptions) {
-    console.log(criteria);
-    console.log(paginationOptions);
+    winstonLogger.info(criteria);
+    winstonLogger.info(paginationOptions);
     const userSearched = await this.#collection.paginate(criteria, paginationOptions) // make sure that the criteria arrives as an object
     return userSearched
   }

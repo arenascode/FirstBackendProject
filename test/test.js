@@ -3,9 +3,9 @@ import { DataNewProduct } from "../src/models/products.model.js";
 import mongoose from "mongoose";
 import { MONGODB_CNX_STR } from "../src/config/mongodbCnxStr.js";
 import cartsService from "../src/services/carts.service.js";
-import motos from "../src/dao/products.json" assert {type: 'json'};
-await mongoose.connect(MONGODB_CNX_STR)
-
+import motos from "../src/dao/products.json" assert { type: "json" };
+import { winstonLogger } from "../src/utils/logger.js";
+await mongoose.connect(MONGODB_CNX_STR);
 
 // const insertAllProducts = await productsService.insertMany(motos)
 // const dataNewProduct1 = new DataNewProduct({
@@ -58,18 +58,18 @@ await mongoose.connect(MONGODB_CNX_STR)
 //     thumbnails: ["ruta1", "ruta2"],
 //   }
 // );
-// console.log(updateById);
+//winstonLogger.debug(updateById);
 
 // const deleteById = await productsService.deleteById("64171f7c3b8d3fafd8b9b417");
-// console.log(getProducts);
-//console.log(deleteById);
+// winstonLogger.debug(getProducts);
+//winstonLogger.debug(deleteById);
 
-// TEST CART SERVICE 
+// TEST CART SERVICE
 
 // const getCart = await cartsService.showCartById('64204a6a580cd792f818a661')
-// console.log(getCart)
+// winstonLogger.debug(getCart)
 
-// console.log(getCarts);
+// winstonLogger.debug(getCarts);
 // const addNewCart2 = await cartsService.addNewCart(
 //   {
 //     _id: "6417786cb305822db4bb7fa1",
@@ -84,17 +84,17 @@ await mongoose.connect(MONGODB_CNX_STR)
 //   });
 
 // const addNewCart3 = await cartsService.addNewCart(
-  // {
-  //   _id: "641788b132b54c0973da011a",
-  //   title: "Ford",
-  //   description: "Mustang",
-  //   price: 370000,
-  //   code: "007",
-  //   stock: 13,
-  //   category: "Sport",
-  //   thumbnails: "Ruta1",
-  //   user: "usuario123",
-  // }
+// {
+//   _id: "641788b132b54c0973da011a",
+//   title: "Ford",
+//   description: "Mustang",
+//   price: 370000,
+//   code: "007",
+//   stock: 13,
+//   category: "Sport",
+//   thumbnails: "Ruta1",
+//   user: "usuario123",
+// }
 // );
 
 // const addNewCart5 = await cartsService.addNewCart(
@@ -124,4 +124,4 @@ await mongoose.connect(MONGODB_CNX_STR)
 //   pid: "6417786cb305822db4bb7fa1",
 // });
 
-mongoose.connection.close()
+mongoose.connection.close();

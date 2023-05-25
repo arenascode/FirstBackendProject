@@ -1,19 +1,25 @@
 import { Router } from "express";
-import { deleteUserController, getUserByIdController, getUsersController, updateUserController } from "../../controllers/api/users.controller.js";
+import {
+  deleteUserController,
+  getUserByIdController,
+  getUsersController,
+  updateUserController,
+} from "../../controllers/api/users.controller.js";
 import { validateParam } from "../../utils/validations.js";
 
-export const routerUsers = Router()
+export const routerUsers = Router();
 
-routerUsers.param('uid', (req, res, next, userId) => {
-  console.log(`we received user ID: ${userId}`);
-  if (!validateParam(userId)) throw new Error(`the user ID doesn't have a valid format`)
-  next()
-}) 
+routerUsers.param("uid", (req, res, next, userId) => {
+  winstonLogger.info(`we received user ID: ${userId}`);
+  if (!validateParam(userId))
+    throw new Error(`the user ID doesn't have a valid format`);
+  next();
+});
 
-routerUsers.get('/', getUsersController)
+routerUsers.get("/", getUsersController);
 
-routerUsers.get('/:uid',getUserByIdController)
+routerUsers.get("/:uid", getUserByIdController);
 
-routerUsers.put('/:uid', updateUserController)
+routerUsers.put("/:uid", updateUserController);
 
-routerUsers.delete('/:uid', deleteUserController)
+routerUsers.delete("/:uid", deleteUserController);

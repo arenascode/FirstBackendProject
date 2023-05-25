@@ -6,30 +6,29 @@ class UserRepository {
   }
 
   async create(userToSave, options) {
-    console.log(`createUser Repo ${userToSave}`);
+    winstonLogger.info(`createUser Repo ${userToSave}`);
     return await this.dao.createNewUser(userToSave);
   }
 
   async findById(userId, options) {
-    return await this.dao.findUserById(userId)
+    return await this.dao.findUserById(userId);
   }
-  
+
   async findOne(criteria, options) {
     return await this.dao.findOne(criteria);
   }
 
   async readMany(queryFilter, paginationOptions) {
-
     // make sure to receive an objet as paginate options
     if (queryFilter) {
-      console.log(`if linea 90 MONGO`);
+      winstonLogger.info(`if linea 90 MONGO`);
       const result = await this.dao.findAllUsers(
         queryFilter,
         paginationOptions
       );
       return result;
     } else {
-      console.log(`else Linea 31 UserRepo`);
+      winstonLogger.info(`else Linea 31 UserRepo`);
       const result = await this.dao.findAllUsers({}, paginationOptions);
       return result;
     }
@@ -52,8 +51,8 @@ class UserRepository {
   }
 }
 
-export const usersRepository = new UserRepository(usersDaoMongodb)
+export const usersRepository = new UserRepository(usersDaoMongodb);
 
-// Or 
+// Or
 
 // export const usersRepository = new UserRepository(usersDaoMemory)

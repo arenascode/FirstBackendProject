@@ -1,10 +1,11 @@
-import nodemailer from "nodemailer"
-import { PASS_SEND_NODEMAILER, USER_SEND_NODEMAILER } from "../config/nodeMailer.config.js";
+import nodemailer from "nodemailer";
+import {
+  PASS_SEND_NODEMAILER,
+  USER_SEND_NODEMAILER,
+} from "../config/nodeMailer.config.js";
 
 class MailService {
-
   async sendConfirmPurchaseMail(purchaser) {
-    
     const transport = nodemailer.createTransport({
       service: "gmail",
       port: 587,
@@ -14,25 +15,24 @@ class MailService {
       },
     });
 
-    const userMail = purchaser
+    const userMail = purchaser;
 
     const mailOptions = {
       from: "LuxuryRide",
       to: userMail,
-      subject:
-        "Thanks you for your purchase",
+      subject: "Thanks you for your purchase",
       html: '<h1 style="color: blue;"> Thanks you for your purchase. We started with the shipping. We Will contact you</h1>',
-      attachments: []
+      attachments: [],
     };
 
     try {
-      const info = await transport.sendMail(mailOptions)
-      console.log(info)
+      const info = await transport.sendMail(mailOptions);
+      winstonLogger.info(info);
     } catch (error) {
-      console.log(error);
+      winstonLogger.error(error);
     }
   }
 }
 
-const mailService = new MailService()
-export default mailService
+const mailService = new MailService();
+export default mailService;

@@ -1,8 +1,8 @@
+import { winstonLogger } from "../../src/utils/logger.js"
 
 const socket = io()
 
 const form = document.querySelector('#form')
-console.log(form);
 const formInputs = form.elements
 
 
@@ -54,13 +54,12 @@ socket.on("showProducts", async (data) => {
       // Lógica para eliminar el producto
       e.preventDefault();
       const productToDelete = e.target.dataset.idproduct;
-      console.log(productToDelete);
   
       socket.emit("deleteProduct", productToDelete);
       const divData = document.getElementById("showData");
 
       alert("the Product Was Deleted");
-      console.log(`Id Product Deleted ${p.id}`);
+      winstonLogger.info(`Id Product Deleted ${p.id}`);
     });
   });
 });

@@ -2,38 +2,41 @@ import productsDaoMongoDb from "../dao/products/ProductsDaoMongoDb.js";
 import { productsRepository } from "../repositories/products.repository.js";
 
 class ProductsService {
-  
   async addNewProduct(dataNewProduct) {
-    const productAdded = await productsRepository.createNewProduct(dataNewProduct);
+    const productAdded = await productsRepository.createNewProduct(
+      dataNewProduct
+    );
     return productAdded;
   }
-  
+
   async getProducts(category, limit, page, order) {
-      const queryFilter = category;
+    const queryFilter = category;
 
-      if (order === "undefined" || order == undefined) {
-        order = 1;
-      }
+    if (order === "undefined" || order == undefined) {
+      order = 1;
+    }
 
-      if (isNaN(limit) || limit === "undefined") {
-        limit = 10;
-      }
+    if (isNaN(limit) || limit === "undefined") {
+      limit = 10;
+    }
 
-      if (isNaN(page)) {
-        page = 1;
-      }
-      const paginationOptions = {
-        order: order,
-        limit: limit,
-        page: page,
-        lean: true,
-      };
-    console.log(`Category en ProductService ${ category}`);
-    console.log(`Soy order en product.service ${order}`);
-    const ListOfProducts = await productsRepository.getAllProducts(queryFilter, paginationOptions)
+    if (isNaN(page)) {
+      page = 1;
+    }
+    const paginationOptions = {
+      order: order,
+      limit: limit,
+      page: page,
+      lean: true,
+    };
+    winstonLogger.debug(`Category en ProductService ${category}`);
+    winstonLogger.debug(`Soy order en product.service ${order}`);
+    const ListOfProducts = await productsRepository.getAllProducts(
+      queryFilter,
+      paginationOptions
+    );
 
-    return ListOfProducts
-      ;
+    return ListOfProducts;
   }
 
   async getProductById(productId) {
@@ -55,7 +58,7 @@ class ProductsService {
   }
 
   async insertMany(arrayOfProducts) {
-    return await productsRepository.insertManyProducts(arrayOfProducts)
+    return await productsRepository.insertManyProducts(arrayOfProducts);
   }
 }
 

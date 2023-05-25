@@ -3,6 +3,7 @@ import Cart from './Cart.js'
 import {
   v4 as uuidv4
 } from 'uuid'
+import { winstonLogger } from '../../utils/logger.js'
 
 class CartDaoMemory {
 
@@ -58,7 +59,7 @@ class CartDaoMemory {
     const cartById = carts.find(e => e.id == cid)
 
     if (!cartById) {
-      console.log('This Cart doesnt exist');
+      req.logger.error("the cart doesn't exist")
     } else {
       return cartById
     }
@@ -81,17 +82,17 @@ class CartDaoMemory {
     const productInCart = cartById.products.find(e => e.idProduct == pid)
 
     if (!cartById) {
-      console.log("This Cart doesnt exist. A new cart is being created");
+      winstonLogger.info("This Cart doesnt exist. A new cart is being created");
       this.addCart(productExist)
     } else {
       if (!productInCart) {
-        console.log('the product doesnt exist. Its going to be added');
+        winstonLogger.info('the product doesnt exist. Its going to be added');
         cartById.products.push({
           idProduct: productExist.id,
           quantity: 1
         })
       } else {
-        console.log('the product already exists. one more unit will be added');
+        winstonLogger.info('the product already exists. one more unit will be added');
         const indexProduct = cartById.products.findIndex(e => e.idProduct == pid)
         cartById.products[indexProduct].quantity += 1
       }

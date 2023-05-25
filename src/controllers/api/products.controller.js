@@ -3,11 +3,9 @@ import {productsService} from "../../services/products.service.js";
 //To show all products
 export async function controllerGetProducts(req, res) {
   let limit = Number(req.query.limit);
-  //console.log(`LINE 6 controller ${typeof limit}`);
   let page = parseInt(req.query.page);
-  //console.log(page);
   const category = req.query.category;
-  //console.log(`Category Line 10 Controller ${category}`);
+  
   let order = req.query.sort;
   if (order === 'undefined' || order == undefined) {order = 1 }
 

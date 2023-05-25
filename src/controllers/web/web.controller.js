@@ -1,3 +1,5 @@
+import { winstonLogger } from "../../utils/logger.js";
+
 //Home
 export function homeViewController (req, res) {
   res.redirect('/login')
@@ -19,7 +21,7 @@ export function loginViewController (req, res) {
 
 // Profile
 export function profileViewController (req, res) {
-  console.log(`req.user en RouterView ${JSON.stringify(req.user)}`);
+  winstonLogger.info(`req.user en RouterView ${JSON.stringify(req.user)}`);
   res.render('userProfile', {
     pageTitle: "Your Profile",
     user: req.user

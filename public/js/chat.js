@@ -5,7 +5,6 @@ let chatBubble = document.createElement("div");
 
   
 socket.on('Welcome', async (welcomeMessage) => {
-  console.log(welcomeMessage);
 
   chatBubble = document.createElement("div");
   chatBubble.className = "bubble";

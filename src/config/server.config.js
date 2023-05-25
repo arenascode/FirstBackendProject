@@ -10,6 +10,4 @@ program.option('-d', 'Debug variable', false)
   .parse()
 
 const options = program.opts()
-  
-console.log(options);
-console.log(program.args);
+

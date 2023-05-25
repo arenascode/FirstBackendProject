@@ -1,9 +1,9 @@
-const socket = io()
+const socket = io();
 
 // socket.on("productsList", async (data) => {
 //   const divData = document.getElementById("showData");
 //   divData.innerHTML = ``;
-//   console.log(`I'm data from Line 6 of products.js ${JSON.stringify(data)}`);
+//   winstonLogger(`I'm data from Line 6 of products.js ${JSON.stringify(data)}`);
 //   await data.docs.forEach((p) => {
 //     const card = document.createElement("div");
 //     card.className = "col";
@@ -29,14 +29,14 @@ const socket = io()
 //         _id: e.target.dataset.idproduct,
 //         user: user1
 //       };
-//       console.log(`LINE 31 product.js ${JSON.stringify(productToAdd._id)}`);
+//       winstonLogger(`LINE 31 product.js ${JSON.stringify(productToAdd._id)}`);
 
 //       socket.emit("addProductToCart", productToAdd);
 //       const divData = document.getElementById("showData");
 
 //       alert("the Product Was added to cart");
-//       console.log(`Id Product added ${p._id}`);
+//       winstonLogger(`Id Product added ${p._id}`);
 //     });
 //   });
-  
+
 // });

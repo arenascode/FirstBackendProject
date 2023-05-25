@@ -1,6 +1,7 @@
 import mongoosePaginate from "mongoose-paginate-v2";
 import mongoose from "mongoose";
 import Product from "../../entities/Product.js";
+import { winstonLogger } from "../../utils/logger.js";
 
 const productsCollection = "products";
 const productsSchema = mongoose.Schema(
@@ -50,36 +51,34 @@ class ProductsDaoMongodb {
   }
   // To manage Products
   async saveItem(productToSave) {
-    //console.log(`vengo de ManagerMongoose ${JSON.stringify(registro)}`);
-
     const codeProduct = productToSave.code;
-    console.log(codeProduct);
 
     const productExist = await this.collection.findOne({
       code: codeProduct,
     });
-    console.log(`este es product exist ${productExist}`);
 
     if (productExist) {
-      console.log("This product Already Exist");
+      winstonLogger.error("This product Already Exist");
       // throw new Error('This product Already Exist')
     } else {
-      console.log("the Product was created successfull");
-      const validatedProduct = new Product(productToSave)
+      winstonLogger.info("the Product was created successfull");
+      const validatedProduct = new Product(productToSave);
       return await this.collection.create(validatedProduct);
     }
   }
 
   async getAll(queryFilter, paginationOptions) {
-    
     if (queryFilter) {
-      console.log(`if linea 90 MONGO`);
-      const result = await this.collection.paginate(queryFilter, paginationOptions)
-      return result
+      //winstonLogger.info(`if linea 90 MONGO`);
+      const result = await this.collection.paginate(
+        queryFilter,
+        paginationOptions
+      );
+      return result;
     } else {
-      console.log(`else Linea 94 Mongo`);
-      const result = await this.collection.paginate({}, paginationOptions)
-      return result
+      //winstonLogger.info(`else Linea 94 Mongo`);
+      const result = await this.collection.paginate({}, paginationOptions);
+      return result;
     }
   }
 
@@ -87,7 +86,7 @@ class ProductsDaoMongodb {
     return await this.collection.findById(id);
   }
   async updateById(id, dataToUpdate) {
-    return await this.collection.findByIdAndUpdate(id, {$set: dataToUpdate,});
+    return await this.collection.findByIdAndUpdate(id, { $set: dataToUpdate });
   }
 
   async deleteProduct(id) {
@@ -99,15 +98,18 @@ class ProductsDaoMongodb {
   async deleteAll() {
     await this.collection.deleteMany({});
   }
-  
+
   async findByCode(code) {
-    return await this.collection.findOne(code)
+    return await this.collection.findOne(code);
   }
 
   async insertMany(arrayOfProducts) {
-    const products = arrayOfProducts
-    const modifyProducts = products.map((p) => { p.status = true; return p })
-    console.log(modifyProducts);
+    const products = arrayOfProducts;
+    const modifyProducts = products.map((p) => {
+      p.status = true;
+      return p;
+    });
+    //winstonLogger.info(modifyProducts);
     return await this.collection.insertMany(modifyProducts);
   }
 }

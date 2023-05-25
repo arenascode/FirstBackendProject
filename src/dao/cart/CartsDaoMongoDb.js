@@ -3,6 +3,7 @@ import mongoosePaginate from "mongoose-paginate-v2"
 import Cart from "../../entities/Cart.js";
 import productsDaoMongoDb from "../products/ProductsDaoMongoDb.js";
 import { stringify } from "uuid";
+import { winstonLogger } from "../../utils/logger.js";
 
 const cartsCollection = "carts";
 const cartsSchema = mongoose.Schema(
@@ -44,16 +45,16 @@ class CartsDaoMongoDb {
   }
 
   async saveNewCart(productToAdd, userId, userHasCart) {
-    //console.log(`cartsmanager Line 14 ${JSON.stringify(productToAdd)}`);
+
     const product = {};
     const cart = new Cart(userId);
     //Nos aseguramos de saber si el carrito existe previamente para saber si creamos uno nuevo o lo actualizamos simplemente
     const cartExist = await this.collection.findOne({
       _id: userHasCart,
     });
-    //console.log(`I'm cartExist ${cartExist}`);
+    
     const searchedProduct = await productsDaoMongoDb.findByCode({ code: productToAdd.code }) // when I'll do a FE change this for search by ID
-    console.log(`producto encontrado por código ${searchedProduct}`);
+    winstonLogger.info(`producto encontrado por código ${searchedProduct}`);
     if (cartExist) {
       const productInCartExist = await this.collection.findOne({
         user: userId,
@@ -69,7 +70,7 @@ class CartsDaoMongoDb {
           if (element._id.equals(searchedProduct._id)) {
             element.quantity += 1;
           } else {
-            console.log(`element didn't found. Will be create`);
+            winstonLogger.info(`element didn't found. Will be create`);
           }
         });
         await productInCartExist.save();
@@ -87,14 +88,13 @@ class CartsDaoMongoDb {
       const cart = new Cart(userId);
       cart.products.push(product);
       const newCart = await this.collection.create(cart);
-      //console.log(`El cart ${JSON.stringify(cart)} fue agregado a la coleccion`);
+      //winstonLogger.info(`El cart ${JSON.stringify(cart)} fue agregado a la coleccion`);
       return newCart;
     }
   }
 
   async addProductToCart(productToCart, userId, cartId) {
     const idProduct = productToCart._id;
-    console.log(idProduct);
     const productInCartExist = await this.collection.findOne({
       _id: cartId,
       products: {
@@ -103,13 +103,13 @@ class CartsDaoMongoDb {
         },
       },
     });
-    //console.log(`I'm productInCartExist ${JSON.stringify(productInCartExist)}`);
+    //winstonLogger.info(`I'm productInCartExist ${JSON.stringify(productInCartExist)}`);
 
     if (productInCartExist) {
       const productToUpdateCart = productInCartExist.products.find(
         (e) => e._id._id == idProduct
       );
-      //console.log(`I'm productToUpdateCart ${productToUpdateCart}`);
+      //winstonLogger.info(`I'm productToUpdateCart ${productToUpdateCart}`);
       productToUpdateCart.quantity += 1;
       await productInCartExist.save();
     } else {
@@ -128,23 +128,21 @@ class CartsDaoMongoDb {
   async getAllCarts(queryFilter, paginationOptions) {
 
     if (queryFilter) {
-      console.log(`if linea 131 MONGO`);
+
       const result = await this.collection.paginate(
         queryFilter,
         paginationOptions
       );
       return result;
     } else {
-      console.log(`else Linea 138 Mongo`);
       const result = await this.collection.paginate({}, paginationOptions);
-      console.log(result);
       return result;
     }
   }
 
   async getCartById(id) {
     const cartById = await this.collection.findById(id).populate("products._id").lean();
-    // console.log(`cartbyId mongo 124 ${JSON.stringify(cartById)}`);
+    // winstonLogger.info(`cartbyId mongo 124 ${JSON.stringify(cartById)}`);
     return cartById
   }
 
@@ -161,32 +159,31 @@ class CartsDaoMongoDb {
       },
     });
 
-    //console.log(`Line 113: Cart ${cartExist}`);
 
     if (cartExist) {
       const productInCart = await cartExist.products.find(
         (e) => e._id == pidToDelete
       );
-      console.log(productInCart);
+      winstonLogger.debug(productInCart);
 
       if (productInCart.quantity > 1) {
         productInCart.quantity -= 1;
-        //console.log(`Line 121 ${productInCart}`);
+        //winstonLogger.info(`Line 121 ${productInCart}`);
         await cartExist.save();
       } else {
         const newArray = cartExist.products.filter((p) => p._id != pidToDelete);
         cartExist.products = newArray;
         await cartExist.save();
-        //console.log(`new cartExist ${cartExist}`);
+        //winstonLogger.info(`new cartExist ${cartExist}`);
       }
       return await cartExist;
     } else {
-      console.log(`the product In cart Doesn't exist`);
+      winstonLogger.error(`the product In cart Doesn't exist`);
     }
   }
 
   async updateCart(cid, dataToUpdate) {
-    //console.log(`LINE 140 CartsManager ${dataToUpdate}`);
+    //winstonLogger.info(`LINE 140 CartsManager ${dataToUpdate}`);
     const updatedCart = await this.collection.findByIdAndUpdate(
       cid,
       { $set: dataToUpdate },
@@ -197,10 +194,10 @@ class CartsDaoMongoDb {
 
   async deleteAllProductsInCart(cid) {
     const cartExist = await this.collection.findOne({ _id: cid });
-    console.log(`Line 170 CartsManag ${cartExist}`);
+    winstonLogger.info(`Line 170 CartsManag ${cartExist}`);
 
     const productsInCart = cartExist.products;
-    console.log(productsInCart);
+    winstonLogger.info(productsInCart);
     const emptyCart = this.collection.updateOne(
       { _id: cid },
       { $set: { products: [] } }

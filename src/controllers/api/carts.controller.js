@@ -1,12 +1,13 @@
 import cartsService from "../../services/carts.service.js";
 import ticketService from "../../services/ticket.service.js";
+import { winstonLogger } from "../../utils/logger.js";
 
 // To get a cart By Id
 export async function controllerGetCartById (req, res) {
   try {
     const idCart = req.params.cid
     const cartById = await cartsService.showCartById(idCart)
-    console.log(`cartById Controller 8 ${JSON.stringify(cartById)}`);
+    winstonLogger.info(`cartById Controller 8 ${JSON.stringify(cartById)}`);
 
     const arrayOfProducts = []
     const productsOfCart = cartById.products.forEach(e => {
@@ -20,7 +21,7 @@ export async function controllerGetCartById (req, res) {
       }
       arrayOfProducts.push(product)
     });
-    console.log(`arrayOfProducs Controller 21 ${JSON.stringify(arrayOfProducts)}`);
+    winstonLogger.info(`arrayOfProducs Controller 21 ${JSON.stringify(arrayOfProducts)}`);
     res.render('cartById', {
           pageTitle: 'Your Cart',
           cartExist: Boolean(cartById),
@@ -37,11 +38,11 @@ export async function controllerGetCartById (req, res) {
 //To get all carts
 export async function controllerGetCarts(req, res) {
   let limit = Number(req.query.limit);
-  //console.log(`LINE 5 controllerCart ${typeof limit}`);
+  //winstonLogger.info(`LINE 5 controllerCart ${typeof limit}`);
   let page = parseInt(req.query.page);
-  //console.log(page);
+  //winstonLogger.info(page);
   const category = req.query.category;
-  //console.log(`Category Line 10 Controller ${category}`);
+  //winstonLogger.info(`Category Line 10 Controller ${category}`);
   let order = req.query.sort;
   try {
     const showCarts = await cartsService.showCarts(category, limit, page, order);
@@ -59,7 +60,7 @@ export async function controllerGetCarts(req, res) {
       category: category,
       limit: limit,
     };
-    console.log(showCarts.docs);
+    winstonLogger.info(showCarts.docs);
     res.render("carts", {
       pageTitle: "Carts",
       cartsExist: showCarts.docs.length > 0,
@@ -78,7 +79,7 @@ export async function controllerGetCarts(req, res) {
 
 //To add new cart
 export async function controllerAddANewCart(req, res) {
-  console.log(`I'm req.user in Controller ANC ${JSON.stringify(req.user)}`);
+  winstonLogger.info(`I'm req.user in Controller ANC ${JSON.stringify(req.user)}`);
   try {
     const productToCart = req.body
     const userId = req.user._id
@@ -94,7 +95,7 @@ export async function controllerAddANewCart(req, res) {
 
 // To update new product an existing cart
 export async function controllerAddProductInCart (req, res) {
-  console.log(`I'm req.user in AddPInCart ${req.user}`);
+  winstonLogger.info(`I'm req.user in AddPInCart ${req.user}`);
   try {
     const cartId = req.params.cid
     const productToAdd = req.body
@@ -113,15 +114,13 @@ export async function controllerAddProductInCart (req, res) {
 export async function controllerDeleteProductInCart (req, res) {
   try {
     const cartId = req.params.cid
-    console.log(cartId);
     const productId = req.params.pid
-    console.log(productId);
 
     if (cartId && productId) {
       await cartsService.deleteProductInCart(cartId, productId)
       res.status(200).json({ msg: 'product delete successfull'})
     } else {
-      console.log(`missing data`);
+      req.logger.debug(`missing data`)
     }
   } catch (error) {
     res.status(400).json({

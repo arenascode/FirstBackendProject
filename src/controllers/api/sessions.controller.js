@@ -1,5 +1,6 @@
 import UserDTO from "../../repositories/users.dto.js";
 import { generateAToken } from "../../utils/cryptography.js";
+import { winstonLogger } from "../../utils/logger.js";
 
 // Register
 export function registerSessionsController(req, res, next) {
@@ -16,7 +17,7 @@ export function loginSessionController(req, res, next) {
     return res
       .status(400)
       .send({ status: "error", error: "Invalid Credentials" });
-  console.log(`req.user in LoginController ${JSON.stringify(req.user)}`);
+  winstonLogger.info(`req.user in LoginController ${JSON.stringify(req.user)}`);
   res.cookie("jwt_authorization", generateAToken(req.user), {
     signed: true,
     httpOnly: true,
@@ -26,7 +27,6 @@ export function loginSessionController(req, res, next) {
 
 // Current Session
 export function getCurrentSessionController(req, res, next) {
-  console.log(Boolean(req.user));
   const userDTO = new UserDTO(req.user)
   if (!req.user) res.redirect('/login')
   res.json(userDTO);

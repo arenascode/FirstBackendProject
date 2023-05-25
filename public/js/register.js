@@ -1,3 +1,5 @@
+import { winstonLogger } from "../../src/utils/logger.js";
+
 const formRegister = document.getElementById('registerForm')
 
 const password = document.getElementById('loginPassword')
@@ -8,15 +10,12 @@ repeatPassword.addEventListener("input", (e) => {
   e.preventDefault()
   const istheSamePassContainer = document.getElementById("isTheSamePass");
   if (password.value.length > 0 && repeatPassword.value.length > 0) {
-    console.log(`hay al menos un valor ingresado en cada input`);
     if (repeatPassword.value === password.value) {
     istheSamePassContainer.innerText = `The passwords match`;
   } else {
-      console.log(`the pass doesn't match`);
       istheSamePassContainer.innerText = `The passwords doesn't match`;
   }
   } else {
-    console.log(`some input are empty`);
     istheSamePassContainer.innerText = ``;
 }
 });
@@ -32,7 +31,6 @@ if (formRegister instanceof HTMLFormElement) {
     const userAge = dataUser.get("age");
     const userPass = dataUser.get("loginPassword");
     const repeatUserPass = dataUser.get("repeatPassword");
-    console.log(userPass);
     if (userPass === repeatUserPass) {
       
       const objDataUser = {}
@@ -54,7 +52,7 @@ if (formRegister instanceof HTMLFormElement) {
                   window.location.href='/login'
                 }
               })
-                .catch((error) => console.log(error.message));
+                .catch((error) => winstonLogger.error(error.message));
       } else {
             alert(`The passwords doesn't match`);
             } 
