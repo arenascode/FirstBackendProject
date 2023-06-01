@@ -45,4 +45,13 @@ routerSessions.get(
 // User Logout
 routerSessions.get("/logout", logoutSessionController);
 
+routerSessions.post('/recoverpass', (req, res, next) => {
+  const mailToRecoverPass = req.body
+  console.log(mailToRecoverPass);
+
+  res.json({
+    message: 'Mail received'
+  })
+})
+
 export default routerSessions;

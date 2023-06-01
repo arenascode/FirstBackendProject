@@ -18,5 +18,3 @@ export const envConfig = dotenv.config({
 // }
 
 export const NODE_ENV = process.env.NODE_ENV || 'development'
-export const ENV_DB = process.env.DB_HOST
-export const ENV_PORT = process.env.PORT

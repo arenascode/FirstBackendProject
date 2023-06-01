@@ -3,27 +3,30 @@ import routerCart from "../routes/api/carts.router.js";
 import handlebars from "express-handlebars";
 import routerRealTimeProducts from "../routes/api/realTimeProducts.router.js";
 import mongoose from "mongoose";
-import { MONGODB_CNX_STR } from "../config/mongodbCnxStr.js";
 import routerSessionsViews from "../routes/web/views.router.js";
 import { PORT } from "../config/PortServer.config.js";
 import { passportInitialize } from "../middlewares/passport.js";
 import { apiRouter } from "../routes/api/api.router.js";
 import cookieParser from "cookie-parser";
-import { COOKIE_SECRET } from "../config/cookies.config.js";
 import { responseMethods } from "../middlewares/responseMethods.js";
 import { routerChat } from "../routes/api/chat.router.js";
 import { mockingProductsRouter } from "../routes/api/mockingproducts.router.js";
 import { winstonLogger } from "../utils/logger.js";
 import { logger } from "../middlewares/logger.js";
-import { ENV_DB, envConfig } from "../config/env.config.js";
 import { config } from "dotenv";
 import { loggerTestRouter } from "../routes/api/loggerTest.router.js";
+import cluster from 'cluster';
+import cors from "cors"
+import { MONGODB_CNX_STR } from "../config/mongodbCnxStr.js";
 
 const app = express()
 
 //Conecting with ATLASDB 
-await mongoose.connect(ENV_DB)
-winstonLogger.info(`connected to mongodb in ${ENV_DB}`)
+// await mongoose.connect(MONGODB_CNX_STR); Temporary
+await mongoose.connect(
+  "mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce"
+);
+// winstonLogger.info(`connected to mongodb in ${MONGODB_CNX_STR}`)
 
 app.use('/static', express.static('public'))
 app.use(express.json())
@@ -32,9 +35,10 @@ app.use(express.urlencoded({ extended: true }))
 app.engine('handlebars', handlebars.engine())
 app.set('views', './views')
 app.set('view engine', 'handlebars')
-app.use(cookieParser(COOKIE_SECRET))
+app.use(cookieParser(process.env.COOKIE_SECRET))
 app.use(responseMethods)
 app.use(logger)
+app.use(cors())
 
 //Here I tell to express that he uses passport
 app.use(passportInitialize)
@@ -64,5 +68,6 @@ app.use('/', loggerTestRouter)
 app.get("*", (req, res, next) => {
   res["sendClientError"]("Unknown Route: " + req.url);
 });
+
 
 export const conectedServer = app.listen(PORT, () => winstonLogger.info(`Connected to Port ${PORT} `))

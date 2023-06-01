@@ -20,4 +20,11 @@ routerSessionsViews.get('/profile',authenticationJwtView, profileViewController)
 // Logout View
 routerSessionsViews.get('/logout', logOutController)
 
+//To recover Password 
+routerSessionsViews.get('/recoverPassword', (req, res, next) => {
+  res.render("mailToRecoverPass", {
+    pagetitle: "MailToRecoverPass"
+  })
+})
+
 export default routerSessionsViews

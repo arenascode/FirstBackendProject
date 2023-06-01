@@ -1,1 +1,1 @@
-export const COOKIE_SECRET = 'SECRET_KEY_COOKIE'
+// export const COOKIE_SECRET = 'SECRET_KEY_COOKIE'
