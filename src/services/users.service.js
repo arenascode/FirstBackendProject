@@ -46,7 +46,7 @@ class UserService {
     const searchedUser = await usersRepository.findOne(criteria);
     return searchedUser;
   }
-
+  
   async updateUserById(userID, newData) {
     const updatedUser = await usersRepository.updateOneById(userID, newData);
     return updatedUser;

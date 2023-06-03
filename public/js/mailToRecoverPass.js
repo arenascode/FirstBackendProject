@@ -10,10 +10,10 @@ if (mailToRecoverPassForm instanceof HTMLFormElement) {
     const dataForm = new FormData(mailToRecoverPassForm);
     const userMail = dataForm.get("email");
     const mailToSend = {};
-    mailToSend.mail = userMail;
+    mailToSend.email = userMail;
     console.log(mailToSend);
     try {
-      fetch("api/sessions/recoverpass", {
+      fetch("api/sessions/mailToRecoverPass", {
         method: "POST",
         body: JSON.stringify(mailToSend),
         headers: { "content-type": "application/json" },

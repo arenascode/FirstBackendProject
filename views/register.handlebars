@@ -1,40 +1,44 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/static/css/style.css">
-  <title>{{pageTitle}}</title>
-</head>
-<body>
-  <form id="registerForm">
-   <h2>Register</h2>
-  <label for="name">Name:</label>
-  <input type="name" id="name" name="name" required>
-  <br>
-  <label for="lastName">Last Name:</label>
-  <input type="lastName" id="lastName" name="lastName" required>
-  <br>
-  <label for="email">Mail:</label>
-  <input type="email" id="email" name="email" required>
-  <br>
-  <label for="age">Age:</label>
-  <input type="age" id="age" name="age" required>
-  <br>
-  <label for="password">Password:</label>
-  <input type="password" id="loginPassword" name="loginPassword" required>
-  <br>
-  <label for="repeatPassword">Repeat Password:</label>
-  <input type="password" id="repeatPassword" name="repeatPassword" required>
-  <span id="isTheSamePass"></span>
-  <br>
-  <div class="buttonRegisterForm">
-  <button type="submit" name="submit">Register Me</button>
-  <p>Are you already registered?</p>
-  <a href="/login">log in!</a>
-  </div>
-</form>
-<script src="/static/js/register.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>{{pageTitle}}</title>
+  </head>
+  <body>
+    <form id="registerForm">
+      <h2>Register</h2>
+      <label for="name">Name:</label>
+      <input type="name" id="name" name="name" required />
+      <br />
+      <label for="lastName">Last Name:</label>
+      <input type="lastName" id="lastName" name="lastName" required />
+      <br />
+      <label for="email">Mail:</label>
+      <input type="email" id="email" name="email" required />
+      <br />
+      <label for="age">Age:</label>
+      <input type="age" id="age" name="age" required />
+      <br />
+      <label for="password">Password:</label>
+      <input type="password" id="loginPassword" name="loginPassword" required />
+      <br />
+      <label for="repeatPassword">Repeat Password:</label>
+      <input
+        type="password"
+        id="repeatPassword"
+        name="repeatPassword"
+        required
+      />
+      <span id="isTheSamePass"></span>
+      <br />
+      <div class="buttonRegisterForm">
+        <button type="submit" name="submit">Register Me</button>
+        <p>Are you already registered?</p>
+        <a href="/login">log in!</a>
+      </div>
+    </form>
+    <script src="/static/js/register.js"></script>
+  </body>
 </html>

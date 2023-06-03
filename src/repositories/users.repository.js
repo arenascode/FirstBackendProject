@@ -15,6 +15,7 @@ class UserRepository {
   }
 
   async findOne(criteria, options) {
+    console.log(`criteria passed to DAO from Repo ${criteria}`);
     return await this.dao.findOne(criteria);
   }
 

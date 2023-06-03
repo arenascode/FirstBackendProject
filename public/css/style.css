@@ -113,7 +113,9 @@ body {
   border-radius: 5px;
   border: none;
 }
-
+#isTheSamePass {
+  color: white;
+}
 /* Login view */
 #loginForm {
   width: 200px;

@@ -1,4 +1,3 @@
-import { winstonLogger } from "../../src/utils/logger.js"
 
 const loginForm = document.getElementById('loginForm')
 
@@ -18,7 +17,7 @@ if (loginForm instanceof HTMLFormElement) {
       body: JSON.stringify(objLogin),
       headers: { "content-type": "application/json" },
     }).then((result) => {
-      winstonLogger.info(result);
+      console.log(result);;
       if (result.status === 201) {
         window.location.replace("/profile");
       } else if (result.status === 401) { 
