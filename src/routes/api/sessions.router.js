@@ -14,6 +14,7 @@ import {
   registerSessionsController,
 } from "../../controllers/api/sessions.controller.js";
 import { restorePassService } from "../../services/restorePassword.service.js";
+import { generateAToken } from "../../utils/cryptography.js";
 
 const routerSessions = Router();
 // User Register
@@ -46,31 +47,41 @@ routerSessions.get(
 // User Logout
 routerSessions.get("/logout", logoutSessionController);
 
-routerSessions.post('/mailToRecoverPass', async (req, res, next) => {
-  const mailToRecoverPass = req.body
+routerSessions.post("/mailToRecoverPass", async (req, res, next) => {
+  try {
+    const mailToRecoverPass = req.body;
   console.log(mailToRecoverPass);
-  const updatedPassUser = await restorePassService.initializeRecovery(mailToRecoverPass)
+  const updatedPassUser = await restorePassService.initializeRecovery(
+    mailToRecoverPass
+  );
   console.log(`Searched returned in Router ${updatedPassUser}`);
   res.json({
-    message: 'Mail received'
-  })
-})
+    message: "Mail received",
+  });
+  } catch (error) {
+    res.status(400).json({errorMsg: error.message})
+  }
+});
 
-routerSessions.post('/resetPassword', async (req, res, next) => {
-  console.log(`contenido routerPassReset en req.query ${JSON.stringify(req.query)}`);
-  const tokenInfo = req.body
-  console.log(`I'm body of RouterSessPost ${JSON.stringify(tokenInfo)}`);
-  const result = await restorePassService.finalizeRecovery(tokenInfo)
-  // if (!result) res['sendAuthError']
-  console.log(`Result in Router ${result}`);
+routerSessions.post("/resetPassword", async (req, res, next) => {
+  try {
+    const tokenInfo = req.body;
+  
+    const result = await restorePassService.finalizeRecovery(tokenInfo);
+    console.log(`Result in Router ${result}`);
+    let newToken = generateAToken(result)
+    console.log(newToken);
+
+    res.cookie("jwt_authorization", newToken, { signed: true, httpOnly: true })
+    
+    res.status(200).send("your password was restored");
+
+  } catch (error) {
+    console.log(`I'm error SessRouter ${error}`);
+    res.status(400).json({ errorMsg: error.message });
+  }
+
   //res.status(200).send('your password was restored succesfull')
-  // res.json({message: `endpoing works!`})
-
-  // const userData = {userId: req.query.id, userToken: req.query.token}
-  // res.render(`resetPassword`, {
-  //   pagetitle: "Reset Your Passwords",
-  //   userId: userData
-  // })
-})
+});
 
 export default routerSessions;

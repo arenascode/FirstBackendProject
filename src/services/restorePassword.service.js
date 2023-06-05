@@ -1,6 +1,7 @@
 import { CLIENT_URL } from "../config/env.config.js";
 import { tokenDaoMongoDb } from "../dao/user/tokenDaoMongoDb.js";
 import { usersRepository } from "../repositories/users.repository.js";
+import { isValidPassword } from "../utils/cryptography.js";
 import { createHash, generateAToken } from "../utils/cryptography.js";
 import mailService from "./mail.service.js";
 
@@ -26,17 +27,24 @@ class RestorePasswordService {
   }
 
   async finalizeRecovery(tokenInfo) {
-    console.log(`finalizeRecovery ${JSON.stringify(tokenInfo)}`);
     const tokenExist = await tokenDaoMongoDb.readToken(tokenInfo.userId);
-    const hashedPass = createHash(tokenInfo.newUserPass)
-    console.log(hashedPass);
-    console.log(tokenExist);
-    if (!tokenExist) throw new Error("Expired Token");
+    if (!tokenExist) throw new Error("The time to restore your password expired. Please send us your email again");
+
+    const searchUser = await usersRepository.findById(tokenInfo.userId);
+
+    const oldPass = searchUser.password;
+    const isTheSamePass = isValidPassword(tokenInfo.newUserPass, oldPass);
+
+    if (isTheSamePass)
+      throw new Error(`Please put a different password to the one you had`);
+
+    const newPassHashed = createHash(tokenInfo.newUserPass);
+
     const updateUserPass = await usersRepository.updateOneById(
       tokenExist.userId,
-      { password: hashedPass}
+      { password: newPassHashed }
     );
-    return updateUserPass
+    return updateUserPass;
   }
 }
 

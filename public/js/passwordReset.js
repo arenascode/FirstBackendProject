@@ -42,14 +42,16 @@ if (resetPassForm instanceof HTMLFormElement) {
         headers: { "Content-type": "application/json" },
       })
         .then((response) => {
-          if (response.ok) {
-            alert(`Welcome Again`);
-            window.location.href = "/login";
+          console.log(response);
+          if (response.status == 200) {
+            alert(`Your password was restored`);
+            window.location.href = "/profile";
+          } else if (response.status == 400) {
+            response.json().then((data) => {
+              alert(`${data.errorMsg}`)
+            })
           }
         })
-        .catch((error) => {
-          console.log(error);
-        });
     } else {
       alert(`the passwords doesn't match`);
     }

@@ -9,7 +9,7 @@ export function createHash(pass) {
   return bcrypt.hashSync(pass, bcrypt.genSaltSync(bcryptSalt)); // change later. use as EnVar
 }
 
-//Here bcrypt will compare both of passwords. The password without hash in DB and hashed password given by the user
+//Here bcrypt will compare both of passwords. The password without hash given by user and hashed password store in DB
 
 export function isValidPassword(receivedPass, savedPass) {
   return bcrypt.compareSync(receivedPass, savedPass);
@@ -19,7 +19,7 @@ export function isValidPassword(receivedPass, savedPass) {
 
 export function generateAToken(payload) {
   const token = jwt.sign(JSON.parse(JSON.stringify(payload)), JWT_SECRET_KEY, {
-    expiresIn: "60s",
+    expiresIn: "1h",
   });
   console.log(token);
   return token;

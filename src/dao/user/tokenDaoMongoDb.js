@@ -15,7 +15,7 @@ const tokenSchema = mongoose.Schema({
 const tokenModel = mongoose.model(tokensCollection, tokenSchema)
 tokenModel.collection.createIndex(
   { createdAt: 1 },
-  { expireAfterSeconds: 300 }
+  { expireAfterSeconds: 3600 }
 );
 
 // tokenSchema.pre(/^find/, function (next) {
