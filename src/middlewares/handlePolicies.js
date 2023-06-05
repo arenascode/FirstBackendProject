@@ -12,7 +12,7 @@ export function checkItIsAdmin(req, res, next) {
 export function checkItIsUser(req, res, next) {
   const { role } = req.user;
 
-  if (role === "user") {
+  if (role === 'user' || role === 'premium') {
     next();
   } else {
     res["sendPermissionError"]();

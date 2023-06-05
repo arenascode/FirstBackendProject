@@ -1,7 +1,6 @@
-import Cart from "../entities/Cart.js";
-import cartsDaoMongoDb from "../dao/cart/CartsDaoMongoDb.js";
 import { cartsRepository } from "../repositories/carts.repository.js";
 import { usersRepository } from "../repositories/users.repository.js";
+import { winstonLogger } from "../utils/logger.js";
 
 class CartsService {
   async addNewCart(productToCart, userId) {
@@ -9,6 +8,7 @@ class CartsService {
     const user = await usersRepository.findById(userId)
     const userHasCart = user.cart? user.cart._id : null
     winstonLogger.debug(`I'm userHasCart CartsService ${JSON.stringify(userHasCart)}`);
+    if (productToCart.owner  == userId)  throw new Error(`You can't add in the cart a product added by you.`)
     const cartAdded = await cartsRepository.saveNewCart(productToCart, userId, userHasCart);
     winstonLogger.debug(`I'm cartAdded in C.Service ${cartAdded}`);
     await usersRepository.updateOneById(userId, {cart: cartAdded._id})
