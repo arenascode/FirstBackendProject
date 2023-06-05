@@ -66,7 +66,9 @@ export async function controllerGetProductById(req, res) {
 export async function controllerAddNewProduct(req, res) {
   try {
     const productToAdd = req.body;
-    const newProduct = await productsService.addNewProduct(productToAdd);
+    const user = req.user
+    console.log(user._id);
+    const newProduct = await productsService.addNewProduct(productToAdd, user._id);
     res.status(201).json(newProduct);
   } catch (error) {
     res.status(400).json({
@@ -94,7 +96,7 @@ export async function controllerUpdateProductById (req, res) {
 export async function controllerDeleteProductById (req, res) {
   try {
   const productToDelete = req.params.pid;
-  const deletedProduct = await productsService.deleteProductById(productToDelete)
+  await productsService.deleteProductById(productToDelete, req.user)
   res.send(
     `the product with ID: ${productToDelete} was deleted succesfull`
   );

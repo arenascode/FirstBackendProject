@@ -60,6 +60,7 @@ class Product {
     stock,
     category,
     thumbnails,
+    owner
   }) {
 
     this.title = validateTitle(title);
@@ -70,6 +71,7 @@ class Product {
     this.stock = validateStock(stock);
     this.category = validateCategory(category);
     this.thumbnails = thumbnails;
+    this.owner = owner
   }
 }
 

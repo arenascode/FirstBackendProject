@@ -20,7 +20,10 @@ const userSchema = mongoose.Schema(
     email: { type: String },
     age: { type: String },
     password: { type: String },
-    role: { type: String },
+    role: {
+      type: String,
+      enum: ["admin", "user", "premium"],
+    },
     cart: {
       type: Schema.Types.ObjectId,
       ref: "carts",

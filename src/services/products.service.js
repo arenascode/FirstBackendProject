@@ -1,11 +1,23 @@
-import productsDaoMongoDb from "../dao/products/ProductsDaoMongoDb.js";
+import Product from "../entities/Product.js";
 import { productsRepository } from "../repositories/products.repository.js";
+import { usersRepository } from "../repositories/users.repository.js";
+import { winstonLogger } from "../utils/logger.js";
 
 class ProductsService {
-  async addNewProduct(dataNewProduct) {
+  async addNewProduct(dataNewProduct, userId) {
+    const userExist = await usersRepository.findById(userId);
+    const productToAdd = new Product(dataNewProduct);
+
+    if (!userExist) throw new Error("The user doesn't exist");
+
+    if (userExist.role === "premium") {
+      productToAdd.owner = userId;
+    }
+
     const productAdded = await productsRepository.createNewProduct(
-      dataNewProduct
+      productToAdd
     );
+
     return productAdded;
   }
 
@@ -40,7 +52,7 @@ class ProductsService {
   }
 
   async getProductById(productId) {
-    const productById = await productsRepository.getById(productId);
+    const productById = await productsRepository.getProductById(productId);
 
     return productById;
   }
@@ -49,8 +61,23 @@ class ProductsService {
     return await productsRepository.updateProduct(id, dataToUpdate);
   }
 
-  async deleteProductById(id) {
-    return await productsRepository.deleteProduct(id);
+  async deleteProductById(id, user) {
+    const productToDelete = await productsRepository.getProductById(id);
+    console.log(`i'm productToDelete ${productToDelete}`);
+
+    if ((user._id === productToDelete.owner)) {
+      // throw new Error(`You don't have permission to delete this product`);
+      console.log(`deleted by premium`);
+      return await productsRepository.deleteProduct(id);
+    } else {
+      if (user.role === 'admin') {
+        console.log(`deleted By Admin`);
+      return await productsRepository.deleteProduct(id);
+      } else {
+        throw new Error(`You don't have permission to delete products`)
+      }
+    }
+
   }
 
   async deleteAll() {

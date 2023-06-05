@@ -2,6 +2,7 @@ import mongoosePaginate from "mongoose-paginate-v2";
 import mongoose from "mongoose";
 import Product from "../../entities/Product.js";
 import { winstonLogger } from "../../utils/logger.js";
+import { usersRepository } from "../../repositories/users.repository.js";
 
 const productsCollection = "products";
 const productsSchema = mongoose.Schema(
@@ -36,6 +37,9 @@ const productsSchema = mongoose.Schema(
     thumbnails: {
       type: [String],
     },
+    owner: {
+      type: String,
+      default: 'admin'}
   },
   { versionKey: false }
 );
@@ -50,9 +54,9 @@ class ProductsDaoMongodb {
     this.collection = productsModel;
   }
   // To manage Products
-  async saveItem(productToSave) {
+  async saveItem(productToSave, userId) {
     const codeProduct = productToSave.code;
-
+    
     const productExist = await this.collection.findOne({
       code: codeProduct,
     });
@@ -62,8 +66,8 @@ class ProductsDaoMongodb {
       // throw new Error('This product Already Exist')
     } else {
       winstonLogger.info("the Product was created successfull");
-      const validatedProduct = new Product(productToSave);
-      return await this.collection.create(validatedProduct);
+      // const validatedProduct = new Product(productToSave);
+      return await this.collection.create(productToSave);
     }
   }
 

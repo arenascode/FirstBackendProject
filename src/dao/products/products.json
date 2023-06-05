@@ -1,272 +1,281 @@
 [
-{
-"title": "Ducati",
-"description": "Panigale V4 R",
-"price": 44000,
-"code": "001",
-"stock": 10,
-"category": "Superbike",
-"thumbnails": []
-},
-{
-"title": "BMW",
-"description": "S 1000 RR",
-"price": 35500,
-"code": "002",
-"stock": 12,
-"category": "Superbike",
-"thumbnails": []
-},
-{
-"title": "Honda",
-"description": "CBR1000RR-R SP",
-"price": 33999,
-"code": "003",
-"stock": 11,
-"category": "Superbike",
-"thumbnails": []
-},
-{
-"title": "Kawasaki",
-"description": "Ninja H2R",
-"price": 55000,
-"code": "004",
-"stock": 7,
-"category": "Superbike",
-"thumbnails": []
-},
-{
-"title": "Aprilia",
-"description": "RSV4 Factory",
-"price": 29500,
-"code": "005",
-"stock": 14,
-"category": "Superbike",
-"thumbnails": []
-},
-{
-"title": "Suzuki",
-"description": "GSX-R1000R",
-"price": 21999,
-"code": "006",
-"stock": 15,
-"category": "Superbike",
-"thumbnails": []
-},
-{
-"title": "Ducati",
-"description": "Monster 1200 S",
-"price": 16790,
-"code": "007",
-"stock": 10,
-"category": "Naked",
-"thumbnails": []
-},
-{
-"title": "BMW",
-"description": "R nineT Scrambler",
-"price": 16600,
-"code": "008",
-"stock": 8,
-"category": "Naked",
-"thumbnails": []
-},
-{
-"title": "Triumph",
-"description": "Street Triple RS",
-"price": 13500,
-"code": "009",
-"stock": 13,
-"category": "Naked",
-"thumbnails": []
-},
-{
-"title": "KTM",
-"description": "1290 Super Duke R",
-"price": 19199,
-"code": "010",
-"stock": 9,
-"category": "Naked",
-"thumbnails": []
-},
-{
-"title": "Yamaha",
-"description": "MT-10",
-"price": 13999,
-"code": "011",
-"stock": 11,
-"category": "Naked",
-"thumbnails": []
-},
-{
-"title": "Aprilia",
-"description": "Tuono V4 1100 Factory",
-"price": 18600,
-"code": "012",
-"stock": 10,
-"category": "Naked",
-"thumbnails": []
-},
-{
-"title": "Ducati",
-"description": "Multistrada V4 S",
-"price": 25100,
-"code": "013",
-"stock": 6,
-"category": "Adventure",
-"thumbnails": []
-},
-{
-"title": "BMW",
-"description": "R 1250 GS Adventure",
-"price": 21100,
-"code": "014",
-"stock": 8,
-"category": "Adventure",
-"thumbnails": []
-},
-{
-"title": "KTM",
-"description": "1290 Super Adventure R",
-"price": 22099,
-"code": "015",
-"stock": 7,
-"category": "Adventure",
-"thumbnails": []
-},
-{
-"title": "Triumph",
-"description": "Tiger 1200 XCA",
-"price": 21500,
-"code": "016",
-"stock": 9,
-"category": "Adventure",
-"thumbnails": []
-},
-{
-"title": "Honda",
-"description": "Africa Twin Adventure Sports ES",
-"price": 17499,
-"code": "017",
-"stock": 11,
-"category": "Adventure",
-"thumbnails": []
-},
-{
-"title": "Yamaha",
-"description": "Tenere 700",
-"price": 9999,
-"code": "018",
-"stock": 13,
-"category": "Adventure",
-"thumbnails": []
-},
-{
-"title": "Ducati",
-"description": "Diavel 1260 S",
-"price": 22990,
-"code": "019",
-"stock": 5,
-"category": "Power cruiser",
-"thumbnails": []
-},
-{
-"title": "Harley-Davidson",
-"description": "Fat Boy 114",
-"price": 20349,
-"code": "020",
-"stock": 7,
-"category": "Power cruiser",
-"thumbnails": []
-},
-{
-"title": "Indian",
-"description": "Challenger Dark Horse",
-"price": 27899,
-"code": "021",
-"stock": 6,
-"category": "Power cruiser",
-"thumbnails": []
-},
-{
-"title": "Kawasaki",
-"description": "Vulcan S ABS SE",
-"price": 8149,
-"code": "022",
-"stock": 12,
-"category": "Power cruiser",
-"thumbnails": []
-},
-{
-"title": "Yamaha",
-"description": "VMAX",
-"price": 17999,
-"code": "023",
-"stock": 10,
-"category": "Power cruiser",
-"thumbnails": []
-},
-{
-"title": "Ducati",
-"description": "Supersport 950 S",
-"price": 16695,
-"code": "024",
-"stock": 8,
-"category": "Sport touring",
-"thumbnails": []
-},
-{
-"title": "BMW",
-"description": "S 1000 XR",
-"price": 18350,
-"code": "025",
-"stock": 7,
-"category": "Sport touring",
-"thumbnails": []
-},
-{
-"title": "KTM",
-"description": "1290 Super Duke GT",
-"price": 22199,
-"code": "026",
-"stock": 6,
-"category": "Sport touring",
-"thumbnails": []
-},
-{
-"title": "Ducati",
-"description": "Superleggera V4",
-"price": 100000,
-"code": "027",
-"stock": 2,
-"category": "Superbike",
-"thumbnails": []
-},
-{
-"title": "Kawasaki",
-"description": "Ninja ZX-10RR",
-"price": 25199,
-"code": "028",
-"stock": 4,
-"category": "Superbike",
-"thumbnails": []
-},
-{
-"title": "Aprilia",
-"description": "RSV4 1100 Factory",
-"price": 25999,
-"code": "029",
-"stock": 5,
-"category": "Superbike",
-"thumbnails": []
-},
-{
-"title": "Honda",
-"description": "CBR1000RR-R Fireblade SP",
-"price": 28300,
-"code": "030",
-"stock": 3,
-"category": "Superbike",
-"thumbnails": []
-}
+  {
+    "title": "ProductoPrueba",
+    "description": "Descripción de prueba",
+    "price": 1000,
+    "code": "000",
+    "stock": 20,
+    "category": "Superbike",
+    "thumbnails": []
+  },
+  {
+    "title": "Ducati",
+    "description": "Panigale V4 R",
+    "price": 44000,
+    "code": "001",
+    "stock": 10,
+    "category": "Superbike",
+    "thumbnails": []
+  },
+  {
+    "title": "BMW",
+    "description": "S 1000 RR",
+    "price": 35500,
+    "code": "002",
+    "stock": 12,
+    "category": "Superbike",
+    "thumbnails": []
+  },
+  {
+    "title": "Honda",
+    "description": "CBR1000RR-R SP",
+    "price": 33999,
+    "code": "003",
+    "stock": 11,
+    "category": "Superbike",
+    "thumbnails": []
+  },
+  {
+    "title": "Kawasaki",
+    "description": "Ninja H2R",
+    "price": 55000,
+    "code": "004",
+    "stock": 7,
+    "category": "Superbike",
+    "thumbnails": []
+  },
+  {
+    "title": "Aprilia",
+    "description": "RSV4 Factory",
+    "price": 29500,
+    "code": "005",
+    "stock": 14,
+    "category": "Superbike",
+    "thumbnails": []
+  },
+  {
+    "title": "Suzuki",
+    "description": "GSX-R1000R",
+    "price": 21999,
+    "code": "006",
+    "stock": 15,
+    "category": "Superbike",
+    "thumbnails": []
+  },
+  {
+    "title": "Ducati",
+    "description": "Monster 1200 S",
+    "price": 16790,
+    "code": "007",
+    "stock": 10,
+    "category": "Naked",
+    "thumbnails": []
+  },
+  {
+    "title": "BMW",
+    "description": "R nineT Scrambler",
+    "price": 16600,
+    "code": "008",
+    "stock": 8,
+    "category": "Naked",
+    "thumbnails": []
+  },
+  {
+    "title": "Triumph",
+    "description": "Street Triple RS",
+    "price": 13500,
+    "code": "009",
+    "stock": 13,
+    "category": "Naked",
+    "thumbnails": []
+  },
+  {
+    "title": "KTM",
+    "description": "1290 Super Duke R",
+    "price": 19199,
+    "code": "010",
+    "stock": 9,
+    "category": "Naked",
+    "thumbnails": []
+  },
+  {
+    "title": "Yamaha",
+    "description": "MT-10",
+    "price": 13999,
+    "code": "011",
+    "stock": 11,
+    "category": "Naked",
+    "thumbnails": []
+  },
+  {
+    "title": "Aprilia",
+    "description": "Tuono V4 1100 Factory",
+    "price": 18600,
+    "code": "012",
+    "stock": 10,
+    "category": "Naked",
+    "thumbnails": []
+  },
+  {
+    "title": "Ducati",
+    "description": "Multistrada V4 S",
+    "price": 25100,
+    "code": "013",
+    "stock": 6,
+    "category": "Adventure",
+    "thumbnails": []
+  },
+  {
+    "title": "BMW",
+    "description": "R 1250 GS Adventure",
+    "price": 21100,
+    "code": "014",
+    "stock": 8,
+    "category": "Adventure",
+    "thumbnails": []
+  },
+  {
+    "title": "KTM",
+    "description": "1290 Super Adventure R",
+    "price": 22099,
+    "code": "015",
+    "stock": 7,
+    "category": "Adventure",
+    "thumbnails": []
+  },
+  {
+    "title": "Triumph",
+    "description": "Tiger 1200 XCA",
+    "price": 21500,
+    "code": "016",
+    "stock": 9,
+    "category": "Adventure",
+    "thumbnails": []
+  },
+  {
+    "title": "Honda",
+    "description": "Africa Twin Adventure Sports ES",
+    "price": 17499,
+    "code": "017",
+    "stock": 11,
+    "category": "Adventure",
+    "thumbnails": []
+  },
+  {
+    "title": "Yamaha",
+    "description": "Tenere 700",
+    "price": 9999,
+    "code": "018",
+    "stock": 13,
+    "category": "Adventure",
+    "thumbnails": []
+  },
+  {
+    "title": "Ducati",
+    "description": "Diavel 1260 S",
+    "price": 22990,
+    "code": "019",
+    "stock": 5,
+    "category": "Power cruiser",
+    "thumbnails": []
+  },
+  {
+    "title": "Harley-Davidson",
+    "description": "Fat Boy 114",
+    "price": 20349,
+    "code": "020",
+    "stock": 7,
+    "category": "Power cruiser",
+    "thumbnails": []
+  },
+  {
+    "title": "Indian",
+    "description": "Challenger Dark Horse",
+    "price": 27899,
+    "code": "021",
+    "stock": 6,
+    "category": "Power cruiser",
+    "thumbnails": []
+  },
+  {
+    "title": "Kawasaki",
+    "description": "Vulcan S ABS SE",
+    "price": 8149,
+    "code": "022",
+    "stock": 12,
+    "category": "Power cruiser",
+    "thumbnails": []
+  },
+  {
+    "title": "Yamaha",
+    "description": "VMAX",
+    "price": 17999,
+    "code": "023",
+    "stock": 10,
+    "category": "Power cruiser",
+    "thumbnails": []
+  },
+  {
+    "title": "Ducati",
+    "description": "Supersport 950 S",
+    "price": 16695,
+    "code": "024",
+    "stock": 8,
+    "category": "Sport touring",
+    "thumbnails": []
+  },
+  {
+    "title": "BMW",
+    "description": "S 1000 XR",
+    "price": 18350,
+    "code": "025",
+    "stock": 7,
+    "category": "Sport touring",
+    "thumbnails": []
+  },
+  {
+    "title": "KTM",
+    "description": "1290 Super Duke GT",
+    "price": 22199,
+    "code": "026",
+    "stock": 6,
+    "category": "Sport touring",
+    "thumbnails": []
+  },
+  {
+    "title": "Ducati",
+    "description": "Superleggera V4",
+    "price": 100000,
+    "code": "027",
+    "stock": 2,
+    "category": "Superbike",
+    "thumbnails": []
+  },
+  {
+    "title": "Kawasaki",
+    "description": "Ninja ZX-10RR",
+    "price": 25199,
+    "code": "028",
+    "stock": 4,
+    "category": "Superbike",
+    "thumbnails": []
+  },
+  {
+    "title": "Aprilia",
+    "description": "RSV4 1100 Factory",
+    "price": 25999,
+    "code": "029",
+    "stock": 5,
+    "category": "Superbike",
+    "thumbnails": []
+  },
+  {
+    "title": "Honda",
+    "description": "CBR1000RR-R Fireblade SP",
+    "price": 28300,
+    "code": "030",
+    "stock": 3,
+    "category": "Superbike",
+    "thumbnails": []
+  }
 ]
