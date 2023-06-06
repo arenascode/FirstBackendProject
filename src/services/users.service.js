@@ -1,4 +1,5 @@
 import { usersRepository } from "../repositories/users.repository.js";
+import { winstonLogger } from "../utils/logger.js";
 
 class UserService {
   async registerUser(newUserData) {
