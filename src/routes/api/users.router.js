@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  changeUserRoleController,
   deleteUserController,
   getUserByIdController,
   getUsersController,
@@ -26,15 +27,4 @@ routerUsers.put("/:uid", updateUserController);
 
 routerUsers.delete("/:uid", deleteUserController);
 
-routerUsers.post("/premium/:uid", async (req, res, next) => {
-  const roleSelected = req.body.role
-  winstonLogger.info(`I'm roleSelected ${roleSelected}`)
-  const userId = req.params.uid
-  console.log(userId);
-  const findUser = await userService.findUser(userId)
-  console.log(findUser);
-  if (!findUser) throw new Error(`User not found`)
-  findUser.role = roleSelected
-  await findUser.save()
-  res.json({ findUser })
-})
+routerUsers.post("/premium/:uid", changeUserRoleController)

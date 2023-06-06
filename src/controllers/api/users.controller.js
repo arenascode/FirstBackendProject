@@ -1,4 +1,5 @@
 import userService  from "../../services/users.service.js";
+import { winstonLogger } from "../../utils/logger.js";
 
 export async function getUsersController(req, res, next) {
   let limit = Number(req.query.limit);
@@ -58,4 +59,15 @@ export async function deleteUserController(req, res, next) {
   const userId = req.params.id
   const deletedUser = await userService.deleteUserById(userId)
   res.json(deletedUser)
+}
+
+export async function changeUserRoleController(req, res, next) {
+  const roleSelected = req.body.role
+  winstonLogger.info(`I'm roleSelected ${roleSelected}`)
+  const userId = req.params.uid
+  const findUser = await userService.findUser(userId)
+  if (!findUser) throw new Error(`User not found`)
+  findUser.role = roleSelected
+  await findUser.save()
+  res.json({ findUser })
 }
