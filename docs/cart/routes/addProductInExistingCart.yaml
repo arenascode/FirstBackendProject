@@ -1,0 +1,21 @@
+paths:
+  /api/carts/{cid}:
+    post:
+      summary: add a new product in existing cart.
+      tags:
+        - Carts
+      parameters:
+      - name: id
+        in: path
+        description: route parameter with id of existing cart.
+        required: true
+        type: string
+      responses:
+        '200':
+          description: the product was added succesfull
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          description: Cart not found

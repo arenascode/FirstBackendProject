@@ -13,7 +13,6 @@ import { routerChat } from "../routes/api/chat.router.js";
 import { mockingProductsRouter } from "../routes/api/mockingproducts.router.js";
 import { winstonLogger } from "../utils/logger.js";
 import { logger } from "../middlewares/logger.js";
-import { config } from "dotenv";
 import { loggerTestRouter } from "../routes/api/loggerTest.router.js";
 import cluster from 'cluster';
 import cors from "cors"

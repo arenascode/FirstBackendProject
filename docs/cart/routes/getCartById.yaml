@@ -1,0 +1,21 @@
+paths:
+  /api/carts/{cid}:
+    get:
+      summary: get the cart by ID.
+      tags:
+        - Carts
+      parameters: 
+      - name: cid
+        in: path
+        description: route parameter with id of existing cart.
+        required: true,
+        type: string
+      responses:
+        '200':
+          description: Cart searched by ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '400':
+          description: Cart not found

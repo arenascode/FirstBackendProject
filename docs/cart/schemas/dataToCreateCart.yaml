@@ -1,0 +1,18 @@
+components:
+  requestBodies:
+    dataToCreateCart:
+      type: object
+      properties:
+        cartId:
+          type: string
+          description: ID of the cart.
+        userId:
+          type: string
+          description: ID of the cart owner.
+        products:
+          type: array
+          description: Products List.
+      example:
+      id: 6463bf4d2a46534b7gf36
+      user: 6463bdfv357d2a46fdg53344b
+      products: [{ id:647e6fsdg456ee0010c, quantity: 2 }]

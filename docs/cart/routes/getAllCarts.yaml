@@ -1,0 +1,13 @@
+paths:
+  /api/carts:
+    get:
+      summary: get all the available carts
+      tags:
+        - Carts
+      responses:
+        '200':
+          description: list of available carts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'

@@ -1,0 +1,22 @@
+paths:
+  /api/carts/{cid}/product/{pid}:
+    put:
+      summary: update product in existing cart.
+      tags:
+        - Carts
+      parameters:
+      - name: cid
+        in: path
+        description: route parameter with id of existing cart.
+        required: true
+        type: string
+      - name: pid
+        in: path
+        description: route parameter with id of product to update.
+        required: true
+        type: string
+      responses:
+        '200':
+          description: the cart was succesfully updated
+        '400':
+          description: Cart not found

@@ -1,0 +1,21 @@
+paths:
+  /api/products:
+    post:
+      summary: add a new product
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/dataToCreateProduct'
+      responses:
+        '201':
+          description: new product was created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: some value are invalid.

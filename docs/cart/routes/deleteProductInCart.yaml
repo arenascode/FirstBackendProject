@@ -1,0 +1,22 @@
+paths:
+  /api/carts/{cid}/product/{pid}:
+    delete:
+      summary: delete product in existing cart.
+      tags:
+        - Carts
+      parameters:
+      - name: cid
+        in: path
+        description: route parameter with id of existing cart.
+        required: true
+        type: string
+      - name: pid
+        in: path
+        description: route parameter with id of product to delete.
+        required: true
+        type: string
+      responses:
+        '200':
+          description: product succesfully removed
+        '400':
+          description: Cart not found.

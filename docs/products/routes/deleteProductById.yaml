@@ -1,0 +1,17 @@
+paths:
+  /api/products/{pid}:
+    delete:
+      summary: delete product
+      tags:
+        - Products
+      parameters:
+      - name: pid
+        in: path
+        description: route parameter with id of existing cart.
+        required: true
+        type: string
+      responses:
+        '201':
+          description: The product was succesfully deleted.
+        '400':
+          description: the product wasn't found.

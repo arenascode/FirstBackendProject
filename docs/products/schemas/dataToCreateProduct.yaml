@@ -1,0 +1,42 @@
+components:
+  requestBodies:
+    dataToCreateProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          description: product name.
+        summaryProduct:
+          type: string
+          description: product description.
+        code:
+          type: string
+          description: unique product code.
+        price:
+          type: number
+          description: price of product.
+        status:
+          type: boolean
+          description: product status.
+        stock:
+          type: number
+          description: available product quantity.
+        category:
+          type: string
+          description: product clasification.
+        thumbnails:
+          type: array
+          description: images routes.
+        owner:
+          type: string
+          description: id of the product owner
+      example:
+      id: 645c40ghjd4cd6ebac43446ef
+      title: BMW 
+      description: R nineT Scrambler
+      price: 16600
+      code: 008
+      stock: 8 
+      status: true
+      category: Naked 
+      thumbnails: [imgPath1, imgPath2]

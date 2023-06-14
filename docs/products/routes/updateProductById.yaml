@@ -1,0 +1,22 @@
+paths:
+  /api/products/{pid}:
+    put:
+      summary: update the product by its ID
+      tags:
+        - Products
+      parameters:
+      - name: pid
+        in: path
+        description: Product ID route parameter.
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Product succesfully updated.
+          content:
+            application/json: 
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Product Not found.
+  

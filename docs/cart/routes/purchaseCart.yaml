@@ -1,0 +1,19 @@
+paths:
+  /api/carts/{cid}/purchase:
+    post:
+      summary: confirm and buy a cart.
+      tags:
+        - Carts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/dataToCreateTicket'
+      responses:
+        '201':
+          description: the purchase was confirm
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ticket'

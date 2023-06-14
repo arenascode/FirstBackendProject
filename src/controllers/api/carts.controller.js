@@ -3,34 +3,36 @@ import ticketService from "../../services/ticket.service.js";
 import { winstonLogger } from "../../utils/logger.js";
 
 // To get a cart By Id
-export async function controllerGetCartById (req, res) {
+export async function controllerGetCartById(req, res) {
   try {
-    const idCart = req.params.cid
-    const cartById = await cartsService.showCartById(idCart)
+    const idCart = req.params.cid;
+    const cartById = await cartsService.showCartById(idCart);
     winstonLogger.info(`cartById Controller 8 ${JSON.stringify(cartById)}`);
 
-    const arrayOfProducts = []
-    const productsOfCart = cartById.products.forEach(e => {
+    const arrayOfProducts = [];
+    const productsOfCart = cartById.products.forEach((e) => {
       const product = {
         user: e.user,
         id: e._id,
         // description: e.description,
         // price: e.price,
         // category: e.category,
-        quantity: e.quantity
-      }
-      arrayOfProducts.push(product)
+        quantity: e.quantity,
+      };
+      arrayOfProducts.push(product);
     });
-    winstonLogger.info(`arrayOfProducs Controller 21 ${JSON.stringify(arrayOfProducts)}`);
-    res.render('cartById', {
-          pageTitle: 'Your Cart',
-          cartExist: Boolean(cartById),
-          dataUser: cartById,
-          productsInCart: arrayOfProducts
-        })
+    winstonLogger.info(
+      `arrayOfProducs Controller 21 ${JSON.stringify(arrayOfProducts)}`
+    );
+    res.render("cartById", {
+      pageTitle: "Your Cart",
+      cartExist: Boolean(cartById),
+      dataUser: cartById,
+      productsInCart: arrayOfProducts,
+    });
   } catch (error) {
     res.status(400).json({
-      msg: error.message
+      msg: error.message,
     });
   }
 }
@@ -45,7 +47,12 @@ export async function controllerGetCarts(req, res) {
   //winstonLogger.info(`Category Line 10 Controller ${category}`);
   let order = req.query.sort;
   try {
-    const showCarts = await cartsService.showCarts(category, limit, page, order);
+    const showCarts = await cartsService.showCarts(
+      category,
+      limit,
+      page,
+      order
+    );
 
     const prevPage = `http://localhost:8080/api/carts?page=${showCarts.prevPage}&limit=${limit}&query=${category}&sort=${order}`;
 
@@ -73,94 +80,94 @@ export async function controllerGetCarts(req, res) {
       msg: error.message,
     });
   }
-  
-
 }
 
 //To add new cart
 export async function controllerAddANewCart(req, res) {
-  winstonLogger.info(`I'm req.user in Controller ANC ${JSON.stringify(req.user)}`);
+  winstonLogger.info(
+    `I'm req.user in Controller ANC ${JSON.stringify(req.user)}`
+  );
   try {
-    const productToCart = req.body
-    const userId = req.user._id
-    await cartsService.addNewCart(productToCart, userId)
-    res.json(`the ${JSON.stringify(productToCart)} was added succesfull`)
+    const productToCart = req.body;
+    const userId = req.user._id;
+    await cartsService.addNewCart(productToCart, userId);
+    res.json(`the ${JSON.stringify(productToCart)} was added succesfull`);
   } catch (error) {
     res.status(400).json({
-      msg: error.message
+      msg: error.message,
     });
   }
-
 }
 
 // To update new product an existing cart
-export async function controllerAddProductInCart (req, res) {
+export async function controllerAddProductInCart(req, res) {
   winstonLogger.info(`I'm req.user in AddPInCart ${req.user}`);
   try {
-    const cartId = req.params.cid
-    const productToAdd = req.body
-    const userId = req.user._id
-    await cartsService.addProductToCart(productToAdd, userId, cartId)
-    res.json(`The product was added succesfull`)
+    const cartId = req.params.cid;
+    const productToAdd = req.body;
+    const userId = req.user._id;
+    await cartsService.addProductToCart(productToAdd, userId, cartId);
+    res.json(`The product was added succesfull`);
   } catch (error) {
     res.status(400).json({
-      msg: error.message
+      msg: error.message,
     });
   }
-
 }
 
 // to delete product in existing cart
-export async function controllerDeleteProductInCart (req, res) {
+export async function controllerDeleteProductInCart(req, res) {
   try {
-    const cartId = req.params.cid
-    const productId = req.params.pid
+    const cartId = req.params.cid;
+    const productId = req.params.pid;
 
     if (cartId && productId) {
-      await cartsService.deleteProductInCart(cartId, productId)
-      res.status(200).json({ msg: 'product delete successfull'})
+      await cartsService.deleteProductInCart(cartId, productId);
+      res.status(200).json({ msg: "product succesfully removed" });
     } else {
-      req.logger.debug(`missing data`)
+      req.logger.debug(`missing data`);
     }
   } catch (error) {
     res.status(400).json({
-      msg: error.message
-    })
+      msg: error.message,
+    });
   }
 }
 
 //To update a Cart
-export async function controllerUpdateProductInCart (req, res) {
+export async function controllerUpdateProductInCart(req, res) {
   try {
-    const cid = req.params.cid
-    const productToUpdate = req.params.pid
-    const quantityToUpdate = req.body
-    await cartsService.updateCart(cid, productToUpdate, quantityToUpdate)
-    res.json(`the cart was update successfull`)
+    const cid = req.params.cid;
+    const productToUpdate = req.params.pid;
+    const quantityToUpdate = req.body;
+    await cartsService.updateCart(cid, productToUpdate, quantityToUpdate);
+    res.json(`the cart was successfully updated`);
   } catch (error) {
     res.status(400).json({
-      msg: error.message
-    })
+      msg: error.message,
+    });
   }
-
 }
 
 // to delete all products in the cart
-export async function controllerDeleteAllProductsInCart (req, res) {
-  const cartID = req.params.cid
+export async function controllerDeleteAllProductsInCart(req, res) {
+  const cartID = req.params.cid;
   try {
-    await cartsService.deleteAllProductsInCart(cartID)
-    res.status(200).json({msg: `the Cart is empty`})
+    await cartsService.deleteAllProductsInCart(cartID);
+    res.status(200).json({ msg: `the Cart is empty` });
   } catch (error) {
     res.status(400).json({
-      msg: error.message
-    })
+      msg: error.message,
+    });
   }
 }
 
 //To buy a cart
 export async function purcharsePostController(req, res, next) {
-  const purchasedCart = req.params.cid
-  const createdTicket =await ticketService.createNewTicket(purchasedCart)
-  res.json(createdTicket)
+  try {
+    const purchasedCart = req.params.cid;
+    const createdTicket = await ticketService.createNewTicket(purchasedCart);
+    res.json(createdTicket);
+  } catch (error) { }
+    res.status(400).json({message: error.message})
 }

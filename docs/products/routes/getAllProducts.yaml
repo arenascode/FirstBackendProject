@@ -1,0 +1,34 @@
+paths:
+  /api/products:
+    get:
+      summary: get all the available products
+      tags:
+        - Products
+      parameters:
+      - name: limit
+        in: path
+        description: route parameter of view limit of products.
+        required: false
+        type: number
+      - name: page
+        in: path
+        description: route parameter of the product list page quantity.
+        required: false
+        type: string
+      - name: category
+        in: path
+        description: route parameter of the product category.
+        required: false
+        type: string
+      - name: order
+        in: path
+        description: product ordering route parameter.
+        required: false
+        type: string
+      responses:
+        '200':
+          description: list of available products.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'

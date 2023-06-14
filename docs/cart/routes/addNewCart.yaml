@@ -1,0 +1,19 @@
+paths:
+  /api/carts:
+    post:
+      summary: add a new cart by user
+      tags:
+        - Carts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/dataToCreateCart'
+      responses:
+        '201':
+          description: new cart was created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'

@@ -1,0 +1,22 @@
+components: 
+  requestBodies:
+    dataToCreateTicket:
+      type: object
+      properties:
+        code:
+          type: string
+          description: code of the purchase.
+        purchaseDateTime: 
+          type: date
+          description: purchase date.(YYYY-MM-DDTHH:mm:ss.sssZ)
+        amount:
+          type: number
+          description: total of purchase.
+        purchaser: 
+          type: string
+          description: Mail of buyer.
+      example:
+      id: 64651a2b60cfghs3b6da13234
+      code: 128e073873d
+      amount: 325798
+      purchaser: mailprueba@hotmail.com

@@ -98,7 +98,7 @@ export async function controllerDeleteProductById (req, res) {
   const productToDelete = req.params.pid;
   await productsService.deleteProductById(productToDelete, req.user)
   res.send(
-    `the product with ID: ${productToDelete} was deleted succesfull`
+    `the product with ID: ${productToDelete} was succesfully deleted`
   );
   } catch (error) {
     res.status(400).json({
