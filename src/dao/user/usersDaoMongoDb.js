@@ -71,7 +71,8 @@ class UsersDaoMongodb {
   async findOne(criteria) {
     winstonLogger.info(`criteria userMongodb ${JSON.stringify(criteria)}`);
     const searchedUser = await this.#collection.findOne(criteria);
-    if (!searchedUser) throw new Error("NOT FOUND");
+    console.log(`I'm searchedUser in DAO ${searchedUser}`);
+    // if (!searchedUser) throw new Error("NOT FOUND");
     return searchedUser;
   }
 

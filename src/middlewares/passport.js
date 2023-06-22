@@ -110,6 +110,7 @@ passport.use(
         };
         return done(null, adminData);
       } else {
+        console.log(`i'm username in passport ${username}`);
         const userSearched = await userService.findUserByCriteria({
           email: username,
         });

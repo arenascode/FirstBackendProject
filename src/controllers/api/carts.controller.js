@@ -24,12 +24,13 @@ export async function controllerGetCartById(req, res) {
     winstonLogger.info(
       `arrayOfProducs Controller 21 ${JSON.stringify(arrayOfProducts)}`
     );
-    res.render("cartById", {
-      pageTitle: "Your Cart",
-      cartExist: Boolean(cartById),
-      dataUser: cartById,
-      productsInCart: arrayOfProducts,
-    });
+    // res.render("cartById", {
+    //   pageTitle: "Your Cart",
+    //   cartExist: Boolean(cartById),
+    //   dataUser: cartById,
+    //   productsInCart: arrayOfProducts,
+    // });
+    res.status(200).json(cartById)
   } catch (error) {
     res.status(400).json({
       msg: error.message,

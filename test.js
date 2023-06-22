@@ -1,10 +1,10 @@
-import { productsService } from "../src/services/products.service.js";
+import { productsService } from "./src/services/products.service.js";
 import { DataNewProduct } from "../src/models/products.model.js";
 import mongoose from "mongoose";
-import { MONGODB_CNX_STR } from "../src/config/mongodbCnxStr.js";
-import cartsService from "../src/services/carts.service.js";
+import { MONGODB_CNX_STR } from "./src/config/mongodbCnxStr.js";
+import cartsService from "./src/services/carts.service.js";
 import motos from "../src/dao/products.json" assert { type: "json" };
-import { winstonLogger } from "../src/utils/logger.js";
+import { winstonLogger } from "./src/utils/logger.js";
 await mongoose.connect(MONGODB_CNX_STR);
 
 // const insertAllProducts = await productsService.insertMany(motos)

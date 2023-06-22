@@ -22,6 +22,7 @@ export function loginSessionController(req, res, next) {
     signed: true,
     httpOnly: true,
   });
+  console.log(req.user);
   res.status(201).json(req.user);
 }
 

@@ -18,10 +18,10 @@ import cluster from 'cluster';
 import cors from "cors"
 import { MONGODB_CNX_STR } from "../config/mongodbCnxStr.js";
 
-const app = express()
+export const app = express()
 
 //Conecting with ATLASDB 
-// await mongoose.connect(MONGODB_CNX_STR); Temporary
+// await mongoose.connect(MONGODB_CNX_STR); //Temporary
 await mongoose.connect(
   "mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce"
 );

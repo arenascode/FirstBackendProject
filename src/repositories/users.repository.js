@@ -1,4 +1,5 @@
 import usersDaoMongodb from "../dao/user/usersDaoMongoDb.js";
+import { winstonLogger } from "../utils/logger.js";
 
 class UserRepository {
   constructor(daoSelected) {

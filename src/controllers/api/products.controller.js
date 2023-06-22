@@ -66,7 +66,7 @@ export async function controllerGetProductById(req, res) {
 export async function controllerAddNewProduct(req, res) {
   try {
     const productToAdd = req.body;
-    const user = req.user
+    const user = req.user // come from jwt token
     console.log(user._id);
     const newProduct = await productsService.addNewProduct(productToAdd, user._id);
     res.status(201).json(newProduct);
