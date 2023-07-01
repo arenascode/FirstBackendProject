@@ -1,4 +1,5 @@
 import UserDTO from "../../repositories/users.dto.js";
+import userService from "../../services/users.service.js";
 import { generateAToken } from "../../utils/cryptography.js";
 import { winstonLogger } from "../../utils/logger.js";
 
@@ -34,12 +35,19 @@ export function getCurrentSessionController(req, res, next) {
 }
 
 //Logout
-export function logoutSessionController(req, res, next) {
-  res.clearCookie("jwt_authorization", {
-    signed: true,
-    httpOnly: true,
-  });
-  res.redirect("/login");
+export async function logoutSessionController (req, res, next) {
+  try {
+    const userId = req.params.userId
+    console.log(`user in logout ${userId}`);
+    await userService.updateUserById(userId, {last_conection: new Date().toString()})
+    res.clearCookie("jwt_authorization", {
+      signed: true,
+      httpOnly: true,
+    });
+    res.redirect("/login");
+  } catch (error) {
+    winstonLogger.error(error)
+  }
 }
 
 //Github Session

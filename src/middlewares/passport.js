@@ -121,6 +121,8 @@ passport.use(
         } else {
           if (!isValidPassword(password, userSearched.password))
             return done(null, false);
+          userSearched.last_conection = new Date().toString();
+          userSearched.save();
           delete userSearched.password;
           return done(null, userSearched);
         }

@@ -38,14 +38,22 @@ function validateAge(age) {
   return age
 }
 
+function getCurrentDateAsString() {
+  return new Date().toString()
+}
+
 export class User {
-  constructor({ email, password, name, lastName, age, role= "user", cart= null}) {
+  constructor({ email, password, name, lastName, age, role = "user", cart = null, documents = null, lastConection = getCurrentDateAsString() }) {
     this.email = validateEmail(email);
     this.password = validatePassword(password);
     this.name = validateName(name);
     this.lastName = validateLastName(lastName);
     this.age = validateAge(age);
     this.role = role,
-    this.cart = cart
+    this.cart = cart,
+    this.documents = documents,
+    this.last_conection= lastConection
   }
 }
+
+// console.log(new User({ email: 'mailprueba@hotmail.com', password:'1234', name:'nombrePrueba', lastName:'apellidoPrueba', age: '25', role: "user", cart: null, documents: null, lastConection: new Date().toLocalString}));

@@ -29,7 +29,9 @@ export function profileViewController (req, res) {
 }
 
 // Logout
-export function logOutController (req, res) {
+export function logOutController(req, res) {
+  const user = req.user 
+  console.log(`User in logOutControllerView ${user}`);
   res.clearCookie('jwt_authorization', {
     signed: true,
     httpOnly: true

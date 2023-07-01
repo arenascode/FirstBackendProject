@@ -1,4 +1,4 @@
-import { winstonLogger } from "../../src/utils/logger.js";
+// import { winstonLogger } from "../../src/utils/logger.js";
 
 const formRegister = document.getElementById('registerForm')
 
@@ -52,7 +52,7 @@ if (formRegister instanceof HTMLFormElement) {
                   window.location.href='/login'
                 }
               })
-                .catch((error) => winstonLogger.error(error.message));
+                .catch((error) => console.error(error.message));
       } else {
             alert(`The passwords doesn't match`);
             } 

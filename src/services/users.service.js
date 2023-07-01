@@ -49,6 +49,7 @@ class UserService {
   }
   
   async updateUserById(userID, newData) {
+    //newData must be an object
     const updatedUser = await usersRepository.updateOneById(userID, newData);
     return updatedUser;
   }

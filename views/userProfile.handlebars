@@ -4,7 +4,7 @@
     {{!-- <p>Role: {{user.role}}</p> --}}
     <p>Nombre: {{user.name}}</p>
     <p>Role: {{user.role}}</p>
-    <a href="/logout"><button>Salir</button></a>
+    <a href='api/sessions/logout/{{user._id}}'><button>Salir</button></a>
     <h4><a href="/api/products">View Our Products</a> </h4>
 </div>
 <script src="/static/js/userProfile.js"></script>

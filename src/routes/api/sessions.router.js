@@ -45,7 +45,7 @@ routerSessions.get(
 );
 
 // User Logout
-routerSessions.get("/logout", logoutSessionController);
+routerSessions.get("/logout/:userId", logoutSessionController);
 
 routerSessions.post("/mailToRecoverPass", async (req, res, next) => {
   try {

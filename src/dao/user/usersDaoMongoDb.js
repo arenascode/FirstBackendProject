@@ -28,6 +28,13 @@ const userSchema = mongoose.Schema(
       type: Schema.Types.ObjectId,
       ref: "carts",
     },
+    documents: [
+      {
+        name: { type: String },
+        reference: {type: String }
+      }
+    ],
+    last_conection: {type: String}
   },
   { versionKey: false }
 );
