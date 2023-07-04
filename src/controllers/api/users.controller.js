@@ -71,3 +71,13 @@ export async function changeUserRoleController(req, res, next) {
   await findUser.save()
   res.json({ findUser })
 }
+
+export async function uploadDocumentsController(req, res, next) {
+  try {
+    console.log(req.files);
+    console.log(req.params.uid);
+    res.send('we received your documents')
+  } catch (error) {
+    console.log(error);
+  }
+}

@@ -5,10 +5,12 @@ import {
   getUserByIdController,
   getUsersController,
   updateUserController,
+  uploadDocumentsController,
 } from "../../controllers/api/users.controller.js";
 import { validateParam } from "../../utils/validations.js";
 import { winstonLogger } from "../../utils/logger.js";
 import userService from "../../services/users.service.js";
+import { uploader } from "../../utils/multer.js";
 
 export const routerUsers = Router();
 
@@ -28,3 +30,5 @@ routerUsers.put("/:uid", updateUserController);
 routerUsers.delete("/:uid", deleteUserController);
 
 routerUsers.post("/premium/:uid", changeUserRoleController)
+
+routerUsers.post('/:uid/documents', uploader.fields([{name:'profileImg', maxCount: 1}, {name:'productImg', maxCount: 1}, {name:'userDocument', maxCount: 1}]), uploadDocumentsController)

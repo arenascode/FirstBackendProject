@@ -1,11 +1,11 @@
-import { productsService } from "./src/services/products.service.js";
-import { DataNewProduct } from "../src/models/products.model.js";
-import mongoose from "mongoose";
-import { MONGODB_CNX_STR } from "./src/config/mongodbCnxStr.js";
-import cartsService from "./src/services/carts.service.js";
-import motos from "../src/dao/products.json" assert { type: "json" };
-import { winstonLogger } from "./src/utils/logger.js";
-await mongoose.connect(MONGODB_CNX_STR);
+// import { productsService } from "./src/services/products.service.js";
+// import { DataNewProduct } from "../src/models/products.model.js";
+// import mongoose from "mongoose";
+// import { MONGODB_CNX_STR } from "./src/config/mongodbCnxStr.js";
+// import cartsService from "./src/services/carts.service.js";
+// import motos from "../src/dao/products.json" assert { type: "json" };
+// import { winstonLogger } from "./src/utils/logger.js";
+// await mongoose.connect(MONGODB_CNX_STR);
 
 // const insertAllProducts = await productsService.insertMany(motos)
 // const dataNewProduct1 = new DataNewProduct({
@@ -124,4 +124,19 @@ await mongoose.connect(MONGODB_CNX_STR);
 //   pid: "6417786cb305822db4bb7fa1",
 // });
 
-mongoose.connection.close();
+// mongoose.connection.close();
+const file = {
+  fieldname: 'productImage'
+}
+
+let folder = `./uploads`;
+
+if (file.fieldname === "profileImage") {
+  folder += "/profiles";
+} else if (file.fieldname === "productImage") {
+  folder += "/products";
+} else if (file.fieldname === "document") {
+  folder += "/documents";
+}
+
+console.log(folder);

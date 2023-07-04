@@ -19,7 +19,7 @@ export function loginViewController (req, res) {
   });
 }
 
-// Profile
+// Profile -- this isn't use 
 export function profileViewController (req, res) {
   winstonLogger.info(`req.user en RouterView ${JSON.stringify(req.user)}`);
   res.render('userProfile', {
