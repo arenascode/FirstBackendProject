@@ -1,4 +1,4 @@
-import userService  from "../../services/users.service.js";
+import userService from "../../services/users.service.js";
 import { winstonLogger } from "../../utils/logger.js";
 
 export async function getUsersController(req, res, next) {
@@ -6,7 +6,7 @@ export async function getUsersController(req, res, next) {
   let page = parseInt(req.query.page);
   const category = req.query.category;
   let order = req.query.sort;
-  
+
   try {
     const showUsers = await userService.getAllUsers(
       category,
@@ -14,7 +14,7 @@ export async function getUsersController(req, res, next) {
       page,
       order
     );
-    
+
     const prevPage = `http://localhost:8080/api/users?page=${showUsers.prevPage}&limit=${limit}&query=${category}&sort=${order}`;
 
     const nextPage = `http://localhost:8080/api/users?page=${showUsers.nextPage}&limit=${limit}&query=${category}&sort=${order}`;
@@ -43,40 +43,91 @@ export async function getUsersController(req, res, next) {
 }
 
 export async function getUserByIdController(req, res, next) {
-  const userID = req.params.uid
-  const searchedUser = await userService.findUser(userID)
-  res.json(searchedUser) 
+  const userID = req.params.uid;
+  const searchedUser = await userService.findUser(userID);
+  res.json(searchedUser);
 }
 
 export async function updateUserController(req, res, next) {
   const userID = req.params.uid;
-  const newData = req.body
+  const newData = req.body;
   const updatedUser = await userService.updateUserById(userID, newData);
-  res.json(updatedUser); 
+  res.json(updatedUser);
 }
 
 export async function deleteUserController(req, res, next) {
-  const userId = req.params.id
-  const deletedUser = await userService.deleteUserById(userId)
-  res.json(deletedUser)
+  const userId = req.params.id;
+  const deletedUser = await userService.deleteUserById(userId);
+  res.json(deletedUser);
 }
 
 export async function changeUserRoleController(req, res, next) {
-  const roleSelected = req.body.role
-  winstonLogger.info(`I'm roleSelected ${roleSelected}`)
-  const userId = req.params.uid
-  const findUser = await userService.findUser(userId)
-  if (!findUser) throw new Error(`User not found`)
-  findUser.role = roleSelected
-  await findUser.save()
-  res.json({ findUser })
+  const roleSelected = req.body.role;
+  try {
+    winstonLogger.info(`I'm roleSelected ${roleSelected}`);
+    const userId = req.params.uid;
+    const findUser = await userService.findUser(userId);
+    if (!findUser) throw new Error(`User not found`);
+    if (roleSelected === findUser.role) throw new Error(`you already have that role assigned`)
+    if (roleSelected === "premium") {
+      const searchedNames = [
+        "userId",
+        "proofOfAddress",
+        "proofAccountStatement",
+      ];
+      const containNameFiles = searchedNames.every((namefile) =>
+        findUser.documents.some((file) => file.name == namefile)
+      );
+      console.log(containNameFiles);
+      if (!containNameFiles) {
+        throw new Error("Some document is missing");
+      } else {
+        findUser.role = roleSelected;
+      }
+    } else {
+      findUser.role = roleSelected;
+    }
+    await findUser.save();
+    res.send(`The user role was updated to ${roleSelected} sucessfully`);
+  } catch (error) {
+    if (error.message === "User not found") {
+      res.json({ errorMsg: "User Not Found. Try again." });
+    }
+    if (error.message === "Some document is missing") {
+      res.json({
+        errorMsg:
+          "Some document is missing. Please provide all required documents.",
+      });
+    }
+    if (error.message === `you already have that role assigned`) {
+      res.json({ errorMsg: `you already have the ${roleSelected} role assigned` });
+    } else {
+      res.json({ errorMsg: "An error ocurred. Please try again later." });
+    }
+  }
 }
 
 export async function uploadDocumentsController(req, res, next) {
   try {
+    const userFiles = req.files;
     console.log(req.files);
     console.log(req.params.uid);
-    res.send('we received your documents')
+
+    let documents = [];
+    userFiles.forEach((file) => {
+      const fileToSave = {
+        name: file.fieldname,
+        reference: file.path,
+      };
+      documents.push(fileToSave);
+    });
+    console.log(documents);
+    await userService.updateUserById(req.params.uid, {
+      documents: documents,
+      status: true,
+    });
+
+    res.send("Thank you, we received your documents sucessfully!");
   } catch (error) {
     console.log(error);
   }

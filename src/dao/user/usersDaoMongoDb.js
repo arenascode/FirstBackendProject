@@ -34,7 +34,8 @@ const userSchema = mongoose.Schema(
         reference: {type: String }
       }
     ],
-    last_conection: {type: String}
+    last_conection: { type: String },
+    status: {type: Boolean }
   },
   { versionKey: false }
 );

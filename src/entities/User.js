@@ -43,7 +43,7 @@ function getCurrentDateAsString() {
 }
 
 export class User {
-  constructor({ email, password, name, lastName, age, role = "user", cart = null, documents = null, lastConection = getCurrentDateAsString() }) {
+  constructor({ email, password, name, lastName, age, role = "user", cart = null, documents = null, lastConection = getCurrentDateAsString(), status = false }) {
     this.email = validateEmail(email);
     this.password = validatePassword(password);
     this.name = validateName(name);
@@ -52,7 +52,8 @@ export class User {
     this.role = role,
     this.cart = cart,
     this.documents = documents,
-    this.last_conection= lastConection
+    this.last_conection = lastConection,
+    this.status = status
   }
 }
 
