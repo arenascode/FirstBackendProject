@@ -31,4 +31,19 @@ routerUsers.delete("/:uid", deleteUserController);
 
 routerUsers.post("/premium/:uid", changeUserRoleController)
 
-routerUsers.post('/:uid/documents', uploader.fields([{name:'profileImg', maxCount: 1}, {name:'productImg', maxCount: 1}, {name:'userDocument', maxCount: 1}]), uploadDocumentsController)
+// Upload with Any()
+// routerUsers.post('/:uid/documents', uploader.any([{name:'profileImg', maxCount: 1}, {name:'productImg', maxCount: 3}, {name:'userDocument', maxCount: 1}]), uploadDocumentsController)
+
+//Upload with Array()
+// routerUsers.post('/:uid/documents', uploader.array('profileImg', 'productImg', 'userDocument'), uploadDocumentsController)
+
+//Upload with fields()
+routerUsers.post(
+  "/:uid/documents",
+  uploader.fields([
+    { name: "profileImg", maxCount: 3 },
+    { name: "productImg", maxCount: 3 },
+    { name: "userDocument", maxCount: 3 },
+  ]),
+  uploadDocumentsController
+);
