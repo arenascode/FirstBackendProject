@@ -1,5 +1,7 @@
 import { usersRepository } from "../repositories/users.repository.js";
 import { winstonLogger } from "../utils/logger.js";
+import cron from "node-cron";
+import mailService from "./mail.service.js";
 
 class UserService {
   async registerUser(newUserData) {
@@ -47,7 +49,7 @@ class UserService {
     const searchedUser = await usersRepository.findOne(criteria);
     return searchedUser;
   }
-  
+
   async updateUserById(userID, newData) {
     //newData must be an object
     const updatedUser = await usersRepository.updateOneById(userID, newData);
@@ -57,6 +59,36 @@ class UserService {
   async deleteUserById(userId) {
     const deletedUser = await usersRepository.deleteOne(userId);
     return deletedUser;
+  }
+
+  async deleteUserForInactivity(userID) {
+    cron.schedule("*/30 * * * *", async () => {
+      winstonLogger.info(
+        `cron its working each 30 minutes. must be delete user with id: ${userID}`
+      );
+
+      const user = await usersRepository.findById(userID);
+      const userLastConection = new Date(user.last_conection).getTime();
+      const currentDate = new Date().getTime();
+
+      const diferenceInMilliseconds = currentDate - userLastConection;
+      const diferenceInDays = diferenceInMilliseconds / (24 * 60 * 60 * 10000);
+
+      if (diferenceInDays >= 0.02083333333) {
+        winstonLogger.debug(
+          `sends a notifitacion to the user advising him that if he doesn't log in again to his account it will be deleted`
+        );
+        await mailService.sendMailToAdviceDelitionAccount(user.email);
+      } else if (diferenceInDays >= 2) {
+        winstonLogger.debug(`This account will be deleted due to inactivity`);
+        // Here is the code to delete user
+        await mailService.sendMailToNotifyDelitionAccount(user.email);
+      } else {
+        winstonLogger.debug(
+          `The user account still active`
+        );
+      }
+    });
   }
 }
 

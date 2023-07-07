@@ -63,6 +63,12 @@ class MailService {
       winstonLogger.error(error);
     }
   }
+  async sendMailToAdviceDelitionAccount(userMail) {
+    console.log(`MailService Advice user Service ${userMail}`);
+  }
+  async sendMailToNotifyDelitionAccount(userMail) {
+    console.log(`MailService delete account user Service ${userMail}`);
+  }
 }
 
 const mailService = new MailService();
