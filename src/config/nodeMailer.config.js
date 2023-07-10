@@ -1,2 +1,2 @@
-export const USER_SEND_NODEMAILER = 'migue.arenas91@gmail.com'
-export const PASS_SEND_NODEMAILER = 'dbruzwpjpyjwnstp';
+export const USER_SEND_NODEMAILER = process.env.USER_NODEMAILER
+export const PASS_SEND_NODEMAILER = process.env.PASS_NODEMAILER
