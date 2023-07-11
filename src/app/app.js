@@ -14,9 +14,9 @@ import { mockingProductsRouter } from "../routes/api/mockingproducts.router.js";
 import { winstonLogger } from "../utils/logger.js";
 import { logger } from "../middlewares/logger.js";
 import { loggerTestRouter } from "../routes/api/loggerTest.router.js";
-import cluster from 'cluster';
 import cors from "cors"
 import { MONGODB_CNX_STR } from "../config/mongodbCnxStr.js";
+import { routerUserViews } from "../routes/web/users.views.router.js";
 
 export const app = express()
 
@@ -53,6 +53,9 @@ app.use('/api', apiRouter)
 
 // Router for User Sessions Views
 app.use('/', routerSessionsViews)
+
+// Router for User views 
+app.use('/views', routerUserViews)
 
 // Router for chat
 app.use('/', routerChat)

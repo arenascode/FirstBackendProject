@@ -9,7 +9,6 @@ import {
 } from "../../controllers/api/users.controller.js";
 import { validateParam } from "../../utils/validations.js";
 import { winstonLogger } from "../../utils/logger.js";
-import userService from "../../services/users.service.js";
 import { uploader } from "../../utils/multer.js";
 
 export const routerUsers = Router();

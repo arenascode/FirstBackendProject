@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { authenticationJwtView } from "../../middlewares/passport.js";
-import { homeViewController, logOutController, loginViewController, profileViewController, registerViewController } from "../../controllers/web/web.controller.js";
-import { restorePassService } from "../../services/restorePassword.service.js";
+import { homeViewController, logOutController, loginViewController, profileViewController, registerViewController } from "../../controllers/web/sessions.web.controller.js";
 import { decodeToken } from "../../utils/cryptography.js";
 
 

@@ -1,0 +1,84 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>User</title>
+  </head>
+  <body>
+    <main>
+      <h3 style="padding-top: 10px">User Searched</h3>
+      <nav>
+        <section class="flex row mb-10">
+          <div class="m-2"><a href="/profile">Home</a></div>
+          <div class="m-2"><a href="/logout">Log Out</a></div>
+        </section>
+      </nav>
+      <hr />
+      <section
+        id="showData"
+        class="row g-1 align-items-center container-fluid d-flex ml-30"
+        style="margin-top: 10px;"
+      >
+        {{#if userExist}}
+
+          <div class="card w-400">
+            <div class="card-body">
+              <div id="username">
+                <p class="fw-bold text-uppercase">Nombre Completo:
+                  <span class="fw-normal text-lowercase">{{user.fullName}}</span></p>
+              </div>
+              <div id="userEmail">
+                <p class="fw-bold text-uppercase">Email:
+                  <span class="fw-normal text-lowercase">{{user.email}}</span></p>
+              </div>
+              <div id="username">
+                <p class="fw-bold text-uppercase">Role:
+                  <span class="fw-normal text-lowercase">{{user.role}}</span></p>
+              </div>
+              <form action="" method="post" class="row g-3">
+                <label for="userRole" class="">
+                  <h6>Change User Role</h6>
+                </label>
+                <div class="d-inline-flex align-items-top" style="margin-top: 0;">
+                  <select name="userRole" id="changeUserRole" class="d-flex form-select form-select-sm">
+                    <option value="chooseRole" selected>Choose a Role</option>
+                    <option value="premium">Premium</option>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                  </select>
+                  <div class="col-3 ms-3" id="btnContainer">
+                    <button class="btn btn-sm btn-warning" type="submit">Change
+                    Role</button>
+                  </div>
+                </div>
+              </form>
+              <button
+                id="addBtn-${p._id}"
+                href="#"
+                class="btn btn-sm btn-danger mt-3"
+                data-idProduct={{this._id}}
+              >Delete User</button>
+            </div>
+          </div>
+        {{else}}
+          User Not Found...
+        {{/if}}
+      </section>
+
+    </main>
+    <script src="/static/js/products.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

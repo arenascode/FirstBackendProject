@@ -1,3 +1,4 @@
+import UserDTO from "../../repositories/users.dto.js";
 import userService from "../../services/users.service.js";
 import { winstonLogger } from "../../utils/logger.js";
 
@@ -45,7 +46,13 @@ export async function getUsersController(req, res, next) {
 export async function getUserByIdController(req, res, next) {
   const userID = req.params.uid;
   const searchedUser = await userService.findUser(userID);
-  res.json(searchedUser);
+  const userToRender = new UserDTO(searchedUser)
+  console.log(userToRender);
+  res.render('user', {
+    pageTitle: 'userByID',
+    userExist: Boolean(searchedUser),
+    user: userToRender
+  });
 }
 
 export async function updateUserController(req, res, next) {
