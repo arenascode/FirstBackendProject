@@ -47,19 +47,21 @@ export async function getUserByIdController(req, res, next) {
   const userID = req.params.uid;
   const searchedUser = await userService.findUser(userID);
   const userToRender = new UserDTO(searchedUser)
-  console.log(userToRender);
   res.render('user', {
     pageTitle: 'userByID',
     userExist: Boolean(searchedUser),
-    user: userToRender
+    user: userToRender,
+    userId: userID
   });
 }
 
 export async function updateUserController(req, res, next) {
   const userID = req.params.uid;
   const newData = req.body;
+  // console.log(userID);
+  // console.log(`updateController ${JSON.stringify(newData)}`);
   const updatedUser = await userService.updateUserById(userID, newData);
-  res.json(updatedUser);
+  res.status(201).json(updatedUser);
 }
 
 export async function deleteUserController(req, res, next) {

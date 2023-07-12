@@ -15,6 +15,7 @@ import { JWT_SECRET_KEY } from "../config/auth.config.js";
 import { AuthenticationError } from "../models/errors/AuthenticationError.js";
 import { winstonLogger } from "../utils/logger.js";
 
+
 // JWT Stragegy //
 
 passport.use(
@@ -49,7 +50,7 @@ export function authenticationJwtApi(req, res, next) {
     }
     if (!user) {
       winstonLogger.info(`info ${info}`);
-      return res.status(401).json({ error: "Token doesn't exist" });
+      return res.status(401).json({ error: `Token doesn't exist. Please Log in`});
     }
     // El usuario está autenticado correctamente
     req.user = user;

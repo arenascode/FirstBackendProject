@@ -2,7 +2,7 @@ export function checkItIsAdmin(req, res, next) {
 
   const { role } = req.user;
 
-  if (role === "admin" || role === 'premium') {
+  if (role === "admin") {
     next();
   } else {
     res['sendPermissionError']()

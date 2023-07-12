@@ -10,6 +10,8 @@ import {
 import { validateParam } from "../../utils/validations.js";
 import { winstonLogger } from "../../utils/logger.js";
 import { uploader } from "../../utils/multer.js";
+import { authenticationJwtApi } from "../../middlewares/passport.js";
+import { checkItIsAdmin } from "../../middlewares/handlePolicies.js";
 
 export const routerUsers = Router();
 
@@ -22,7 +24,7 @@ routerUsers.param("uid", (req, res, next, userId) => {
 
 routerUsers.get("/", getUsersController);
 
-routerUsers.get("/:uid", getUserByIdController);
+routerUsers.get("/:uid",authenticationJwtApi,checkItIsAdmin, getUserByIdController);
 
 routerUsers.put("/:uid", updateUserController);
 
