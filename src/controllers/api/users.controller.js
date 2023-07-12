@@ -46,28 +46,38 @@ export async function getUsersController(req, res, next) {
 export async function getUserByIdController(req, res, next) {
   const userID = req.params.uid;
   const searchedUser = await userService.findUser(userID);
-  const userToRender = new UserDTO(searchedUser)
-  res.render('user', {
-    pageTitle: 'userByID',
-    userExist: Boolean(searchedUser),
-    user: userToRender,
-    userId: userID
-  });
+  let userToRender
+  if (searchedUser) {
+    userToRender = new UserDTO(searchedUser);
+    res.render("user", {
+      pageTitle: "userByID",
+      userExist: Boolean(searchedUser),
+      user: userToRender,
+      userId: userID,
+    })
+  } else {
+    res.render("user", {
+      pageTitle: "userByID",
+      userExist: Boolean(searchedUser),
+      user: userToRender,
+      userId: userID,
+    });
+  }
 }
 
 export async function updateUserController(req, res, next) {
   const userID = req.params.uid;
   const newData = req.body;
-  // console.log(userID);
-  // console.log(`updateController ${JSON.stringify(newData)}`);
   const updatedUser = await userService.updateUserById(userID, newData);
   res.status(201).json(updatedUser);
 }
 
 export async function deleteUserController(req, res, next) {
-  const userId = req.params.id;
-  const deletedUser = await userService.deleteUserById(userId);
-  res.json(deletedUser);
+  const userId = req.params.uid;
+  await userService.deleteUserById(userId);
+  res
+    .status(204)
+    .json({ message: `The user with ${userId} was deleted succesfully` });
 }
 
 export async function changeUserRoleController(req, res, next) {
@@ -77,7 +87,8 @@ export async function changeUserRoleController(req, res, next) {
     const userId = req.params.uid;
     const findUser = await userService.findUser(userId);
     if (!findUser) throw new Error(`User not found`);
-    if (roleSelected === findUser.role) throw new Error(`you already have that role assigned`)
+    if (roleSelected === findUser.role)
+      throw new Error(`you already have that role assigned`);
     if (roleSelected === "premium") {
       const searchedNames = [
         "userId",
@@ -109,7 +120,9 @@ export async function changeUserRoleController(req, res, next) {
       });
     }
     if (error.message === `you already have that role assigned`) {
-      res.json({ errorMsg: `you already have the ${roleSelected} role assigned` });
+      res.json({
+        errorMsg: `you already have the ${roleSelected} role assigned`,
+      });
     } else {
       res.json({ errorMsg: "An error ocurred. Please try again later." });
     }

@@ -61,15 +61,14 @@
                 </div>
               </form>
               <button
-                id="addBtn-${p._id}"
                 href="#"
                 class="btn btn-sm btn-danger mt-3"
-                data-idProduct={{this._id}}
+                data-usertodelete={{userId}}
               >Delete User</button>
             </div>
           </div>
         {{else}}
-          User Not Found...
+          <h3>User Not Exist...</h3> 
         {{/if}}
       </section>
 
