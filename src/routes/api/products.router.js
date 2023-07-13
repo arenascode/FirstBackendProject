@@ -9,6 +9,7 @@ import {
 import { authenticationJwtApi } from "../../middlewares/passport.js";
 import {
   checkItIsAdmin,
+  checkItIsAdminOrPremium,
   checkItIsPremium,
 } from "../../middlewares/handlePolicies.js";
 
@@ -24,7 +25,7 @@ routerProducts.get("/:pid", controllerGetProductById);
 routerProducts.post(
   "/",
   authenticationJwtApi,
-  checkItIsAdmin,
+  checkItIsAdminOrPremium,
   controllerAddNewProduct
 ); // Only Admin & Premium user
 

@@ -1,3 +1,5 @@
+import { winstonLogger } from "../utils/logger.js";
+
 export function checkItIsAdmin(req, res, next) {
 
   const { role } = req.user;
@@ -8,6 +10,17 @@ export function checkItIsAdmin(req, res, next) {
     res['sendPermissionError']()
   }
 };
+
+export function checkItIsAdminOrPremium(req, res, next) {
+  
+  const { role } = req.user
+
+  if (role === 'admin' || role === 'premium') {
+    next()
+  } else {
+    res['sendPermissionError']()
+  }
+}
 
 export function checkItIsUser(req, res, next) {
   const { role } = req.user;
@@ -23,6 +36,7 @@ export function checkItIsPremium(req, res, next) {
   const { role } = req.user
   
   if (role === 'premium') {
+    winstonLogger.debug('Is a premium user')
     next()
   } else {
     res["sendPermissionError"]();

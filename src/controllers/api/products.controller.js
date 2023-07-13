@@ -96,7 +96,8 @@ export async function controllerUpdateProductById (req, res) {
 export async function controllerDeleteProductById (req, res) {
   try {
   const productToDelete = req.params.pid;
-  await productsService.deleteProductById(productToDelete, req.user)
+    await productsService.deleteProductById(productToDelete, req.user)
+    
   res.send(
     `the product with ID: ${productToDelete} was succesfully deleted`
   );

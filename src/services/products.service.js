@@ -2,6 +2,7 @@ import Product from "../entities/Product.js";
 import { productsRepository } from "../repositories/products.repository.js";
 import { usersRepository } from "../repositories/users.repository.js";
 import { winstonLogger } from "../utils/logger.js";
+import mailService from "./mail.service.js";
 
 class ProductsService {
   async addNewProduct(dataNewProduct, userId) {
@@ -63,21 +64,29 @@ class ProductsService {
 
   async deleteProductById(id, user) {
     const productToDelete = await productsRepository.getProductById(id);
-    console.log(`i'm productToDelete ${productToDelete}`);
-
-    if ((user._id === productToDelete.owner)) {
-      // throw new Error(`You don't have permission to delete this product`);
-      console.log(`deleted by premium`);
-      return await productsRepository.deleteProduct(id);
-    } else {
-      if (user.role === 'admin') {
-        console.log(`deleted By Admin`);
-      return await productsRepository.deleteProduct(id);
-      } else {
-        throw new Error(`You don't have permission to delete products`)
-      }
+    if (!productToDelete) {
+      throw new Error("This Product Doesn't Exist");
     }
 
+    const productOwner = await usersRepository.findById(productToDelete.owner);
+
+    if (user._id === productToDelete.owner) {
+      winstonLogger.info(`deleted by the user who created the product`);
+      return await productsRepository.deleteProduct(id);
+    } else {
+      if (user.role === "admin") {
+        if (productOwner.role === "premium") {
+          await mailService.sendMailToNofityProductDeleted(
+            productOwner.email,
+            productOwner.name,
+            productToDelete.title
+          );
+        }
+        return await productsRepository.deleteProduct(id);
+      } else {
+        throw new Error(`You don't have permission to delete products`);
+      }
+    }
   }
 
   async deleteAll() {

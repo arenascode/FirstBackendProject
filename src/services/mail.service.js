@@ -103,7 +103,7 @@ class MailService {
         pass: PASS_SEND_NODEMAILER
       }
     })
-    const link = CLIENT_URL
+    const link = `${CLIENT_URL}/register`
     const mailOptions = {
       from: "Luxury Ride",
       to: userMail,
@@ -113,6 +113,38 @@ class MailService {
       <p>If you want to come back we invite you to register on our platform at the following link<p>
       <br>
       <a href="http://${link}/register">Register Me!</a>`,
+      attachments: [],
+    };
+
+    try {
+      const result = await transport.sendMail(mailOptions)
+      winstonLogger.info(result)
+    } catch (error) {
+      winstonLogger.error(error)
+    }
+  }
+  async sendMailToNofityProductDeleted(userMail, userName, productName) {
+    
+    const transport = nodemailer.createTransport({
+      service: 'gmail',
+      port: 587,
+      auth: {
+        user: USER_SEND_NODEMAILER,
+        pass: PASS_SEND_NODEMAILER
+      }
+    })
+
+    const link = `${CLIENT_URL}/realtimeproducts`
+
+    const mailOptions = {
+      from: "Luxury Ride",
+      to: userMail,
+      subject: "One of your product was deleted in Luxury Ride",
+      html: `<h2 style="color: grey;"> Hi ${userName}, your product ${productName} was deleted from Luxury Ride for not complying with the Luxury Ride Policies. .</h2>
+      <hr>
+      <p>Please review all the requirements to upload a product and try again.<p>
+      <br>
+      <a href="http:${link}"></a>`,
       attachments: [],
     };
 
