@@ -1,3 +1,4 @@
+import { usersRepository } from "../../repositories/users.repository.js";
 import cartsService from "../../services/carts.service.js";
 import ticketService from "../../services/ticket.service.js";
 import { winstonLogger } from "../../utils/logger.js";
@@ -91,6 +92,8 @@ export async function controllerAddANewCart(req, res) {
   try {
     const productId = req.body.idproduct;
     const userId = req.user._id;
+    const user = await usersRepository.findById(userId)
+    console.log(`user in controllerANC ${user}`);
     const cartAdded = await cartsService.addNewCart(productId, userId);
     res.json(JSON.stringify(cartAdded));
   } catch (error) {

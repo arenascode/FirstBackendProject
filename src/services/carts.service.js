@@ -1,21 +1,31 @@
 import { cartsRepository } from "../repositories/carts.repository.js";
+import { productsRepository } from "../repositories/products.repository.js";
 import { usersRepository } from "../repositories/users.repository.js";
 import { winstonLogger } from "../utils/logger.js";
 
 class CartsService {
-  async addNewCart(productToCart, userId) {
-    winstonLogger.debug(`LINE 6 cartsService ${JSON.stringify(productToCart)}`);
+  async addNewCart(productId, userId) {
+    winstonLogger.debug(`LINE 6 cartsService ${JSON.stringify(productId)}`);
     const user = await usersRepository.findById(userId)
+    winstonLogger.debug(`user searched in Mongo ${user}`)
+    const productToAdd = await productsRepository.getProductById(productId)
+
     const userHasCart = user.cart? user.cart._id : null
     winstonLogger.debug(`I'm userHasCart CartsService ${JSON.stringify(userHasCart)}`);
-    if (productToCart.owner  == userId)  throw new Error(`You can't add in the cart a product added by you.`)
-    const cartAdded = await cartsRepository.saveNewCart(productToCart, userId, userHasCart);
-    winstonLogger.debug(`I'm cartAdded in C.Service ${cartAdded}`);
-    await usersRepository.updateOneById(userId, {cart: cartAdded._id})
-    return cartAdded;
+
+    if (userHasCart) {
+      if (productToAdd.owner  == userId)  throw new Error(`You can't add in the cart a product added by you. Add other product`)
+      const productAdded = this.addProductToCart(productId, userId, userHasCart)
+      return productAdded
+    } else {
+      const cartCreated = await cartsRepository.saveNewCart(productId, userId, userHasCart);
+      winstonLogger.debug(`I'm cartCreated in C.Service ${cartCreated}`);
+      await usersRepository.updateOneById(userId, {cart: cartCreated._id})
+      return cartCreated
+    }
   }
-  async addProductToCart(newProduct, userId, cartId) {
-    const productAdded = await cartsRepository.addProductToCart(newProduct, userId, cartId);
+  async addProductToCart(productId, userId, cartId) {
+    const productAdded = await cartsRepository.addProductToCart(productId, userId, cartId);
     return productAdded;
   }
   async showCarts(category, limit, page, order) {

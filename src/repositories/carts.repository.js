@@ -11,8 +11,8 @@ class CartsRepository {
     return savedCart
   }
 
-  async addProductToCart(newProduct, userId, cartId) {
-    const addedProduct = this.dao.addProductToCart(newProduct, userId, cartId)
+  async addProductToCart(productId, userId, cartId) {
+    const addedProduct = this.dao.addProductToCart(productId, userId, cartId)
     return addedProduct
   }
 

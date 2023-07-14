@@ -47,82 +47,85 @@ class CartsDaoMongoDb {
   async saveNewCart(productIdToAdd, userId, userHasCart) {
 
     const product = {};
-    const cart = new Cart(userId);
+    // const cart = new Cart(userId);
     //Nos aseguramos de saber si el carrito existe previamente para saber si creamos uno nuevo o lo actualizamos simplemente
     const cartExist = await this.collection.findOne({
       _id: userHasCart,
     });
     
-    const searchedProduct = await productsDaoMongoDb.getById(productIdToAdd) 
-    winstonLogger.info(`producto encontrado por ID ${searchedProduct}`);
+    // const searchedProduct = await productsDaoMongoDb.getById(productIdToAdd) 
+    winstonLogger.info(`product ID received ${productIdToAdd}`);
     if (cartExist) {
       const productInCartExist = await this.collection.findOne({
         user: userId,
         products: {
           $elemMatch: {
-            _id: searchedProduct._id,
+            _id: productIdToAdd,
           },
         },
       });
 
       if (productInCartExist) {
         await productInCartExist.products.forEach((element) => {
-          if (element._id.equals(searchedProduct._id)) {
+          if (element._id.equals(productIdToAdd)) {
             element.quantity += 1;
           } else {
             winstonLogger.info(`element didn't found. Will be create`);
           }
         });
         await productInCartExist.save();
+        console.log(`cartExistbefore return ${cartExist}`);
         return cartExist;
       } else {
-        product._id = searchedProduct._id;
+        product._id = productIdToAdd;
         product.quantity = 1;
         cartExist.products.push(product);
         await cartExist.save();
       }
     } else {
       // Si el carrito, producto no existe, lo agrega como nuevo objeto
-      product._id = searchedProduct._id;
+      product._id = productIdToAdd;
       product.quantity = 1;
       const cart = new Cart(userId);
       cart.products.push(product);
       const newCart = await this.collection.create(cart);
-      const cartCreated = this.getCartById(newCart._id)
-      winstonLogger.info(`${JSON.stringify(newCartcart)} fue agregado a la coleccion`);
+      const cartCreated = await this.getCartById(newCart._id)
+      winstonLogger.info(`${JSON.stringify(newCart)} fue agregado a la coleccion`);
       return cartCreated;
     }
   }
 
-  async addProductToCart(productToCart, userId, cartId) {
-    const idProduct = productToCart._id;
+  async addProductToCart(productId, userId, cartId) {
+    // const idProduct = productToCart._id;
     const productInCartExist = await this.collection.findOne({
       _id: cartId,
       products: {
         $elemMatch: {
-          _id: idProduct,
+          _id: productId,
         },
       },
     });
-    //winstonLogger.info(`I'm productInCartExist ${JSON.stringify(productInCartExist)}`);
+    winstonLogger.info(`I'm productInCartExist APTC ${JSON.stringify(productInCartExist)}`);
 
     if (productInCartExist) {
       const productToUpdateCart = productInCartExist.products.find(
-        (e) => e._id._id == idProduct
+        (e) => e._id._id == productId
       );
-      //winstonLogger.info(`I'm productToUpdateCart ${productToUpdateCart}`);
       productToUpdateCart.quantity += 1;
       await productInCartExist.save();
+      winstonLogger.info(`I'm productToUpdateCart Before Return ${productToUpdateCart}`);
+      return productToUpdateCart
     } else {
-      const newProductAdd = {
-        _id: idProduct,
+      const newProductToAdd = {
+        _id: productId,
         quantity: 1,
       };
       const newProductAdded = await this.collection.findOneAndUpdate(
         { _id: cartId },
-        { $push: { products: newProductAdd } },
+        { $push: { products: newProductToAdd } },
         { new: true }
       );
+      return newProductAdded
     }
   }
 

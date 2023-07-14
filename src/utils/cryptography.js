@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { JWT_SECRET_KEY } from "../config/auth.config.js";
+import { JWT_SECRET_KEY } from "../config/env.config.js";
 // Here bcrypt create a encrypted password with two arguments. The original password bring from the user and a grain of. The password will be irreversible.
 
 const bcryptSalt = Number(process.env.BCRYPT_SALT)
