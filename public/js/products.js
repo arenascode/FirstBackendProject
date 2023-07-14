@@ -1,4 +1,36 @@
-const socket = io();
+//Get the elements 
+const addToCartBtns = document.querySelectorAll('button[data-idProduct]')
+// console.log(addToCartBtns.dataset.idProduct);
+
+
+async function addToCart() {
+  const idProduct = this.dataset.idproduct
+  const productId = {
+    idproduct: idProduct
+  }
+  console.log(productId);
+  const response = await fetch("http://localhost:8080/api/carts", {
+    method: "POST",
+    body: JSON.stringify(productId),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (!response.ok) {
+    console.log('Error Request. Please try Again');
+  }
+
+  const data = await response.json()
+  console.log(data);
+}
+
+addToCartBtns.forEach(btn => btn.addEventListener('click', addToCart))
+
+
+
+
+
+
 
 // socket.on("productsList", async (data) => {
 //   const divData = document.getElementById("showData");

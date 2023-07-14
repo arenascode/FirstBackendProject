@@ -89,10 +89,10 @@ export async function controllerAddANewCart(req, res) {
     `I'm req.user in Controller ANC ${JSON.stringify(req.user)}`
   );
   try {
-    const productToCart = req.body;
+    const productId = req.body.idproduct;
     const userId = req.user._id;
-    await cartsService.addNewCart(productToCart, userId);
-    res.json(`the ${JSON.stringify(productToCart)} was added succesfull`);
+    const cartAdded = await cartsService.addNewCart(productId, userId);
+    res.json(JSON.stringify(cartAdded));
   } catch (error) {
     res.status(400).json({
       msg: error.message,

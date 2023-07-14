@@ -24,8 +24,8 @@ export function checkItIsAdminOrPremium(req, res, next) {
 
 export function checkItIsUser(req, res, next) {
   const { role } = req.user;
-
-  if (role === 'user' || role === 'premium') {
+  winstonLogger.debug(req.user)
+  if (role === 'user') {
     next();
   } else {
     res["sendPermissionError"]();

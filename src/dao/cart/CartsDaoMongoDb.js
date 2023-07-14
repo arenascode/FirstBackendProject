@@ -44,7 +44,7 @@ class CartsDaoMongoDb {
     this.collection = cartsModel;
   }
 
-  async saveNewCart(productToAdd, userId, userHasCart) {
+  async saveNewCart(productIdToAdd, userId, userHasCart) {
 
     const product = {};
     const cart = new Cart(userId);
@@ -53,8 +53,8 @@ class CartsDaoMongoDb {
       _id: userHasCart,
     });
     
-    const searchedProduct = await productsDaoMongoDb.findByCode({ code: productToAdd.code }) // when I'll do a FE change this for search by ID
-    winstonLogger.info(`producto encontrado por código ${searchedProduct}`);
+    const searchedProduct = await productsDaoMongoDb.getById(productIdToAdd) 
+    winstonLogger.info(`producto encontrado por ID ${searchedProduct}`);
     if (cartExist) {
       const productInCartExist = await this.collection.findOne({
         user: userId,
@@ -88,8 +88,9 @@ class CartsDaoMongoDb {
       const cart = new Cart(userId);
       cart.products.push(product);
       const newCart = await this.collection.create(cart);
-      //winstonLogger.info(`El cart ${JSON.stringify(cart)} fue agregado a la coleccion`);
-      return newCart;
+      const cartCreated = this.getCartById(newCart._id)
+      winstonLogger.info(`${JSON.stringify(newCartcart)} fue agregado a la coleccion`);
+      return cartCreated;
     }
   }
 
