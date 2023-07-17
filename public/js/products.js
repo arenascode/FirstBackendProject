@@ -1,14 +1,17 @@
 //Get the elements 
 const addToCartBtns = document.querySelectorAll('button[data-idProduct]')
-// console.log(addToCartBtns.dataset.idProduct);
+const getCartBtn = document.getElementById('getCart')
+const cartProductsList = document.querySelector('.cartProducts')
+const modalCart = document.querySelector('.modalCart')
+let data
+const closeModalBtn = document.getElementById('closeModalBtn')
 
-
+//Functions 
 async function addToCart() {
   const idProduct = this.dataset.idproduct
   const productId = {
     idproduct: idProduct
   }
-  console.log(productId);
   const response = await fetch("http://localhost:8080/api/carts", {
     method: "POST",
     body: JSON.stringify(productId),
@@ -17,14 +20,82 @@ async function addToCart() {
     },
   });
   if (!response.ok) {
-    console.log('Error Request. Please try Again');
+    alert('Your session expired. Log in again!');
   }
-
-  const data = await response.json()
-  console.log(data);
+  
+  cart = await response.json()
+  console.log(cart._id);
+  localStorage.setItem('cartId', JSON.stringify(cart._id))
 }
 
+let deleteProductCartBtns
+
+async function getCartById(e) {
+  e.preventDefault()
+  const cartId = JSON.parse(localStorage.getItem('cartId'))
+  console.log(`I'm cartId saved in LocalStorage ${cartId}`);
+  const response = await fetch(`http://localhost:8080/api/carts/${cartId}`)
+  const productsToRender = await response.json()
+  console.log(productsToRender);
+  cartProductsList.innerHTML = await productsToRender.map(product => {
+    return `
+    <li>
+    <div class=ItemCartList>
+    Motorcycle: ${product.id.title}
+    <br>
+    <small>Model: ${product.id.description}</small>
+    <br
+    <small>Quantity: ${product.quantity}</small>
+    <br
+    <small>Price: $${product.id.price}</small>
+    </div>
+    <div class="itemCartListBtns">
+    <button class="deleteProductCart btn btn-sm btn-danger rounded" style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .55rem;" onclick=deleteProductInCart(this) data-productid=${product.id._id} >Delete Product</button>
+    </div>
+    </li>
+    <hr>
+    `;
+  }).join("")
+  // To show modal
+  modalCart.style.display = 'flex'
+  setTimeout(() => {
+    modalCart.style.opacity = 1
+  }, 100);
+  // To acces to delete btns
+  // deleteProductCartBtns = document.querySelectorAll('.deleteProductCart')
+  // console.log(deleteProductCartBtns);
+  // deleteProductCartBtns.forEach(deleteBtn => deleteBtn.addEventListener("click", deleteProductInCart));
+}
+
+//Close Cart Modal
+function closeModal () {
+  console.log('closing modal');
+  modalCart.style.opacity = 0
+  setTimeout(() => {
+    modalCart.style.display = 'none'
+  }, 300);
+}
+
+window.onclick = function (e) {
+  if (e.target === modalCart) {
+    modalCart.style.opacity = 0;
+    setTimeout(() => {
+      modalCart.style.display = "none";
+    }, 300);
+  }
+}
+
+// Delete Product of Cart
+// btns to delete cart
+function deleteProductInCart(btn) {
+  console.log('deleting product of cart');
+  console.log(btn.dataset.productid);
+}
+// Event Listeners
+
 addToCartBtns.forEach(btn => btn.addEventListener('click', addToCart))
+getCartBtn.addEventListener('click', getCartById)
+closeModalBtn.addEventListener('click', closeModal)
 
 
 

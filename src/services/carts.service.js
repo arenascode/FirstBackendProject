@@ -54,7 +54,7 @@ class CartsService {
 
   async showCartById(id) {
     const cartById = await cartsRepository.showCartById(id);
-    winstonLogger.debug(`I'm cartById ${cartById}`);
+    // winstonLogger.debug(`I'm cartById ${cartById}`);
     return cartById
   }
 

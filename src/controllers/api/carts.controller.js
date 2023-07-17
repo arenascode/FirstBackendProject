@@ -7,6 +7,7 @@ import { winstonLogger } from "../../utils/logger.js";
 export async function controllerGetCartById(req, res) {
   try {
     const idCart = req.params.cid;
+    console.log(idCart);
     const cartById = await cartsService.showCartById(idCart);
     winstonLogger.info(`cartById Controller 8 ${JSON.stringify(cartById)}`);
 
@@ -31,7 +32,7 @@ export async function controllerGetCartById(req, res) {
     //   dataUser: cartById,
     //   productsInCart: arrayOfProducts,
     // });
-    res.status(200).json(cartById)
+    res.status(200).json(arrayOfProducts)
   } catch (error) {
     res.status(400).json({
       msg: error.message,
@@ -95,7 +96,7 @@ export async function controllerAddANewCart(req, res) {
     const user = await usersRepository.findById(userId)
     console.log(`user in controllerANC ${user}`);
     const cartAdded = await cartsService.addNewCart(productId, userId);
-    res.json(JSON.stringify(cartAdded));
+    res.json(cartAdded);
   } catch (error) {
     res.status(400).json({
       msg: error.message,

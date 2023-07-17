@@ -18,10 +18,10 @@
         class="d-flex flex-column justify-content-between w-100"
         style="position: fixed; background-color: darkgray; z-index: 99"
       >
-        <h1>Products</h1>
+        <h3>Products</h3>
         <div>
           <div class="links d-flex justify-content-between w-100">
-            <section class="flex row mb-3">
+            <section class="flex row mb-2">
               <div class="m-2"><a href="/profile">Home</a></div>
               <div class="m-2"><a href="/logout">Log Out</a></div>
               <div id="paginateOptions">
@@ -35,7 +35,30 @@
               </div>
             </section>
 
-            <a href="" class="align-self-end me-4 mb-2">View Your Cart</a>
+            <a href="" class="align-self-end me-4 mb-2" id="getCart">View Your Cart</a>
+            <div class="modalCart">
+              <div class="modalContent">
+                <div class="cartDetails">
+                  <div class="titleAndCloseBtn">
+                    <h3>Your Cart</h3>
+                    <button type="button" id="closeModalBtn" class="btn"><img src="../static/assets/cancelar.png" alt=""></button>
+                  </div>
+                
+                <div class="cartDetails_totalAmount">
+                  $324345
+                </div>
+                  <div class="btns_CartDetails">
+                    <button type="button" class="btn btn-danger btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .60rem;">Delete Cart</button>
+                    <button type="button" class="btn btn-success btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .60rem; margin-left: 5px">Confirm Cart</button>
+                  </div>
+                </div>
+                <div class="cartContent">
+                  <ul class="cartProducts">
+
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </nav>

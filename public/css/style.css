@@ -3,7 +3,7 @@ li {
   list-style: none;
 }
 a {
-  text-decoration:underline;
+  text-decoration: underline;
   color: inherit;
 }
 #container1 {
@@ -12,7 +12,7 @@ a {
   display: flex;
   flex-wrap: nowrap;
   column-gap: 50px;
-  align-items:center;
+  align-items: center;
   justify-content: space-around;
   margin-top: 20px;
 }
@@ -36,7 +36,7 @@ body {
 /* Products */
 #paginateOptions a {
   color: blueviolet;
-} 
+}
 #showData {
   margin-top: 30px;
   /* margin-left: 20px; */
@@ -46,9 +46,9 @@ body {
   column-gap: 10px;
   /* width: 600px; */
   overflow-y: hidden;
- }
+}
 .card {
-  width: max-content
+  width: max-content;
 }
 .card-body {
   width: 100%;
@@ -58,18 +58,24 @@ body {
 #registerForm {
   width: 200px;
   margin-left: 20px;
-  background-image: linear-gradient(to right,hsl(249, 99%, 64%),hsl(278, 94%, 30%));
+  background-image: linear-gradient(
+    to right,
+    hsl(249, 99%, 64%),
+    hsl(278, 94%, 30%)
+  );
   padding: 10px;
   border: none;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
-#registerForm label, #registerForm h2{
+#registerForm label,
+#registerForm h2 {
   color: white;
 }
-#registerForm input[type="name"],#registerForm input[type="lastName"],
+#registerForm input[type="name"],
+#registerForm input[type="lastName"],
 #registerForm input[type="email"],
- #registerForm input[type="age"],
+#registerForm input[type="age"],
 #registerForm input[type="password"] {
   width: 100%;
   margin-bottom: 5px;
@@ -109,7 +115,7 @@ body {
   text-align: center;
   text-decoration: none;
   color: #ffffff;
-  background-image: linear-gradient(45deg, black, #a7a2b6);;
+  background-image: linear-gradient(45deg, black, #a7a2b6);
   border-radius: 5px;
   border: none;
 }
@@ -120,13 +126,17 @@ body {
 #loginForm {
   width: 200px;
   margin-left: 20px;
-  background-image: linear-gradient(to right,hsl(249, 99%, 64%),hsl(278, 94%, 30%));
+  background-image: linear-gradient(
+    to right,
+    hsl(249, 99%, 64%),
+    hsl(278, 94%, 30%)
+  );
   padding: 10px;
   border: none;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
- #loginForm input[type="email"],
+#loginForm input[type="email"],
 #loginForm input[type="password"] {
   width: 100%;
   margin-bottom: 5px;
@@ -143,10 +153,68 @@ body {
   margin-left: 20px;
 }
 .areURegister a:hover {
-  background-image: linear-gradient(to right,hsl(249, 99%, 64%),hsl(278, 94%, 30%));;
+  background-image: linear-gradient(
+    to right,
+    hsl(249, 99%, 64%),
+    hsl(278, 94%, 30%)
+  );
   color: white;
   border: none;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   padding: 3px;
+}
+
+/* STYLE FROM CART IN API/PRODUCTS */
+
+.modalCart {
+  display: none;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.506);
+  width: 100vw;
+  height: 100vh;
+  /* z-index: 99; */
+  position: fixed;
+  transition-property: opacity;
+  transition-duration: 0.7s;
+  transition-timing-function: ease-in-out;
+}
+.modalContent {
+  position: fixed;
+  right: 0px;
+  top: 39px;
+  background-color: #a7a2b6;
+  height: 100vh;
+  width: 30%;
+  /* overflow: scroll; */
+}
+.cartDetails {
+  display: fixed;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.cartContent {
+  height: 100vh;
+  margin-bottom: 50px;
+  overflow-y: scroll;
+  padding-bottom: 150px;
+}
+#closeModalBtn {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+.titleAndCloseBtn {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  align-items: center;
+}
+#closeModalBtn img {
+  /* width: 100%; */
+  height: 100%;
 }
