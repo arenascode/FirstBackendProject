@@ -5,7 +5,7 @@ const cartProductsList = document.querySelector('.cartProducts')
 const modalCart = document.querySelector('.modalCart')
 let data
 const closeModalBtn = document.getElementById('closeModalBtn')
-
+const totalAmountdiv = document.querySelector('.cartDetails_totalAmount')
 //Functions 
 async function addToCart() {
   const idProduct = this.dataset.idproduct
@@ -30,6 +30,8 @@ async function addToCart() {
 
 let deleteProductCartBtns
 
+
+
 async function getCartById(e) {
   e.preventDefault()
   const cartId = JSON.parse(localStorage.getItem('cartId'))
@@ -37,10 +39,12 @@ async function getCartById(e) {
   if (!cartId) {
     alert('Your Cart is empty. Please add one product')
   }
-  
+
   const response = await fetch(`http://localhost:8080/api/carts/${cartId}`)
   const productsToRender = await response.json()
-  console.log(productsToRender);
+  let total = totalAmount(productsToRender)
+  console.log(total);
+  totalAmountdiv.innerText = `Total Amount: $${total}`
   cartProductsList.innerHTML = await productsToRender.map(product => {
     return `
     <li>
@@ -65,6 +69,19 @@ async function getCartById(e) {
   setTimeout(() => {
     modalCart.style.opacity = 1
   }, 100);
+}
+
+function totalAmount(arrayOfProducts) {
+  let total = 0
+  arrayOfProducts.forEach((product) => {
+    const eachOne = product.id.price * product.quantity
+    total += eachOne
+  })
+  return total
+}
+
+function calculateAmount(arrayOfProducts) {
+  return 
 }
 
 //Close Cart Modal
@@ -97,6 +114,9 @@ async function deleteProductInCart(e) {
   });
   const cartAfterDelete = await response.json()
   console.log(cartAfterDelete);
+  let total = totalAmount(cartAfterDelete);
+  console.log(total);
+  totalAmountdiv.innerText = `Total Amount: $${total}`;
   cartProductsList.innerHTML = cartAfterDelete
     .map((product) => {
       return `
