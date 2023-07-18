@@ -34,6 +34,10 @@ async function getCartById(e) {
   e.preventDefault()
   const cartId = JSON.parse(localStorage.getItem('cartId'))
   console.log(`I'm cartId saved in LocalStorage ${cartId}`);
+  if (!cartId) {
+    alert('Your Cart is empty. Please add one product')
+  }
+  
   const response = await fetch(`http://localhost:8080/api/carts/${cartId}`)
   const productsToRender = await response.json()
   console.log(productsToRender);
@@ -61,10 +65,6 @@ async function getCartById(e) {
   setTimeout(() => {
     modalCart.style.opacity = 1
   }, 100);
-  // To acces to delete btns
-  // deleteProductCartBtns = document.querySelectorAll('.deleteProductCart')
-  // console.log(deleteProductCartBtns);
-  // deleteProductCartBtns.forEach(deleteBtn => deleteBtn.addEventListener("click", deleteProductInCart));
 }
 
 //Close Cart Modal
@@ -87,9 +87,37 @@ window.onclick = function (e) {
 
 // Delete Product of Cart
 // btns to delete cart
-function deleteProductInCart(btn) {
+async function deleteProductInCart(e) {
+
   console.log('deleting product of cart');
-  console.log(btn.dataset.productid);
+  const productId = e.dataset.productid
+  const cartId = JSON.parse(localStorage.getItem('cartId'))
+  const response = await fetch(`http://localhost:8080/api/carts/${cartId}/product/${productId}`, {
+    method: "DELETE"
+  });
+  const cartAfterDelete = await response.json()
+  console.log(cartAfterDelete);
+  cartProductsList.innerHTML = cartAfterDelete
+    .map((product) => {
+      return `
+    <li>
+    <div class=ItemCartList>
+    Motorcycle: ${product.id.title}
+    <br>
+    <small>Model: ${product.id.description}</small>
+    <br
+    <small>Quantity: ${product.quantity}</small>
+    <br
+    <small>Price: $${product.id.price}</small>
+    </div>
+    <div class="itemCartListBtns">
+    <button class="deleteProductCart btn btn-sm btn-danger rounded" style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .55rem;" onclick=deleteProductInCart(this) data-productid=${product.id._id} >Delete Product</button>
+    </div>
+    </li>
+    <hr>
+    `;
+    })
+    .join("");
 }
 // Event Listeners
 

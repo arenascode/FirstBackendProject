@@ -25,8 +25,8 @@ class CartsService {
     }
   }
   async addProductToCart(productId, userId, cartId) {
-    const productAdded = await cartsRepository.addProductToCart(productId, userId, cartId);
-    return productAdded;
+    const cartUpdated = await cartsRepository.addProductToCart(productId, userId, cartId);
+    return cartUpdated;
   }
   async showCarts(category, limit, page, order) {
 
@@ -63,8 +63,9 @@ class CartsService {
     const pid = productId;
     winstonLogger.debug(`Line 25: cid ${cid}`);
     winstonLogger.debug(`Line 26: pid ${pid}`);
-    const productEliminated = await cartsRepository.deleteProductInCart(cid, pid);
-    return productEliminated;
+    await cartsRepository.deleteProductInCart(cid, pid);
+    const cartUpdated = await this.showCartById(cid)
+    return cartUpdated;
   }
 
   async updateCart(cid, dataToUpdate) {

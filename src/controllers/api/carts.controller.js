@@ -9,7 +9,7 @@ export async function controllerGetCartById(req, res) {
     const idCart = req.params.cid;
     console.log(idCart);
     const cartById = await cartsService.showCartById(idCart);
-    winstonLogger.info(`cartById Controller 8 ${JSON.stringify(cartById)}`);
+    // winstonLogger.info(`cartById Controller 8 ${JSON.stringify(cartById)}`);
 
     const arrayOfProducts = [];
     const productsOfCart = cartById.products.forEach((e) => {
@@ -23,15 +23,8 @@ export async function controllerGetCartById(req, res) {
       };
       arrayOfProducts.push(product);
     });
-    winstonLogger.info(
-      `arrayOfProducs Controller 21 ${JSON.stringify(arrayOfProducts)}`
-    );
-    // res.render("cartById", {
-    //   pageTitle: "Your Cart",
-    //   cartExist: Boolean(cartById),
-    //   dataUser: cartById,
-    //   productsInCart: arrayOfProducts,
-    // });
+    // winstonLogger.info(
+    //   `arrayOfProducs Controller 21 ${JSON.stringify(arrayOfProducts)}`);
     res.status(200).json(arrayOfProducts)
   } catch (error) {
     res.status(400).json({
@@ -112,7 +105,8 @@ export async function controllerAddProductInCart(req, res) {
     const productToAdd = req.body;
     const userId = req.user._id;
     await cartsService.addProductToCart(productToAdd, userId, cartId);
-    res.json(`The product was added succesfull`);
+    const cartUpdated = await cartsService.showCartById(cartId)
+    res.json(cartUpdated);
   } catch (error) {
     res.status(400).json({
       msg: error.message,
@@ -127,8 +121,18 @@ export async function controllerDeleteProductInCart(req, res) {
     const productId = req.params.pid;
 
     if (cartId && productId) {
-      await cartsService.deleteProductInCart(cartId, productId);
-      res.status(200).json({ msg: "product succesfully removed" });
+      const resultOfDelete = await cartsService.deleteProductInCart(cartId, productId);
+      winstonLogger.debug(`Result in CS ${resultOfDelete}`)
+      let arrayOfProducts = []
+      resultOfDelete.products.forEach(e => {
+        const product = {
+          id: e._id,
+          quantity: e.quantity
+        }
+        arrayOfProducts.push(product)
+      })
+      console.log(`arrayOfProductsInDeleteCnt ${arrayOfProducts}`);
+      res.status(200).json(arrayOfProducts);
     } else {
       req.logger.debug(`missing data`);
     }
