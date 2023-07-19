@@ -1,55 +1,27 @@
 import { Router } from "express";
 import { authenticationJwtView } from "../../middlewares/passport.js";
-import { homeViewController, logOutController, loginViewController, profileViewController, registerViewController } from "../../controllers/web/sessions.web.controller.js";
-import { decodeToken } from "../../utils/cryptography.js";
-
+import * as viewsController from "../../controllers/web/sessions.web.controller.js";
 
 const routerSessionsViews = Router();
 
 // Home View 
-routerSessionsViews.get('/', homeViewController)
+routerSessionsViews.get('/', viewsController.home)
 
 // Regiter View
-routerSessionsViews.get("/register", registerViewController );
+routerSessionsViews.get("/register", viewsController.register);
 
 // Login View
-routerSessionsViews.get("/login", loginViewController );
+routerSessionsViews.get("/login", viewsController.login );
 
 // Profile View
-routerSessionsViews.get('/profile',authenticationJwtView, profileViewController)
+routerSessionsViews.get('/profile',authenticationJwtView, viewsController.profile)
 
 // Logout View
-routerSessionsViews.get('/logout', logOutController)
+routerSessionsViews.get('/logout', viewsController.logOut)
 
 //To recover Password 
-routerSessionsViews.get('/mailToRecoverPassword', (req, res, next) => {
-  res.render("mailToRecoverPass", {
-    pagetitle: "MailToRecoverPass"
-  })
-})
+routerSessionsViews.get('/mailToRecoverPassword', viewsController.mailToRecoverPassword)
 
-routerSessionsViews.get('/api/sessions/passwordReset', async (req, res, next) => {
-  console.log(`RouterSessions View ${req.query}`);
-  // restorePassService.finalizeRecovery(req.query)
-  const userData = { id: req.query.id, token: req.query.token };
-  try {
-    const itsTokenExpired = await decodeToken(userData.token)
-    if (!itsTokenExpired) {
-    res.json({Message: `The time to restore your password expired. Please send us a email again`})
-  } else {
-    res.render('resetPassword', {
-      pagetitle: "Enter New Pass",
-      user: userData
-    })
-  }
-  } catch (error) {
-    res.render('redirectRestorePass', {
-      pagetitle: 'TimeExpired',
-      error: error.Message
-    });
-  }
-  // console.log(` I'm TokenExpired in RS view${JSON.stringify(itsTokenExpired)}`);
-  
-})
+routerSessionsViews.get('/api/sessions/passwordReset', viewsController.resetPassword)
 
 export default routerSessionsViews

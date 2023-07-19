@@ -14,62 +14,59 @@ import { mockingProductsRouter } from "../routes/api/mockingproducts.router.js";
 import { winstonLogger } from "../utils/logger.js";
 import { logger } from "../middlewares/logger.js";
 import { loggerTestRouter } from "../routes/api/loggerTest.router.js";
-import cors from "cors"
+import cors from "cors";
 import { MONGODB_CNX_STR } from "../config/mongodbCnxStr.js";
-import { routerUserViews } from "../routes/web/users.views.router.js";
 
-export const app = express()
+export const app = express();
 
-//Conecting with ATLASDB 
+//Conecting with ATLASDB
 // await mongoose.connect(MONGODB_CNX_STR); //Temporary
 await mongoose.connect(
   "mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce"
 );
 // winstonLogger.info(`connected to mongodb in ${MONGODB_CNX_STR}`)
 
-app.use('/static', express.static('public'))
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use("/static", express.static("public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.engine('handlebars', handlebars.engine())
-app.set('views', './views')
-app.set('view engine', 'handlebars')
-app.use(cookieParser(process.env.COOKIE_SECRET))
-app.use(responseMethods)
-app.use(logger)
-app.use(cors())
+app.engine("handlebars", handlebars.engine());
+app.set("views", "./views");
+app.set("view engine", "handlebars");
+app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(responseMethods);
+app.use(logger);
+app.use(cors());
 
 //Here I tell to express that he uses passport
-app.use(passportInitialize)
+app.use(passportInitialize);
 
 // Router for Cart
-app.use('/api/carts', routerCart)
+app.use("/api/carts", routerCart);
 
 // Router for Sockets
-app.use('/realtimeproducts', routerRealTimeProducts)
+app.use("/realtimeproducts", routerRealTimeProducts);
 
 // Router for Apu
-app.use('/api', apiRouter)
+app.use("/api", apiRouter);
 
 // Router for User Sessions Views
-app.use('/', routerSessionsViews)
-
-// Router for User views 
-app.use('/views', routerUserViews)
+app.use("/", routerSessionsViews);
 
 // Router for chat
-app.use('/', routerChat)
+app.use("/", routerChat);
 
 //Router for Mocks
-app.use('/', mockingProductsRouter)
+app.use("/", mockingProductsRouter);
 
-//Router for loggerTest 
-app.use('/', loggerTestRouter)
+//Router for loggerTest
+app.use("/", loggerTestRouter);
 
-// If the user put a unknow route 
+// If the user put a unknow route
 app.get("*", (req, res, next) => {
   res["sendClientError"]("Unknown Route: " + req.url);
 });
 
-
-export const conectedServer = app.listen(PORT, () => winstonLogger.info(`Connected to Port ${PORT} `))
+export const conectedServer = app.listen(PORT, () =>
+  winstonLogger.info(`Connected to Port ${PORT} `)
+);

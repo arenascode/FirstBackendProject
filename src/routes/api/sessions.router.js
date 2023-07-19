@@ -1,87 +1,35 @@
 import { Router } from "express";
-import {
-  authenticationJwtApi,
-  githubAuthentication,
-  githubAuthentication_CB,
-  loginAuthentication,
-  registerAuthentication,
-} from "../../middlewares/passport.js";
-import {
-  getCurrentSessionController,
-  githubSessionController,
-  loginSessionController,
-  logoutSessionController,
-  registerSessionsController,
-} from "../../controllers/api/sessions.controller.js";
-import { restorePassService } from "../../services/restorePassword.service.js";
-import { generateAToken } from "../../utils/cryptography.js";
+import * as passport from "../../middlewares/passport.js";
+import * as sessionController from "../../controllers/api/sessions.controller.js";
 
 const routerSessions = Router();
-// User Register
 
-routerSessions.post(
-  "/register",
-  registerAuthentication,
-  registerSessionsController
-);
+// User Register
+//passport.registerAuthentication
+routerSessions.post("/register", passport.registerAuthentication, sessionController.registerSessions);
 
 // User Login Local Strategy
-routerSessions.post("/login", loginAuthentication, loginSessionController);
+//passport.loginAuthentication
+routerSessions.post("/login", passport.loginAuthentication, sessionController.loginSession);
 
 // User Login Github Strategy
-routerSessions.get("/github", githubAuthentication);
-routerSessions.get(
-  "/githubcallback",
-  githubAuthentication_CB,
-  githubSessionController
-);
+//passport.githubAuthentication
+routerSessions.get("/github", passport.githubAuthentication);
+
+//passport.githubAuthentication_CB
+routerSessions.get("/githubcallback", passport.githubAuthentication_CB, sessionController.githubSession);
 
 // Current
-
-routerSessions.get(
-  "/current",
-  authenticationJwtApi,
-  getCurrentSessionController
-);
+//passport.authenticationJwtApi
+routerSessions.get("/current", passport.authenticationJwtApi, sessionController.getCurrentSession);
 
 // User Logout
-routerSessions.get("/logout/:userId", logoutSessionController);
+routerSessions.get("/logout/:userId", sessionController.logoutSession);
 
-routerSessions.post("/mailToRecoverPass", async (req, res, next) => {
-  try {
-    const mailToRecoverPass = req.body;
-  console.log(mailToRecoverPass);
-  const updatedPassUser = await restorePassService.initializeRecovery(
-    mailToRecoverPass
-  );
-  console.log(`Searched returned in Router ${updatedPassUser}`);
-  res.json({
-    message: "Mail received",
-  });
-  } catch (error) {
-    res.status(400).json({errorMsg: error.message})
-  }
-});
+//mail to start with recover account process
+routerSessions.post("/mailToRecoverPass", sessionController.mailToRecoverPassword);
 
-routerSessions.post("/resetPassword", async (req, res, next) => {
-  try {
-    const tokenInfo = req.body;
-  
-    const result = await restorePassService.finalizeRecovery(tokenInfo);
-    console.log(`Result in Router ${result}`);
-    let newToken = generateAToken(result)
-    console.log(newToken);
-
-    res.cookie("jwt_authorization", newToken, { signed: true, httpOnly: true })
-    
-    res.status(200).send("your password was restored");
-
-  } catch (error) {
-    console.log(`I'm error SessRouter ${error}`);
-    res.status(400).json({ errorMsg: error.message });
-  }
-
-  //res.status(200).send('your password was restored succesfull')
-});
+// reset Password
+routerSessions.post("/resetPassword", sessionController.resetPassword);
 
 export default routerSessions;

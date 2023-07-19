@@ -1,12 +1,5 @@
 import { Router } from "express";
-import {
-  changeUserRoleController,
-  deleteUserController,
-  getUserByIdController,
-  getUsersController,
-  updateUserController,
-  uploadDocumentsController,
-} from "../../controllers/api/users.controller.js";
+import * as userController from "../../controllers/api/users.controller.js";
 import { validateParam } from "../../utils/validations.js";
 import { winstonLogger } from "../../utils/logger.js";
 import { uploader } from "../../utils/multer.js";
@@ -22,15 +15,20 @@ routerUsers.param("uid", (req, res, next, userId) => {
   next();
 });
 
-routerUsers.get("/", getUsersController);
+//Get users
+routerUsers.get("/", userController.getUsers);
 
-routerUsers.get("/:uid",authenticationJwtApi,checkItIsAdmin, getUserByIdController);
+//Get one user by ID
+routerUsers.get("/:uid",authenticationJwtApi,checkItIsAdmin, userController.getUserById);
 
-routerUsers.put("/:uid", updateUserController);
+// Updated user by ID
+routerUsers.put("/:uid", userController.updateUser);
 
-routerUsers.delete("/:uid", deleteUserController);
+// Delete user by ID
+routerUsers.delete("/:uid", userController.deleteUser);
 
-routerUsers.post("/premium/:uid", changeUserRoleController)
+//Change user Role
+routerUsers.post("/premium/:uid", userController.changeUserRole)
 
-// Upload with Any()
-routerUsers.post('/:uid/documents', uploader.any('profileImg', 'productImg', 'userDocument'), uploadDocumentsController)
+// Upload User documents
+routerUsers.post('/:uid/documents', uploader.any('profileImg', 'productImg', 'userDocument'), userController.uploadDocuments)

@@ -1,4 +1,3 @@
-import { usersRepository } from "../../repositories/users.repository.js";
 import cartsService from "../../services/carts.service.js";
 import ticketService from "../../services/ticket.service.js";
 import { winstonLogger } from "../../utils/logger.js";
@@ -7,25 +6,19 @@ import { winstonLogger } from "../../utils/logger.js";
 export async function controllerGetCartById(req, res) {
   try {
     const idCart = req.params.cid;
-    console.log(idCart);
     const cartById = await cartsService.showCartById(idCart);
-    // winstonLogger.info(`cartById Controller 8 ${JSON.stringify(cartById)}`);
 
     const arrayOfProducts = [];
-    const productsOfCart = cartById.products.forEach((e) => {
+    cartById.products.forEach((e) => {
       const product = {
         user: e.user,
         id: e._id,
-        // description: e.description,
-        // price: e.price,
-        // category: e.category,
         quantity: e.quantity,
       };
       arrayOfProducts.push(product);
     });
-    // winstonLogger.info(
-    //   `arrayOfProducs Controller 21 ${JSON.stringify(arrayOfProducts)}`);
-    res.status(200).json(arrayOfProducts)
+
+    res.status(200).json(arrayOfProducts);
   } catch (error) {
     res.status(400).json({
       msg: error.message,
@@ -36,11 +29,10 @@ export async function controllerGetCartById(req, res) {
 //To get all carts
 export async function controllerGetCarts(req, res) {
   let limit = Number(req.query.limit);
-  //winstonLogger.info(`LINE 5 controllerCart ${typeof limit}`);
   let page = parseInt(req.query.page);
-  //winstonLogger.info(page);
+
   const category = req.query.category;
-  //winstonLogger.info(`Category Line 10 Controller ${category}`);
+
   let order = req.query.sort;
   try {
     const showCarts = await cartsService.showCarts(
@@ -70,7 +62,6 @@ export async function controllerGetCarts(req, res) {
       carts: showCarts.docs,
       pagination: paginationOptions,
     });
-    //res.json(carts);
   } catch (error) {
     res.status(400).json({
       msg: error.message,
@@ -80,14 +71,9 @@ export async function controllerGetCarts(req, res) {
 
 //To add new cart
 export async function controllerAddANewCart(req, res) {
-  winstonLogger.info(
-    `I'm req.user in Controller ANC ${JSON.stringify(req.user)}`
-  );
   try {
     const productId = req.body.idproduct;
     const userId = req.user._id;
-    const user = await usersRepository.findById(userId)
-    console.log(`user in controllerANC ${user}`);
     const cartAdded = await cartsService.addNewCart(productId, userId);
     res.json(cartAdded);
   } catch (error) {
@@ -99,13 +85,12 @@ export async function controllerAddANewCart(req, res) {
 
 // To update new product an existing cart
 export async function controllerAddProductInCart(req, res) {
-  winstonLogger.info(`I'm req.user in AddPInCart ${req.user}`);
   try {
     const cartId = req.params.cid;
     const productToAdd = req.body;
     const userId = req.user._id;
     await cartsService.addProductToCart(productToAdd, userId, cartId);
-    const cartUpdated = await cartsService.showCartById(cartId)
+    const cartUpdated = await cartsService.showCartById(cartId);
     res.json(cartUpdated);
   } catch (error) {
     res.status(400).json({
@@ -121,17 +106,18 @@ export async function controllerDeleteProductInCart(req, res) {
     const productId = req.params.pid;
 
     if (cartId && productId) {
-      const resultOfDelete = await cartsService.deleteProductInCart(cartId, productId);
-      winstonLogger.debug(`Result in CS ${resultOfDelete}`)
-      let arrayOfProducts = []
-      resultOfDelete.products.forEach(e => {
+      const resultOfDelete = await cartsService.deleteProductInCart(
+        cartId,
+        productId
+      );
+      let arrayOfProducts = [];
+      resultOfDelete.products.forEach((e) => {
         const product = {
           id: e._id,
-          quantity: e.quantity
-        }
-        arrayOfProducts.push(product)
-      })
-      console.log(`arrayOfProductsInDeleteCnt ${arrayOfProducts}`);
+          quantity: e.quantity,
+        };
+        arrayOfProducts.push(product);
+      });
       res.status(200).json(arrayOfProducts);
     } else {
       req.logger.debug(`missing data`);
@@ -178,6 +164,6 @@ export async function purcharsePostController(req, res, next) {
     const createdTicket = await ticketService.createNewTicket(purchasedCart);
     res.json(createdTicket);
   } catch (error) {
-    res.status(400).json({message: error.message})
+    res.status(400).json({ message: error.message });
   }
 }

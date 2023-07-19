@@ -1,7 +1,7 @@
 import {productsService} from "../../services/products.service.js";
 
 //To show all products
-export async function controllerGetProducts(req, res) {
+export async function GetProducts(req, res) {
   let limit = Number(req.query.limit);
   let page = parseInt(req.query.page);
   const category = req.query.category;
@@ -48,7 +48,7 @@ export async function controllerGetProducts(req, res) {
 }
 
 // to get one product by ID
-export async function controllerGetProductById(req, res) {
+export async function GetProductById(req, res) {
   try {
   const idProduct = req.params.pid
   const showProductByID = await
@@ -63,7 +63,7 @@ export async function controllerGetProductById(req, res) {
 }
 
 // To add a new product
-export async function controllerAddNewProduct(req, res) {
+export async function AddNewProduct(req, res) {
   try {
     const productToAdd = req.body;
     const user = req.user // come from jwt token
@@ -78,11 +78,11 @@ export async function controllerAddNewProduct(req, res) {
 };
 
 // To update a product
-export async function controllerUpdateProductById (req, res) {
+export async function UpdateProductById (req, res) {
   try {
   const productToUpdate = req.params.pid;
   const dataToUpdate = req.body
-  const updateProduct = await productsService.updateProductById(productToUpdate, dataToUpdate)
+  await productsService.updateProductById(productToUpdate, dataToUpdate)
   res.json(
     `The update of ${dataToUpdate.title} ${dataToUpdate.description} was succesfull`
   );
@@ -93,7 +93,7 @@ export async function controllerUpdateProductById (req, res) {
 }
 
 // To Delete a product
-export async function controllerDeleteProductById (req, res) {
+export async function DeleteProductById (req, res) {
   try {
   const productToDelete = req.params.pid;
     await productsService.deleteProductById(productToDelete, req.user)

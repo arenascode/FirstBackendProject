@@ -2,7 +2,7 @@ import UserDTO from "../../repositories/users.dto.js";
 import userService from "../../services/users.service.js";
 import { winstonLogger } from "../../utils/logger.js";
 
-export async function getUsersController(req, res, next) {
+export async function getUsers(req, res, next) {
   let limit = Number(req.query.limit);
   let page = parseInt(req.query.page);
   const category = req.query.category;
@@ -43,7 +43,7 @@ export async function getUsersController(req, res, next) {
   }
 }
 
-export async function getUserByIdController(req, res, next) {
+export async function getUserById(req, res, next) {
   const userID = req.params.uid;
   const searchedUser = await userService.findUser(userID);
   let userToRender
@@ -65,14 +65,14 @@ export async function getUserByIdController(req, res, next) {
   }
 }
 
-export async function updateUserController(req, res, next) {
+export async function updateUser(req, res, next) {
   const userID = req.params.uid;
   const newData = req.body;
   const updatedUser = await userService.updateUserById(userID, newData);
   res.status(201).json(updatedUser);
 }
 
-export async function deleteUserController(req, res, next) {
+export async function deleteUser(req, res, next) {
   const userId = req.params.uid;
   await userService.deleteUserById(userId);
   res
@@ -80,7 +80,7 @@ export async function deleteUserController(req, res, next) {
     .json({ message: `The user with ${userId} was deleted succesfully` });
 }
 
-export async function changeUserRoleController(req, res, next) {
+export async function changeUserRole(req, res, next) {
   const roleSelected = req.body.role;
   try {
     winstonLogger.info(`I'm roleSelected ${roleSelected}`);
@@ -129,12 +129,9 @@ export async function changeUserRoleController(req, res, next) {
   }
 }
 
-export async function uploadDocumentsController(req, res, next) {
+export async function uploadDocuments(req, res, next) {
   try {
     const userFiles = req.files;
-    console.log(req.files);
-    console.log(req.params.uid);
-
     let documents = [];
     userFiles.forEach((file) => {
       const fileToSave = {
@@ -143,7 +140,6 @@ export async function uploadDocumentsController(req, res, next) {
       };
       documents.push(fileToSave);
     });
-    console.log(documents);
     await userService.updateUserById(req.params.uid, {
       documents: documents,
       status: true,
@@ -151,6 +147,6 @@ export async function uploadDocumentsController(req, res, next) {
 
     res.send("Thank you, we received your documents sucessfully!");
   } catch (error) {
-    console.log(error);
+    winstonLogger.error(error);
   }
 }

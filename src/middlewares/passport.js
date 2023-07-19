@@ -12,7 +12,6 @@ import {
 import { User } from "../entities/User.js";
 import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt";
 import { JWT_SECRET_KEY } from "../config/env.config.js";
-import { AuthenticationError } from "../models/errors/AuthenticationError.js";
 import { winstonLogger } from "../utils/logger.js";
 
 // JWT Stragegy //
