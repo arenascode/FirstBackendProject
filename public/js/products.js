@@ -6,6 +6,10 @@ const modalCart = document.querySelector('.modalCart')
 let data
 const closeModalBtn = document.getElementById('closeModalBtn')
 const totalAmountdiv = document.querySelector('.cartDetails_totalAmount')
+const deleteCartBtn = document.getElementById('deleteCartBtn')
+
+let cartId = JSON.parse(localStorage.getItem('cartId')) || ''
+console.log(cartId);
 //Functions 
 async function addToCart() {
   const idProduct = this.dataset.idproduct
@@ -43,7 +47,17 @@ async function getCartById(e) {
   const response = await fetch(`http://localhost:8080/api/carts/${cartId}`)
   const productsToRender = await response.json()
   let total = totalAmount(productsToRender)
-  console.log(total);
+  console.log(typeof total);
+  if (total === 0) {
+    modalCart.style.display = "flex";
+    setTimeout(() => {
+      modalCart.style.opacity = 1;
+    }, 100);
+    return cartProductsList.innerHTML = `
+    <li>The Cart Is Empty</li>
+    `
+  }
+
   totalAmountdiv.innerText = `Total Amount: $${total}`
   cartProductsList.innerHTML = await productsToRender.map(product => {
     return `
@@ -78,10 +92,6 @@ function totalAmount(arrayOfProducts) {
     total += eachOne
   })
   return total
-}
-
-function calculateAmount(arrayOfProducts) {
-  return 
 }
 
 //Close Cart Modal
@@ -139,11 +149,24 @@ async function deleteProductInCart(e) {
     })
     .join("");
 }
+
+async function deleteAllProductsInCart() {
+  console.log('Im going to leave the cart empty');
+  const response = await fetch(`http://localhost:8080/api/carts/${cartId}`, {
+    method: "DELETE"
+  })
+  const result = await response.json()
+  console.log(result);
+  // totalAmountdiv.textContent = `Total Amount: $0`
+  cartProductsList.innerHTML = `
+  <li> ${result.msg}</li>`
+}
 // Event Listeners
 
 addToCartBtns.forEach(btn => btn.addEventListener('click', addToCart))
 getCartBtn.addEventListener('click', getCartById)
 closeModalBtn.addEventListener('click', closeModal)
+deleteCartBtn.addEventListener('click', deleteAllProductsInCart)
 
 
 

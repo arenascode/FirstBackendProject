@@ -163,7 +163,7 @@ export async function controllerDeleteAllProductsInCart(req, res) {
   const cartID = req.params.cid;
   try {
     await cartsService.deleteAllProductsInCart(cartID);
-    res.status(200).json({ msg: `the Cart is empty` });
+    res.status(200).json({ msg: `The Cart Is Empty` });
   } catch (error) {
     res.status(400).json({
       msg: error.message,
