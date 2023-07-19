@@ -177,6 +177,7 @@ export async function purcharsePostController(req, res, next) {
     const purchasedCart = req.params.cid;
     const createdTicket = await ticketService.createNewTicket(purchasedCart);
     res.json(createdTicket);
-  } catch (error) { }
+  } catch (error) {
     res.status(400).json({message: error.message})
+  }
 }

@@ -35,7 +35,7 @@ class TicketService {
     await cartsRepository.updateCart(purchasedCartId, { products: productsNotInStock },);
     
     const newTicket = new Ticket(amount, purchaser)
-    const sendMailToUser = await mailService.sendConfirmPurchaseMail(purchaser)
+    const sendMailToUser = await mailService.sendConfirmPurchaseMail(purchaser, newTicket)
     return await ticketRepository.createNewTicket(newTicket)
   }
 }

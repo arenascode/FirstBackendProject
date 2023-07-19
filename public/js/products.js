@@ -7,6 +7,7 @@ let data
 const closeModalBtn = document.getElementById('closeModalBtn')
 const totalAmountdiv = document.querySelector('.cartDetails_totalAmount')
 const deleteCartBtn = document.getElementById('deleteCartBtn')
+const buyCartBtn = document.getElementById('buyCartBtn')
 
 let cartId = JSON.parse(localStorage.getItem('cartId')) || ''
 console.log(cartId);
@@ -35,7 +36,7 @@ async function addToCart() {
 let deleteProductCartBtns
 
 
-
+let total = 0
 async function getCartById(e) {
   e.preventDefault()
   const cartId = JSON.parse(localStorage.getItem('cartId'))
@@ -46,19 +47,22 @@ async function getCartById(e) {
 
   const response = await fetch(`http://localhost:8080/api/carts/${cartId}`)
   const productsToRender = await response.json()
-  let total = totalAmount(productsToRender)
-  console.log(typeof total);
+  total = totalAmount(productsToRender)
   if (total === 0) {
     modalCart.style.display = "flex";
     setTimeout(() => {
       modalCart.style.opacity = 1;
     }, 100);
+    deleteCartBtn.disabled = true;
+    buyCartBtn.disabled = true;
+    totalAmountdiv.innerText = `Total Amount: $${(total/1000)}`;
     return cartProductsList.innerHTML = `
     <li>The Cart Is Empty</li>
     `
   }
-
-  totalAmountdiv.innerText = `Total Amount: $${total}`
+  buyCartBtn.disabled = false;
+  deleteCartBtn.disabled = false;
+  totalAmountdiv.innerText = `Total Amount: $${total / 1000}`;
   cartProductsList.innerHTML = await productsToRender.map(product => {
     return `
     <li>
@@ -157,60 +161,35 @@ async function deleteAllProductsInCart() {
   })
   const result = await response.json()
   console.log(result);
-  // totalAmountdiv.textContent = `Total Amount: $0`
+  buyCartBtn.disabled = true;
+  deleteCartBtn.disabled = true;
+  totalAmountdiv.textContent = `Total Amount: $0`
   cartProductsList.innerHTML = `
   <li> ${result.msg}</li>`
 }
+
+async function confirmPurchase() {
+  if (!confirm(`Are you sure to buy the cart for $${(total) / 1000}?`)) { return } 
+  const response = await fetch(`http://localhost:8080/api/carts/${cartId}/purchase`)
+  const data = await response.json()
+  console.log(data);
+  buyCartBtn.disabled = true
+  deleteCartBtn.disabled = true
+  totalAmountdiv.textContent = `Total Amount: $${parseInt(data.amount )/ 1000}`;
+  cartProductsList.innerHTML = `
+  <li>
+  <div>Thank you for your purchase. Please check Your Email</div>
+  <br>
+  <div>Save this code for track your order: <b style="font-style: italic">${data.code}</b></div>
+  <br>
+  <div>Total Of Your Purchase: <b>$${parseInt(data.amount) /1000}</b></div>
+  </li>`;
+}
+
 // Event Listeners
 
 addToCartBtns.forEach(btn => btn.addEventListener('click', addToCart))
 getCartBtn.addEventListener('click', getCartById)
 closeModalBtn.addEventListener('click', closeModal)
 deleteCartBtn.addEventListener('click', deleteAllProductsInCart)
-
-
-
-
-
-
-
-// socket.on("productsList", async (data) => {
-//   const divData = document.getElementById("showData");
-//   divData.innerHTML = ``;
-//   winstonLogger(`I'm data from Line 6 of products.js ${JSON.stringify(data)}`);
-//   await data.docs.forEach((p) => {
-//     const card = document.createElement("div");
-//     card.className = "col";
-//     card.innerHTML = `
-//       <div class="card" width=50px>
-//         <div class="card-body">
-//           <h4 class="card-title">${p.title}</h4>
-//           <h5 class="card-text">${p.description}</h5>>
-//           <h5 class="card-text font-bold">Precio: ${p.price}</h5>>
-//           <button id="addBtn-${p._id}" href="#" class="btn btn-secondary" data-idProduct=${p._id}>Add To Cart</button>
-//         </div>
-//       </div>
-//     `;
-//     divData.appendChild(card);
-
-//     // Agregar el listener de eventos en el botón
-//     const addBtn = card.querySelector(`#addBtn-${p._id}`);
-//     const user1 = 'user123'
-//     addBtn.addEventListener("click", (e) => {
-//       // Lógica para eliminar el producto
-//       e.preventDefault();
-//       const productToAdd = {
-//         _id: e.target.dataset.idproduct,
-//         user: user1
-//       };
-//       winstonLogger(`LINE 31 product.js ${JSON.stringify(productToAdd._id)}`);
-
-//       socket.emit("addProductToCart", productToAdd);
-//       const divData = document.getElementById("showData");
-
-//       alert("the Product Was added to cart");
-//       winstonLogger(`Id Product added ${p._id}`);
-//     });
-//   });
-
-// });
+buyCartBtn.addEventListener('click', confirmPurchase)

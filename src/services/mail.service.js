@@ -7,7 +7,7 @@ import { winstonLogger } from "../utils/logger.js";
 import { CLIENT_URL } from "../config/env.config.js";
 
 class MailService {
-  async sendConfirmPurchaseMail(purchaser) {
+  async sendConfirmPurchaseMail(purchaser, newTicket) {
     const transport = nodemailer.createTransport({
       service: "gmail",
       port: 587,
@@ -23,7 +23,12 @@ class MailService {
       from: "LuxuryRide",
       to: userMail,
       subject: "Thanks you for your purchase",
-      html: '<h1 style="color: blue;"> Thanks you for your purchase. We started with the shipping. We Will contact you</h1>',
+      html: `<h1 style="color: blue;"> Thanks you for your purchase. We started with the shipping. We Will contact you</h1>
+      <p>Purchase Details: </p>
+      <br>
+      <p>Purchase Code: <b>${newTicket.code}</b><p/>
+      <br>
+      <p>Total Amount: <b>$${newTicket.amount}</b><p/>`,
       attachments: [],
     };
 
