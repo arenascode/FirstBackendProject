@@ -67,6 +67,3 @@ app.get("*", (req, res, next) => {
   res["sendClientError"]("Unknown Route: " + req.url);
 });
 
-export const conectedServer = app.listen(PORT, () =>
-  winstonLogger.info(`Connected to Port ${PORT} `)
-);

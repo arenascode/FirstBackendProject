@@ -3,7 +3,7 @@
   "name": "primeraentrega-pf",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/app/app.js",
+  "main": "./src/main.js",
   "scripts": {
     "start:prod": "node .",
     "start:dev": "nodemon -e 'js,handlebars,html' .",
