@@ -20,7 +20,9 @@ for (let i = 0; i < cpus().length; i++) {
 let connectedServer
 if (cluster.isWorker) {
   winstonLogger.info(`I'm worker process. My ID is ${process.pid}`);
-  connectedServer = app.listen(PORT, () => winstonLogger.info(`App Connected To Port ${PORT}`))
+  connectedServer = app.listen(PORT, '0.0.0.0', () => {
+    winstonLogger.info(`App Connected To Port ${connectedServer.address().port}`)
+  })
 }
 
 export default connectedServer

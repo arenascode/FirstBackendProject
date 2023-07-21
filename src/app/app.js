@@ -4,7 +4,6 @@ import handlebars from "express-handlebars";
 import routerRealTimeProducts from "../routes/api/realTimeProducts.router.js";
 import mongoose from "mongoose";
 import routerSessionsViews from "../routes/web/views.router.js";
-import { PORT } from "../config/PortServer.config.js";
 import { passportInitialize } from "../middlewares/passport.js";
 import { apiRouter } from "../routes/api/api.router.js";
 import cookieParser from "cookie-parser";
@@ -20,11 +19,9 @@ import { MONGODB_CNX_STR } from "../config/mongodbCnxStr.js";
 export const app = express();
 
 //Conecting with ATLASDB
-// await mongoose.connect(MONGODB_CNX_STR); //Temporary
-await mongoose.connect(
-  "mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce"
-);
-// winstonLogger.info(`connected to mongodb in ${MONGODB_CNX_STR}`)
+await mongoose.connect(MONGODB_CNX_STR); //Temporary
+
+winstonLogger.info(`connected to mongodb in ${MONGODB_CNX_STR}`)
 
 app.use("/static", express.static("public"));
 app.use(express.json());

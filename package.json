@@ -5,8 +5,9 @@
   "description": "",
   "main": "./src/main.js",
   "scripts": {
-    "start:prod": "node .",
-    "start:dev": "nodemon -e 'js,handlebars,html' .",
+    "start":"node .",
+    "start:prod": "NODE_ENV=production node .",
+    "start:dev": "NODE_ENV=development nodemon .",
     "test": "mocha --recursive"
   },
   "keywords": [],

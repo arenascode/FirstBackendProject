@@ -126,3 +126,415 @@ info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8uc
 info: Connected to Port 3000 
 info: GET en /login - 11:58:48 AM
 info: GET en /login - 11:59:30 AM
+info: I'm primary process. My ID is 20750
+info: I'm worker process. My ID is 20762
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 20756
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 20761
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 20757
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 20760
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 20758
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 20759
+info: I'm worker process. My ID is 20763
+info: App Connected To Port 3000
+info: App Connected To Port 3000
+info: Process ID: 20762 Method: GET en URL: /login - 4:37:50 PM
+info: Process ID: 20762 Method: GET en URL: /static/css/styles.css - 4:37:50 PM
+info: Process ID: 20761 Method: GET en URL: /favicon.ico - 4:37:51 PM
+info: Process ID: 20761 Method: GET en URL: /favicon.ico - 4:37:51 PM
+info: Process ID: 20756 Method: GET en URL: /css/blockedPage.css - 4:37:51 PM
+info: Process ID: 20756 Method: GET en URL: /favicon.ico - 4:37:52 PM
+info: I'm primary process. My ID is 21349
+info: I'm worker process. My ID is 21361
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21359
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21357
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21356
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21360
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21362
+info: I'm worker process. My ID is 21355
+info: App Connected To Port 3000
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21358
+info: App Connected To Port 3000
+info: Process ID: 21361 Method: GET en URL: /login - 4:44:45 PM
+info: Process ID: 21361 Method: GET en URL: /static/css/styles.css - 4:44:45 PM
+info: Process ID: 21357 Method: GET en URL: /favicon.ico - 4:44:46 PM
+info: Process ID: 21357 Method: GET en URL: /css/blockedPage.css - 4:44:46 PM
+info: Process ID: 21359 Method: GET en URL: /favicon.ico - 4:44:46 PM
+info: Process ID: 21359 Method: GET en URL: /favicon.ico - 4:44:47 PM
+info: Process ID: 21360 Method: POST en URL: /api/sessions/login - 4:44:54 PM
+info: soy IsAdmin false
+info: criteria userMongodb {"email":"compraenmercadolibre@outlook.com"}
+info: {
+  _id: new ObjectId("64b17202640cbc58d9a348b0"),
+  name: 'nombreprueba2',
+  lastName: 'apellidoprueba2',
+  email: 'compraenmercadolibre@outlook.com',
+  age: '35',
+  password: '$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa',
+  role: 'user',
+  cart: { _id: new ObjectId("64b55488d810685c1e687187"), products: [] },
+  documents: null,
+  last_conection: 'Thu Jul 20 2023 15:16:17 GMT-0500 (Colombia Standard Time)',
+  status: false
+}
+info: Process ID: 21360 Method: GET en URL: /profile - 4:44:54 PM
+info: req.user en RouterView {"_id":"64b17202640cbc58d9a348b0","name":"nombreprueba2","lastName":"apellidoprueba2","email":"compraenmercadolibre@outlook.com","age":"35","password":"$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa","role":"user","cart":{"_id":"64b55488d810685c1e687187","products":[]},"documents":null,"last_conection":"Thu Jul 20 2023 16:44:54 GMT-0500 (Colombia Standard Time)","status":false,"iat":1689889494,"exp":1689893094}
+info: Process ID: 21360 Method: GET en URL: /static/css/styles.css - 4:44:54 PM
+info: Process ID: 21362 Method: GET en URL: /favicon.ico - 4:44:54 PM
+info: Process ID: 21362 Method: GET en URL: /css/blockedPage.css - 4:44:54 PM
+info: Process ID: 21362 Method: GET en URL: /favicon.ico - 4:44:54 PM
+info: Process ID: 21362 Method: GET en URL: /favicon.ico - 4:44:55 PM
+info: Process ID: 21358 Method: GET en URL: /api/products - 4:45:19 PM
+info: Process ID: 21358 Method: GET en URL: /static/css/styles.css - 4:45:19 PM
+info: Process ID: 21358 Method: GET en URL: /socket.io/socket.io.js - 4:45:19 PM
+info: Process ID: 21361 Method: GET en URL: /favicon.ico - 4:45:19 PM
+info: Process ID: 21361 Method: GET en URL: /api/css/blockedPage.css - 4:45:19 PM
+info: Process ID: 21359 Method: GET en URL: /favicon.ico - 4:45:19 PM
+info: Process ID: 21359 Method: GET en URL: /favicon.ico - 4:45:20 PM
+info: I'm primary process. My ID is 21437
+info: I'm worker process. My ID is 21446
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21447
+info: I'm worker process. My ID is 21451
+info: App Connected To Port 3000
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21449
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21448
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21445
+info: I'm worker process. My ID is 21450
+info: App Connected To Port 3000
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21444
+info: App Connected To Port 3000
+info: I'm primary process. My ID is 21486
+info: I'm worker process. My ID is 21495
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21490
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21491
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21496
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21493
+info: I'm worker process. My ID is 21497
+info: App Connected To Port 3000
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21492
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21494
+info: App Connected To Port 3000
+info: I'm primary process. My ID is 21516
+info: I'm worker process. My ID is 21524
+info: I'm worker process. My ID is 21528
+info: App Connected To Port 3000
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21525
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21527
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21526
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21529
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21523
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21530
+info: App Connected To Port 3000
+info: I'm primary process. My ID is 21549
+info: I'm primary process. My ID is 21578
+info: I'm worker process. My ID is 21585
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21588
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21582
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21586
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21587
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21584
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21589
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21583
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm primary process. My ID is 21613
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21626
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21625
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21620
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21623
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21619
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21622
+info: I'm worker process. My ID is 21624
+info: App Connected To Port 3000
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21621
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm primary process. My ID is 21647
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm primary process. My ID is 21673
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21681
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21678
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21679
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21680
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21677
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21683
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21684
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21682
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm primary process. My ID is 21740
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21748
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21746
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21750
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21745
+info: I'm worker process. My ID is 21747
+info: App Connected To Port 3000
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 21743
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21744
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21749
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm primary process. My ID is 21989
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21995
+info: I'm worker process. My ID is 21998
+info: App Connected To Port 3000
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21994
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 22001
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 22000
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21999
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21996
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 21997
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm primary process. My ID is 22480
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 22490
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 22488
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 22492
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 22486
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 22493
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 22487
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: I'm worker process. My ID is 22489
+info: App Connected To Port 3000
+info: I'm worker process. My ID is 22491
+info: App Connected To Port 3000
+info: Process ID: 22490 Method: GET en URL: /api/products - 4:56:15 PM
+info: Process ID: 22490 Method: GET en URL: /static/css/styles.css - 4:56:15 PM
+info: Process ID: 22488 Method: GET en URL: /socket.io/socket.io.js - 4:56:15 PM
+info: Process ID: 22492 Method: GET en URL: /favicon.ico - 4:56:15 PM
+info: Process ID: 22492 Method: GET en URL: /api/css/blockedPage.css - 4:56:15 PM
+info: Process ID: 22490 Method: GET en URL: /favicon.ico - 4:56:15 PM
+info: Process ID: 22490 Method: GET en URL: /api/products - 4:56:16 PM
+info: Process ID: 22490 Method: GET en URL: /static/css/styles.css - 4:56:16 PM
+info: Process ID: 22492 Method: GET en URL: /socket.io/socket.io.js - 4:56:16 PM
+info: Process ID: 22488 Method: GET en URL: /favicon.ico - 4:56:16 PM
+info: Process ID: 22490 Method: GET en URL: /api/css/blockedPage.css - 4:56:16 PM
+info: Process ID: 22488 Method: GET en URL: /favicon.ico - 4:56:16 PM
+info: Process ID: 22490 Method: GET en URL: /favicon.ico - 4:56:19 PM
+info: Process ID: 22486 Method: GET en URL: /favicon.ico - 4:56:48 PM
+info: Process ID: 22486 Method: GET en URL: /static/css/styles.css - 4:56:48 PM
+info: Process ID: 22493 Method: GET en URL: /api/css/blockedPage.css - 4:56:48 PM
+info: Process ID: 22493 Method: GET en URL: /api/products - 4:56:51 PM
+info: Process ID: 22493 Method: GET en URL: /static/css/styles.css - 4:56:51 PM
+info: Process ID: 22487 Method: GET en URL: /socket.io/socket.io.js - 4:56:51 PM
+info: Process ID: 22487 Method: GET en URL: /favicon.ico - 4:56:51 PM
+info: Process ID: 22487 Method: GET en URL: /favicon.ico - 4:56:51 PM
+info: Process ID: 22487 Method: GET en URL: /api/css/blockedPage.css - 4:56:51 PM
+info: Process ID: 22487 Method: GET en URL: /favicon.ico - 4:56:52 PM
+info: Process ID: 22489 Method: GET en URL: /profile - 4:57:08 PM
+info: req.user en RouterView {"_id":"64b17202640cbc58d9a348b0","name":"nombreprueba2","lastName":"apellidoprueba2","email":"compraenmercadolibre@outlook.com","age":"35","password":"$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa","role":"user","cart":{"_id":"64b55488d810685c1e687187","products":[]},"documents":null,"last_conection":"Thu Jul 20 2023 16:44:54 GMT-0500 (Colombia Standard Time)","status":false,"iat":1689889494,"exp":1689893094}
+info: Process ID: 22489 Method: GET en URL: /static/css/styles.css - 4:57:08 PM
+info: Process ID: 22491 Method: GET en URL: /favicon.ico - 4:57:08 PM
+info: Process ID: 22491 Method: GET en URL: /css/blockedPage.css - 4:57:08 PM
+info: Process ID: 22491 Method: GET en URL: /favicon.ico - 4:57:08 PM
+info: Process ID: 22491 Method: GET en URL: /favicon.ico - 4:57:09 PM
+info: Process ID: 22491 Method: GET en URL: /api/products - 4:57:11 PM
+info: Process ID: 22491 Method: GET en URL: /static/css/styles.css - 4:57:11 PM
+info: Process ID: 22489 Method: GET en URL: /socket.io/socket.io.js - 4:57:12 PM
+info: Process ID: 22489 Method: GET en URL: /favicon.ico - 4:57:12 PM
+info: Process ID: 22489 Method: GET en URL: /api/css/blockedPage.css - 4:57:12 PM
+info: Process ID: 22490 Method: GET en URL: /favicon.ico - 4:57:12 PM
+info: Process ID: 22490 Method: GET en URL: /favicon.ico - 4:57:13 PM
+info: Process ID: 22488 Method: GET en URL: /api/products - 4:59:49 PM
+info: Process ID: 22488 Method: GET en URL: /static/css/styles.css - 4:59:49 PM
+info: Process ID: 22488 Method: GET en URL: /socket.io/socket.io.js - 4:59:50 PM
+info: Process ID: 22492 Method: GET en URL: /favicon.ico - 4:59:50 PM
+info: Process ID: 22492 Method: GET en URL: /favicon.ico - 4:59:50 PM
+info: Process ID: 22488 Method: GET en URL: /api/css/blockedPage.css - 4:59:50 PM
+info: Process ID: 22488 Method: GET en URL: /api/products - 4:59:51 PM
+info: Process ID: 22492 Method: GET en URL: /favicon.ico - 4:59:51 PM
+info: Process ID: 22488 Method: GET en URL: /static/css/styles.css - 4:59:51 PM
+info: Process ID: 22488 Method: GET en URL: /socket.io/socket.io.js - 4:59:51 PM
+info: Process ID: 22488 Method: GET en URL: /favicon.ico - 4:59:51 PM
+info: Process ID: 22486 Method: GET en URL: /api/css/blockedPage.css - 4:59:51 PM
+info: Process ID: 22488 Method: GET en URL: /favicon.ico - 4:59:51 PM
+info: Process ID: 22486 Method: GET en URL: /favicon.ico - 4:59:52 PM
+info: Process ID: 22493 Method: GET en URL: /api/products - 5:00:07 PM
+info: Process ID: 22493 Method: GET en URL: /static/css/styles.css - 5:00:07 PM
+info: Process ID: 22493 Method: GET en URL: /socket.io/socket.io.js - 5:00:08 PM
+info: Process ID: 22489 Method: GET en URL: /favicon.ico - 5:00:08 PM
+info: Process ID: 22489 Method: GET en URL: /favicon.ico - 5:00:08 PM
+info: Process ID: 22487 Method: GET en URL: /api/css/blockedPage.css - 5:00:08 PM
+info: Process ID: 22487 Method: GET en URL: /favicon.ico - 5:00:09 PM
+info: Process ID: 22491 Method: GET en URL: /api/products - 5:00:40 PM
+info: Process ID: 22491 Method: GET en URL: /static/css/styles.css - 5:00:41 PM
+info: Process ID: 22490 Method: GET en URL: /socket.io/socket.io.js - 5:00:41 PM
+info: Process ID: 22492 Method: GET en URL: /favicon.ico - 5:00:41 PM
+info: Process ID: 22492 Method: GET en URL: /favicon.ico - 5:00:41 PM
+info: Process ID: 22490 Method: GET en URL: /api/css/blockedPage.css - 5:00:41 PM
+info: Process ID: 22490 Method: GET en URL: /favicon.ico - 5:00:42 PM
+info: Process ID: 22490 Method: GET en URL: /api/products - 5:00:45 PM
+info: Process ID: 22490 Method: GET en URL: /static/css/styles.css - 5:00:45 PM
+info: Process ID: 22492 Method: GET en URL: /socket.io/socket.io.js - 5:00:45 PM
+info: Process ID: 22491 Method: GET en URL: /favicon.ico - 5:00:45 PM
+info: Process ID: 22490 Method: GET en URL: /api/css/blockedPage.css - 5:00:45 PM
+info: Process ID: 22491 Method: GET en URL: /favicon.ico - 5:00:45 PM
+info: Process ID: 22491 Method: GET en URL: /favicon.ico - 5:00:46 PM
+info: Process ID: 22488 Method: GET en URL: /api/products - 5:00:56 PM
+info: Process ID: 22488 Method: GET en URL: /static/css/styles.css - 5:00:56 PM
+info: Process ID: 22488 Method: GET en URL: /socket.io/socket.io.js - 5:00:56 PM
+info: Process ID: 22487 Method: GET en URL: /favicon.ico - 5:00:57 PM
+info: Process ID: 22487 Method: GET en URL: /api/css/blockedPage.css - 5:00:57 PM
+info: Process ID: 22486 Method: GET en URL: /favicon.ico - 5:00:57 PM
+info: Process ID: 22486 Method: GET en URL: /favicon.ico - 5:00:58 PM
+info: Process ID: 22493 Method: GET en URL: /api/products - 5:01:04 PM
+info: Process ID: 22493 Method: GET en URL: /static/css/styles.css - 5:01:04 PM
+info: Process ID: 22489 Method: GET en URL: /socket.io/socket.io.js - 5:01:04 PM
+info: Process ID: 22491 Method: GET en URL: /favicon.ico - 5:01:04 PM
+info: Process ID: 22491 Method: GET en URL: /api/css/blockedPage.css - 5:01:04 PM
+info: Process ID: 22493 Method: GET en URL: /favicon.ico - 5:01:04 PM
+info: Process ID: 22491 Method: GET en URL: /favicon.ico - 5:01:05 PM
+info: Process ID: 22490 Method: GET en URL: /api/products - 5:06:40 PM
+info: Process ID: 22490 Method: GET en URL: /static/css/styles.css - 5:06:41 PM
+info: Process ID: 22492 Method: GET en URL: /socket.io/socket.io.js - 5:06:41 PM
+info: Process ID: 22488 Method: GET en URL: /favicon.ico - 5:06:41 PM
+info: Process ID: 22488 Method: GET en URL: /favicon.ico - 5:06:41 PM
+info: Process ID: 22492 Method: GET en URL: /api/css/blockedPage.css - 5:06:41 PM
+info: Process ID: 22492 Method: GET en URL: /favicon.ico - 5:06:42 PM
+info: Process ID: 22486 Method: GET en URL: /api/products - 5:07:30 PM
+info: Process ID: 22486 Method: GET en URL: /static/css/styles.css - 5:07:30 PM
+info: Process ID: 22486 Method: GET en URL: /src/config/env.config.js - 5:07:30 PM
+info: Process ID: 22486 Method: GET en URL: /favicon.ico - 5:07:30 PM
+info: Process ID: 22486 Method: GET en URL: /api/css/blockedPage.css - 5:07:30 PM
+info: Process ID: 22487 Method: GET en URL: /favicon.ico - 5:07:30 PM
+info: Process ID: 22487 Method: GET en URL: /favicon.ico - 5:07:31 PM
+info: Process ID: 22487 Method: GET en URL: /api/products - 5:07:36 PM
+info: Process ID: 22487 Method: GET en URL: /static/css/styles.css - 5:07:36 PM
+info: Process ID: 22493 Method: GET en URL: /src/config/env.config.js - 5:07:36 PM
+info: Process ID: 22493 Method: GET en URL: /favicon.ico - 5:07:37 PM
+info: Process ID: 22493 Method: GET en URL: /favicon.ico - 5:07:37 PM
+info: Process ID: 22493 Method: GET en URL: /api/css/blockedPage.css - 5:07:37 PM
+info: Process ID: 22493 Method: GET en URL: /favicon.ico - 5:07:38 PM
+info: Process ID: 22493 Method: GET en URL: /api/products - 5:07:38 PM
+info: Process ID: 22493 Method: GET en URL: /static/css/styles.css - 5:07:38 PM
+info: Process ID: 22489 Method: GET en URL: /socket.io/socket.io.js - 5:07:38 PM
+info: Process ID: 22487 Method: GET en URL: /favicon.ico - 5:07:38 PM
+info: Process ID: 22487 Method: GET en URL: /api/css/blockedPage.css - 5:07:38 PM
+info: Process ID: 22487 Method: GET en URL: /favicon.ico - 5:07:38 PM
+info: Process ID: 22487 Method: GET en URL: /favicon.ico - 5:07:39 PM
+info: Process ID: 22491 Method: GET en URL: /api/products - 5:08:30 PM
+info: Process ID: 22491 Method: GET en URL: /static/css/styles.css - 5:08:30 PM
+info: Process ID: 22492 Method: GET en URL: /socket.io/socket.io.js - 5:08:30 PM
+info: Process ID: 22491 Method: GET en URL: /favicon.ico - 5:08:30 PM
+info: Process ID: 22491 Method: GET en URL: /favicon.ico - 5:08:30 PM
+info: Process ID: 22490 Method: GET en URL: /api/css/blockedPage.css - 5:08:30 PM
+info: Process ID: 22490 Method: GET en URL: /favicon.ico - 5:08:31 PM
+info: Process ID: 22488 Method: GET en URL: /profile - 5:08:37 PM
+info: req.user en RouterView {"_id":"64b17202640cbc58d9a348b0","name":"nombreprueba2","lastName":"apellidoprueba2","email":"compraenmercadolibre@outlook.com","age":"35","password":"$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa","role":"user","cart":{"_id":"64b55488d810685c1e687187","products":[]},"documents":null,"last_conection":"Thu Jul 20 2023 16:44:54 GMT-0500 (Colombia Standard Time)","status":false,"iat":1689889494,"exp":1689893094}
+info: Process ID: 22488 Method: GET en URL: /static/css/styles.css - 5:08:37 PM
+info: Process ID: 22486 Method: GET en URL: /favicon.ico - 5:08:37 PM
+info: Process ID: 22486 Method: GET en URL: /css/blockedPage.css - 5:08:37 PM
+info: Process ID: 22488 Method: GET en URL: /favicon.ico - 5:08:37 PM
+info: Process ID: 22488 Method: GET en URL: /favicon.ico - 5:08:38 PM
+info: Process ID: 22488 Method: GET en URL: /api/products - 5:08:39 PM
+info: Process ID: 22488 Method: GET en URL: /static/css/styles.css - 5:08:39 PM
+info: Process ID: 22488 Method: GET en URL: /socket.io/socket.io.js - 5:08:40 PM
+info: Process ID: 22487 Method: GET en URL: /favicon.ico - 5:08:40 PM
+info: Process ID: 22487 Method: GET en URL: /api/css/blockedPage.css - 5:08:40 PM
+info: Process ID: 22486 Method: GET en URL: /favicon.ico - 5:08:40 PM
+info: Process ID: 22486 Method: GET en URL: /favicon.ico - 5:08:41 PM
