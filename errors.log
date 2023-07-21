@@ -1794,3 +1794,56 @@ info: Process ID: 18196 Method: GET en URL: /favicon.ico - 3:13:19 PM
 info: Process ID: 18196 Method: GET en URL: /favicon.ico - 3:13:20 PM
 info: Process ID: 18196 Method: POST en URL: /api/carts - 3:13:34 PM
 info: I'm productInCartExist APTC null
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: App Connected To Port 3000
+info: Process ID: 20854 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 3:56:24 PM
+info: Process ID: 20854 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 3:56:24 PM
+info: Process ID: 20854 Method: GET en URL: /api/products - 3:58:11 PM
+info: Process ID: 20854 Method: GET en URL: /static/css/styles.css - 3:58:12 PM
+info: Process ID: 20854 Method: GET en URL: /favicon.ico - 3:58:12 PM
+info: Process ID: 20854 Method: GET en URL: /api/css/blockedPage.css - 3:58:12 PM
+info: Process ID: 20854 Method: GET en URL: /favicon.ico - 3:58:12 PM
+info: Process ID: 20854 Method: GET en URL: /favicon.ico - 3:58:13 PM
+info: Process ID: 20854 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 3:58:20 PM
+info: Process ID: 20854 Method: DELETE en URL: /api/carts/64b55488d810685c1e687187/product/645c409e3ccd6ebac43446f3 - 3:58:25 PM
+info: new cartExist {
+  _id: new ObjectId("64b55488d810685c1e687187"),
+  user: new ObjectId("64b17202640cbc58d9a348b0"),
+  products: []
+}
+info: Process ID: 20854 Method: GET en URL: /api/products - 3:59:03 PM
+info: Process ID: 20854 Method: GET en URL: /static/css/styles.css - 3:59:04 PM
+info: Process ID: 20854 Method: GET en URL: /favicon.ico - 3:59:04 PM
+info: Process ID: 20854 Method: GET en URL: /api/css/blockedPage.css - 3:59:04 PM
+info: Process ID: 20854 Method: GET en URL: /favicon.ico - 3:59:04 PM
+info: Process ID: 20854 Method: GET en URL: /favicon.ico - 3:59:05 PM
+info: Process ID: 20854 Method: GET en URL: /api/products?page=2&limit=10&query=undefined&sort=1 - 3:59:09 PM
+info: Process ID: 20854 Method: GET en URL: /static/css/styles.css - 3:59:09 PM
+info: Process ID: 20854 Method: GET en URL: /favicon.ico - 3:59:09 PM
+info: Process ID: 20854 Method: GET en URL: /api/css/blockedPage.css - 3:59:09 PM
+info: Process ID: 20854 Method: GET en URL: /favicon.ico - 3:59:09 PM
+info: Process ID: 20854 Method: GET en URL: /favicon.ico - 3:59:10 PM
+info: Process ID: 20854 Method: POST en URL: /api/carts - 3:59:14 PM
+info: I'm productInCartExist APTC null
+info: Process ID: 20854 Method: POST en URL: /api/carts - 3:59:19 PM
+info: I'm productInCartExist APTC null
+info: Process ID: 20854 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 3:59:23 PM
+info: Process ID: 20854 Method: DELETE en URL: /api/carts/64b55488d810685c1e687187/product/645c409e3ccd6ebac43446f8 - 3:59:25 PM
+info: new cartExist {
+  _id: new ObjectId("64b55488d810685c1e687187"),
+  user: new ObjectId("64b17202640cbc58d9a348b0"),
+  products: [ { _id: [Object], quantity: 1 } ]
+}
+info: Process ID: 20854 Method: DELETE en URL: /api/carts/64b55488d810685c1e687187/product/645c409e3ccd6ebac43446ea - 3:59:28 PM
+info: new cartExist {
+  _id: new ObjectId("64b55488d810685c1e687187"),
+  user: new ObjectId("64b17202640cbc58d9a348b0"),
+  products: []
+}
+info: Process ID: 20854 Method: POST en URL: /api/carts - 3:59:31 PM
+info: I'm productInCartExist APTC null
+info: Process ID: 20854 Method: POST en URL: /api/carts - 3:59:41 PM
+info: I'm productInCartExist APTC null
+info: Process ID: 20854 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 3:59:48 PM
+info: Process ID: 20854 Method: GET en URL: /api/carts/64b55488d810685c1e687187/purchase - 3:59:53 PM
+info: [object Object]

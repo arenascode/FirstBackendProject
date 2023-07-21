@@ -141,7 +141,6 @@ async function deleteProductInCart(e) {
   const cartAfterDelete = await response.json();
   console.log(cartAfterDelete);
   let total = totalAmount(cartAfterDelete);
-  console.log(total);
   totalAmountdiv.innerText = `Total Amount: $${total}`;
   cartProductsList.innerHTML = cartAfterDelete
     .map((product) => {
@@ -164,7 +163,6 @@ async function deleteProductInCart(e) {
     `;
     })
     .join("");
-  console.log(cartAfterDelete.length);
   if (cartAfterDelete.length === 0) {
     buyCartBtn.disabled = true;
     deleteCartBtn.disabled = true;
