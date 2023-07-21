@@ -3,7 +3,7 @@ import ticketService from "../../services/ticket.service.js";
 import { winstonLogger } from "../../utils/logger.js";
 
 // To get a cart By Id
-export async function controllerGetCartById(req, res) {
+export async function GetCartById(req, res) {
   try {
     const idCart = req.params.cid;
     const cartById = await cartsService.showCartById(idCart);
@@ -27,7 +27,7 @@ export async function controllerGetCartById(req, res) {
 }
 
 //To get all carts
-export async function controllerGetCarts(req, res) {
+export async function GetCarts(req, res) {
   let limit = Number(req.query.limit);
   let page = parseInt(req.query.page);
 
@@ -42,9 +42,9 @@ export async function controllerGetCarts(req, res) {
       order
     );
 
-    const prevPage = `http://localhost:8080/api/carts?page=${showCarts.prevPage}&limit=${limit}&query=${category}&sort=${order}`;
+    const prevPage = `/api/carts?page=${showCarts.prevPage}&limit=${limit}&query=${category}&sort=${order}`;
 
-    const nextPage = `http://localhost:8080/api/carts?page=${showCarts.nextPage}&limit=${limit}&query=${category}&sort=${order}`;
+    const nextPage = `/api/carts?page=${showCarts.nextPage}&limit=${limit}&query=${category}&sort=${order}`;
 
     const paginationOptions = {
       hasNextPage: showCarts.hasNextPage,
@@ -70,7 +70,7 @@ export async function controllerGetCarts(req, res) {
 }
 
 //To add new cart
-export async function controllerAddANewCart(req, res) {
+export async function AddANewCart(req, res) {
   try {
     const productId = req.body.idproduct;
     const userId = req.user._id;
@@ -84,7 +84,7 @@ export async function controllerAddANewCart(req, res) {
 }
 
 // To update new product an existing cart
-export async function controllerAddProductInCart(req, res) {
+export async function AddProductInCart(req, res) {
   try {
     const cartId = req.params.cid;
     const productToAdd = req.body;
@@ -100,7 +100,7 @@ export async function controllerAddProductInCart(req, res) {
 }
 
 // to delete product in existing cart
-export async function controllerDeleteProductInCart(req, res) {
+export async function DeleteProductInCart(req, res) {
   try {
     const cartId = req.params.cid;
     const productId = req.params.pid;
@@ -130,7 +130,7 @@ export async function controllerDeleteProductInCart(req, res) {
 }
 
 //To update a Cart
-export async function controllerUpdateProductInCart(req, res) {
+export async function UpdateProductInCart(req, res) {
   try {
     const cid = req.params.cid;
     const productToUpdate = req.params.pid;
@@ -145,7 +145,7 @@ export async function controllerUpdateProductInCart(req, res) {
 }
 
 // to delete all products in the cart
-export async function controllerDeleteAllProductsInCart(req, res) {
+export async function DeleteAllProductsInCart(req, res) {
   const cartID = req.params.cid;
   try {
     await cartsService.deleteAllProductsInCart(cartID);
@@ -158,7 +158,7 @@ export async function controllerDeleteAllProductsInCart(req, res) {
 }
 
 //To buy a cart
-export async function purcharsePostController(req, res, next) {
+export async function confirmPurchase(req, res, next) {
   try {
     const purchasedCart = req.params.cid;
     const createdTicket = await ticketService.createNewTicket(purchasedCart);

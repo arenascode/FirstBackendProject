@@ -20,9 +20,9 @@ export async function GetProducts(req, res) {
       order
     );
 
-    const prevPage = `http://localhost:8080/api/products?page=${showProducts.prevPage}&limit=${limit}&query=${category}&sort=${order}`
+    const prevPage = `/api/products?page=${showProducts.prevPage}&limit=${limit}&query=${category}&sort=${order}`
     
-    const nextPage = `http://localhost:8080/api/products?page=${showProducts.nextPage}&limit=${limit}&query=${category}&sort=${order}`
+    const nextPage = `/api/products?page=${showProducts.nextPage}&limit=${limit}&query=${category}&sort=${order}`
 
     const paginationOptions = {
       hasNextPage: showProducts.hasNextPage,

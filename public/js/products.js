@@ -1,3 +1,4 @@
+
 //Get the elements 
 const addToCartBtns = document.querySelectorAll('button[data-idProduct]')
 const getCartBtn = document.getElementById('getCart')
@@ -17,20 +18,24 @@ async function addToCart() {
   const productId = {
     idproduct: idProduct
   }
-  const response = await fetch("http://localhost:8080/api/carts", {
+  try {
+    const response = await fetch("/api/carts", {
     method: "POST",
     body: JSON.stringify(productId),
     headers: {
       "Content-Type": "application/json",
     },
-  });
-  if (!response.ok) {
-    alert('Your session expired. Log in again!');
-  }
+  })
+  // if (!response.ok) {
+  //   alert('Error Ocurred. Please!');
+  // }
   
-  cart = await response.json()
+  const cart = await response.json()
   console.log(cart._id);
   localStorage.setItem('cartId', JSON.stringify(cart._id))
+  } catch (error) {
+    console.error("error ocurred", error)
+  }
 }
 
 let deleteProductCartBtns
@@ -45,7 +50,7 @@ async function getCartById(e) {
     alert('Your Cart is empty. Please add one product')
   }
 
-  const response = await fetch(`http://localhost:8080/api/carts/${cartId}`)
+  const response = await fetch(`/api/carts/${cartId}`)
   const productsToRender = await response.json()
   total = totalAmount(productsToRender)
   if (total === 0) {
@@ -123,7 +128,7 @@ async function deleteProductInCart(e) {
   console.log('deleting product of cart');
   const productId = e.dataset.productid
   const cartId = JSON.parse(localStorage.getItem('cartId'))
-  const response = await fetch(`http://localhost:8080/api/carts/${cartId}/product/${productId}`, {
+  const response = await fetch(`/api/carts/${cartId}/product/${productId}`, {
     method: "DELETE"
   });
   const cartAfterDelete = await response.json()
@@ -152,11 +157,19 @@ async function deleteProductInCart(e) {
     `;
     })
     .join("");
+  console.log(cartAfterDelete.length);
+  if (cartAfterDelete.length === 0) {
+    buyCartBtn.disabled = true
+    deleteCartBtn.disabled = true
+    cartProductsList.innerHTML = `
+    <li>The Cart Is Empty</li>
+    `;
+    }
 }
 
 async function deleteAllProductsInCart() {
   console.log('Im going to leave the cart empty');
-  const response = await fetch(`http://localhost:8080/api/carts/${cartId}`, {
+  const response = await fetch(`/api/carts/${cartId}`, {
     method: "DELETE"
   })
   const result = await response.json()
@@ -170,7 +183,7 @@ async function deleteAllProductsInCart() {
 
 async function confirmPurchase() {
   if (!confirm(`Are you sure to buy the cart for $${(total) / 1000}?`)) { return } 
-  const response = await fetch(`http://localhost:8080/api/carts/${cartId}/purchase`)
+  const response = await fetch(`/api/carts/${cartId}/purchase`)
   const data = await response.json()
   console.log(data);
   buyCartBtn.disabled = true

@@ -16,9 +16,9 @@ export async function getUsers(req, res, next) {
       order
     );
 
-    const prevPage = `http://localhost:8080/api/users?page=${showUsers.prevPage}&limit=${limit}&query=${category}&sort=${order}`;
+    const prevPage = `/api/users?page=${showUsers.prevPage}&limit=${limit}&query=${category}&sort=${order}`;
 
-    const nextPage = `http://localhost:8080/api/users?page=${showUsers.nextPage}&limit=${limit}&query=${category}&sort=${order}`;
+    const nextPage = `/api/users?page=${showUsers.nextPage}&limit=${limit}&query=${category}&sort=${order}`;
 
     const paginationOptions = {
       hasNextPage: showUsers.hasNextPage,

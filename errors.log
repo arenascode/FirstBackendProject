@@ -586,3 +586,107 @@ info: Process ID: 28126 Method: GET en URL: /favicon.ico - 8:18:53 PM
 info: Process ID: 28126 Method: GET en URL: /css/blockedPage.css - 8:18:53 PM
 info: Process ID: 28126 Method: GET en URL: /favicon.ico - 8:18:53 PM
 info: Process ID: 28126 Method: GET en URL: /favicon.ico - 8:18:54 PM
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: App Connected To Port 3000
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: App Connected To Port 3000
+info: Process ID: 2512 Method: GET en URL: /login - 9:14:09 AM
+info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:14:09 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:14:09 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:14:09 AM
+info: Process ID: 2512 Method: GET en URL: /css/blockedPage.css - 9:14:09 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:14:10 AM
+info: Process ID: 2512 Method: POST en URL: /api/sessions/login - 9:14:15 AM
+info: soy IsAdmin false
+info: criteria userMongodb {"email":"compraenmercadolibre@outlook.com"}
+info: {
+  _id: new ObjectId("64b17202640cbc58d9a348b0"),
+  name: 'nombreprueba2',
+  lastName: 'apellidoprueba2',
+  email: 'compraenmercadolibre@outlook.com',
+  age: '35',
+  password: '$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa',
+  role: 'user',
+  cart: { _id: new ObjectId("64b55488d810685c1e687187"), products: [] },
+  documents: null,
+  last_conection: 'Fri Jul 21 2023 01:26:43 GMT+0000 (Coordinated Universal Time)',
+  status: false
+}
+info: Process ID: 2512 Method: GET en URL: /profile - 9:14:16 AM
+info: req.user en RouterView {"_id":"64b17202640cbc58d9a348b0","name":"nombreprueba2","lastName":"apellidoprueba2","email":"compraenmercadolibre@outlook.com","age":"35","password":"$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa","role":"user","cart":{"_id":"64b55488d810685c1e687187","products":[]},"documents":null,"last_conection":"Fri Jul 21 2023 09:14:16 GMT-0500 (Colombia Standard Time)","status":false,"iat":1689948856,"exp":1689952456}
+info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:14:16 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:14:16 AM
+info: Process ID: 2512 Method: GET en URL: /css/blockedPage.css - 9:14:16 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:14:16 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:14:17 AM
+info: Process ID: 2512 Method: GET en URL: /api/products - 9:15:20 AM
+info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:15:20 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:15:20 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:15:20 AM
+info: Process ID: 2512 Method: GET en URL: /api/css/blockedPage.css - 9:15:20 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:15:21 AM
+info: Process ID: 2512 Method: GET en URL: /api/products - 9:16:20 AM
+info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:16:21 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:16:21 AM
+info: Process ID: 2512 Method: GET en URL: /api/css/blockedPage.css - 9:16:21 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:16:21 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:16:22 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:16:40 AM
+info: Process ID: 2512 Method: GET en URL: /profile - 9:16:42 AM
+info: req.user en RouterView {"_id":"64b17202640cbc58d9a348b0","name":"nombreprueba2","lastName":"apellidoprueba2","email":"compraenmercadolibre@outlook.com","age":"35","password":"$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa","role":"user","cart":{"_id":"64b55488d810685c1e687187","products":[]},"documents":null,"last_conection":"Fri Jul 21 2023 09:14:16 GMT-0500 (Colombia Standard Time)","status":false,"iat":1689948856,"exp":1689952456}
+info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:16:42 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:16:42 AM
+info: Process ID: 2512 Method: GET en URL: /css/blockedPage.css - 9:16:42 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:16:42 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:16:43 AM
+info: Process ID: 2512 Method: GET en URL: /api/products - 9:16:43 AM
+info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:16:44 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:16:44 AM
+info: Process ID: 2512 Method: GET en URL: /api/css/blockedPage.css - 9:16:44 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:16:44 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:16:45 AM
+info: Process ID: 2512 Method: GET en URL: /api/products - 9:17:14 AM
+info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:17:15 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:15 AM
+info: Process ID: 2512 Method: GET en URL: /api/css/blockedPage.css - 9:17:15 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:15 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:16 AM
+info: Process ID: 2512 Method: GET en URL: /api/products - 9:17:17 AM
+info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:17:17 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:17 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:17 AM
+info: Process ID: 2512 Method: GET en URL: /api/css/blockedPage.css - 9:17:17 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:18 AM
+info: Process ID: 2512 Method: GET en URL: /api/api/carts/null - 9:17:21 AM
+info: Process ID: 2512 Method: POST en URL: /api/api/carts - 9:17:32 AM
+info: Process ID: 2512 Method: GET en URL: /api/products - 9:17:44 AM
+info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:17:44 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:44 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:44 AM
+info: Process ID: 2512 Method: GET en URL: /api/css/blockedPage.css - 9:17:44 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:45 AM
+info: Process ID: 2512 Method: GET en URL: /api/products - 9:17:46 AM
+info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:17:46 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:46 AM
+info: Process ID: 2512 Method: GET en URL: /api/css/blockedPage.css - 9:17:46 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:46 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:47 AM
+info: Process ID: 2512 Method: GET en URL: /profile - 9:17:48 AM
+info: req.user en RouterView {"_id":"64b17202640cbc58d9a348b0","name":"nombreprueba2","lastName":"apellidoprueba2","email":"compraenmercadolibre@outlook.com","age":"35","password":"$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa","role":"user","cart":{"_id":"64b55488d810685c1e687187","products":[]},"documents":null,"last_conection":"Fri Jul 21 2023 09:14:16 GMT-0500 (Colombia Standard Time)","status":false,"iat":1689948856,"exp":1689952456}
+info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:17:48 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:48 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:48 AM
+info: Process ID: 2512 Method: GET en URL: /css/blockedPage.css - 9:17:48 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:49 AM
+info: Process ID: 2512 Method: GET en URL: /api/products - 9:17:49 AM
+info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:17:49 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:49 AM
+info: Process ID: 2512 Method: GET en URL: /api/css/blockedPage.css - 9:17:49 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:49 AM
+info: Process ID: 2512 Method: GET en URL: /favicon.ico - 9:17:50 AM
+info: Process ID: 2512 Method: POST en URL: /api/api/carts - 9:17:52 AM
+info: Process ID: 2512 Method: GET en URL: /api/css/blockedPage.css - 9:17:59 AM
+info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:17:59 AM
+info: Process ID: 2512 Method: POST en URL: /api/api/carts - 9:18:47 AM

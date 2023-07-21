@@ -19,7 +19,7 @@ import { MONGODB_CNX_STR } from "../config/mongodbCnxStr.js";
 export const app = express();
 
 //Conecting with ATLASDB
-await mongoose.connect(MONGODB_CNX_STR); //Temporary
+await mongoose.connect(MONGODB_CNX_STR);
 
 winstonLogger.info(`connected to mongodb in ${MONGODB_CNX_STR}`)
 
