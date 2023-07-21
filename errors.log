@@ -690,3 +690,820 @@ info: Process ID: 2512 Method: POST en URL: /api/api/carts - 9:17:52 AM
 info: Process ID: 2512 Method: GET en URL: /api/css/blockedPage.css - 9:17:59 AM
 info: Process ID: 2512 Method: GET en URL: /static/css/styles.css - 9:17:59 AM
 info: Process ID: 2512 Method: POST en URL: /api/api/carts - 9:18:47 AM
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: App Connected To Port 3000
+info: Process ID: 7679 Method: GET en URL: /api/products?page=2&limit=10&query=undefined&sort=1 - 10:24:08 AM
+info: Process ID: 7679 Method: GET en URL: /static/css/styles.css - 10:24:08 AM
+info: Process ID: 7679 Method: GET en URL: /favicon.ico - 10:24:08 AM
+info: Process ID: 7679 Method: GET en URL: /api/css/blockedPage.css - 10:24:08 AM
+info: Process ID: 7679 Method: GET en URL: /favicon.ico - 10:24:08 AM
+info: Process ID: 7679 Method: GET en URL: /favicon.ico - 10:24:09 AM
+info: Process ID: 7679 Method: GET en URL: /api/carts/null - 10:24:18 AM
+info: Process ID: 7679 Method: POST en URL: /api/carts - 10:24:25 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 7679 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 10:24:28 AM
+info: Process ID: 7679 Method: DELETE en URL: /api/carts/%22%22 - 10:24:35 AM
+info: Process ID: 7679 Method: GET en URL: /api/products?page=2&limit=10&query=undefined&sort=1 - 10:24:52 AM
+info: Process ID: 7679 Method: GET en URL: /static/css/styles.css - 10:24:52 AM
+info: Process ID: 7679 Method: GET en URL: /favicon.ico - 10:24:52 AM
+info: Process ID: 7679 Method: GET en URL: /api/css/blockedPage.css - 10:24:52 AM
+info: Process ID: 7679 Method: GET en URL: /favicon.ico - 10:24:52 AM
+info: Process ID: 7679 Method: GET en URL: /favicon.ico - 10:24:53 AM
+info: Process ID: 7679 Method: GET en URL: /api/products?page=2&limit=10&query=undefined&sort=1 - 10:24:59 AM
+info: Process ID: 7679 Method: GET en URL: /static/css/styles.css - 10:24:59 AM
+info: Process ID: 7679 Method: GET en URL: /favicon.ico - 10:24:59 AM
+info: Process ID: 7679 Method: GET en URL: /favicon.ico - 10:24:59 AM
+info: Process ID: 7679 Method: GET en URL: /api/css/blockedPage.css - 10:24:59 AM
+info: Process ID: 7679 Method: GET en URL: /favicon.ico - 10:25:00 AM
+info: Process ID: 7679 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 10:25:04 AM
+info: Process ID: 7679 Method: DELETE en URL: /api/carts/64b55488d810685c1e687187 - 10:25:08 AM
+info: Line 170 CartsManag {
+  _id: new ObjectId("64b55488d810685c1e687187"),
+  user: new ObjectId("64b17202640cbc58d9a348b0"),
+  products: [ { _id: [Object], quantity: 1 }, { _id: [Object], quantity: 1 } ]
+}
+info: {
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac4344701"),
+    title: 'KTM',
+    description: '1290 Super Duke GT',
+    price: 22199,
+    code: '026',
+    stock: 4,
+    status: true,
+    category: 'Sport touring',
+    thumbnails: []
+  },
+  quantity: 1
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446fe"),
+    title: 'Yamaha',
+    description: 'VMAX',
+    price: 17999,
+    code: '023',
+    stock: 10,
+    status: true,
+    category: 'Power cruiser',
+    thumbnails: []
+  },
+  quantity: 1
+}
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: App Connected To Port 3000
+info: Process ID: 9216 Method: GET en URL: /api/products?page=2&limit=10&query=undefined&sort=1 - 10:50:14 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:50:14 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:50:14 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:50:14 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:50:14 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:50:15 AM
+info: Process ID: 9216 Method: GET en URL: /api/products?page=2&limit=10&query=undefined&sort=1 - 10:50:38 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:50:39 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:50:39 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:50:39 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:50:39 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:50:40 AM
+info: Process ID: 9216 Method: GET en URL: /api/products?page=2&limit=10&query=undefined&sort=1 - 10:50:54 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:50:54 AM
+info: Process ID: 9216 Method: GET en URL: /sweetalert2 - 10:50:54 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:50:54 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:50:54 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:50:54 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:50:55 AM
+info: Process ID: 9216 Method: GET en URL: /api/products?page=2&limit=10&query=undefined&sort=1 - 10:51:06 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:51:06 AM
+info: Process ID: 9216 Method: GET en URL: /sweetalert2 - 10:51:06 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:06 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:51:06 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:06 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:07 AM
+info: Process ID: 9216 Method: GET en URL: /api/products?page=2&limit=10&query=undefined&sort=1 - 10:51:15 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:51:15 AM
+info: Process ID: 9216 Method: GET en URL: /sweetalert2 - 10:51:15 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:15 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:51:15 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:15 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:16 AM
+info: Process ID: 9216 Method: GET en URL: /profile - 10:51:17 AM
+info: req.user en RouterView {"_id":"64b17202640cbc58d9a348b0","name":"nombreprueba2","lastName":"apellidoprueba2","email":"compraenmercadolibre@outlook.com","age":"35","password":"$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa","role":"user","cart":{"_id":"64b55488d810685c1e687187","products":[]},"documents":null,"last_conection":"Fri Jul 21 2023 10:06:04 GMT-0500 (Colombia Standard Time)","status":false,"iat":1689951964,"exp":1689955564}
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:51:17 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:17 AM
+info: Process ID: 9216 Method: GET en URL: /css/blockedPage.css - 10:51:17 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:17 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:18 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:51:19 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:51:19 AM
+info: Process ID: 9216 Method: GET en URL: /sweetalert2 - 10:51:19 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:19 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:19 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:51:19 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:20 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:51:28 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:51:28 AM
+info: Process ID: 9216 Method: GET en URL: /sweetalert2 - 10:51:28 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:28 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:51:28 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:28 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:51:29 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:52:24 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:52:24 AM
+info: Process ID: 9216 Method: GET en URL: /sweetalert2 - 10:52:24 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:24 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:24 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:52:24 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:25 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:52:28 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:52:28 AM
+info: Process ID: 9216 Method: GET en URL: /sweetalert2 - 10:52:28 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:28 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:52:28 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:28 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:29 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:52:35 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:52:35 AM
+info: Process ID: 9216 Method: GET en URL: /sweetalert2 - 10:52:35 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:35 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:35 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:52:35 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:36 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:52:48 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:52:48 AM
+info: Process ID: 9216 Method: GET en URL: /sweetalert2 - 10:52:48 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:48 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:49 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:52:49 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:50 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:52:50 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:52:50 AM
+info: Process ID: 9216 Method: GET en URL: /sweetalert2 - 10:52:50 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:50 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:52:50 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:50 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:52:51 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:53:12 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:53:13 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:53:13 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:53:13 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:53:13 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:53:14 AM
+info: Process ID: 9216 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 10:53:14 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:53:43 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:53:43 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:53:43 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:53:43 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:53:43 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:53:44 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:53:46 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:53:46 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:53:46 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:53:46 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:53:46 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:53:47 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:53:48 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:53:48 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:53:48 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:53:48 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:53:48 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:53:49 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:54:18 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:54:18 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:54:19 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:54:19 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:54:19 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:54:19 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:54:20 AM
+info: Process ID: 9216 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 10:54:20 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:54:45 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:54:45 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:54:45 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:54:45 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:54:45 AM
+info: Process ID: 9216 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 10:54:46 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:54:46 AM
+info: Process ID: 9216 Method: POST en URL: /api/carts - 10:54:49 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 9216 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 10:54:54 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:56:24 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:56:24 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:24 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:56:24 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:24 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:56:25 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:56:25 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:25 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:56:25 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:26 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:26 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:56:28 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:56:28 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:29 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:56:29 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:29 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:56:29 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:56:30 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:30 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:30 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:56:30 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:56:30 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:56:30 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:30 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:30 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:56:30 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:56:31 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:56:31 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:31 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:56:31 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:31 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:56:31 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:56:31 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:31 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:31 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:56:31 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:56:32 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:58:19 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:58:19 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:19 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:19 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:58:19 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:20 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:58:21 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:58:21 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:21 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:21 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:58:21 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:22 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:58:25 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:58:25 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:25 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:58:25 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:25 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:58:26 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:26 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:58:26 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:26 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:26 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:58:26 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:58:27 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:58:27 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:27 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:58:27 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:27 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:28 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:58:29 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:58:29 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:29 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:29 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:58:29 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:58:30 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:30 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:58:30 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:30 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:58:30 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:30 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:58:30 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:58:31 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:31 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:58:31 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:31 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:32 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:58:42 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:58:42 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:42 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:58:42 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:42 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:43 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:58:44 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:58:44 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:44 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:44 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:58:44 AM
+info: Process ID: 9216 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 10:58:45 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:45 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:58:50 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:58:50 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:50 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:50 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:58:50 AM
+info: Process ID: 9216 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 10:58:50 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:58:51 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 10:59:32 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 10:59:32 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:59:32 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:59:32 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 10:59:32 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 10:59:33 AM
+info: Process ID: 9216 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 10:59:35 AM
+info: Process ID: 9216 Method: POST en URL: /api/carts - 10:59:40 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:02:50 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:02:50 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:02:50 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:02:50 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:02:50 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:02:51 AM
+info: Process ID: 9216 Method: POST en URL: /api/carts - 11:02:53 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:05:51 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:05:51 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:05:51 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:05:51 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:05:51 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:05:52 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:05:52 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:05:52 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:05:52 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:05:52 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:05:52 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:05:53 AM
+info: Process ID: 9216 Method: POST en URL: /api/carts - 11:05:54 AM
+info: I'm productInCartExist APTC {"_id":"64b55488d810685c1e687187","user":"64b17202640cbc58d9a348b0","products":[{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446ef","title":"BMW","description":"R nineT Scrambler","price":16600,"code":"008","stock":7,"status":true,"category":"Naked","thumbnails":[]},"quantity":1},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446f2","title":"Yamaha","description":"MT-10","price":13999,"code":"011","stock":11,"status":true,"category":"Naked","thumbnails":[]},"quantity":1},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446fd","title":"Kawasaki","description":"Vulcan S ABS SE","price":8149,"code":"022","stock":8,"status":true,"category":"Power cruiser","thumbnails":[]},"quantity":1}]}
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:07:28 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:07:28 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:07:28 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:07:28 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:07:28 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:07:29 AM
+info: Process ID: 9216 Method: POST en URL: /api/carts - 11:07:32 AM
+info: info TokenExpiredError: jwt expired
+info: Process ID: 9216 Method: GET en URL: /profile - 11:07:46 AM
+info: Process ID: 9216 Method: GET en URL: /login - 11:07:46 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:07:46 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:07:46 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:07:46 AM
+info: Process ID: 9216 Method: GET en URL: /css/blockedPage.css - 11:07:46 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:07:47 AM
+info: Process ID: 9216 Method: POST en URL: /api/sessions/login - 11:07:57 AM
+info: soy IsAdmin false
+info: criteria userMongodb {"email":"compraenmercadolibre@outlook.com"}
+info: {
+  _id: new ObjectId("64b17202640cbc58d9a348b0"),
+  name: 'nombreprueba2',
+  lastName: 'apellidoprueba2',
+  email: 'compraenmercadolibre@outlook.com',
+  age: '35',
+  password: '$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa',
+  role: 'user',
+  cart: {
+    _id: new ObjectId("64b55488d810685c1e687187"),
+    products: [ [Object], [Object], [Object] ]
+  },
+  documents: null,
+  last_conection: 'Fri Jul 21 2023 15:17:47 GMT+0000 (Coordinated Universal Time)',
+  status: false
+}
+info: Process ID: 9216 Method: GET en URL: /profile - 11:07:57 AM
+info: req.user en RouterView {"_id":"64b17202640cbc58d9a348b0","name":"nombreprueba2","lastName":"apellidoprueba2","email":"compraenmercadolibre@outlook.com","age":"35","password":"$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa","role":"user","cart":{"_id":"64b55488d810685c1e687187","products":[{"_id":{"_id":"645c409e3ccd6ebac43446ef","title":"BMW","description":"R nineT Scrambler","price":16600,"code":"008","stock":7,"status":true,"category":"Naked","thumbnails":[]},"quantity":1},{"_id":{"_id":"645c409e3ccd6ebac43446f2","title":"Yamaha","description":"MT-10","price":13999,"code":"011","stock":11,"status":true,"category":"Naked","thumbnails":[]},"quantity":1},{"_id":{"_id":"645c409e3ccd6ebac43446fd","title":"Kawasaki","description":"Vulcan S ABS SE","price":8149,"code":"022","stock":8,"status":true,"category":"Power cruiser","thumbnails":[]},"quantity":2}]},"documents":null,"last_conection":"Fri Jul 21 2023 11:07:57 GMT-0500 (Colombia Standard Time)","status":false,"iat":1689955677,"exp":1689959277}
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:07:57 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:07:57 AM
+info: Process ID: 9216 Method: GET en URL: /css/blockedPage.css - 11:07:58 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:07:58 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:07:59 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:08:03 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:08:03 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:08:03 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:08:03 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:08:03 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:08:04 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:08:06 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:08:06 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:08:06 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:08:06 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:08:06 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:08:07 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:08:12 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:08:12 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:08:12 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:08:12 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:08:12 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:08:13 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:08:26 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:08:26 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:08:26 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:08:26 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:08:26 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:08:27 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:09:05 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:09:05 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:09:05 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:09:05 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:09:05 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:09:06 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:10:09 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:10:09 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:10:09 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:10:09 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:10:09 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:10:10 AM
+info: Process ID: 9216 Method: POST en URL: /api/carts - 11:10:23 AM
+info: I'm productInCartExist APTC {"_id":"64b55488d810685c1e687187","user":"64b17202640cbc58d9a348b0","products":[{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446ef","title":"BMW","description":"R nineT Scrambler","price":16600,"code":"008","stock":7,"status":true,"category":"Naked","thumbnails":[]},"quantity":1},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446f2","title":"Yamaha","description":"MT-10","price":13999,"code":"011","stock":11,"status":true,"category":"Naked","thumbnails":[]},"quantity":1},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446fd","title":"Kawasaki","description":"Vulcan S ABS SE","price":8149,"code":"022","stock":8,"status":true,"category":"Power cruiser","thumbnails":[]},"quantity":2}]}
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:11:03 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:11:03 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:11:03 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:11:03 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:11:03 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:11:04 AM
+info: Process ID: 9216 Method: GET en URL: /api/carts/null - 11:11:07 AM
+info: Process ID: 9216 Method: POST en URL: /api/carts - 11:11:09 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:13:57 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:13:58 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:13:58 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:13:58 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:13:58 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:13:59 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:14:14 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:14:14 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:14:14 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:14:14 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:14:14 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:14:15 AM
+info: Process ID: 9216 Method: GET en URL: /api/products - 11:14:32 AM
+info: Process ID: 9216 Method: GET en URL: /static/css/styles.css - 11:14:33 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:14:33 AM
+info: Process ID: 9216 Method: GET en URL: /api/css/blockedPage.css - 11:14:33 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:14:33 AM
+info: Process ID: 9216 Method: GET en URL: /favicon.ico - 11:14:34 AM
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: App Connected To Port 3000
+info: Process ID: 10806 Method: GET en URL: /api/products - 11:15:31 AM
+info: Process ID: 10806 Method: GET en URL: /static/css/styles.css - 11:15:32 AM
+info: Process ID: 10806 Method: GET en URL: /favicon.ico - 11:15:32 AM
+info: Process ID: 10806 Method: GET en URL: /favicon.ico - 11:15:32 AM
+info: Process ID: 10806 Method: GET en URL: /api/css/blockedPage.css - 11:15:32 AM
+info: Process ID: 10806 Method: GET en URL: /favicon.ico - 11:15:33 AM
+info: Process ID: 10806 Method: GET en URL: /api/carts/null - 11:15:52 AM
+info: Process ID: 10806 Method: POST en URL: /api/carts - 11:15:55 AM
+info: I'm productInCartExist APTC {"_id":"64b55488d810685c1e687187","user":"64b17202640cbc58d9a348b0","products":[{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446ef","title":"BMW","description":"R nineT Scrambler","price":16600,"code":"008","stock":7,"status":true,"category":"Naked","thumbnails":[]},"quantity":2},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446f2","title":"Yamaha","description":"MT-10","price":13999,"code":"011","stock":11,"status":true,"category":"Naked","thumbnails":[]},"quantity":1},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446fd","title":"Kawasaki","description":"Vulcan S ABS SE","price":8149,"code":"022","stock":8,"status":true,"category":"Power cruiser","thumbnails":[]},"quantity":2},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446f0","title":"Triumph","description":"Street Triple RS","price":13500,"code":"009","stock":12,"status":true,"category":"Naked","thumbnails":[]},"quantity":1}]}
+info: Process ID: 10806 Method: GET en URL: /api/products - 11:16:00 AM
+info: Process ID: 10806 Method: GET en URL: /static/css/styles.css - 11:16:00 AM
+info: Process ID: 10806 Method: GET en URL: /favicon.ico - 11:16:00 AM
+info: Process ID: 10806 Method: GET en URL: /api/css/blockedPage.css - 11:16:00 AM
+info: Process ID: 10806 Method: GET en URL: /favicon.ico - 11:16:00 AM
+info: Process ID: 10806 Method: GET en URL: /favicon.ico - 11:16:01 AM
+info: Process ID: 10806 Method: POST en URL: /api/carts - 11:16:02 AM
+info: I'm productInCartExist APTC {"_id":"64b55488d810685c1e687187","user":"64b17202640cbc58d9a348b0","products":[{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446ef","title":"BMW","description":"R nineT Scrambler","price":16600,"code":"008","stock":7,"status":true,"category":"Naked","thumbnails":[]},"quantity":3},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446f2","title":"Yamaha","description":"MT-10","price":13999,"code":"011","stock":11,"status":true,"category":"Naked","thumbnails":[]},"quantity":1},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446fd","title":"Kawasaki","description":"Vulcan S ABS SE","price":8149,"code":"022","stock":8,"status":true,"category":"Power cruiser","thumbnails":[]},"quantity":2},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446f0","title":"Triumph","description":"Street Triple RS","price":13500,"code":"009","stock":12,"status":true,"category":"Naked","thumbnails":[]},"quantity":1}]}
+info: Process ID: 10806 Method: GET en URL: /api/products - 11:16:28 AM
+info: Process ID: 10806 Method: GET en URL: /static/css/styles.css - 11:16:28 AM
+info: Process ID: 10806 Method: GET en URL: /favicon.ico - 11:16:28 AM
+info: Process ID: 10806 Method: GET en URL: /api/css/blockedPage.css - 11:16:28 AM
+info: Process ID: 10806 Method: GET en URL: /favicon.ico - 11:16:28 AM
+info: Process ID: 10806 Method: GET en URL: /favicon.ico - 11:16:29 AM
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: App Connected To Port 3000
+info: Process ID: 10890 Method: GET en URL: /api/products - 11:16:43 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:16:44 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:16:44 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:16:44 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:16:44 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:16:45 AM
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:16:52 AM
+info: I'm productInCartExist APTC {"_id":"64b55488d810685c1e687187","user":"64b17202640cbc58d9a348b0","products":[{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446ef","title":"BMW","description":"R nineT Scrambler","price":16600,"code":"008","stock":7,"status":true,"category":"Naked","thumbnails":[]},"quantity":4},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446f2","title":"Yamaha","description":"MT-10","price":13999,"code":"011","stock":11,"status":true,"category":"Naked","thumbnails":[]},"quantity":1},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446fd","title":"Kawasaki","description":"Vulcan S ABS SE","price":8149,"code":"022","stock":8,"status":true,"category":"Power cruiser","thumbnails":[]},"quantity":2},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446f0","title":"Triumph","description":"Street Triple RS","price":13500,"code":"009","stock":12,"status":true,"category":"Naked","thumbnails":[]},"quantity":1}]}
+info: Process ID: 10890 Method: GET en URL: /api/products - 11:18:48 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:18:48 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:18:48 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:18:48 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:18:48 AM
+info: Process ID: 10890 Method: GET en URL: /api/products - 11:18:49 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:18:49 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:18:49 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:18:49 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:18:49 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:18:50 AM
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:18:51 AM
+info: I'm productInCartExist APTC {"_id":"64b55488d810685c1e687187","user":"64b17202640cbc58d9a348b0","products":[{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446ef","title":"BMW","description":"R nineT Scrambler","price":16600,"code":"008","stock":7,"status":true,"category":"Naked","thumbnails":[]},"quantity":5},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446f2","title":"Yamaha","description":"MT-10","price":13999,"code":"011","stock":11,"status":true,"category":"Naked","thumbnails":[]},"quantity":1},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446fd","title":"Kawasaki","description":"Vulcan S ABS SE","price":8149,"code":"022","stock":8,"status":true,"category":"Power cruiser","thumbnails":[]},"quantity":2},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446f0","title":"Triumph","description":"Street Triple RS","price":13500,"code":"009","stock":12,"status":true,"category":"Naked","thumbnails":[]},"quantity":1}]}
+info: Process ID: 10890 Method: GET en URL: /api/products - 11:20:32 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:20:33 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:20:33 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:20:33 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:20:33 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:20:34 AM
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:20:35 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 10890 Method: GET en URL: /api/products - 11:21:08 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:21:08 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:21:08 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:21:08 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:21:08 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:21:09 AM
+info: Process ID: 10890 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 11:21:09 AM
+info: Process ID: 10890 Method: DELETE en URL: /api/carts/64b55488d810685c1e687187 - 11:21:12 AM
+info: Line 170 CartsManag {
+  _id: new ObjectId("64b55488d810685c1e687187"),
+  user: new ObjectId("64b17202640cbc58d9a348b0"),
+  products: [
+    { _id: [Object], quantity: 5 },
+    { _id: [Object], quantity: 1 },
+    { _id: [Object], quantity: 2 },
+    { _id: [Object], quantity: 2 },
+    { _id: [Object], quantity: 1 }
+  ]
+}
+info: {
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446ef"),
+    title: 'BMW',
+    description: 'R nineT Scrambler',
+    price: 16600,
+    code: '008',
+    stock: 7,
+    status: true,
+    category: 'Naked',
+    thumbnails: []
+  },
+  quantity: 5
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446f2"),
+    title: 'Yamaha',
+    description: 'MT-10',
+    price: 13999,
+    code: '011',
+    stock: 11,
+    status: true,
+    category: 'Naked',
+    thumbnails: []
+  },
+  quantity: 1
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446fd"),
+    title: 'Kawasaki',
+    description: 'Vulcan S ABS SE',
+    price: 8149,
+    code: '022',
+    stock: 8,
+    status: true,
+    category: 'Power cruiser',
+    thumbnails: []
+  },
+  quantity: 2
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446f0"),
+    title: 'Triumph',
+    description: 'Street Triple RS',
+    price: 13500,
+    code: '009',
+    stock: 12,
+    status: true,
+    category: 'Naked',
+    thumbnails: []
+  },
+  quantity: 2
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446f5"),
+    title: 'BMW',
+    description: 'R 1250 GS Adventure',
+    price: 21100,
+    code: '014',
+    stock: 7,
+    status: true,
+    category: 'Adventure',
+    thumbnails: []
+  },
+  quantity: 1
+}
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:21:14 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 10890 Method: GET en URL: /api/products - 11:21:17 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:21:17 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:21:17 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:21:17 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:21:17 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:21:18 AM
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:21:21 AM
+info: I'm productInCartExist APTC {"_id":"64b55488d810685c1e687187","user":"64b17202640cbc58d9a348b0","products":[{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446ec","title":"Aprilia","description":"RSV4 Factory","price":29500,"code":"005","stock":14,"status":true,"category":"Superbike","thumbnails":[]},"quantity":1}]}
+info: Process ID: 10890 Method: GET en URL: /api/products - 11:21:34 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:21:34 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:21:34 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:21:34 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:21:34 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:21:35 AM
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:21:37 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 10890 Method: GET en URL: /api/products - 11:22:00 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:22:00 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:22:00 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:22:00 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:22:00 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:22:01 AM
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:22:02 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 10890 Method: GET en URL: /api/products - 11:22:06 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:22:06 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:22:06 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:22:06 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:22:06 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:22:07 AM
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:22:10 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 10890 Method: GET en URL: /api/products - 11:24:25 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:24:26 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:24:26 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:24:26 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:24:26 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:24:27 AM
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:24:35 AM
+info: I'm productInCartExist APTC {"_id":"64b55488d810685c1e687187","user":"64b17202640cbc58d9a348b0","products":[{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446ec","title":"Aprilia","description":"RSV4 Factory","price":29500,"code":"005","stock":14,"status":true,"category":"Superbike","thumbnails":[]},"quantity":2},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446ef","title":"BMW","description":"R nineT Scrambler","price":16600,"code":"008","stock":7,"status":true,"category":"Naked","thumbnails":[]},"quantity":1},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446f5","title":"BMW","description":"R 1250 GS Adventure","price":21100,"code":"014","stock":7,"status":true,"category":"Adventure","thumbnails":[]},"quantity":1},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac4344703","title":"Kawasaki","description":"Ninja ZX-10RR","price":25199,"code":"028","stock":4,"status":true,"category":"Superbike","thumbnails":[]},"quantity":1}]}
+info: Process ID: 10890 Method: GET en URL: /api/products - 11:25:40 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:25:41 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:25:41 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:25:41 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:25:41 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:25:42 AM
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:25:44 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 10890 Method: GET en URL: /api/products - 11:25:58 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:25:58 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:25:59 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:25:59 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:25:59 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:26:00 AM
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:26:00 AM
+info: I'm productInCartExist APTC {"_id":"64b55488d810685c1e687187","user":"64b17202640cbc58d9a348b0","products":[{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446ec","title":"Aprilia","description":"RSV4 Factory","price":29500,"code":"005","stock":14,"status":true,"category":"Superbike","thumbnails":[]},"quantity":2},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446ef","title":"BMW","description":"R nineT Scrambler","price":16600,"code":"008","stock":7,"status":true,"category":"Naked","thumbnails":[]},"quantity":1},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446f5","title":"BMW","description":"R 1250 GS Adventure","price":21100,"code":"014","stock":7,"status":true,"category":"Adventure","thumbnails":[]},"quantity":1},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac4344703","title":"Kawasaki","description":"Ninja ZX-10RR","price":25199,"code":"028","stock":4,"status":true,"category":"Superbike","thumbnails":[]},"quantity":2},{"_id":{"owner":"admin","_id":"645c409e3ccd6ebac43446fd","title":"Kawasaki","description":"Vulcan S ABS SE","price":8149,"code":"022","stock":8,"status":true,"category":"Power cruiser","thumbnails":[]},"quantity":1}]}
+info: Process ID: 10890 Method: GET en URL: /api/products - 11:26:09 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:26:09 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:26:09 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:26:09 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:26:09 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:26:10 AM
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:26:11 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 10890 Method: GET en URL: /api/products?page=2&limit=10&query=undefined&sort=1 - 11:26:17 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:26:17 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:26:17 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:26:17 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:26:17 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:26:18 AM
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:26:18 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 10890 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 11:26:22 AM
+info: Process ID: 10890 Method: DELETE en URL: /api/carts/64b55488d810685c1e687187 - 11:26:25 AM
+info: Line 170 CartsManag {
+  _id: new ObjectId("64b55488d810685c1e687187"),
+  user: new ObjectId("64b17202640cbc58d9a348b0"),
+  products: [
+    { _id: [Object], quantity: 3 },
+    { _id: [Object], quantity: 1 },
+    { _id: [Object], quantity: 1 },
+    { _id: [Object], quantity: 2 },
+    { _id: [Object], quantity: 1 },
+    { _id: [Object], quantity: 1 },
+    { _id: [Object], quantity: 1 }
+  ]
+}
+info: {
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446ec"),
+    title: 'Aprilia',
+    description: 'RSV4 Factory',
+    price: 29500,
+    code: '005',
+    stock: 14,
+    status: true,
+    category: 'Superbike',
+    thumbnails: []
+  },
+  quantity: 3
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446ef"),
+    title: 'BMW',
+    description: 'R nineT Scrambler',
+    price: 16600,
+    code: '008',
+    stock: 7,
+    status: true,
+    category: 'Naked',
+    thumbnails: []
+  },
+  quantity: 1
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446f5"),
+    title: 'BMW',
+    description: 'R 1250 GS Adventure',
+    price: 21100,
+    code: '014',
+    stock: 7,
+    status: true,
+    category: 'Adventure',
+    thumbnails: []
+  },
+  quantity: 1
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac4344703"),
+    title: 'Kawasaki',
+    description: 'Ninja ZX-10RR',
+    price: 25199,
+    code: '028',
+    stock: 4,
+    status: true,
+    category: 'Superbike',
+    thumbnails: []
+  },
+  quantity: 2
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446fd"),
+    title: 'Kawasaki',
+    description: 'Vulcan S ABS SE',
+    price: 8149,
+    code: '022',
+    stock: 8,
+    status: true,
+    category: 'Power cruiser',
+    thumbnails: []
+  },
+  quantity: 1
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446f3"),
+    title: 'Aprilia',
+    description: 'Tuono V4 1100 Factory',
+    price: 18600,
+    code: '012',
+    stock: 10,
+    status: true,
+    category: 'Naked',
+    thumbnails: []
+  },
+  quantity: 1
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446fe"),
+    title: 'Yamaha',
+    description: 'VMAX',
+    price: 17999,
+    code: '023',
+    stock: 10,
+    status: true,
+    category: 'Power cruiser',
+    thumbnails: []
+  },
+  quantity: 1
+}
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:26:29 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 10890 Method: POST en URL: /api/carts - 11:26:36 AM
+info: I'm productInCartExist APTC null
+info: Process ID: 10890 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 11:26:41 AM
+info: Process ID: 10890 Method: DELETE en URL: /api/carts/64b55488d810685c1e687187 - 11:26:44 AM
+info: Line 170 CartsManag {
+  _id: new ObjectId("64b55488d810685c1e687187"),
+  user: new ObjectId("64b17202640cbc58d9a348b0"),
+  products: [ { _id: [Object], quantity: 1 }, { _id: [Object], quantity: 1 } ]
+}
+info: {
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446f8"),
+    title: 'Honda',
+    description: 'Africa Twin Adventure Sports ES',
+    price: 17499,
+    code: '017',
+    stock: 11,
+    status: true,
+    category: 'Adventure',
+    thumbnails: []
+  },
+  quantity: 1
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446fe"),
+    title: 'Yamaha',
+    description: 'VMAX',
+    price: 17999,
+    code: '023',
+    stock: 10,
+    status: true,
+    category: 'Power cruiser',
+    thumbnails: []
+  },
+  quantity: 1
+}
+info: Process ID: 10890 Method: GET en URL: /api/products?page=1&limit=10&query=undefined&sort=1 - 11:26:47 AM
+info: Process ID: 10890 Method: GET en URL: /static/css/styles.css - 11:26:48 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:26:48 AM
+info: Process ID: 10890 Method: GET en URL: /api/css/blockedPage.css - 11:26:48 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:26:48 AM
+info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:26:49 AM
+info: Process ID: 10890 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 11:27:05 AM
+info: Process ID: 10890 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 11:27:05 AM

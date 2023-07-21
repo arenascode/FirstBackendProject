@@ -1,10 +1,8 @@
-
 //Get the elements 
 const addToCartBtns = document.querySelectorAll('button[data-idProduct]')
 const getCartBtn = document.getElementById('getCart')
 const cartProductsList = document.querySelector('.cartProducts')
 const modalCart = document.querySelector('.modalCart')
-let data
 const closeModalBtn = document.getElementById('closeModalBtn')
 const totalAmountdiv = document.querySelector('.cartDetails_totalAmount')
 const deleteCartBtn = document.getElementById('deleteCartBtn')
@@ -12,6 +10,7 @@ const buyCartBtn = document.getElementById('buyCartBtn')
 
 let cartId = JSON.parse(localStorage.getItem('cartId')) || ''
 console.log(cartId);
+
 //Functions 
 async function addToCart() {
   const idProduct = this.dataset.idproduct
@@ -26,9 +25,21 @@ async function addToCart() {
       "Content-Type": "application/json",
     },
   })
-  // if (!response.ok) {
-  //   alert('Error Ocurred. Please!');
-  // }
+  if (response.ok) {
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Product Added To Cart",
+      showConfirmButton: false,
+      timer: 1500,
+      width: '200px',
+      heightAuto: false,
+      customClass: {
+        popup: 'custom-alert-height'
+      }
+
+    });
+  }
   
   const cart = await response.json()
   console.log(cart._id);
@@ -37,9 +48,6 @@ async function addToCart() {
     console.error("error ocurred", error)
   }
 }
-
-let deleteProductCartBtns
-
 
 let total = 0
 async function getCartById(e) {

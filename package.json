@@ -5,7 +5,7 @@
   "description": "",
   "main": "./src/main.js",
   "scripts": {
-    "start":"node .",
+    "start": "node .",
     "start:prod": "NODE_ENV=production node .",
     "start:dev": "NODE_ENV=development nodemon .",
     "test": "mocha --recursive"
@@ -42,6 +42,7 @@
     "socket.io": "^4.6.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.3",
+    "sweetalert2": "^11.7.18",
     "uuid": "^9.0.0",
     "winston": "^3.8.2"
   },
