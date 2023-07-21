@@ -1507,3 +1507,290 @@ info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:26:48 AM
 info: Process ID: 10890 Method: GET en URL: /favicon.ico - 11:26:49 AM
 info: Process ID: 10890 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 11:27:05 AM
 info: Process ID: 10890 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 11:27:05 AM
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: App Connected To Port 3000
+info: Process ID: 15343 Method: GET en URL: /api/products?page=1&limit=10&query=undefined&sort=1 - 2:31:23 PM
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:31:23 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:31:23 PM
+info: Process ID: 15343 Method: GET en URL: /api/css/blockedPage.css - 2:31:23 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:31:23 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:31:24 PM
+info: Process ID: 15343 Method: GET en URL: /profile - 2:31:25 PM
+info: Process ID: 15343 Method: GET en URL: /login - 2:31:25 PM
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:31:25 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:31:25 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:31:25 PM
+info: Process ID: 15343 Method: GET en URL: /css/blockedPage.css - 2:31:25 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:31:26 PM
+info: Process ID: 15343 Method: POST en URL: /api/sessions/login - 2:31:29 PM
+info: soy IsAdmin false
+info: criteria userMongodb {"email":"compraenmercadolibre@outlook.com"}
+info: {
+  _id: new ObjectId("64b17202640cbc58d9a348b0"),
+  name: 'nombreprueba2',
+  lastName: 'apellidoprueba2',
+  email: 'compraenmercadolibre@outlook.com',
+  age: '35',
+  password: '$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa',
+  role: 'user',
+  cart: { _id: new ObjectId("64b55488d810685c1e687187"), products: [] },
+  documents: null,
+  last_conection: 'Fri Jul 21 2023 16:30:50 GMT+0000 (Coordinated Universal Time)',
+  status: false
+}
+info: Process ID: 15343 Method: GET en URL: /profile - 2:31:29 PM
+info: req.user en RouterView {"_id":"64b17202640cbc58d9a348b0","name":"nombreprueba2","lastName":"apellidoprueba2","email":"compraenmercadolibre@outlook.com","age":"35","password":"$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa","role":"user","cart":{"_id":"64b55488d810685c1e687187","products":[]},"documents":null,"last_conection":"Fri Jul 21 2023 14:31:29 GMT-0500 (Colombia Standard Time)","status":false,"iat":1689967889,"exp":1689971489}
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:31:30 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:31:30 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:31:30 PM
+info: Process ID: 15343 Method: GET en URL: /css/blockedPage.css - 2:31:30 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:31:31 PM
+info: Process ID: 15343 Method: GET en URL: /api/products - 2:31:49 PM
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:31:49 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:31:49 PM
+info: Process ID: 15343 Method: GET en URL: /api/css/blockedPage.css - 2:31:49 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:31:49 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:31:50 PM
+info: Process ID: 15343 Method: GET en URL: /api/css/blockedPage.css - 2:31:52 PM
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:31:52 PM
+info: Process ID: 15343 Method: GET en URL: /api/products - 2:32:12 PM
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:32:12 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:32:12 PM
+info: Process ID: 15343 Method: GET en URL: /api/css/blockedPage.css - 2:32:12 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:32:12 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:32:13 PM
+info: Process ID: 15343 Method: POST en URL: /api/carts - 2:32:18 PM
+info: I'm productInCartExist APTC null
+info: Process ID: 15343 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 2:32:28 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:32:30 PM
+info: Process ID: 15343 Method: GET en URL: /api/products - 2:37:16 PM
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:37:17 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:37:17 PM
+info: Process ID: 15343 Method: GET en URL: /api/css/blockedPage.css - 2:37:17 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:37:17 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:37:18 PM
+info: Process ID: 15343 Method: GET en URL: /api/carts/null - 2:37:20 PM
+info: Process ID: 15343 Method: POST en URL: /api/carts - 2:37:32 PM
+info: I'm productInCartExist APTC null
+info: Process ID: 15343 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 2:37:36 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:37:39 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:37:53 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:37:57 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:37:58 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:41:05 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:41:09 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:41:12 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:41:12 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:42:16 PM
+info: Process ID: 15343 Method: GET en URL: /api/carts/null - 2:46:18 PM
+info: Process ID: 15343 Method: GET en URL: /api/products - 2:46:21 PM
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:46:21 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:46:21 PM
+info: Process ID: 15343 Method: GET en URL: /api/css/blockedPage.css - 2:46:21 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:46:21 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:46:22 PM
+info: Process ID: 15343 Method: POST en URL: /api/carts - 2:46:28 PM
+info: info Error: No auth token
+info: Process ID: 15343 Method: GET en URL: /profile - 2:46:40 PM
+info: Process ID: 15343 Method: GET en URL: /login - 2:46:40 PM
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:46:40 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:46:40 PM
+info: Process ID: 15343 Method: GET en URL: /css/blockedPage.css - 2:46:40 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:46:40 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:46:41 PM
+info: Process ID: 15343 Method: POST en URL: /api/sessions/login - 2:46:46 PM
+info: soy IsAdmin false
+info: criteria userMongodb {"email":"compraenmercadolibre@outlook.com"}
+info: {
+  _id: new ObjectId("64b17202640cbc58d9a348b0"),
+  name: 'nombreprueba2',
+  lastName: 'apellidoprueba2',
+  email: 'compraenmercadolibre@outlook.com',
+  age: '35',
+  password: '$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa',
+  role: 'user',
+  cart: {
+    _id: new ObjectId("64b55488d810685c1e687187"),
+    products: [ [Object], [Object] ]
+  },
+  documents: null,
+  last_conection: 'Fri Jul 21 2023 14:31:29 GMT-0500 (Colombia Standard Time)',
+  status: false
+}
+info: Process ID: 15343 Method: GET en URL: /profile - 2:46:46 PM
+info: req.user en RouterView {"_id":"64b17202640cbc58d9a348b0","name":"nombreprueba2","lastName":"apellidoprueba2","email":"compraenmercadolibre@outlook.com","age":"35","password":"$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa","role":"user","cart":{"_id":"64b55488d810685c1e687187","products":[{"_id":{"_id":"645c409e3ccd6ebac43446ef","title":"BMW","description":"R nineT Scrambler","price":16600,"code":"008","stock":7,"status":true,"category":"Naked","thumbnails":[]},"quantity":1},{"_id":{"_id":"645c409e3ccd6ebac43446fd","title":"Kawasaki","description":"Vulcan S ABS SE","price":8149,"code":"022","stock":8,"status":true,"category":"Power cruiser","thumbnails":[]},"quantity":1}]},"documents":null,"last_conection":"Fri Jul 21 2023 14:46:46 GMT-0500 (Colombia Standard Time)","status":false,"iat":1689968806,"exp":1689972406}
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:46:46 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:46:47 PM
+info: Process ID: 15343 Method: GET en URL: /css/blockedPage.css - 2:46:47 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:46:47 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:46:48 PM
+info: Process ID: 15343 Method: GET en URL: /api/products - 2:46:48 PM
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:46:49 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:46:49 PM
+info: Process ID: 15343 Method: GET en URL: /api/css/blockedPage.css - 2:46:49 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:46:49 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:46:50 PM
+info: Process ID: 15343 Method: GET en URL: /api/products - 2:47:15 PM
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:47:15 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:47:15 PM
+info: Process ID: 15343 Method: GET en URL: /api/css/blockedPage.css - 2:47:15 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:47:15 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:47:16 PM
+info: Process ID: 15343 Method: GET en URL: /api/carts/null - 2:47:23 PM
+info: Process ID: 15343 Method: POST en URL: /api/carts - 2:47:34 PM
+info: I'm productInCartExist APTC null
+info: Process ID: 15343 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 2:47:40 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:42 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:44 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:45 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:45 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:45 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:45 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:46 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:46 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:46 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:46 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:46 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:47 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:47 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:47 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:47 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:47 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:48 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:48 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:48 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:51 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:52 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:52 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:52 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:53 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:47:53 PM
+info: Process ID: 15343 Method: GET en URL: /api/products - 2:48:02 PM
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:48:03 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:48:03 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:48:03 PM
+info: Process ID: 15343 Method: GET en URL: /api/css/blockedPage.css - 2:48:03 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:48:04 PM
+info: Process ID: 15343 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 2:48:06 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/64b55488d810685c1e687187 - 2:48:08 PM
+info: Line 170 CartsManag {
+  _id: new ObjectId("64b55488d810685c1e687187"),
+  user: new ObjectId("64b17202640cbc58d9a348b0"),
+  products: [
+    { _id: [Object], quantity: 1 },
+    { _id: [Object], quantity: 1 },
+    { _id: [Object], quantity: 1 }
+  ]
+}
+info: {
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446ef"),
+    title: 'BMW',
+    description: 'R nineT Scrambler',
+    price: 16600,
+    code: '008',
+    stock: 7,
+    status: true,
+    category: 'Naked',
+    thumbnails: []
+  },
+  quantity: 1
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac43446fd"),
+    title: 'Kawasaki',
+    description: 'Vulcan S ABS SE',
+    price: 8149,
+    code: '022',
+    stock: 8,
+    status: true,
+    category: 'Power cruiser',
+    thumbnails: []
+  },
+  quantity: 1
+},{
+  _id: {
+    owner: 'admin',
+    _id: new ObjectId("645c409e3ccd6ebac4344703"),
+    title: 'Kawasaki',
+    description: 'Ninja ZX-10RR',
+    price: 25199,
+    code: '028',
+    stock: 4,
+    status: true,
+    category: 'Superbike',
+    thumbnails: []
+  },
+  quantity: 1
+}
+info: Process ID: 15343 Method: POST en URL: /api/carts - 2:48:31 PM
+info: I'm productInCartExist APTC null
+info: Process ID: 15343 Method: GET en URL: /api/products - 2:48:40 PM
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:48:40 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:48:40 PM
+info: Process ID: 15343 Method: GET en URL: /api/css/blockedPage.css - 2:48:40 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:48:40 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:48:41 PM
+info: Process ID: 15343 Method: POST en URL: /api/carts - 2:48:44 PM
+info: I'm productInCartExist APTC null
+info: Process ID: 15343 Method: GET en URL: /api/carts/64b55488d810685c1e687187 - 2:48:48 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:48:50 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:48:55 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:48:55 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:48:56 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:48:56 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:48:56 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:48:56 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:48:56 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:48:57 PM
+info: Process ID: 15343 Method: DELETE en URL: /api/carts/ - 2:48:57 PM
+info: Process ID: 15343 Method: GET en URL: /api/products - 2:55:30 PM
+info: Process ID: 15343 Method: GET en URL: /static/css/styles.css - 2:55:30 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:55:30 PM
+info: Process ID: 15343 Method: GET en URL: /api/css/blockedPage.css - 2:55:30 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:55:30 PM
+info: Process ID: 15343 Method: GET en URL: /favicon.ico - 2:55:31 PM
+info: connected to mongodb in mongodb+srv://arenasCode:Miguel1991@cluster0.4g8ucfo.mongodb.net/Ecommerce
+info: App Connected To Port 3000
+info: Process ID: 18196 Method: GET en URL: /login - 3:13:08 PM
+info: Process ID: 18196 Method: GET en URL: /static/css/styles.css - 3:13:08 PM
+info: Process ID: 18196 Method: GET en URL: /favicon.ico - 3:13:08 PM
+info: Process ID: 18196 Method: GET en URL: /css/blockedPage.css - 3:13:08 PM
+info: Process ID: 18196 Method: GET en URL: /favicon.ico - 3:13:08 PM
+info: Process ID: 18196 Method: GET en URL: /favicon.ico - 3:13:09 PM
+info: Process ID: 18196 Method: POST en URL: /api/sessions/login - 3:13:14 PM
+info: soy IsAdmin false
+info: criteria userMongodb {"email":"compraenmercadolibre@outlook.com"}
+info: {
+  _id: new ObjectId("64b17202640cbc58d9a348b0"),
+  name: 'nombreprueba2',
+  lastName: 'apellidoprueba2',
+  email: 'compraenmercadolibre@outlook.com',
+  age: '35',
+  password: '$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa',
+  role: 'user',
+  cart: {
+    _id: new ObjectId("64b55488d810685c1e687187"),
+    products: [ [Object] ]
+  },
+  documents: null,
+  last_conection: 'Fri Jul 21 2023 15:11:30 GMT-0500 (Colombia Standard Time)',
+  status: false
+}
+info: Process ID: 18196 Method: GET en URL: /profile - 3:13:14 PM
+info: req.user en RouterView {"_id":"64b17202640cbc58d9a348b0","name":"nombreprueba2","lastName":"apellidoprueba2","email":"compraenmercadolibre@outlook.com","age":"35","password":"$2b$10$DjZbAO9fwH45wkQZqTrfLeeOWeF5.w6We468k.2QGD2/7RnZe.wCa","role":"user","cart":{"_id":"64b55488d810685c1e687187","products":[{"_id":{"_id":"645c409e3ccd6ebac43446f2","title":"Yamaha","description":"MT-10","price":13999,"code":"011","stock":11,"status":true,"category":"Naked","thumbnails":[]},"quantity":1}]},"documents":null,"last_conection":"Fri Jul 21 2023 15:13:14 GMT-0500 (Colombia Standard Time)","status":false,"iat":1689970394,"exp":1689973994}
+info: Process ID: 18196 Method: GET en URL: /static/css/styles.css - 3:13:14 PM
+info: Process ID: 18196 Method: GET en URL: /favicon.ico - 3:13:14 PM
+info: Process ID: 18196 Method: GET en URL: /css/blockedPage.css - 3:13:14 PM
+info: Process ID: 18196 Method: GET en URL: /favicon.ico - 3:13:14 PM
+info: Process ID: 18196 Method: GET en URL: /favicon.ico - 3:13:15 PM
+info: Process ID: 18196 Method: GET en URL: /api/products - 3:13:19 PM
+info: Process ID: 18196 Method: GET en URL: /static/css/styles.css - 3:13:19 PM
+info: Process ID: 18196 Method: GET en URL: /favicon.ico - 3:13:19 PM
+info: Process ID: 18196 Method: GET en URL: /api/css/blockedPage.css - 3:13:19 PM
+info: Process ID: 18196 Method: GET en URL: /favicon.ico - 3:13:19 PM
+info: Process ID: 18196 Method: GET en URL: /favicon.ico - 3:13:20 PM
+info: Process ID: 18196 Method: POST en URL: /api/carts - 3:13:34 PM
+info: I'm productInCartExist APTC null

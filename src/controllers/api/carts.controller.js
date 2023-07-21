@@ -151,6 +151,7 @@ export async function DeleteAllProductsInCart(req, res) {
     await cartsService.deleteAllProductsInCart(cartID);
     res.status(200).json({ msg: `The Cart Is Empty` });
   } catch (error) {
+    console.log(error);
     res.status(400).json({
       msg: error.message,
     });
