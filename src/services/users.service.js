@@ -61,36 +61,36 @@ class UserService {
     return deletedUser;
   }
 
-  async deleteUserForInactivity(userID) {
-    cron.schedule("0 */24 * * * *", async () => {
-      winstonLogger.info(
-        `cron its working each 10 seconds. must be delete user with id: ${userID}`
-      )
+  // async deleteUserForInactivity(userID) {
+  //   cron.schedule("0 */24 * * * *", async () => {
+  //     winstonLogger.info(
+  //       `cron its working each 10 seconds. must be delete user with id: ${userID}`
+  //     )
       
-      const user = await usersRepository.findById(userID);
-      const userLastConection = new Date(user.last_conection).getTime();
-      const currentDate = new Date().getTime();
+  //     const user = await usersRepository.findById(userID);
+  //     const userLastConection = new Date(user.last_conection).getTime();
+  //     const currentDate = new Date().getTime();
       
-      const diferenceInMilliseconds = currentDate - userLastConection;
-      const diferenceInDays = diferenceInMilliseconds / (24 * 60 * 60 * 10000);
+  //     const diferenceInMilliseconds = currentDate - userLastConection;
+  //     const diferenceInDays = diferenceInMilliseconds / (24 * 60 * 60 * 10000);
 
-      if (diferenceInDays >= 1) {
-        winstonLogger.debug(
-            `sends a notifitacion to the user advising him that if he doesn't log in again to his account it will be deleted`
-          );
-          await mailService.sendMailToAdviceDelitionAccount(user.email,user.name);
-      } else if (diferenceInDays >= 2) {
-        winstonLogger.debug(`This account will be deleted due to inactivity`);
-        await userService.deleteUserById(user._id);
-        await mailService.sendMailToNotifyDelitionAccount(
-          user.email,
-          user.name
-        );
-      } else {
-        winstonLogger.debug(`The user account still active`);
-      }
-    });
-  }
+  //     if (diferenceInDays >= 1) {
+  //       winstonLogger.debug(
+  //           `sends a notifitacion to the user advising him that if he doesn't log in again to his account it will be deleted`
+  //         );
+  //         await mailService.sendMailToAdviceDelitionAccount(user.email,user.name);
+  //     } else if (diferenceInDays >= 2) {
+  //       winstonLogger.debug(`This account will be deleted due to inactivity`);
+  //       await userService.deleteUserById(user._id);
+  //       await mailService.sendMailToNotifyDelitionAccount(
+  //         user.email,
+  //         user.name
+  //       );
+  //     } else {
+  //       winstonLogger.debug(`The user account still active`);
+  //     }
+  //   });
+  // }
 }
 
 const userService = new UserService();

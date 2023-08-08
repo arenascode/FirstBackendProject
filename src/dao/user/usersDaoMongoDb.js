@@ -1,7 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 import { User } from "../../entities/User.js";
-import { json } from "express";
 import { winstonLogger } from "../../utils/logger.js";
 
 //function to transform the DBO to DTO

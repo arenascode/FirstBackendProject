@@ -2,7 +2,7 @@ import mongoosePaginate from "mongoose-paginate-v2";
 import mongoose from "mongoose";
 import Product from "../../entities/Product.js";
 import { winstonLogger } from "../../utils/logger.js";
-import { usersRepository } from "../../repositories/users.repository.js";
+
 
 const productsCollection = "products";
 const productsSchema = mongoose.Schema(

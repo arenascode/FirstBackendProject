@@ -24,11 +24,7 @@ export function generateAToken(payload) {
   console.log(token);
   return token;
 }
-// generateAToken({
-//   user: "adminCoder@coder.com",
-//   password: "adminCod3r123",
-// _id: "6463bdbd5031370f8b1a0776"
-// })
+
 
 export function decodeToken(token) {
   return new Promise((resolve, reject) => {

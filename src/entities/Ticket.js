@@ -10,6 +10,7 @@ function purchaseDate() {
 }
 
 export default class Ticket {
+  
   constructor(amount, purchaser) {
     this.code = generateCode()
     this.purchase_datetime = purchaseDate()

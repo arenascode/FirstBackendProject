@@ -1,8 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2"
 import Cart from "../../entities/Cart.js";
-import productsDaoMongoDb from "../products/ProductsDaoMongoDb.js";
-import { stringify } from "uuid";
 import { winstonLogger } from "../../utils/logger.js";
 
 const cartsCollection = "carts";

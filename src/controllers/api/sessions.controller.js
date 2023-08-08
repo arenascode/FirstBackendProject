@@ -38,7 +38,7 @@ export async function logoutSession (req, res, next) {
     const userId = req.params.userId
     await userService.updateUserById(userId, { last_conection: new Date().toString() })
     //Here I call the service to delete user after 2 days of inactivity and send mail to them notifying them
-    await userService.deleteUserForInactivity(userId);
+    // await userService.deleteUserForInactivity(userId);
     
     res.clearCookie("jwt_authorization", {
       signed: true,
